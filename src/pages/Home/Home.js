@@ -8,11 +8,23 @@ import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "../../assets/Images/HomeBg.jpg";
+//-----------------Variants animation---------------
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 1 } },
+};
+
 const Home = () => {
   const [currentBg, setCurrentBg] = useState(HomeBg);
   return (
     <div>
-      <HeroContainer currentBg={currentBg} style={{}}>
+      <HeroContainer
+        as={motion.div}
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        currentBg={currentBg}
+      >
         <Navbar />
         <HeroContent>
           <HomeCarousel setCurrentBg={setCurrentBg}></HomeCarousel>
