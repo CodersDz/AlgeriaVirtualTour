@@ -1,0 +1,8 @@
+{
+  "StartPage": { "Begin": "Commencer" },
+  "Nav": {
+    "Login": "S'authentifier",
+    "Register": "S'inscrire",
+    "Agenda": "Agenda"
+  }
+}
