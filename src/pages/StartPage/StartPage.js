@@ -11,7 +11,7 @@ const StartPage = () => {
   return (
     <StartPageContainer>
       <img src={StartPageLogo} />
-      <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
+      <StartPageLink to="/home">{t("salam")}</StartPageLink>
     </StartPageContainer>
   );
 };
