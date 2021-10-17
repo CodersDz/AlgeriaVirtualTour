@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import HomeBg from "../../assets/Images/HomeBg.jpg";
 
 export const HeroContainer = styled.div`
   background: ${(
@@ -14,5 +13,5 @@ export const HeroContainer = styled.div`
 `;
 
 export const HeroContent = styled.div`
-  height: calc(100vh - 120px);
+  height: calc(100vh - 150px);
 `;

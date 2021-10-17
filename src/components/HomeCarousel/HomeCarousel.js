@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { AnimateSharedLayout, motion } from "framer-motion";
 import {
   CarouselContainer,
   InfoCarousel,
@@ -6,44 +7,94 @@ import {
   HomePub,
   ThumbnailImages,
   ThumbnailImage,
+  ThumbnailImageExpanded,
+  DecouvrirePlus,
 } from "./HomeCarouselElements";
 //-----------------Images imports---------------
 import Pub1 from "../../assets/Images/Pub1.jpg";
 import Pub2 from "../../assets/Images/Pub2.jpg";
 //carousel images
-import Alger_Mosque from "../../assets/Images/Alger_Mosque.jpg";
-import Bejaia from "../../assets/Images/Bejaia.jpg";
-import Ghardaia from "../../assets/Images/Ghardaia.jpg";
-import Djanet_la_tadrarte from "../../assets/Images/Djanet_la_tadrarte.jpeg";
-const HomeCarousel = ({ setCurrentBg }) => {
-  const updateBg = (e) => {
-    console.log(e.target.getAttribute("src"));
-    setCurrentBg(e.target.getAttribute("src"));
+import Alger_Mosque from "./Alger_Mosque.jpg";
+import Bejaia from "./Bejaia.jpg";
+import Ghardaia from "./Ghardaia.jpg";
+import Djanet_la_tadrarte from "./Djanet_la_tadrarte.jpeg";
+const HomeCarousel = ({ bg, setCurrentBg }) => {
+  const [expandedId, setExpandedId] = useState(null);
+  const [animated, setAnimated] = useState([]);
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      wilayaName: "Alger",
+      imgPath: Alger_Mosque,
+      wilayaDescription:
+        "Lorem ipsum dolor sit amet. Sed similique excepturi et repellat saepe 33 voluptatem natus est dolores minima. In nobis ea voluptatem laborum cum reiciendis animi.",
+      wilayaUrl: "https://google.com",
+    },
+    { id: 2, wilayaName: "Bejaia", imgPath: Bejaia },
+    {
+      id: 3,
+      wilayaName: "Ghardaia",
+      imgPath: Ghardaia,
+    },
+    {
+      id: 4,
+      wilayaName: "Djanet",
+      imgPath: Djanet_la_tadrarte,
+    },
+  ]);
+  const GrowImage = ({ item }) => {
+    //ici
+    if (item.id === expandedId) {
+      setTimeout(() => {
+        setCurrentBg(item.imgPath);
+      }, 500);
+
+      return (
+        <ThumbnailImageExpanded
+          as={motion.div}
+          layoutId={item.id}
+          bg={item.imgPath}
+        />
+      );
+    } else if (!animated.includes(item.id)) {
+      return (
+        <ThumbnailImage
+          as={motion.div}
+          layoutId={item.id}
+          bg={item.imgPath}
+          onClick={() => {
+            setAnimated((prev) => [...prev, item.id]);
+            setExpandedId(item.id);
+          }}
+        />
+      );
+    } else return null;
   };
   return (
-    <CarouselContainer>
-      <InfoCarousel></InfoCarousel>
-      <ImgCarousel>
-        <HomePub src={Pub1} />
-        <ThumbnailImages>
-          <ThumbnailImage
-            src={Alger_Mosque}
-            onClick={(e) => {
-              setCurrentBg(Alger_Mosque);
+    <AnimateSharedLayout>
+      <CarouselContainer>
+        <InfoCarousel>
+          <button
+            onClick={() => {
+              setExpandedId(null);
+              setAnimated([]);
             }}
-          />
-          <ThumbnailImage
-            src={Bejaia}
-            onClick={(e) => {
-              setCurrentBg(Bejaia);
-            }}
-          />
-          <ThumbnailImage src={Ghardaia} />
-          <ThumbnailImage src={Djanet_la_tadrarte} />
-        </ThumbnailImages>
-        <HomePub src={Pub2} />
-      </ImgCarousel>
-    </CarouselContainer>
+          >
+            Clique
+          </button>
+        </InfoCarousel>
+        <ImgCarousel>
+          <HomePub src={Pub1} />
+          <ThumbnailImages>
+            {items.map((item) => {
+              return <GrowImage item={item} />;
+            })}
+            <DecouvrirePlus to="/">Découvrir plus...</DecouvrirePlus>
+          </ThumbnailImages>
+          <HomePub src={Pub2} />
+        </ImgCarousel>
+      </CarouselContainer>
+    </AnimateSharedLayout>
   );
 };
 

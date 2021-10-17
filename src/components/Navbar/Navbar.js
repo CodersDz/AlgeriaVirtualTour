@@ -50,6 +50,7 @@ const Navbar = () => {
             <NavItem>
               <NavLink to="/Login">{t("Nav.Register")}</NavLink>
             </NavItem>
+
             <NavItem>
               <SelectLang />
             </NavItem>

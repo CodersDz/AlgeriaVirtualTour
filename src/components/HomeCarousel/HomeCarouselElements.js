@@ -12,24 +12,64 @@ export const CarouselContainer = styled.div`
 export const InfoCarousel = styled.div`
   width: 60%;
   height: 100%;
+  position: relative;
+  z-index: 1000;
 `;
 export const ImgCarousel = styled.div`
   width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  z-index: 50;
 `;
 export const HomePub = styled.img`
   max-height: 20%;
   min-height: 20%;
   width: 100%;
+  position: relative;
 `;
 export const ThumbnailImages = styled.div`
   display: flex;
-  max-height: 60%;
-  min-height: 60%;
+  height: 60%;
+  padding: 30px 0;
 `;
-export const ThumbnailImage = styled.img`
+export const ThumbnailImage = styled.div`
+  cursor: pointer;
+  min-width: 35%;
+  position: static;
+  max-height: 100%;
+  margin: 0 30px 0 0;
+  background: ${(props) => `
+    url(${props.bg})`};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+export const ThumbnailImageExpanded = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: -50;
+  background: ${(
+    props
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),
+    url(${props.bg})`};
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+export const DecouvrirePlus = styled(Link)`
   width: 35%;
-  margin: 30px 30px 30px 0;
+  max-height: 100%;
+  margin: 0 30px 0 0;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
 `;

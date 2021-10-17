@@ -7,7 +7,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
-import HomeBg from "../../assets/Images/HomeBg.jpg";
+import HomeBg from "./HomeBg.jpg";
 //-----------------Variants animation---------------
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,7 +27,10 @@ const Home = () => {
       >
         <Navbar />
         <HeroContent>
-          <HomeCarousel setCurrentBg={setCurrentBg}></HomeCarousel>
+          <HomeCarousel
+            setCurrentBg={setCurrentBg}
+            bg={currentBg}
+          ></HomeCarousel>
         </HeroContent>
       </HeroContainer>
     </div>

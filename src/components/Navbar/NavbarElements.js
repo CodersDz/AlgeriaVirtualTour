@@ -13,6 +13,7 @@ export const NavContainer = styled.nav`
   font-size: 1.2em;
   padding: 1rem;
   top: 1rem;
+  position: relative;
   z-index: 999;
   background-color: transparent;
 `;
