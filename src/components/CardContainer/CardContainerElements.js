@@ -10,6 +10,7 @@ export const CardContainerWrapper = styled.div`
   width: 100%;
 `;
 export const Card = styled(Link)`
+  cursor: pointer;
   position: relative;
   background: ${(
     props
