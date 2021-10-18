@@ -4,5 +4,19 @@
     "Login": "S'authentifier",
     "Register": "S'inscrire",
     "Agenda": "Agenda"
+  },
+  "SearchPage": {
+    "Card": {
+      "Art_Culture": "Art & Culture",
+      "Hôtel": "Hôtel",
+      "Loisirs": "Loisirs",
+      "Monument": "Monument",
+      "Museum": "Musée",
+      "Park": "Parc",
+      "Restaurant": "Restaurant",
+      "Service": "Service",
+      "Mosque": "Mosquée",
+      "Shopping": "Shopping"
+    }
   }
 }

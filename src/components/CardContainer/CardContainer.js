@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
   CardContainerWrapper,
   Card,
@@ -19,27 +19,60 @@ import Park from "./Park.jpg";
 import Musée from "./Musée.jpg";
 import Restaurant from "./Restaurant.jpg";
 
-const Cards = [
-  {
-    CardImg: Art_Culture,
-    CardTitle: "Art & Culture",
-    CardUrl: "https://google.com",
-  },
-  { CardImg: Hôtel, CardTitle: "Hôtel", CardUrl: "https://google.com" },
-  { CardImg: Loisirs, CardTitle: "Loisirs", CardUrl: "https://google.com" },
-  { CardImg: Monument, CardTitle: "Monument", CardUrl: "https://google.com" },
-  { CardImg: Mosquée, CardTitle: "Mosquée", CardUrl: "https://google.com" },
-  { CardImg: Shopping, CardTitle: "Shopping", CardUrl: "https://google.com" },
-  { CardImg: Service, CardTitle: "Service", CardUrl: "https://google.com" },
-  { CardImg: Park, CardTitle: "Park", CardUrl: "https://google.com" },
-  { CardImg: Musée, CardTitle: "Musée", CardUrl: "https://google.com" },
-  {
-    CardImg: Restaurant,
-    CardTitle: "Restaurant",
-    CardUrl: "https://google.com",
-  },
-];
 const CardContainer = () => {
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const Cards = [
+    {
+      CardImg: Art_Culture,
+      CardTitle: t("SearchPage.Card.Art_Culture"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Hôtel,
+      CardTitle: t("SearchPage.Card.Hôtel"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Loisirs,
+      CardTitle: t("SearchPage.Card.Loisirs"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Monument,
+      CardTitle: t("SearchPage.Card.Monument"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Mosquée,
+      CardTitle: t("SearchPage.Card.Mosque"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Shopping,
+      CardTitle: t("SearchPage.Card.Shopping"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Service,
+      CardTitle: t("SearchPage.Card.Service"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Park,
+      CardTitle: t("SearchPage.Card.Park"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Musée,
+      CardTitle: t("SearchPage.Card.Museum"),
+      CardUrl: "https://google.com",
+    },
+    {
+      CardImg: Restaurant,
+      CardTitle: t("SearchPage.Card.Restaurant"),
+      CardUrl: "https://google.com",
+    },
+  ];
   return (
     <CardContainerWrapper>
       {Cards.map((card) => {

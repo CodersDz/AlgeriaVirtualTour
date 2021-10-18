@@ -1,4 +1,18 @@
 {
   "StartPage": { "Begin": "Begin" },
-  "Nav": { "Login": "Login", "Register": "Register", "Agenda": "Agenda" }
+  "Nav": { "Login": "Login", "Register": "Register", "Agenda": "Agenda" },
+  "SearchPage": {
+    "Card": {
+      "Art_Culture": "Art & Culture",
+      "Hôtel": "Hôtel",
+      "Loisirs": "Loisirs",
+      "Monument": "Monument",
+      "Museum": "Museum",
+      "Park": "Park",
+      "Restaurant": "Restaurant",
+      "Service": "Service",
+      "Mosque": "Mosque",
+      "Shopping": "Shopping"
+    }
+  }
 }

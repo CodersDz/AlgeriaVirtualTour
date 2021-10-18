@@ -4,5 +4,19 @@
     "Login": "تسجيل الدخول",
     "Register": "اشتراك",
     "Agenda": "جدول أعمال"
+  },
+  "SearchPage": {
+    "Card": {
+      "Art_Culture": "فن وثقافة",
+      "Hôtel": "الفنادق",
+      "Loisirs": "الترفيه",
+      "Monument": "آثار",
+      "Museum": "المتاحف",
+      "Park": "الحدائق",
+      "Restaurant": "المطاعم",
+      "Service": "خدمات",
+      "Mosque": "المساجد",
+      "Shopping": "التسوق"
+    }
   }
 }
