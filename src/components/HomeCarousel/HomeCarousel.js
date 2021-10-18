@@ -89,7 +89,7 @@ const HomeCarousel = ({ bg, setCurrentBg }) => {
             {items.map((item) => {
               return <GrowImage item={item} />;
             })}
-            <DecouvrirePlus to="/">Découvrir plus...</DecouvrirePlus>
+            <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
           </ThumbnailImages>
           <HomePub src={Pub2} />
         </ImgCarousel>

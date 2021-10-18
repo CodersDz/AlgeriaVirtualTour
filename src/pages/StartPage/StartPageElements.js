@@ -8,5 +8,7 @@ export const StartPageContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
+  overflow: hidden;
+  position: absolute;
 `;
 export const StartPageLink = styled(Link)``;

@@ -6,15 +6,17 @@ import { AnimatePresence } from "framer-motion";
 import Home from "./pages/Home/Home";
 import StartPage from "./pages/StartPage/StartPage";
 import LogIn from "./pages/LogIn/LogIn";
+import SearchPage from "./pages/SearchPage/SearchPage";
 function App() {
   const location = useLocation();
   return (
     <div className="App">
-      <AnimatePresence exitBeforeEnter>
-        <Switch location={location} key={location.key}>
+      <AnimatePresence>
+        <Switch location={location} key={location.pathname}>
           <Route exact path="/" component={StartPage} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/Login" component={LogIn} />
+          <Route exact path="/Search" component={SearchPage} />
         </Switch>
       </AnimatePresence>
     </div>

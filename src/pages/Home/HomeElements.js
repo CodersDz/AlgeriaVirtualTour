@@ -10,6 +10,9 @@ export const HeroContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 `;
 
 export const HeroContent = styled.div`

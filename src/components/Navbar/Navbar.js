@@ -30,7 +30,7 @@ const Navbar = () => {
               <HumbergerIcon size="36" />
             </NavItem>
             <NavItem>
-              <NavLink to="/">
+              <NavLink to="/Home">
                 <NavImg src={NavLogo} />
               </NavLink>
             </NavItem>
@@ -40,7 +40,7 @@ const Navbar = () => {
               <NavLink to="/">{t("Nav.Agenda")}</NavLink>
             </NavItem>
             <NavItem>
-              <SearchBtn to="/">
+              <SearchBtn to="/Search">
                 <FaSearch size="24" color="#fff" />
               </SearchBtn>
             </NavItem>

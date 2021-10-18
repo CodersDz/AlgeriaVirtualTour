@@ -11,29 +11,28 @@ import HomeBg from "./HomeBg.jpg";
 //-----------------Variants animation---------------
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1 } },
+  visible: { opacity: 1 },
+  exit: { y: "-100%" },
 };
 
 const Home = () => {
   const [currentBg, setCurrentBg] = useState(HomeBg);
   return (
-    <div>
-      <HeroContainer
-        as={motion.div}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        currentBg={currentBg}
-      >
-        <Navbar />
-        <HeroContent>
-          <HomeCarousel
-            setCurrentBg={setCurrentBg}
-            bg={currentBg}
-          ></HomeCarousel>
-        </HeroContent>
-      </HeroContainer>
-    </div>
+    <HeroContainer
+      key="home"
+      as={motion.div}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      transition={{ duration: 1 }}
+      currentBg={currentBg}
+    >
+      <Navbar />
+      <HeroContent>
+        <HomeCarousel setCurrentBg={setCurrentBg} bg={currentBg}></HomeCarousel>
+      </HeroContent>
+    </HeroContainer>
   );
 };
 
