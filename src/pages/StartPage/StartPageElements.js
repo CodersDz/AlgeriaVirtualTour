@@ -10,5 +10,6 @@ export const StartPageContainer = styled.div`
   height: 100vh;
   overflow: hidden;
   position: absolute;
+  z-index: 3;
 `;
 export const StartPageLink = styled(Link)``;
