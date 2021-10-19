@@ -13,16 +13,14 @@ function App() {
   const location = useLocation();
   return (
     <div className="App">
-      <AnimatePresence>
-        <Switch location={location} key={location.pathname}>
-          <Route exact path="/" component={StartPage} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/Login" component={LogIn} />
-          <Route exact path="/Search" component={SearchPage} />
-          <Route exact path="/About" component={About} />
-          <Route exact path="/Contact" component={Contact} />
-        </Switch>
-      </AnimatePresence>
+      <Switch location={location} key={location.pathname}>
+        <Route exact path="/" component={StartPage} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/Login" component={LogIn} />
+        <Route exact path="/Search" component={SearchPage} />
+        <Route exact path="/About" component={About} />
+        <Route exact path="/Contact" component={Contact} />
+      </Switch>
     </div>
   );
 }

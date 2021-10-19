@@ -17,4 +17,5 @@ export const HeroContainer = styled.div`
 
 export const HeroContent = styled.div`
   height: calc(100vh - 150px);
+  width: 100%;
 `;
