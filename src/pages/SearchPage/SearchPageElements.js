@@ -15,6 +15,7 @@ export const SearchPageContainer = styled.div`
   background-repeat: no-repeat;
   overflow: hidden;
   position: absolute;
+  z-index: 3;
 `;
 export const SearchContentContainer = styled.div`
   display: flex;

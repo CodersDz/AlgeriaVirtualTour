@@ -11,6 +11,8 @@ export const PageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 3;
 `;
 export const LoginContainer = styled.div`
   width: 500px;

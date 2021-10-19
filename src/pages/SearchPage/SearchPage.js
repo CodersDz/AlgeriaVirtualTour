@@ -14,6 +14,7 @@ import CardContainer from "../../components/CardContainer/CardContainer";
 const containerVariants = {
   hidden: { y: "100%" },
   visible: { y: "0" },
+  exit: { opacity: 0 },
 };
 const SearchPage = () => {
   return (

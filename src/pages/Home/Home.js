@@ -12,7 +12,6 @@ import HomeBg from "./HomeBg.jpg";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
-  exit: { y: "-100%" },
 };
 
 const Home = () => {
@@ -24,7 +23,6 @@ const Home = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      exit="exit"
       transition={{ duration: 1 }}
       currentBg={currentBg}
     >

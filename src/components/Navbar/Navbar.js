@@ -37,6 +37,12 @@ const Navbar = () => {
           </LeftContainer>
           <RightContainer>
             <NavItem>
+              <NavLink to="/About">{t("Nav.Agenda")}</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/Contact">{t("Nav.Agenda")}</NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink to="/">{t("Nav.Agenda")}</NavLink>
             </NavItem>
             <NavItem>

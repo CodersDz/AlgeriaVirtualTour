@@ -54,7 +54,9 @@ const HomeCarousel = ({ bg, setCurrentBg }) => {
           as={motion.div}
           layoutId={item.id}
           bg={item.imgPath}
-        />
+        >
+          {item.wilayaName}
+        </ThumbnailImageExpanded>
       );
     } else if (!animated.includes(item.id)) {
       return (
@@ -66,7 +68,9 @@ const HomeCarousel = ({ bg, setCurrentBg }) => {
             setAnimated((prev) => [...prev, item.id]);
             setExpandedId(item.id);
           }}
-        />
+        >
+          {item.wilayaName}
+        </ThumbnailImage>
       );
     } else return null;
   };

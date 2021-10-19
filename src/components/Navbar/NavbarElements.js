@@ -14,7 +14,7 @@ export const NavContainer = styled.nav`
   padding: 1rem;
   top: 1rem;
   position: relative;
-  z-index: 999;
+  z-index: 3;
   background-color: transparent;
 `;
 export const NavWrapper = styled(Container)`
