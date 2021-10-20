@@ -18,16 +18,25 @@ import {
   NavItem,
   NavImg,
 } from "./NavbarElements";
+import RightNav from "../HumbergerMenu/RightNav";
 
 const Navbar = () => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const [open, setOpen] = useState(false);
+
   return (
     <div>
       <NavContainer>
+        <RightNav open={open} />
         <NavWrapper>
           <LeftContainer>
             <NavItem>
-              <HumbergerIcon size="36" />
+              <HumbergerIcon
+                size="36"
+                onClick={() => {
+                  setOpen(true);
+                }}
+              />
             </NavItem>
             <NavItem>
               <NavLink to="/Home">
@@ -36,12 +45,6 @@ const Navbar = () => {
             </NavItem>
           </LeftContainer>
           <RightContainer>
-            <NavItem>
-              <NavLink to="/About">{t("Nav.Agenda")}</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/Contact">{t("Nav.Agenda")}</NavLink>
-            </NavItem>
             <NavItem>
               <NavLink to="/">{t("Nav.Agenda")}</NavLink>
             </NavItem>

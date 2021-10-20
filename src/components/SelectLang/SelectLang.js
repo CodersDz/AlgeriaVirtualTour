@@ -32,10 +32,8 @@ const SelectLang = () => {
     setLanguage(value);
     setIsOpen(false);
     window.location.reload();
-    console.log(selectedOption);
   };
   const selectFlag = (ref) => {
-    console.log(ref);
     if (ref === "fr") {
       return fr_flag;
     } else if (ref === "ar") {

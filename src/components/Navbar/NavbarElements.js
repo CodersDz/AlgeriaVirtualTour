@@ -81,5 +81,6 @@ export const SearchBtn = styled(Link)`
 export const NavItem = styled.li`
   margin: 0 10px;
   font-weight: 500;
+  cursor: pointer;
 `;
 export const NavImg = styled.img``;
