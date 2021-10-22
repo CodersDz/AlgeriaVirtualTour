@@ -12,8 +12,39 @@ export const CarouselContainer = styled.div`
 export const InfoCarousel = styled.div`
   width: 60%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  z-index: 2;
+  z-index: -1;
+  padding: 50px;
+`;
+export const InfoCarouselExpanded = styled(InfoCarousel)`
+  z-index: 4;
+`;
+export const InfoContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  color: white;
+  position: relative;
+`;
+export const InfoContent = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+`;
+export const InfoH2 = styled.h2`
+  font-size: 5rem;
+  text-transform: uppercase;
+  text-align: start;
+`;
+export const InfoP = styled.p`
+  font-size: 1.3rem;
+  font-weight: 300;
+  text-align: start;
+  text-transform: none;
+  padding: 50px 0;
 `;
 export const ImgCarousel = styled.div`
   width: 40%;
@@ -71,7 +102,17 @@ export const ThumbnailImageExpanded = styled.div`
   justify-content: center;
   font-size: 3em;
   text-transform: uppercase;
+  padding: 100px;
 `;
+export const ThumbnailImageExpandedContainer = styled.div`
+  width: 100%;
+  height: auto;
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  left: 0;
+`;
+
 export const DecouvrirePlus = styled(Link)`
   width: 35%;
   max-height: 100%;
@@ -84,4 +125,28 @@ export const DecouvrirePlus = styled(Link)`
     rgba(255, 255, 255, 0.5),
     rgba(255, 255, 255, 0.5)
   );
+`;
+export const BtnContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+`;
+export const ReadMoreBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4bcb02;
+  color: #fff;
+  border: none;
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  width: 50%;
+  height: 40px;
+  padding: 25px;
+  cursor: pointer;
+`;
+export const DiscoverMoreBtn = styled(ReadMoreBtn)`
+  background-color: transparent;
 `;
