@@ -16,6 +16,7 @@ export const NavContainer = styled.nav`
   position: relative;
   z-index: 3;
   background-color: transparent;
+  width: 100%;
 `;
 export const NavWrapper = styled(Container)`
   display: flex;

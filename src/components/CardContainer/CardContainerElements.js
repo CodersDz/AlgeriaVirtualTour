@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export const CardContainerWrapper = styled.div`
   display: flex;
@@ -23,6 +24,9 @@ export const Card = styled(Link)`
   height: 300px;
   border-radius: 10%;
   margin: 20px 20px 20px 0;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 export const CardContent = styled.div`
   display: flex;

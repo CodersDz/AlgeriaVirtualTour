@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 //-----------------Elements imports---------------
-import { HeroContainer, HeroContent } from "./HomeElements";
+import { HomeContainer, HomeContent } from "./HomeElements";
 //-----------------Components imports---------------
 import Navbar from "../../components/Navbar/Navbar";
 import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
@@ -17,7 +17,7 @@ const containerVariants = {
 const Home = () => {
   const [currentBg, setCurrentBg] = useState(HomeBg);
   return (
-    <HeroContainer
+    <HomeContainer
       key="home"
       as={motion.div}
       variants={containerVariants}
@@ -27,10 +27,10 @@ const Home = () => {
       currentBg={currentBg}
     >
       <Navbar />
-      <HeroContent>
+      <HomeContent>
         <HomeCarousel setCurrentBg={setCurrentBg} bg={currentBg}></HomeCarousel>
-      </HeroContent>
-    </HeroContainer>
+      </HomeContent>
+    </HomeContainer>
   );
 };
 

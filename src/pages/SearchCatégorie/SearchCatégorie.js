@@ -1,12 +1,44 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router";
-import { SearchCatégoriePageContainer } from "./SearchCatégorieElements";
+import React, { useEffect, useState } from "react";
+import { Redirect, useParams } from "react-router";
+import {
+  SearchCatégoriePageContainer,
+  TopContainer,
+  TopContentContainer,
+  CatégorieImg,
+  CatégorieNom,
+  SearchCatégoriePageContent,
+} from "./SearchCatégorieElements";
+import Navbar from "../../components/Navbar/Navbar";
 const SearchCatégorie = () => {
-  const { Catégorie } = useParams();
-  useEffect(() => {
-    console.log("hello");
-  });
-  return <SearchCatégoriePageContainer>Hello</SearchCatégoriePageContainer>;
+  const { categorie } = useParams();
+  const Catégories = [
+    "Art&Culture",
+    "Hôtel",
+    "Loisirs",
+    "Monument",
+    "Mosque",
+    "Shopping",
+    "Service",
+    "Park",
+    "Museum",
+    "Restaurant",
+  ];
+
+  if (!Catégories.includes(categorie)) {
+    return <Redirect to="/Search" />;
+  }
+  return (
+    <SearchCatégoriePageContainer>
+      <TopContainer bg={categorie}>
+        <Navbar />
+        <TopContentContainer>
+          <CatégorieImg src={require(`./Images/${categorie}.png`).default} />
+          <CatégorieNom>{categorie}</CatégorieNom>
+        </TopContentContainer>
+      </TopContainer>
+      <SearchCatégoriePageContent></SearchCatégoriePageContent>
+    </SearchCatégoriePageContainer>
+  );
 };
 
 export default SearchCatégorie;

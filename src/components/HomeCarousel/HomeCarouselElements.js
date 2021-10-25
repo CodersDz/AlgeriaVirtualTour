@@ -147,6 +147,18 @@ export const ReadMoreBtn = styled.button`
   padding: 25px;
   cursor: pointer;
 `;
-export const DiscoverMoreBtn = styled(ReadMoreBtn)`
+export const DiscoverMoreBtn = styled(Link)`
   background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: none;
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  width: 50%;
+  height: 40px;
+  padding: 25px;
+  cursor: pointer;
 `;

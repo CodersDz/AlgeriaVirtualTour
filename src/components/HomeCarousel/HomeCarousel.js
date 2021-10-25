@@ -45,7 +45,7 @@ const items = [
   },
   {
     id: 3,
-    wilayaName: "Ghardaia",
+    wilayaName: "Ghardaïa",
     imgPath: Ghardaia,
     wilayaDescription:
       "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
@@ -99,7 +99,14 @@ const HomeCarousel = ({ bg, setCurrentBg }) => {
                 <InfoP>{currentInfo.wilayaDescription}</InfoP>
                 <BtnContainer>
                   <ReadMoreBtn>Lire la suite</ReadMoreBtn>
-                  <DiscoverMoreBtn>Découvrir Plus</DiscoverMoreBtn>
+                  <DiscoverMoreBtn
+                    to={{
+                      pathname: `/${currentInfo.wilayaName}`,
+                      state: { wilayaName: currentInfo.wilayaName },
+                    }}
+                  >
+                    Découvrir Plus
+                  </DiscoverMoreBtn>
                 </BtnContainer>
               </InfoContent>
             </InfoContainer>

@@ -10,6 +10,7 @@ import SearchPage from "./pages/SearchPage/SearchPage";
 import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import SearchCatégorie from "./pages/SearchCatégorie/SearchCatégorie";
+import Wilaya from "./pages/Wilaya/Wilaya";
 function App() {
   const location = useLocation();
   return (
@@ -18,11 +19,11 @@ function App() {
         <Route exact path="/" component={StartPage} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/Login" component={LogIn} />
-        <Route exact path="/Search/:Catégorie" component={SearchCatégorie} />
+        <Route exact path="/Search/:categorie" component={SearchCatégorie} />
         <Route exact path="/Search" component={SearchPage} />
-
         <Route exact path="/About" component={About} />
         <Route exact path="/Contact" component={Contact} />
+        <Route exact path="/:wilayaname" component={Wilaya} />
       </Switch>
     </div>
   );
