@@ -15,9 +15,9 @@ import {
   InfoH2,
   InfoP,
   BtnContainer,
-  ReadMoreBtn,
   DiscoverMoreBtn,
 } from "./HomeCarouselElements";
+import { ReadMoreBtn } from "../../GlobalStyles";
 //-----------------Images imports---------------
 import Pub1 from "../../assets/Images/Pub1.jpg";
 import Pub2 from "../../assets/Images/Pub2.jpg";

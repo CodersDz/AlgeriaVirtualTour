@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router";
+import ScrollContainer from "react-indiana-drag-scroll";
 import {
   WilayaPageContainer,
   WilayaPageContentContainer,
@@ -19,11 +20,83 @@ import {
   DiscoverH1,
   DiscoverCatégoriesContainer,
   DiscoverCatégoriesLi,
+  DestinationLeftContainer,
+  DestinationRightContainer,
+  DestinationH1,
+  DestinationListContainer,
+  DestinationLi,
+  DestinationImg,
+  DestinationLiTextContainer,
+  DestinationName,
+  DestinationDescription,
 } from "./WilayaElements";
+import { ReadMoreBtn } from "../../GlobalStyles";
 import Navbar from "../../components/Navbar/Navbar";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
+import "./WilayaStyles.css";
+const Destinations = [
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+  {
+    DestinationName: "Alger",
+    DestinationDescription: "Alger",
+    DestinationImg: "./Images/BgImages/Alger.jpg",
+  },
+];
+const BtnVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 1 } },
+};
+const PVariants = {
+  initial: { opacity: 1 },
+  animate: { opacity: 1, transition: { duration: 1 } },
+};
 const Wilaya = () => {
+  const [readMore, setReadMore] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const Catégories = [
     {
@@ -67,11 +140,52 @@ const Wilaya = () => {
             <InfoH1 as={motion.h1} layoutId={"h1"}>
               {wilayaname}
             </InfoH1>
-            <InfoP>
+            <InfoP
+              as={motion.p}
+              variants={PVariants}
+              initial="initial"
+              animate="animate"
+            >
               Alger est la capitale de l'Algérie. Elle se trouve sur la côte
               méditerranéenne du pays. Elle est connue pour les bâtiments
               blanchis à la chaux de la Casbah…
             </InfoP>
+            {readMore && (
+              <InfoP>
+                Alger est une ville cosmopolite et plurilingue, la ville a connu
+                un accroissement démographique exponentiel dû à des vagues de
+                migration provenant des villes du pays et à l’exode rural, qui
+                s'est traduit sur le plan sociolinguistique par un brassage
+                d’Algériens venus de toutes les régions du pays, avec leurs
+                parlers respectifs. En outre, le parler des jeunes se
+                caractérise par une innovation linguistique et une créativité
+                lexicale
+              </InfoP>
+            )}
+            <ReadMoreBtn
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+            >
+              {!readMore && (
+                <motion.span
+                  variants={BtnVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  Lire La suite
+                </motion.span>
+              )}
+              {readMore && (
+                <motion.span
+                  variants={BtnVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  Moins
+                </motion.span>
+              )}
+            </ReadMoreBtn>
           </InfoLeftContainerContent>
         </InfoLeftContainer>
       );
@@ -86,6 +200,8 @@ const Wilaya = () => {
               {Catégories.map((categorie) => {
                 return (
                   <DiscoverCatégoriesLi
+                    as={motion.li}
+                    whileHover={{ scale: 1.05 }}
                     onClick={() => {
                       setCurrentSection("Destination");
                     }}
@@ -98,14 +214,42 @@ const Wilaya = () => {
           </DiscoverLeftContainerContent>
         </DiscoverLeftContainer>
       );
-    }
-    return null;
+    } else if (currectSection === "Destination") {
+      return (
+        <DestinationLeftContainer>
+          <DestinationH1 as={motion.h1} layoutId={"h1"}>
+            {wilayaname}
+          </DestinationH1>
+          <ScrollContainer hideScrollbars="false" className="ScrollContainer">
+            {Destinations.map((destination) => {
+              return (
+                <DestinationLi>
+                  <DestinationImg
+                    src={require(`${destination.DestinationImg}`).default}
+                  />
+                  <DestinationLiTextContainer>
+                    <DestinationName>
+                      {destination.DestinationName}
+                    </DestinationName>
+                    <DestinationDescription>
+                      {destination.DestinationDescription}
+                    </DestinationDescription>
+                  </DestinationLiTextContainer>
+                </DestinationLi>
+              );
+            })}
+          </ScrollContainer>
+        </DestinationLeftContainer>
+      );
+    } else return null;
   };
   const ChangeRight = () => {
     if (currectSection === "Info") {
       return (
         <InfoRightContainer>
           <SvgInfoImg
+            as={motion.img}
+            animate={{ scale: 1.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </InfoRightContainer>
@@ -115,13 +259,14 @@ const Wilaya = () => {
         <DiscoverRightContainer>
           <SvgInfoImg
             as={motion.img}
-            animate={{ scale: 1.2 }}
+            animate={{ scale: 0.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </DiscoverRightContainer>
       );
-    }
-    return null;
+    } else if (currectSection === "Destination") {
+      return <DestinationRightContainer></DestinationRightContainer>;
+    } else return null;
   };
   console.log(wilayaname);
   return (

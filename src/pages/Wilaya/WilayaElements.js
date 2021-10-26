@@ -76,15 +76,17 @@ export const InfoLeftContainerContent = styled.div`
 `;
 export const InfoH1 = styled.h1`
   align-self: flex-start;
-  font-size: 4rem;
+  font-size: 8rem;
   color: #fff;
   text-transform: uppercase;
+  text-shadow: 3px 3px 5px #000;
 `;
 
 export const InfoP = styled.p`
   text-align: start;
   font-size: 1.5rem;
   color: #fff;
+  transition: all 0.5s;
 `;
 export const InfoRightContainer = styled.div`
   display: flex;
@@ -121,11 +123,8 @@ export const DiscoverLeftContainerContent = styled.div`
   width: 100%;
   height: 100%;
 `;
-export const DiscoverH1 = styled.h1`
-  color: #fff;
+export const DiscoverH1 = styled(InfoH1)`
   font-size: 6rem;
-  align-self: flex-start;
-  text-transform: uppercase;
 `;
 export const DiscoverCatégoriesContainer = styled.ul`
   display: flex;
@@ -148,3 +147,68 @@ export const DiscoverCatégoriesLi = styled.li`
   font-size: 2rem;
 `;
 //-----------------------Discover Components----------------------------
+//-----------------------Destination Components----------------------------
+export const DestinationLeftContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+`;
+export const DestinationRightContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+export const DestinationH1 = styled(InfoH1)`
+  font-size: 4rem;
+  height: 20%;
+`;
+export const DestinationListContainer = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+`;
+export const DestinationLi = styled.li`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  color: white;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  width: 100%;
+`;
+export const DestinationImg = styled.img`
+  height: 100%;
+  width: 30%;
+`;
+export const DestinationLiTextContainer = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 5px 0;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+`;
+export const DestinationName = styled.h3`
+  text-align: start;
+  font-size: 3rem;
+`;
+export const DestinationDescription = styled.p`
+  font-size: 1.5rem;
+`;
+//-----------------------Destination Components----------------------------

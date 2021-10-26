@@ -35,9 +35,10 @@ export const InfoContent = styled.div`
   bottom: 0;
 `;
 export const InfoH2 = styled.h2`
-  font-size: 5rem;
+  font-size: 8rem;
   text-transform: uppercase;
   text-align: start;
+  text-shadow: 2px 2px 5px #000;
 `;
 export const InfoP = styled.p`
   font-size: 1.3rem;
@@ -91,7 +92,7 @@ export const ThumbnailImageExpanded = styled.div`
   z-index: -2;
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -129,7 +130,6 @@ export const DecouvrirePlus = styled(Link)`
 export const BtnContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 70%;
 `;
 export const ReadMoreBtn = styled.button`

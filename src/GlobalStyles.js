@@ -10,3 +10,18 @@ export const Container = styled.div`
     padding-right: 30px;
   }
 `;
+export const ReadMoreBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #4bcb02;
+  color: #fff;
+  border: none;
+  font-weight: 300;
+  font-size: 1.3rem;
+  border-radius: 30px;
+  width: 40%;
+  height: 40px;
+  padding: 25px;
+  cursor: pointer;
+`;
