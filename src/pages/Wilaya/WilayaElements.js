@@ -50,12 +50,12 @@ export const WilayaPageContentContainer = styled.div`
 export const LeftContainer = styled.div`
   height: 100%;
   width: 50%;
-  padding: 150px;
+  padding: 0 0 100px 100px;
 `;
 export const RightContainer = styled.div`
   height: 100%;
   width: 50%;
-  padding: 150px;
+  padding: 100px;
 `;
 //-----------------------Global container Components----------------------------
 //-----------------------Info Components----------------------------
@@ -184,7 +184,7 @@ export const DestinationLi = styled.li`
   justify-content: center;
   flex-direction: row;
   color: white;
-  height: 50%;
+  height: 33%;
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   width: 100%;
