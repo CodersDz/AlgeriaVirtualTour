@@ -29,6 +29,7 @@ import {
   DestinationLiTextContainer,
   DestinationName,
   DestinationDescription,
+  SvgDestinationImg,
 } from "./WilayaElements";
 import { ReadMoreBtn } from "../../GlobalStyles";
 import Navbar from "../../components/Navbar/Navbar";
@@ -265,7 +266,14 @@ const Wilaya = () => {
         </DiscoverRightContainer>
       );
     } else if (currectSection === "Destination") {
-      return <DestinationRightContainer></DestinationRightContainer>;
+      return (
+        <DestinationRightContainer>
+          <SvgDestinationImg
+            as={motion.img}
+            src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
+          />
+        </DestinationRightContainer>
+      );
     } else return null;
   };
   console.log(wilayaname);

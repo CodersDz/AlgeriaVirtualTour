@@ -211,4 +211,5 @@ export const DestinationName = styled.h3`
 export const DestinationDescription = styled.p`
   font-size: 1.5rem;
 `;
+export const SvgDestinationImg = styled(SvgInfoImg)``;
 //-----------------------Destination Components----------------------------
