@@ -7,8 +7,15 @@ import {
   CatégorieImg,
   CatégorieNom,
   SearchCatégoriePageContent,
+  CatégorieSection,
+  CatégorieH2,
+  LocationCard,
 } from "./SearchCatégorieElements";
 import Navbar from "../../components/Navbar/Navbar";
+import ScrollContainer from "react-indiana-drag-scroll";
+
+import "./SearchCatégorieStyles.css";
+
 const SearchCatégorie = () => {
   const { categorie } = useParams();
   const Catégories = [
@@ -36,7 +43,44 @@ const SearchCatégorie = () => {
           <CatégorieNom>{categorie}</CatégorieNom>
         </TopContentContainer>
       </TopContainer>
-      <SearchCatégoriePageContent></SearchCatégoriePageContent>
+      <SearchCatégoriePageContent>
+        <CatégorieSection>
+          <CatégorieH2>Les Plus Visités</CatégorieH2>
+          <ScrollContainer className="ScrollContainer">
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+          </ScrollContainer>
+        </CatégorieSection>
+        <CatégorieSection>
+          <CatégorieH2>Récents Ajoutés</CatégorieH2>
+          <ScrollContainer className="ScrollContainer">
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+          </ScrollContainer>
+        </CatégorieSection>
+        <CatégorieSection>
+          <CatégorieH2> Générale</CatégorieH2>
+          <ScrollContainer className="ScrollContainer">
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+            <LocationCard></LocationCard>
+          </ScrollContainer>
+        </CatégorieSection>
+      </SearchCatégoriePageContent>
     </SearchCatégoriePageContainer>
   );
 };

@@ -17,7 +17,8 @@ export const TopContainer = styled.div`
   background-repeat: no-repeat;
 `;
 export const SearchCatégoriePageContent = styled.div`
-  width: 100vh;
+  width: 100%;
+  padding: 50px;
 `;
 
 export const TopContentContainer = styled.div`
@@ -34,4 +35,20 @@ export const CatégorieNom = styled.h1`
   color: #fff;
   font-size: 5rem;
   letter-spacing: 0.5rem;
+`;
+export const CatégorieSection = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+export const CatégorieH2 = styled.h2`
+  color: #d7d7d7;
+  font-size: 2rem;
+`;
+export const LocationCard = styled.div`
+  background-color: grey;
+  min-width: 400px;
+  min-height: 400px;
+  margin: 25px;
 `;

@@ -1,8 +1,12 @@
 .ScrollContainer {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
+  display: flex;
+  overflow-x: hidden;
 }
 .ScrollContainer::-webkit-scrollbar {
   display: none;

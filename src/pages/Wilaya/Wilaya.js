@@ -23,7 +23,7 @@ import {
   DestinationLeftContainer,
   DestinationRightContainer,
   DestinationH1,
-  DestinationListContainer,
+  DestinationNameContainer,
   DestinationLi,
   DestinationImg,
   DestinationLiTextContainer,
@@ -36,6 +36,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import "./WilayaStyles.css";
+import { ReactComponent as Position } from "./Svg/Position.svg";
 const Destinations = [
   {
     DestinationName: "Alger",
@@ -132,9 +133,9 @@ const Wilaya = () => {
     },
   ];
   const { wilayaname } = useParams();
-  const [currectSection, setCurrentSection] = useState("Info");
+  const [currentSection, setCurrentSection] = useState("Info");
   const ChangeLeft = () => {
-    if (currectSection === "Info") {
+    if (currentSection === "Info") {
       return (
         <InfoLeftContainer>
           <InfoLeftContainerContent>
@@ -190,7 +191,7 @@ const Wilaya = () => {
           </InfoLeftContainerContent>
         </InfoLeftContainer>
       );
-    } else if (currectSection === "Discover") {
+    } else if (currentSection === "Discover") {
       return (
         <DiscoverLeftContainer>
           <DiscoverLeftContainerContent>
@@ -215,23 +216,30 @@ const Wilaya = () => {
           </DiscoverLeftContainerContent>
         </DiscoverLeftContainer>
       );
-    } else if (currectSection === "Destination") {
+    } else if (currentSection === "Destination") {
       return (
         <DestinationLeftContainer>
           <DestinationH1 as={motion.h1} layoutId={"h1"}>
             {wilayaname}
           </DestinationH1>
-          <ScrollContainer hideScrollbars="false" className="ScrollContainer">
+          <ScrollContainer
+            hideScrollbars="false"
+            className="ScrollContainer"
+            horizontal="false"
+          >
             {Destinations.map((destination) => {
               return (
-                <DestinationLi>
+                <DestinationLi as={motion.li}>
                   <DestinationImg
                     src={require(`${destination.DestinationImg}`).default}
                   />
                   <DestinationLiTextContainer>
-                    <DestinationName>
-                      {destination.DestinationName}
-                    </DestinationName>
+                    <DestinationNameContainer>
+                      <Position />
+                      <DestinationName>
+                        {destination.DestinationName}
+                      </DestinationName>
+                    </DestinationNameContainer>
                     <DestinationDescription>
                       {destination.DestinationDescription}
                     </DestinationDescription>
@@ -245,31 +253,35 @@ const Wilaya = () => {
     } else return null;
   };
   const ChangeRight = () => {
-    if (currectSection === "Info") {
+    if (currentSection === "Info") {
       return (
         <InfoRightContainer>
           <SvgInfoImg
             as={motion.img}
+            layouId="SvgImg"
             animate={{ scale: 1.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </InfoRightContainer>
       );
-    } else if (currectSection === "Discover") {
+    } else if (currentSection === "Discover") {
       return (
         <DiscoverRightContainer>
           <SvgInfoImg
             as={motion.img}
+            layouId="SvgImg"
             animate={{ scale: 0.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </DiscoverRightContainer>
       );
-    } else if (currectSection === "Destination") {
+    } else if (currentSection === "Destination") {
       return (
         <DestinationRightContainer>
           <SvgDestinationImg
             as={motion.img}
+            layouId="SvgImg"
+            animate={{ scale: 1.1 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </DestinationRightContainer>
@@ -282,7 +294,7 @@ const Wilaya = () => {
       <Navbar />
       <AnimateSharedLayout>
         <WilayaPageContentContainer>
-          <LeftContainer>
+          <LeftContainer currentSection={currentSection}>
             <ChangeLeft />
           </LeftContainer>
           <RightContainer>

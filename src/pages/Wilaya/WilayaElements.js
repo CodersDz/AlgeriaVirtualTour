@@ -50,7 +50,9 @@ export const WilayaPageContentContainer = styled.div`
 export const LeftContainer = styled.div`
   height: 100%;
   width: 50%;
-  padding: 0 0 100px 100px;
+  padding: 0 0 0 100px;
+  padding-bottom: ${(props) =>
+    props.currentSection === "Destination" ? "0px" : "100px"};
 `;
 export const RightContainer = styled.div`
   height: 100%;
@@ -167,16 +169,6 @@ export const DestinationH1 = styled(InfoH1)`
   font-size: 4rem;
   height: 20%;
 `;
-export const DestinationListContainer = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-`;
 export const DestinationLi = styled.li`
   cursor: pointer;
   display: flex;
@@ -184,32 +176,42 @@ export const DestinationLi = styled.li`
   justify-content: center;
   flex-direction: row;
   color: white;
-  height: 33%;
-  background: rgba(255, 255, 255, 0.8);
+  min-height: 32.5%;
   padding: 10px;
+  margin-bottom: 5px;
   width: 100%;
+  backdrop-filter: blur(6px);
 `;
+
 export const DestinationImg = styled.img`
   height: 100%;
-  width: 30%;
+  width: 25%;
 `;
-export const DestinationLiTextContainer = styled.li`
+export const DestinationLiTextContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
   cursor: pointer;
-  margin: 5px 0;
+  padding: 25px;
   width: 100%;
   height: 100%;
   font-size: 2rem;
 `;
-export const DestinationName = styled.h3`
+export const DestinationNameContainer = styled.div`
   text-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 3rem;
+  align-self: flex-start;
+`;
+export const DestinationName = styled.h3`
+  font-size: 2.5rem;
+  margin-left: 5px;
 `;
 export const DestinationDescription = styled.p`
   font-size: 1.5rem;
+  font-weight: 100;
+  align-self: flex-start;
 `;
 export const SvgDestinationImg = styled(SvgInfoImg)``;
 //-----------------------Destination Components----------------------------
