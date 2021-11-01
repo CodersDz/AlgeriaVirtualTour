@@ -1,5 +1,6 @@
 //-----------------React and hooks imports---------------
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation, Link } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
 import { FaSearch } from "react-icons/fa";
@@ -17,17 +18,47 @@ import {
   SearchBtn,
   NavItem,
   NavImg,
+  RightNavContainer,
+  RightNavUl,
 } from "./NavbarElements";
-import RightNav from "../HumbergerMenu/RightNav";
 
-const Navbar = () => {
+const Navbar = ({ setAnimated }) => {
+  const location = useLocation();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const resetCaroussel = () => {
+    if (location.pathname === "/Home") {
+      setAnimated([]);
+    }
+  };
+  const closeBar = () => {
+    setOpen(true);
+  };
 
   return (
     <div>
       <NavContainer>
-        <RightNav open={open} />
+        <RightNavContainer
+          open={open}
+          onFocus={() => {
+            console.log("main", "focus");
+          }}
+          onBlur={() => {
+            console.log("main", "blur");
+          }}
+        >
+          <RightNavUl>
+            <Link to="/About">About Us</Link>
+            <Link to="/Contact">Contact Us</Link>
+            <button
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Click{" "}
+            </button>
+          </RightNavUl>
+        </RightNavContainer>
         <NavWrapper>
           <LeftContainer>
             <NavItem>
@@ -39,7 +70,7 @@ const Navbar = () => {
               />
             </NavItem>
             <NavItem>
-              <NavLink to="/Home">
+              <NavLink to="/Home" onClick={resetCaroussel}>
                 <NavImg src={NavLogo} />
               </NavLink>
             </NavItem>

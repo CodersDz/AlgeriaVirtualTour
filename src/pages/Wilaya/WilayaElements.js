@@ -89,6 +89,7 @@ export const InfoP = styled.p`
   font-size: 1.5rem;
   color: #fff;
   transition: all 0.5s;
+  padding: 20px 0;
 `;
 export const InfoRightContainer = styled.div`
   display: flex;

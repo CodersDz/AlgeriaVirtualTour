@@ -93,10 +93,6 @@ const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
 };
-const PVariants = {
-  initial: { opacity: 1 },
-  animate: { opacity: 1, transition: { duration: 1 } },
-};
 const Wilaya = () => {
   const [readMore, setReadMore] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
@@ -142,12 +138,7 @@ const Wilaya = () => {
             <InfoH1 as={motion.h1} layoutId={"h1"}>
               {wilayaname}
             </InfoH1>
-            <InfoP
-              as={motion.p}
-              variants={PVariants}
-              initial="initial"
-              animate="animate"
-            >
+            <InfoP as={motion.p}>
               Alger est la capitale de l'Algérie. Elle se trouve sur la côte
               méditerranéenne du pays. Elle est connue pour les bâtiments
               blanchis à la chaux de la Casbah…
@@ -258,7 +249,7 @@ const Wilaya = () => {
         <InfoRightContainer>
           <SvgInfoImg
             as={motion.img}
-            layouId="SvgImg"
+            layouId={"SvgImg"}
             animate={{ scale: 1.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
@@ -269,7 +260,7 @@ const Wilaya = () => {
         <DiscoverRightContainer>
           <SvgInfoImg
             as={motion.img}
-            layouId="SvgImg"
+            layouId={"SvgImg"}
             animate={{ scale: 0.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
@@ -280,7 +271,7 @@ const Wilaya = () => {
         <DestinationRightContainer>
           <SvgDestinationImg
             as={motion.img}
-            layouId="SvgImg"
+            layouId={"SvgImg"}
             animate={{ scale: 1.1 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />

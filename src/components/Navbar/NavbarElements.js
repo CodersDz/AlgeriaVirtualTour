@@ -85,3 +85,29 @@ export const NavItem = styled.li`
   cursor: pointer;
 `;
 export const NavImg = styled.img``;
+
+export const RightNavContainer = styled.div`
+  background: rgba(0, 0, 0, 0.73);
+  position: fixed;
+  transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 400px;
+  padding-top: 3.5rem;
+  z-index: 4;
+  transition: transform 0.3s ease-in-out;
+  Link {
+    padding: 18px 10px;
+    color: #fff;
+  }
+`;
+export const RightNavUl = styled.ul`
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  height: 100%;
+  width: 100%;
+`;
