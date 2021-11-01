@@ -24,6 +24,8 @@ function App() {
         <Route exact path="/About" component={About} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/:wilayaname" component={Wilaya} />
+        <Route exact path="/:wilayaname" component={Wilaya} />
+        <Route exact path="/:wilayaname" component={Wilaya} />
       </Switch>
     </div>
   );

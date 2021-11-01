@@ -22,11 +22,10 @@ export const RightWilayaNav = styled.ul`
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  background-color: blue;
   transform-origin: right top;
-  transform: rotate(-90deg) translateX(100%) translateY(-100%);
+  transform: rotate(-90deg) translateX(85%) translateY(-100%);
   height: 100px;
-  width: 500px;
+  width: 600px;
   position: absolute;
   bottom: 0;
   right: 0;
@@ -34,9 +33,20 @@ export const RightWilayaNav = styled.ul`
 `;
 export const RightNavLi = styled.li`
   color: #fff;
-  width: fit-content;
-  padding: 25px;
+  width: 33%;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  letter-spacing: 1px;
+  font-weight: 900;
+  font-size: 1.2rem;
+`;
+export const RightNavHr = styled.div`
+  background-color: #fff;
+  width: 70%;
+  height: 3px;
 `;
 //-----------------------Info Components----------------------------
 //-----------------------Global container Components----------------------------
@@ -82,6 +92,9 @@ export const InfoH1 = styled.h1`
   color: #fff;
   text-transform: uppercase;
   text-shadow: 3px 3px 5px #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const InfoP = styled.p`
@@ -135,7 +148,7 @@ export const DiscoverCatégoriesContainer = styled.ul`
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  height: 80%;
+  height: 70%;
 `;
 export const DiscoverCatégoriesLi = styled.li`
   cursor: pointer;
@@ -144,8 +157,8 @@ export const DiscoverCatégoriesLi = styled.li`
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
   color: white;
-  margin: 5px;
-  width: 48%;
+  margin: 10px;
+  width: 45%;
   height: 20%;
   font-size: 2rem;
 `;

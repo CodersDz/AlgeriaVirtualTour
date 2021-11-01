@@ -87,14 +87,15 @@ export const NavItem = styled.li`
 export const NavImg = styled.img``;
 
 export const RightNavContainer = styled.div`
-  background: rgba(0, 0, 0, 0.73);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
   position: fixed;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
   top: 0;
   left: 0;
   height: 100vh;
-  width: 400px;
-  padding-top: 3.5rem;
+  width: 450px;
+  padding: 3.5rem;
   z-index: 4;
   transition: transform 0.3s ease-in-out;
   Link {
@@ -102,7 +103,7 @@ export const RightNavContainer = styled.div`
     color: #fff;
   }
 `;
-export const RightNavUl = styled.ul`
+export const RightNavDiv = styled.div`
   list-style: none;
   display: flex;
   align-items: center;
@@ -110,4 +111,32 @@ export const RightNavUl = styled.ul`
   flex-flow: column nowrap;
   height: 100%;
   width: 100%;
+`;
+export const TopUl = styled.ul`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 75%;
+  width: 100%;
+  border-bottom: solid 1px #b3b3b3;
+`;
+export const BottomUl = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  height: 25%;
+  width: 100%;
+`;
+export const RightNavLink = styled(Link)`
+  padding: 10px;
+  width: 100%;
+  text-align: start;
+  font-size: 1.2rem;
+`;
+export const RightNavText = styled.div`
+  padding: 20px 0 0 0;
+  color: #fff;
+  font-size: 0.9rem;
 `;

@@ -19,6 +19,8 @@ import {
   BtnContainer,
   DiscoverMoreBtn,
 } from "./HomeElements";
+import { arrayMoveImmutable } from "array-move";
+
 import { ReadMoreBtn } from "../../GlobalStyles";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
@@ -42,7 +44,6 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
-
 const items = [
   {
     id: 1,
@@ -79,9 +80,6 @@ const items = [
 const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const [animated, setAnimated] = useState([]);
-  useEffect(() => {
-    console.log(animated);
-  }, [animated]);
   const GrowImage = ({ item }) => {
     if (!animated.includes(item.id)) {
       return (
@@ -90,7 +88,10 @@ const Home = () => {
           layoutId={item.id}
           bg={item.imgPath}
           onClick={() => {
-            setAnimated((prev) => [...prev, item.id]);
+            if (item.id === 1) {
+              setAnimated((prev) => [...prev, item.id]);
+            } else if (item.id === animated.length + 1)
+              setAnimated((prev) => [...prev, item.id]);
           }}
         >
           {item.wilayaName}
@@ -165,7 +166,7 @@ const Home = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         currentBg={HomeBg}
       >
         <Navbar setAnimated={setAnimated} />

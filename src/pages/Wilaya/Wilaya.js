@@ -30,6 +30,7 @@ import {
   DestinationName,
   DestinationDescription,
   SvgDestinationImg,
+  RightNavHr,
 } from "./WilayaElements";
 import { ReadMoreBtn } from "../../GlobalStyles";
 import Navbar from "../../components/Navbar/Navbar";
@@ -37,6 +38,10 @@ import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import "./WilayaStyles.css";
 import { ReactComponent as Position } from "./Svg/Position.svg";
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
 const Destinations = [
   {
     DestinationName: "Alger",
@@ -91,7 +96,7 @@ const Destinations = [
 ];
 const BtnVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 1 } },
+  animate: { opacity: 1, transition: { duration: 0.5 } },
 };
 const Wilaya = () => {
   const [readMore, setReadMore] = useState(false);
@@ -130,6 +135,8 @@ const Wilaya = () => {
   ];
   const { wilayaname } = useParams();
   const [currentSection, setCurrentSection] = useState("Info");
+  const [CurrentDiscoverOption, setCurrentDiscoverOption] =
+    useState(wilayaname);
   const ChangeLeft = () => {
     if (currentSection === "Info") {
       return (
@@ -196,6 +203,7 @@ const Wilaya = () => {
                     as={motion.li}
                     whileHover={{ scale: 1.05 }}
                     onClick={() => {
+                      setCurrentDiscoverOption(categorie.CatégorieName);
                       setCurrentSection("Destination");
                     }}
                   >
@@ -211,7 +219,7 @@ const Wilaya = () => {
       return (
         <DestinationLeftContainer>
           <DestinationH1 as={motion.h1} layoutId={"h1"}>
-            {wilayaname}
+            {CurrentDiscoverOption}
           </DestinationH1>
           <ScrollContainer
             hideScrollbars="false"
@@ -249,8 +257,6 @@ const Wilaya = () => {
         <InfoRightContainer>
           <SvgInfoImg
             as={motion.img}
-            layouId={"SvgImg"}
-            animate={{ scale: 1.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
         </InfoRightContainer>
@@ -260,7 +266,7 @@ const Wilaya = () => {
         <DiscoverRightContainer>
           <SvgInfoImg
             as={motion.img}
-            layouId={"SvgImg"}
+            layoutId={"SvgImg"}
             animate={{ scale: 0.9 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
@@ -271,7 +277,7 @@ const Wilaya = () => {
         <DestinationRightContainer>
           <SvgDestinationImg
             as={motion.img}
-            layouId={"SvgImg"}
+            layoutId={"SvgImg"}
             animate={{ scale: 1.1 }}
             src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
           />
@@ -281,7 +287,14 @@ const Wilaya = () => {
   };
   console.log(wilayaname);
   return (
-    <WilayaPageContainer bg={`./Images/BgImages/${wilayaname}.jpg`}>
+    <WilayaPageContainer
+      bg={`./Images/BgImages/${wilayaname}.jpg`}
+      as={motion.div}
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      transition={{ duration: 0.5 }}
+    >
       <Navbar />
       <AnimateSharedLayout>
         <WilayaPageContentContainer>
@@ -300,20 +313,31 @@ const Wilaya = () => {
           }}
         >
           Déstination
+          {currentSection === "Destination" ? (
+            <RightNavHr as={motion.div} layoutId={"hr"} />
+          ) : null}
         </RightNavLi>
         <RightNavLi
           onClick={() => {
             setCurrentSection("Info");
+            setCurrentDiscoverOption(wilayaname);
           }}
         >
           Plus D'info
+          {currentSection === "Info" ? (
+            <RightNavHr as={motion.div} layoutId={"hr"} />
+          ) : null}
         </RightNavLi>
         <RightNavLi
           onClick={() => {
             setCurrentSection("Discover");
+            setCurrentDiscoverOption(wilayaname);
           }}
         >
           Découvrir
+          {currentSection === "Discover" ? (
+            <RightNavHr as={motion.div} layoutId={"hr"} />
+          ) : null}
         </RightNavLi>
       </RightWilayaNav>
     </WilayaPageContainer>

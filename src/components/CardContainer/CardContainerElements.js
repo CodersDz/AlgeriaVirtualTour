@@ -10,7 +10,7 @@ export const CardContainerWrapper = styled.div`
   height: 500px;
   width: 100%;
 `;
-export const Card = styled(Link)`
+export const Card = styled.div`
   cursor: pointer;
   position: relative;
   background: ${(
@@ -24,9 +24,6 @@ export const Card = styled(Link)`
   height: 300px;
   border-radius: 10%;
   margin: 20px 20px 20px 0;
-  &:hover {
-    transform: scale(1.1);
-  }
 `;
 export const CardContent = styled.div`
   display: flex;

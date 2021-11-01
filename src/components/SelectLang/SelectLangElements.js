@@ -2,14 +2,16 @@ import styled from "styled-components";
 
 export const DropDownHeader = styled("div")`
   color: #3faffa;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
   border-radius: 50%;
 `;
 
 export const DropDownListContainer = styled("div")`
   position: absolute;
   display: none;
+  width: 150px;
 `;
 export const DropDownContainer = styled("div")`
   margin: 0 auto;
@@ -31,16 +33,20 @@ export const DropDownList = styled("ul")`
 `;
 
 export const ListItem = styled("li")`
-  list-style: none;
   display: flex;
-  padding: 10px;
+  justify-content: flex-start;
   align-items: center;
-  height: 50px;
+  padding: 10px;
 `;
 
 export const FlagImg = styled.img`
-  width: 50px; /* or any custom size */
-  height: 50px;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
+`;
+export const DropDownImg = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 5px;
 `;

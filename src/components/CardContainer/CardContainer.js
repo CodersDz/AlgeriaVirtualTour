@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
@@ -20,6 +21,7 @@ import Musée from "../../assets/Images/SearchImages/Museum.jpg";
 import Restaurant from "../../assets/Images/SearchImages/Restaurant.jpg";
 
 const CardContainer = () => {
+  let history = useHistory();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const Cards = [
     {
@@ -78,7 +80,14 @@ const CardContainer = () => {
       {Cards.map((card) => {
         console.log(card.CardUrl);
         return (
-          <Card to={card.CardUrl} bg={card.CardImg}>
+          <Card
+            as={motion.div}
+            whileHover={{ scale: 1.1 }}
+            onClick={() => {
+              history.push(card.CardUrl);
+            }}
+            bg={card.CardImg}
+          >
             <CardContent>
               <CardContentImg />
               <CardContentTitle>{card.CardTitle}</CardContentTitle>

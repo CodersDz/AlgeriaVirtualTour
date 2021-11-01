@@ -12,16 +12,18 @@ import {
 } from "./SearchPageElements";
 import CardContainer from "../../components/CardContainer/CardContainer";
 const containerVariants = {
-  hidden: { y: "100%" },
-  visible: { y: "0" },
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 const SearchPage = () => {
   return (
     <SearchPageContainer
       key="SearchPage"
       as={motion.div}
+      initial="hidden"
+      animate="visible"
       variants={containerVariants}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
     >
       <Navbar />
       <SearchContentContainer>

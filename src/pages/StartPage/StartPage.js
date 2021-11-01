@@ -3,7 +3,11 @@ import React from "react";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import { motion } from "framer-motion";
 //-----------------Elements imports---------------
-import { StartPageContainer, StartPageLink } from "./StartPageElements";
+import {
+  StartPageContainer,
+  StartPageLink,
+  StartPageImg,
+} from "./StartPageElements";
 
 //-----------------Logo import---------------
 import StartPageLogo from "../../assets/Images/StartPageLogo.png";
@@ -24,7 +28,7 @@ const StartPage = () => {
       animate="visible"
       exit="exit"
     >
-      <img src={StartPageLogo} />
+      <StartPageImg src={StartPageLogo} />
       <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
     </StartPageContainer>
   );

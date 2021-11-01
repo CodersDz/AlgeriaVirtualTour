@@ -19,7 +19,11 @@ import {
   NavItem,
   NavImg,
   RightNavContainer,
-  RightNavUl,
+  RightNavDiv,
+  TopUl,
+  BottomUl,
+  RightNavLink,
+  RightNavText,
 } from "./NavbarElements";
 
 const Navbar = ({ setAnimated }) => {
@@ -47,17 +51,29 @@ const Navbar = ({ setAnimated }) => {
             console.log("main", "blur");
           }}
         >
-          <RightNavUl>
-            <Link to="/About">About Us</Link>
-            <Link to="/Contact">Contact Us</Link>
-            <button
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              Click{" "}
-            </button>
-          </RightNavUl>
+          <RightNavDiv>
+            <TopUl>
+              <button
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                Click{" "}
+              </button>
+              <RightNavLink to="/Home">Profile</RightNavLink>
+              <RightNavLink to="/Home">Article enregisté</RightNavLink>
+              <RightNavLink to="/Home">Agenda</RightNavLink>
+            </TopUl>
+            <BottomUl>
+              <RightNavLink to="/About">About Us</RightNavLink>
+              <RightNavLink to="/Contact">Contact Us</RightNavLink>
+              <RightNavText>
+                Tous les droits sont réservés <br />
+                Virtuel Art Prod <br />
+                2021
+              </RightNavText>
+            </BottomUl>
+          </RightNavDiv>
         </RightNavContainer>
         <NavWrapper>
           <LeftContainer>
