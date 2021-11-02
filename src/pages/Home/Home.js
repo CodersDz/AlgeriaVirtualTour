@@ -19,7 +19,6 @@ import {
   BtnContainer,
   DiscoverMoreBtn,
 } from "./HomeElements";
-import { arrayMoveImmutable } from "array-move";
 
 import { ReadMoreBtn } from "../../GlobalStyles";
 //-----------------Elements imports---------------
