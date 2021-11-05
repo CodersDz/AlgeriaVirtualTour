@@ -17,7 +17,7 @@ export const ReadMoreBtn = styled.button`
   background-color: #4bcb02;
   color: #fff;
   border: none;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.3rem;
   border-radius: 30px;
   width: 40%;

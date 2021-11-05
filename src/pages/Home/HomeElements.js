@@ -27,7 +27,7 @@ export const CarouselContainer = styled.div`
   flex-direction: row;
 `;
 export const InfoCarousel = styled.div`
-  width: 60%;
+  width: 55%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@ export const InfoCarousel = styled.div`
   align-items: center;
   position: relative;
   z-index: -1;
-  padding: 50px;
+  padding: 0 70px 25px 70px;
 `;
 export const InfoCarouselExpanded = styled(InfoCarousel)`
   z-index: 4;
@@ -53,19 +53,20 @@ export const InfoContent = styled.div`
 `;
 export const InfoH2 = styled.h2`
   font-size: 8rem;
+  font-weight: 600;
   text-transform: uppercase;
   text-align: start;
-  text-shadow: 2px 2px 5px #000;
+  text-shadow: 1px 1px 3px #000;
 `;
 export const InfoP = styled.p`
   font-size: 1.3rem;
-  font-weight: 300;
+  font-weight: 400;
   text-align: start;
   text-transform: none;
   padding: 20px 0;
 `;
 export const ImgCarousel = styled.div`
-  width: 40%;
+  width: 45%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -84,11 +85,13 @@ export const ThumbnailImages = styled.div`
 `;
 export const ThumbnailImage = styled.div`
   cursor: pointer;
-  min-width: 35%;
+  min-width: 40%;
   position: static;
   max-height: 100%;
   margin: 0 30px 0 0;
-  background: ${(props) => `
+  background: ${(
+    props
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -99,6 +102,17 @@ export const ThumbnailImage = styled.div`
   justify-content: center;
   font-size: 3em;
   text-transform: uppercase;
+  padding: 40px;
+`;
+export const ThumbnailImageText = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+`;
+export const ThumbnailImageTextH5 = styled.h5`
+  position: absolute;
+  bottom: 0;
+  font-weight: 600;
 `;
 export const ThumbnailImageExpanded = styled.div`
   position: absolute;
@@ -124,10 +138,12 @@ export const ThumbnailImageExpanded = styled.div`
 `;
 
 export const DecouvrirePlus = styled(Link)`
-  width: 35%;
+  min-width: 40%;
   max-height: 100%;
   margin: 0 30px 0 0;
   font-size: 2rem;
+
+  position: static;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +164,7 @@ export const ReadMoreBtn = styled.button`
   background-color: #4bcb02;
   color: #fff;
   border: none;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.3rem;
   border-radius: 30px;
   width: 50%;
@@ -163,7 +179,7 @@ export const DiscoverMoreBtn = styled(Link)`
   justify-content: center;
   color: #fff;
   border: none;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.3rem;
   border-radius: 30px;
   width: 50%;

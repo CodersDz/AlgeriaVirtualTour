@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import {
   ContactPageContainer,
@@ -12,7 +13,11 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 const About = () => {
   return (
-    <ContactPageContainer>
+    <ContactPageContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+    >
       <Navbar />
       <AboutContentContainer>
         <AboutContentLeft>

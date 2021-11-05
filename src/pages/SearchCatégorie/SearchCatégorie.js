@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Redirect, useParams } from "react-router";
+import ScrollContainer from "react-indiana-drag-scroll";
 import {
   SearchCatégoriePageContainer,
   TopContainer,
@@ -9,7 +10,6 @@ import {
   SearchCatégoriePageContent,
   CatégorieSection,
   CatégorieH2,
-  LocationCard,
   CardImg,
   CardText,
   LocationName,
@@ -25,7 +25,7 @@ import { ReactComponent as Heart } from "../../assets/svg/Heart.svg";
 import { ReactComponent as Save } from "../../assets/svg/Save.svg";
 
 import Navbar from "../../components/Navbar/Navbar";
-import ScrollContainer from "react-indiana-drag-scroll";
+import LocationCard from "../../components/LocationCard/LocationCard";
 
 const Locations = [
   {
@@ -119,26 +119,7 @@ const SearchCatégorie = () => {
             style={{ display: "flex", flexDirection: "row" }}
           >
             {Locations.map((location) => {
-              return (
-                <LocationCard>
-                  <CardImg src={require(`${location.LocationImg}`).default} />
-                  <CardText>
-                    <LocationName>{location.LocationName}</LocationName>
-                    <LocationP>{location.LocationDescription}</LocationP>
-                  </CardText>
-                  <CardBtnContainer>
-                    <LeftCardBtnContainer>
-                      <img
-                        src={require("../../assets/svg/Internet.svg").default}
-                      />
-                      <img
-                        src={require("../../assets/svg/Heart.svg").default}
-                      />
-                    </LeftCardBtnContainer>
-                    <img src={require("../../assets/svg/Save.svg").default} />
-                  </CardBtnContainer>
-                </LocationCard>
-              );
+              return <LocationCard location={location} />;
             })}
           </ScrollContainer>
         </CatégorieSection>
@@ -149,26 +130,7 @@ const SearchCatégorie = () => {
             style={{ display: "flex", flexDirection: "row" }}
           >
             {Locations.map((location) => {
-              return (
-                <LocationCard>
-                  <CardImg src={require(`${location.LocationImg}`).default} />
-                  <CardText>
-                    <LocationName>{location.LocationName}</LocationName>
-                    <LocationP>{location.LocationDescription}</LocationP>
-                  </CardText>
-                  <CardBtnContainer>
-                    <LeftCardBtnContainer>
-                      <img
-                        src={require("../../assets/svg/Internet.svg").default}
-                      />
-                      <img
-                        src={require("../../assets/svg/Heart.svg").default}
-                      />
-                    </LeftCardBtnContainer>
-                    <img src={require("../../assets/svg/Save.svg").default} />
-                  </CardBtnContainer>
-                </LocationCard>
-              );
+              return <LocationCard location={location} />;
             })}
           </ScrollContainer>
         </CatégorieSection>
@@ -179,26 +141,7 @@ const SearchCatégorie = () => {
             style={{ display: "flex", flexDirection: "row" }}
           >
             {Locations.map((location) => {
-              return (
-                <LocationCard>
-                  <CardImg src={require(`${location.LocationImg}`).default} />
-                  <CardText>
-                    <LocationName>{location.LocationName}</LocationName>
-                    <LocationP>{location.LocationDescription}</LocationP>
-                  </CardText>
-                  <CardBtnContainer>
-                    <LeftCardBtnContainer>
-                      <img
-                        src={require("../../assets/svg/Internet.svg").default}
-                      />
-                      <img
-                        src={require("../../assets/svg/Heart.svg").default}
-                      />
-                    </LeftCardBtnContainer>
-                    <img src={require("../../assets/svg/Save.svg").default} />
-                  </CardBtnContainer>
-                </LocationCard>
-              );
+              return <LocationCard location={location} />;
             })}
           </ScrollContainer>
         </CatégorieSection>

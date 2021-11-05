@@ -145,7 +145,6 @@ export const DiscoverH1 = styled(InfoH1)`
 export const DiscoverCatégoriesContainer = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   height: 70%;

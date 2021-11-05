@@ -12,22 +12,22 @@ export const NavContainer = styled.nav`
   align-items: center;
   font-size: 1.2em;
   padding: 1rem;
-  top: 1rem;
+  top: 1px;
   position: relative;
-  z-index: 3;
   background-color: transparent;
   width: 100%;
+  z-index: 3;
 `;
 export const NavWrapper = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  font-weight: 700;
   @media screen and (max-width: 991px) {
     justify-content: center;
   }
   ${Container};
+  font-weight: 400;
 `;
 
 export const NavLink = styled(Link)`
@@ -37,7 +37,7 @@ export const NavLink = styled(Link)`
   align-items: center;
   text-decoration: none;
   cursor: pointer;
-  margin: 10px;
+  padding: 15px;
   font-size: 18px;
   @media screen and (max-width: 400px) {
     position: absolute;
@@ -81,7 +81,6 @@ export const SearchBtn = styled(Link)`
 
 export const NavItem = styled.li`
   margin: 0 10px;
-  font-weight: 500;
   cursor: pointer;
 `;
 export const NavImg = styled.img``;

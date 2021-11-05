@@ -36,12 +36,12 @@ export const SearchH1 = styled.h1`
   text-shadow: 1px 1px 2px black;
   text-transform: uppercase;
   font-size: 50px;
-  font-weight: 100;
+  font-weight: 600;
 `;
 export const SearchP = styled.p`
   color: #fff;
   font-size: 16px;
-  font-weight: lighter;
+  font-weight: 400;
 `;
 
 export const BtnContainer = styled.div`

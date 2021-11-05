@@ -1,6 +1,6 @@
 //-----------------React and hooks imports---------------
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
 import { FaSearch } from "react-icons/fa";

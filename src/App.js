@@ -11,6 +11,7 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import SearchCatégorie from "./pages/SearchCatégorie/SearchCatégorie";
 import Wilaya from "./pages/Wilaya/Wilaya";
+import Map from "./pages/Map/Map";
 function App() {
   const location = useLocation();
   return (
@@ -23,8 +24,7 @@ function App() {
         <Route exact path="/Search" component={SearchPage} />
         <Route exact path="/About" component={About} />
         <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/:wilayaname" component={Wilaya} />
-        <Route exact path="/:wilayaname" component={Wilaya} />
+        <Route exact path="/Map" component={Map} />
         <Route exact path="/:wilayaname" component={Wilaya} />
       </Switch>
     </div>

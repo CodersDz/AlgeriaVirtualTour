@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
+import axios from "axios";
 import {
   HomeContainer,
   HomeContent,
@@ -9,6 +10,8 @@ import {
   HomePub,
   ThumbnailImages,
   ThumbnailImage,
+  ThumbnailImageText,
+  ThumbnailImageTextH5,
   ThumbnailImageExpanded,
   InfoCarouselExpanded,
   DecouvrirePlus,
@@ -21,6 +24,7 @@ import {
 } from "./HomeElements";
 
 import { ReadMoreBtn } from "../../GlobalStyles";
+import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
 import Navbar from "../../components/Navbar/Navbar";
@@ -34,6 +38,7 @@ import Alger_Mosque from "./Alger_Mosque.jpg";
 import Bejaia from "./Bejaia.jpg";
 import Ghardaia from "./Ghardaia.jpg";
 import Djanet_la_tadrarte from "./Djanet_la_tadrarte.jpeg";
+
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -50,6 +55,7 @@ const items = [
     imgPath: Alger_Mosque,
     wilayaDescription:
       "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
+
     wilayaUrl: "https://google.com",
   },
   {
@@ -79,6 +85,34 @@ const items = [
 const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const [animated, setAnimated] = useState([]);
+  const [wilayas, setWilayas] = useLocalStorage("wilayas", []);
+  const [banners, setBanners] = useLocalStorage("banners", {});
+  useEffect(() => {
+    console.log(wilayas);
+    if (wilayas.length === 0) {
+      axios
+        .get("http://www.algeriavirtualtour.com/api/wilaya")
+        .then((response) => {
+          console.log("updateBanners");
+          setWilayas(response.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+  useEffect(() => {
+    if (Object.entries(banners).length === 0)
+      axios
+        .get("http://www.algeriavirtualtour.com/api/banners/0")
+        .then((response) => {
+          console.log("updateWilayas");
+          setBanners(response.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+  }, []);
   const GrowImage = ({ item }) => {
     if (!animated.includes(item.id)) {
       return (
@@ -93,7 +127,9 @@ const Home = () => {
               setAnimated((prev) => [...prev, item.id]);
           }}
         >
-          {item.wilayaName}
+          <ThumbnailImageText>
+            <ThumbnailImageTextH5>{item.wilayaName}</ThumbnailImageTextH5>
+          </ThumbnailImageText>
         </ThumbnailImage>
       );
     } else
@@ -173,14 +209,14 @@ const Home = () => {
           <CarouselContainer>
             <InfoCarousel />
             <ImgCarousel>
-              <HomePub src={Pub1} />
+              <HomePub src={banners.banner_home1} />
               <ThumbnailImages>
                 {items.map((item) => {
                   return <GrowImage item={item} />;
                 })}
                 <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
               </ThumbnailImages>
-              <HomePub src={Pub2} />
+              <HomePub src={banners.banner_home2} />
             </ImgCarousel>
           </CarouselContainer>
         </HomeContent>

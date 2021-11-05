@@ -11,6 +11,19 @@ export const StartPageContainer = styled.div`
   overflow: hidden;
   position: absolute;
   z-index: 3;
+  padding: 150px;
 `;
-export const StartPageLink = styled(Link)``;
+export const StartPageContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
 export const StartPageImg = styled.img``;
+export const StartPageLink = styled(Link)`
+  position: absolute;
+  bottom: 0;
+`;

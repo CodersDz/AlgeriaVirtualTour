@@ -2,6 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import RightContainer from "../../components/RightContainer/RightContainer";
 import Footer from "../../components/Footer/Footer";
+import { motion } from "framer-motion";
 import {
   ContactPageContainer,
   AboutContentContainer,
@@ -19,7 +20,11 @@ import {
 import Navbar from "../../components/Navbar/Navbar";
 const Contact = () => {
   return (
-    <ContactPageContainer>
+    <ContactPageContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.5 } }}
+    >
       <Navbar />
       <AboutContentContainer>
         <AboutContentLeft>
