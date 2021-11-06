@@ -38,7 +38,7 @@ export const InfoCarousel = styled.div`
   padding: 0 70px 25px 70px;
 `;
 export const InfoCarouselExpanded = styled(InfoCarousel)`
-  z-index: 4;
+  z-index: 1;
 `;
 export const InfoContainer = styled.div`
   width: 100%;
@@ -120,7 +120,7 @@ export const ThumbnailImageExpanded = styled.div`
   top: 0;
   left: 0;
   height: 100%;
-  z-index: -2;
+  z-index: -1;
   background: ${(
     props
   ) => `linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),

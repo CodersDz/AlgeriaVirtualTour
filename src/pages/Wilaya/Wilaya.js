@@ -31,6 +31,7 @@ import {
   DestinationDescription,
   SvgDestinationImg,
   RightNavHr,
+  Pub,
 } from "./WilayaElements";
 import { ReadMoreBtn } from "../../GlobalStyles";
 import Navbar from "../../components/Navbar/Navbar";
@@ -38,6 +39,7 @@ import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import "./WilayaStyles.css";
 import { ReactComponent as Position } from "./Svg/Position.svg";
+import { useLocalStorage } from "../../hooks/useStorage";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
@@ -100,6 +102,7 @@ const BtnVariants = {
 };
 const Wilaya = () => {
   const [readMore, setReadMore] = useState(false);
+  const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const Catégories = [
     {
@@ -303,6 +306,7 @@ const Wilaya = () => {
           </LeftContainer>
           <RightContainer>
             <ChangeRight />
+            <Pub src={banners.banner_location} />
           </RightContainer>
         </WilayaPageContentContainer>
       </AnimateSharedLayout>

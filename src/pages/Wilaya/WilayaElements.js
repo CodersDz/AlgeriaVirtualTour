@@ -59,15 +59,24 @@ export const WilayaPageContentContainer = styled.div`
 `;
 export const LeftContainer = styled.div`
   height: 100%;
-  width: 50%;
+  width: 55%;
   padding: 0 0 0 100px;
   padding-bottom: ${(props) =>
     props.currentSection === "Destination" ? "0px" : "100px"};
 `;
 export const RightContainer = styled.div`
   height: 100%;
-  width: 50%;
+  width: 45%;
   padding: 100px;
+  position: relative;
+`;
+export const Pub = styled.img`
+  max-height: 20%;
+  min-height: 20%;
+  width: 90%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 `;
 //-----------------------Global container Components----------------------------
 //-----------------------Info Components----------------------------
