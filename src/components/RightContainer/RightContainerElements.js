@@ -46,7 +46,8 @@ export const StoreContainer = styled.div`
 `;
 export const StoreP = styled.p`
   color: #d8d8d8;
-  font-size: 2rem;
+  font-size: 28px;
+  font-weight: 600;
   margin-top: 10px;
 `;
 export const StoreIcones = styled.div`

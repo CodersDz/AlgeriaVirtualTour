@@ -3,6 +3,8 @@ import {
   FooterContainer,
   FooterElements,
   FooterWrapper,
+  FooterElementsImportantText,
+  FooterElementsText,
   FooterA,
 } from "./FooterElements";
 import { FaVimeo, FaFacebookSquare } from "react-icons/fa";
@@ -13,8 +15,14 @@ const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrapper>
-        <FooterElements>E-mail: contact@virtuelart.com</FooterElements>
-        <FooterElements>Mobile: +213 (00)123456789</FooterElements>
+        <FooterElements>
+          <FooterElementsImportantText>E-mail:</FooterElementsImportantText>
+          <FooterElementsText>contact@virtualart.com</FooterElementsText>
+        </FooterElements>
+        <FooterElements>
+          <FooterElementsImportantText>Mobile:</FooterElementsImportantText>
+          <FooterElementsText>+213 (00)123456789</FooterElementsText>
+        </FooterElements>
         <FooterElements>
           <FooterA href="http://google.com">
             <FiInstagram />

@@ -30,12 +30,14 @@ export const AboutContentLeftWrapper = styled.div`
 export const AboutH1 = styled.h1`
   color: #fff;
   align-self: flex-start;
-  font-weight: 900;
+  font-weight: 700;
+  font-size: 48px;
   margin: 35px 0;
 `;
 export const AboutP = styled.p`
   color: #fff;
-  font-size: 1.3rem;
+  font-size: 25px;
   text-align: start;
-  width: 80%;
+  font-weight: 400;
+  width: 100%;
 `;

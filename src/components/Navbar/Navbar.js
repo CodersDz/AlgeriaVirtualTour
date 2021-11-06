@@ -40,80 +40,78 @@ const Navbar = ({ setAnimated }) => {
   };
 
   return (
-    <div>
-      <NavContainer>
-        <RightNavContainer
-          open={open}
-          onFocus={() => {
-            console.log("main", "focus");
-          }}
-          onBlur={() => {
-            console.log("main", "blur");
-          }}
-        >
-          <RightNavDiv>
-            <TopUl>
-              <button
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                Click{" "}
-              </button>
-              <RightNavLink to="/Home">Profile</RightNavLink>
-              <RightNavLink to="/Home">Article enregisté</RightNavLink>
-              <RightNavLink to="/Home">Agenda</RightNavLink>
-            </TopUl>
-            <BottomUl>
-              <RightNavLink to="/About">About Us</RightNavLink>
-              <RightNavLink to="/Contact">Contact Us</RightNavLink>
-              <RightNavText>
-                Tous les droits sont réservés <br />
-                Virtuel Art Prod <br />
-                2021
-              </RightNavText>
-            </BottomUl>
-          </RightNavDiv>
-        </RightNavContainer>
-        <NavWrapper>
-          <LeftContainer>
-            <NavItem>
-              <HumbergerIcon
-                size="36"
-                onClick={() => {
-                  setOpen(true);
-                }}
-              />
-            </NavItem>
-            <NavItem>
-              <NavLink to="/Home" onClick={resetCaroussel}>
-                <NavImg src={NavLogo} />
-              </NavLink>
-            </NavItem>
-          </LeftContainer>
-          <RightContainer>
-            <NavItem>
-              <NavLink to="/">{t("Nav.Agenda")}</NavLink>
-            </NavItem>
-            <NavItem>
-              <SearchBtn to="/Search">
-                <FaSearch size="24" color="#fff" />
-              </SearchBtn>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/Login">{t("Nav.Login")}</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink to="/Login">{t("Nav.Register")}</NavLink>
-            </NavItem>
+    <NavContainer>
+      <RightNavContainer
+        open={open}
+        onFocus={() => {
+          console.log("main", "focus");
+        }}
+        onBlur={() => {
+          console.log("main", "blur");
+        }}
+      >
+        <RightNavDiv>
+          <TopUl>
+            <button
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Click{" "}
+            </button>
+            <RightNavLink to="/Home">Profile</RightNavLink>
+            <RightNavLink to="/Home">Article enregisté</RightNavLink>
+            <RightNavLink to="/Home">Agenda</RightNavLink>
+          </TopUl>
+          <BottomUl>
+            <RightNavLink to="/About">About Us</RightNavLink>
+            <RightNavLink to="/Contact">Contact Us</RightNavLink>
+            <RightNavText>
+              Tous les droits sont réservés <br />
+              Virtuel Art Prod <br />
+              2021
+            </RightNavText>
+          </BottomUl>
+        </RightNavDiv>
+      </RightNavContainer>
+      <NavWrapper>
+        <LeftContainer>
+          <NavItem>
+            <HumbergerIcon
+              size="36"
+              onClick={() => {
+                setOpen(true);
+              }}
+            />
+          </NavItem>
+          <NavItem>
+            <NavLink to="/Home" onClick={resetCaroussel}>
+              <NavImg src={NavLogo} />
+            </NavLink>
+          </NavItem>
+        </LeftContainer>
+        <RightContainer>
+          <NavItem>
+            <NavLink to="/">{t("Nav.Agenda")}</NavLink>
+          </NavItem>
+          <NavItem>
+            <SearchBtn to="/Search">
+              <FaSearch size="24" color="#fff" />
+            </SearchBtn>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/Login">{t("Nav.Login")}</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink to="/Login">{t("Nav.Register")}</NavLink>
+          </NavItem>
 
-            <NavItem>
-              <SelectLang />
-            </NavItem>
-          </RightContainer>
-        </NavWrapper>
-      </NavContainer>
-    </div>
+          <NavItem>
+            <SelectLang />
+          </NavItem>
+        </RightContainer>
+      </NavWrapper>
+    </NavContainer>
   );
 };
 export default Navbar;

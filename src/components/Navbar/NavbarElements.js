@@ -5,45 +5,28 @@ import { Link } from "react-router-dom";
 import { Container } from "../../GlobalStyles";
 
 export const NavContainer = styled.nav`
-  background-color: transparent;
+  color: #fff;
   height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  padding: 1rem;
-  top: 1px;
-  position: relative;
-  background-color: transparent;
   width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 1rem;
+  position: relative;
+  top: 1px;
+  margin-top: -1px;
   z-index: 3;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
 `;
 export const NavWrapper = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
-  @media screen and (max-width: 991px) {
-    justify-content: center;
-  }
   ${Container};
-  font-weight: 400;
 `;
 
 export const NavLink = styled(Link)`
-  color: #fff;
-  font-size: 2rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
   cursor: pointer;
   padding: 15px;
-  font-size: 18px;
-  @media screen and (max-width: 400px) {
-    position: absolute;
-    top: 10px;
-    left: 25px;
-  }
 `;
 export const LeftContainer = styled.ul`
   display: flex;
@@ -54,9 +37,6 @@ export const RightContainer = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media only screen and (max-width: 1250px) {
-    display: none;
-  }
 `;
 export const SearchBtn = styled(Link)`
   position: relative;
@@ -68,14 +48,9 @@ export const SearchBtn = styled(Link)`
   padding: 10px 10px;
   width: 3rem;
   transition: width 500ms;
-
   &:hover {
     width: 15rem;
     background-color: rgba(255, 255, 255, 0.36);
-  }
-  &:focus,
-  &:active {
-    outline: none;
   }
 `;
 

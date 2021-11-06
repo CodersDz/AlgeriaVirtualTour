@@ -85,7 +85,7 @@ export const ThumbnailImages = styled.div`
 `;
 export const ThumbnailImage = styled.div`
   cursor: pointer;
-  min-width: 40%;
+  min-width: 42%;
   position: static;
   max-height: 100%;
   margin: 0 30px 0 0;

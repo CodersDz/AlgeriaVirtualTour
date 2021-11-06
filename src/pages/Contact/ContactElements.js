@@ -7,6 +7,7 @@ export const ContactPageContainer = styled.div`
   position: relative;
   z-index: 3;
   overflow: hidden;
+  color: #fff;
 `;
 export const AboutContentContainer = styled.div`
   height: calc(90vh - 150px);
@@ -32,13 +33,12 @@ export const AboutContentLeftWrapper = styled.div`
   border-radius: 20px;
 `;
 export const AboutH1 = styled.h1`
-  color: #fff;
   align-self: flex-start;
-  font-weight: 900;
+  font-weight: 700;
+  font-size: 48px;
   margin: 35px 0;
 `;
 export const AboutP = styled.p`
-  color: #fff;
   width: 80%;
   font-size: 1.2rem;
   text-align: start;
@@ -66,28 +66,39 @@ export const InputContainer = styled.div`
   flex-direction: column;
 `;
 export const InputSpan = styled.span`
-  color: #fff;
+  font-weight: 400;
+  font-size: 13px;
 `;
 export const ContactInput = styled.input`
   width: 100%;
   background-color: #ffffff;
   height: 40px;
-  border-radius: 30px;
+  border-radius: 25px;
   border: 1px solid #707070;
   margin: 10px 0 20px 0;
   padding: 25px 20px;
   box-sizing: border-box;
+  &::placeholder {
+    color: #b7b7b7;
+    font-weight: 400;
+    font-size: 15px;
+  }
 `;
 export const ContactTextArea = styled.textarea`
   width: 100%;
   resize: none;
   background-color: #ffffff;
   height: 200px;
-  border-radius: 30px;
+  border-radius: 26px;
   border: 1px solid #707070;
   margin: 10px 0 20px 0;
   padding: 25px 20px;
   box-sizing: border-box;
+  &::placeholder {
+    color: #b7b7b7;
+    font-weight: 400;
+    font-size: 15px;
+  }
 `;
 export const ContactBtn = styled.button`
   display: flex;
@@ -96,8 +107,9 @@ export const ContactBtn = styled.button`
   background-color: #4bcb02;
   color: #fff;
   border: none;
-  font-weight: 900;
-  border-radius: 30px;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 10px;
   width: 40%;
   height: 40px;
   padding: 25px;

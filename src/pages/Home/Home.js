@@ -31,8 +31,6 @@ import Navbar from "../../components/Navbar/Navbar";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "./HomeBg.jpg";
-import Pub1 from "../../assets/Images/Pub1.jpg";
-import Pub2 from "../../assets/Images/Pub2.jpg";
 //carousel images
 import Alger_Mosque from "./Alger_Mosque.jpg";
 import Bejaia from "./Bejaia.jpg";
@@ -212,7 +210,7 @@ const Home = () => {
               <HomePub src={banners.banner_home1} />
               <ThumbnailImages>
                 {items.map((item) => {
-                  return <GrowImage item={item} />;
+                  return <GrowImage item={item} key={item.id} />;
                 })}
                 <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
               </ThumbnailImages>

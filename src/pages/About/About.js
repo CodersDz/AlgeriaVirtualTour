@@ -24,12 +24,13 @@ const About = () => {
           <AboutContentLeftWrapper>
             <AboutH1>À Propos</AboutH1>
             <AboutP>
-              AVT c'est un site et une applications de tourisme virtuelle en
-              Algérie fondé le 15 Décembre 2020 par VIRTUEL ART PRODUCTION, où
-              vous trouvez plus de 140 lieux en 360° et 250 photos et vidéos, et
-              une agenda spécial qui contienne des éventements touristiques,
-              artistiques et culturelles fournis par des agences de voyages et
-              des organisations et associations.
+              <span style={{ fontWeight: "700" }}>AVT</span> c'est un site et
+              une applications de tourisme virtuelle en Algérie fondé le 15
+              Décembre 2020 par VIRTUEL ART PRODUCTION, où vous trouvez plus de
+              140 lieux en 360° et 250 photos et vidéos, et une agenda spécial
+              qui contienne des éventements touristiques, artistiques et
+              culturelles fournis par des agences de voyages et des
+              organisations et associations.
             </AboutP>
           </AboutContentLeftWrapper>
         </AboutContentLeft>
