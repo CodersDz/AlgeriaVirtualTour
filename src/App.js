@@ -12,6 +12,7 @@ import Contact from "./pages/Contact/Contact";
 import SearchCatégorie from "./pages/SearchCatégorie/SearchCatégorie";
 import Wilaya from "./pages/Wilaya/Wilaya";
 import Map from "./pages/Map/Map";
+import LocationCarousel from "./pages/LocationCarousel/LocationCarousel";
 function App() {
   const location = useLocation();
   return (
@@ -25,7 +26,8 @@ function App() {
         <Route exact path="/About" component={About} />
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/Map" component={Map} />
-        <Route exact path="/:wilayaname" component={Wilaya} />
+        <Route exact path="/wilaya/:wilayaname" component={Wilaya} />
+        <Route exact path="/location/:location" component={LocationCarousel} />
       </Switch>
     </div>
   );

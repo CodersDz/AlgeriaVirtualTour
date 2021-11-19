@@ -4,7 +4,6 @@ import axios from "axios";
 import {
   HomeContainer,
   HomeContent,
-  CarouselContainer,
   InfoCarousel,
   ImgCarousel,
   HomePub,
@@ -21,6 +20,7 @@ import {
   InfoP,
   BtnContainer,
   DiscoverMoreBtn,
+  MapContainer,
 } from "./HomeElements";
 
 import { ReadMoreBtn } from "../../GlobalStyles";
@@ -31,11 +31,6 @@ import Navbar from "../../components/Navbar/Navbar";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "./HomeBg.jpg";
-//carousel images
-import Alger_Mosque from "./Alger_Mosque.jpg";
-import Bejaia from "./Bejaia.jpg";
-import Ghardaia from "./Ghardaia.jpg";
-import Djanet_la_tadrarte from "./Djanet_la_tadrarte.jpeg";
 
 const BtnVariants = {
   initial: { opacity: 0 },
@@ -46,40 +41,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
-const items = [
-  {
-    id: 1,
-    wilayaName: "Alger",
-    imgPath: Alger_Mosque,
-    wilayaDescription:
-      "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
 
-    wilayaUrl: "https://google.com",
-  },
-  {
-    id: 2,
-    wilayaName: "Béjaïa",
-    imgPath: Bejaia,
-    wilayaDescription:
-      "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
-    wilayaUrl: "https://google.com",
-  },
-  {
-    id: 3,
-    wilayaName: "Ghardaïa",
-    imgPath: Ghardaia,
-    wilayaDescription:
-      "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
-    wilayaUrl: "https://google.com",
-  },
-  {
-    id: 4,
-    wilayaName: "Djanet",
-    imgPath: Djanet_la_tadrarte,
-    wilayaDescription:
-      "Alger est la capitale de l'Algérie. Elle se trouve sur la côte méditerranéenne du pays. Elle est connue pour les bâtiments blanchis à la chaux de la Casbah…Alger est une ville cosmopolite et plurilingue, la ville a connu un accroissement démographique exponentiel dû à des vagues de migration provenant des villes  du pays et à l’exode rural, qui s'est traduit sur le plan sociolinguistique par un brassage d’Algériens venus de toutes les régions du pays, avec leurs parlers respectifs. En outre, le parler des jeunes se caractérise par une innovation linguistique et une créativité lexicale.",
-  },
-];
 const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const [animated, setAnimated] = useState([]);
@@ -91,7 +53,7 @@ const Home = () => {
       axios
         .get("http://www.algeriavirtualtour.com/api/wilaya")
         .then((response) => {
-          console.log("updateBanners");
+          console.log(response.data.data);
           setWilayas(response.data.data);
         })
         .catch((err) => {
@@ -112,21 +74,21 @@ const Home = () => {
         });
   }, []);
   const GrowImage = ({ item }) => {
-    if (!animated.includes(item.id)) {
+    if (!animated.includes(item.position)) {
       return (
         <ThumbnailImage
           as={motion.div}
-          layoutId={item.id}
-          bg={item.imgPath}
+          layoutId={item.position}
+          bg={item.pic_cover}
           onClick={() => {
-            if (item.id === 1) {
-              setAnimated((prev) => [...prev, item.id]);
-            } else if (item.id === animated.length + 1)
-              setAnimated((prev) => [...prev, item.id]);
+            if (item.position === 1) {
+              setAnimated((prev) => [...prev, item.position]);
+            } else if (item.position === animated.length + 1)
+              setAnimated((prev) => [...prev, item.position]);
           }}
         >
           <ThumbnailImageText>
-            <ThumbnailImageTextH5>{item.wilayaName}</ThumbnailImageTextH5>
+            <ThumbnailImageTextH5>{item.name}</ThumbnailImageTextH5>
           </ThumbnailImageText>
         </ThumbnailImage>
       );
@@ -134,26 +96,15 @@ const Home = () => {
       return (
         <ThumbnailImageExpanded
           as={motion.div}
-          layoutId={item.id}
-          bg={item.imgPath}
+          layoutId={item.position}
+          bg={item.pic_cover}
         >
           <InfoCarouselExpanded>
             <InfoContainer>
               <InfoContent>
-                <InfoH2>{item.wilayaName}</InfoH2>
-                <InfoP>{item.wilayaDescription}</InfoP>
-                {readMore && (
-                  <InfoP as={motion.p}>
-                    Alger est une ville cosmopolite et plurilingue, la ville a
-                    connu un accroissement démographique exponentiel dû à des
-                    vagues de migration provenant des villes du pays et à
-                    l’exode rural, qui s'est traduit sur le plan
-                    sociolinguistique par un brassage d’Algériens venus de
-                    toutes les régions du pays, avec leurs parlers respectifs.
-                    En outre, le parler des jeunes se caractérise par une
-                    innovation linguistique et une créativité lexicale
-                  </InfoP>
-                )}
+                <InfoH2>{item.name}</InfoH2>
+                <InfoP readMore={readMore}>{item.description}</InfoP>
+
                 <BtnContainer>
                   <ReadMoreBtn
                     onClick={() => {
@@ -177,8 +128,8 @@ const Home = () => {
                   </ReadMoreBtn>
                   <DiscoverMoreBtn
                     to={{
-                      pathname: `/${item.wilayaName}`,
-                      state: { wilayaName: item.wilayaName },
+                      pathname: `/wilaya/${item.name}`,
+                      state: { wilayaName: item.name, wilaya: item },
                     }}
                   >
                     Découvrir Plus
@@ -187,6 +138,7 @@ const Home = () => {
               </InfoContent>
             </InfoContainer>
           </InfoCarouselExpanded>
+
           <ImgCarousel></ImgCarousel>
         </ThumbnailImageExpanded>
       );
@@ -204,19 +156,20 @@ const Home = () => {
       >
         <Navbar setAnimated={setAnimated} />
         <HomeContent>
-          <CarouselContainer>
-            <InfoCarousel />
-            <ImgCarousel>
-              <HomePub src={banners.banner_home1} />
-              <ThumbnailImages>
-                {items.map((item) => {
-                  return <GrowImage item={item} key={item.id} />;
-                })}
-                <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
-              </ThumbnailImages>
-              <HomePub src={banners.banner_home2} />
-            </ImgCarousel>
-          </CarouselContainer>
+          <MapContainer>
+            <DzMap />
+          </MapContainer>
+          <InfoCarousel />
+          <ImgCarousel>
+            <HomePub src={banners.banner_home1} />
+            <ThumbnailImages>
+              {wilayas.map((item) => {
+                return <GrowImage item={item} key={item.position} />;
+              })}
+              <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
+            </ThumbnailImages>
+            <HomePub src={banners.banner_home2} />
+          </ImgCarousel>
         </HomeContent>
       </HomeContainer>
     </AnimateSharedLayout>

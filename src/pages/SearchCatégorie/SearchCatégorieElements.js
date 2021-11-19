@@ -5,7 +5,7 @@ export const SearchCatégoriePageContainer = styled.div`
 `;
 export const TopContainer = styled.div`
   width: 100%;
-  height: 380px;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   background: ${(props) =>
@@ -18,37 +18,31 @@ export const TopContainer = styled.div`
 `;
 export const SearchCatégoriePageContent = styled.div`
   width: 100%;
-  padding: 75px;
+  position: static;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 export const TopContentContainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  height: calc(40vh - 150px);
+  margin-left: 150px;
 `;
 export const CatégorieImg = styled.img`
-  height: 200px;
-  width: 200px;
+  height: 150px;
+  width: 150px;
 `;
 export const CatégorieNom = styled.h1`
   color: #fff;
-  font-size: 5rem;
-  letter-spacing: 0.5rem;
+  font-size: 120px;
+  font-weight: 600;
 `;
-export const CatégorieSection = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-bottom: 50px;
-`;
-export const CatégorieH2 = styled.h2`
-  color: #a9a9a9;
-  font-size: 2.5rem;
-  align-self: flex-start;
-  margin-bottom: 25px;
-`;
+
 export const LocationCard = styled.div`
   cursor: pointer;
   display: flex;

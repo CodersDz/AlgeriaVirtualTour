@@ -34,7 +34,7 @@ const About = () => {
             </AboutP>
           </AboutContentLeftWrapper>
         </AboutContentLeft>
-        <RightContainer />
+        <RightContainer contact="false" />
       </AboutContentContainer>
       <Footer />
     </ContactPageContainer>

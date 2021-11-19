@@ -14,6 +14,7 @@ import {
   ListItem,
   FlagImg,
   DropDownImg,
+  LangSpan,
 } from "./SelectLangElements";
 const options = [
   { ref: "fr", name: "Français", flag: { fr_flag } },
@@ -60,7 +61,7 @@ const SelectLang = () => {
                   key={Math.random()}
                 >
                   <DropDownImg src={selectFlag(option.ref)} />
-                  {option.name}
+                  <LangSpan>{option.name}</LangSpan>
                 </ListItem>
               ))}
           </DropDownList>

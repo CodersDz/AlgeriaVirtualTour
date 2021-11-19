@@ -4,9 +4,7 @@ export const WilayaPageContainer = styled.div`
   height: 100vh;
   width: 100vw;
   background: ${(props) =>
-    `linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${
-      require(`${props.bg}`).default
-    })`};
+    `linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${props.bg})`};
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -40,8 +38,8 @@ export const RightNavLi = styled.li`
   justify-content: center;
   flex-direction: column;
   letter-spacing: 1px;
-  font-weight: 900;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 25px;
 `;
 export const RightNavHr = styled.div`
   background-color: #fff;
@@ -113,7 +111,12 @@ export const InfoP = styled.p`
   font-weight: 400;
   color: #fff;
   transition: all 0.5s;
-  padding: 20px 0;
+  margin: 20px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: all 2s ease-in-out;
 `;
 export const InfoRightContainer = styled.div`
   display: flex;
@@ -164,7 +167,7 @@ export const DiscoverCatégoriesLi = styled.li`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   margin: 10px;
@@ -172,6 +175,8 @@ export const DiscoverCatégoriesLi = styled.li`
   height: 20%;
   font-size: 40px;
   font-weight: 400;
+  padding: 0 5%;
+  text-align: start;
 `;
 //-----------------------Discover Components----------------------------
 //-----------------------Destination Components----------------------------
@@ -180,7 +185,7 @@ export const DestinationLeftContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
+  min-width: 100%;
   height: 100%;
 `;
 export const DestinationRightContainer = styled.div`
@@ -195,29 +200,62 @@ export const DestinationH1 = styled(InfoH1)`
 `;
 export const DestinationLi = styled.li`
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: row;
   color: white;
   min-height: 31%;
   padding: 10px;
   margin-bottom: 20px;
   width: 100%;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(20px);
+  transition: all 0.5s ease-in-out;
 `;
-
-export const DestinationImg = styled.img`
+export const sideBarDestinationLi = styled.div`
   height: 100%;
-  width: 25%;
+  width: 100%;
+  background-color: black;
+  position: absolute;
+  display: none;
 `;
-export const DestinationLiTextContainer = styled.div`
+export const ThreePointContainer = styled.div`
+  height: 100%;
+  width: 5%;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  padding: 25px;
+  align-items: center;
+  &:hover ${sideBarDestinationLi} {
+    transform: translateX(-100px);
+  }
+`;
+export const DestinationImgDiv = styled.div`
+  height: 100%;
+  min-width: 25%;
+  max-width: 25%;
+  overflow: hidden;
+`;
+export const DestinationImg = styled.img`
   width: 100%;
   height: 100%;
+  transition: all 0.8s ease-in-out;
+  ${DestinationLi}:hover & {
+    transform: scale(1.5);
+  }
+`;
+export const DestinationTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  padding: 25px;
+  width: 75%;
+  height: 100%;
+  ${DestinationLi}:hover & {
+    width: 75%;
+  }
 `;
 export const DestinationNameContainer = styled.div`
   text-align: start;
@@ -230,11 +268,43 @@ export const DestinationName = styled.h3`
   font-size: 40px;
   margin-left: 5px;
   font-weight: 600;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 export const DestinationDescription = styled.p`
   font-size: 25px;
   font-weight: 400;
   align-self: flex-start;
+  text-align: start;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 export const SvgDestinationImg = styled(SvgInfoImg)``;
 //-----------------------Destination Components----------------------------
+//-----------------------ContentLoader Components----------------------------
+export const ImgLoader = styled.div`
+  height: 100%;
+  width: 25%;
+`;
+export const TextContainerLoader = styled.div`
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 25px;
+  width: 100%;
+  height: 100%;
+`;
+export const NameLoader = styled.div`
+  width: 70%;
+  height: 20%;
+  margin-bottom: 20px;
+`;
+export const DescriptionLoader = styled.div`
+  width: 100%;
+  height: 60%;
+`;
+//-----------------------ContentLoader Components----------------------------

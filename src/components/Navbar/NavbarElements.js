@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
 //-----------------Elements imports---------------
 import { Container } from "../../GlobalStyles";
 
@@ -46,15 +46,19 @@ export const SearchBtn = styled(Link)`
   background-color: transparent;
   border-radius: 10rem;
   padding: 10px 10px;
-  width: 3rem;
-  transition: width 500ms;
+  width: 12rem;
+  transition: background-color 300ms ease-in-out;
+  transition-timing-function: linear;
   &:hover {
-    width: 15rem;
     background-color: rgba(255, 255, 255, 0.36);
   }
 `;
 
 export const NavItem = styled.li`
+  margin: 0 10px;
+  cursor: pointer;
+`;
+export const NavItemSearch = styled.li`
   margin: 0 10px;
   cursor: pointer;
 `;
@@ -103,14 +107,24 @@ export const BottomUl = styled.ul`
   height: 25%;
   width: 100%;
 `;
+export const ArrowSvg = styled(Arrow)``;
 export const RightNavLink = styled(Link)`
   padding: 10px;
+  font-weight: 400;
+  font-size: 20px;
   width: 100%;
-  text-align: start;
-  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &:hover ${ArrowSvg} {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
+  }
 `;
+export const SearchLink = styled(RightNavLink)``;
 export const RightNavText = styled.div`
   padding: 20px 0 0 0;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 15px;
+  font-weight: 400;
 `;

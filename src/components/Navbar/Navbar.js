@@ -1,11 +1,12 @@
 //-----------------React and hooks imports---------------
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
 import { FaSearch } from "react-icons/fa";
 import NavLogo from "../../assets/Images/NavLogo.png";
 import { ReactComponent as HumbergerIcon } from "../../assets/svg/HumbergerIcon.svg";
+import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
 //-----------------Components imports---------------
 import SelectLang from "../SelectLang/SelectLang";
 //-----------------Elements imports---------------
@@ -24,44 +25,46 @@ import {
   BottomUl,
   RightNavLink,
   RightNavText,
+  ArrowSvg,
 } from "./NavbarElements";
 
 const Navbar = ({ setAnimated }) => {
+  let history = useHistory();
   const location = useLocation();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const resetCaroussel = () => {
-    if (location.pathname === "/Home") {
+    if (location.pathname === "/home" || location.pathname === "/Home") {
       setAnimated([]);
+    } else {
+      history.push("/home");
     }
   };
   const closeBar = () => {
     setOpen(true);
   };
+  const componentDidMount = () => {
+    document.getElementById("rightNav").focus();
+  };
 
   return (
     <NavContainer>
       <RightNavContainer
+        id="rightNav"
+        tabIndex="10"
         open={open}
-        onFocus={() => {
-          console.log("main", "focus");
-        }}
         onBlur={() => {
-          console.log("main", "blur");
+          setOpen(false);
         }}
       >
         <RightNavDiv>
           <TopUl>
-            <button
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              Click{" "}
-            </button>
             <RightNavLink to="/Home">Profile</RightNavLink>
             <RightNavLink to="/Home">Article enregisté</RightNavLink>
-            <RightNavLink to="/Home">Agenda</RightNavLink>
+            <RightNavLink to="/Home">
+              <span>Agenda</span>
+              <ArrowSvg />
+            </RightNavLink>
           </TopUl>
           <BottomUl>
             <RightNavLink to="/About">About Us</RightNavLink>
@@ -81,15 +84,15 @@ const Navbar = ({ setAnimated }) => {
               size="36"
               onClick={() => {
                 setOpen(true);
+                componentDidMount();
               }}
             />
           </NavItem>
           <NavItem>
-            <NavLink to="/Home" onClick={resetCaroussel}>
-              <NavImg src={NavLogo} />
-            </NavLink>
+            <NavImg src={NavLogo} onClick={resetCaroussel} />
           </NavItem>
         </LeftContainer>
+
         <RightContainer>
           <NavItem>
             <NavLink to="/">{t("Nav.Agenda")}</NavLink>

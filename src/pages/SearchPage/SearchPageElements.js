@@ -22,7 +22,7 @@ export const SearchContentContainer = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 150px);
 `;
 export const SearchContentWrapper = styled.div`
   display: flex;
@@ -30,6 +30,11 @@ export const SearchContentWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 1300px;
+  height: 100%;
+`;
+export const TextContainer = styled.div`
+  width: 100%;
+  height: 10%;
 `;
 export const SearchH1 = styled.h1`
   color: #fff;
@@ -48,4 +53,6 @@ export const BtnContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 10%;
+  width: 100%;
 `;

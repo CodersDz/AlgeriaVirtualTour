@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useParams } from "react-router";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router";
 import ScrollContainer from "react-indiana-drag-scroll";
+import ContentLoader from "react-content-loader";
 import {
   WilayaPageContainer,
   WilayaPageContentContainer,
@@ -25,82 +26,71 @@ import {
   DestinationH1,
   DestinationNameContainer,
   DestinationLi,
+  DestinationImgDiv,
   DestinationImg,
-  DestinationLiTextContainer,
+  DestinationTextContainer,
   DestinationName,
   DestinationDescription,
   SvgDestinationImg,
   RightNavHr,
   Pub,
+  ThreePointContainer,
+  sideBarDestinationLi,
+} from "./WilayaElements";
+import {
+  ImgLoader,
+  TextContainerLoader,
+  NameLoader,
+  DescriptionLoader,
 } from "./WilayaElements";
 import { ReadMoreBtn } from "../../GlobalStyles";
+import { AiOutlineEllipsis, AiOutlineHeart } from "react-icons/ai";
 import Navbar from "../../components/Navbar/Navbar";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import "./WilayaStyles.css";
 import { ReactComponent as Position } from "./Svg/Position.svg";
 import { useLocalStorage } from "../../hooks/useStorage";
+import axios from "axios";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
-const Destinations = [
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-  {
-    DestinationName: "Alger",
-    DestinationDescription: "Alger",
-    DestinationImg: "./Images/BgImages/Alger.jpg",
-  },
-];
+
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.5 } },
 };
-const Wilaya = () => {
+const Wilaya = (props) => {
+  const { wilayaname } = useParams();
+  const [locations, setLocations] = useState([]);
+  const [wilaya, setWilaya] = useState({});
+  useEffect(() => {
+    axios
+      .get("http://www.algeriavirtualtour.com/api/location")
+      .then((response) => {
+        console.log(response.data.data);
+        setLocations(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    if (props.location.state) {
+      setWilaya(props.location.state.wilaya);
+    } else {
+      axios
+        .get(`http://www.algeriavirtualtour.com/api/wilaya?name=${wilayaname}`)
+        .then((response) => {
+          console.log(response.data.data);
+          setWilaya(response.data.data[0]);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
   const [readMore, setReadMore] = useState(false);
   const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
@@ -136,35 +126,93 @@ const Wilaya = () => {
       CatégorieName: t("SearchPage.Card.Restaurant"),
     },
   ];
-  const { wilayaname } = useParams();
+
+  const loaderArray = [1, 2, 3, 4];
   const [currentSection, setCurrentSection] = useState("Info");
   const [CurrentDiscoverOption, setCurrentDiscoverOption] =
     useState(wilayaname);
+  const history = useHistory();
+  const goToLocation = (destination) => {
+    history.push({
+      pathname: `/location/${destination.name}`,
+      state: { destination: destination },
+    });
+  };
+  const DisplayLoader = () => {
+    return (
+      <ScrollContainer
+        hideScrollbars="false"
+        className="ScrollContainer"
+        horizontal="false"
+      >
+        {loaderArray.map(() => {
+          return (
+            <DestinationLi>
+              <ImgLoader>
+                <ContentLoader
+                  speed={2}
+                  backgroundColor="grey"
+                  foregroundColor="#fff"
+                  style={{ width: "100%", height: "100%" }}
+                >
+                  <rect x="0" y="0" rx="0" ry="0" width="1000" height="1000" />
+                </ContentLoader>
+              </ImgLoader>
+              <DestinationTextContainer>
+                <NameLoader>
+                  <ContentLoader
+                    speed={2}
+                    backgroundColor="grey"
+                    foregroundColor="#fff"
+                    style={{ width: "100%", height: "100%" }}
+                  >
+                    <rect
+                      x="0"
+                      y="0"
+                      rx="0"
+                      ry="0"
+                      width="1000"
+                      height="1000"
+                    />
+                  </ContentLoader>
+                </NameLoader>
+                <DescriptionLoader>
+                  <ContentLoader
+                    speed={2}
+                    backgroundColor="grey"
+                    foregroundColor="#fff"
+                    style={{ width: "100%", height: "100%" }}
+                  >
+                    <rect
+                      x="0"
+                      y="0"
+                      rx="0"
+                      ry="0"
+                      width="1000"
+                      height="1000"
+                    />
+                  </ContentLoader>
+                </DescriptionLoader>
+              </DestinationTextContainer>
+            </DestinationLi>
+          );
+        })}
+      </ScrollContainer>
+    );
+  };
+
   const ChangeLeft = () => {
     if (currentSection === "Info") {
       return (
         <InfoLeftContainer>
           <InfoLeftContainerContent>
             <InfoH1 as={motion.h1} layoutId={"h1"}>
-              {wilayaname}
+              {wilaya.name}
             </InfoH1>
-            <InfoP as={motion.p}>
-              Alger est la capitale de l'Algérie. Elle se trouve sur la côte
-              méditerranéenne du pays. Elle est connue pour les bâtiments
-              blanchis à la chaux de la Casbah…
+            <InfoP as={motion.p} readMore={readMore}>
+              {wilaya.description}
             </InfoP>
-            {readMore && (
-              <InfoP>
-                Alger est une ville cosmopolite et plurilingue, la ville a connu
-                un accroissement démographique exponentiel dû à des vagues de
-                migration provenant des villes du pays et à l’exode rural, qui
-                s'est traduit sur le plan sociolinguistique par un brassage
-                d’Algériens venus de toutes les régions du pays, avec leurs
-                parlers respectifs. En outre, le parler des jeunes se
-                caractérise par une innovation linguistique et une créativité
-                lexicale
-              </InfoP>
-            )}
+            )
             <ReadMoreBtn
               onClick={() => {
                 setReadMore(!readMore);
@@ -199,7 +247,11 @@ const Wilaya = () => {
             <DiscoverH1 as={motion.h1} layoutId={"h1"}>
               {wilayaname}
             </DiscoverH1>
-            <DiscoverCatégoriesContainer>
+            <DiscoverCatégoriesContainer
+              as={motion.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 1.5 } }}
+            >
               {Catégories.map((categorie) => {
                 return (
                   <DiscoverCatégoriesLi
@@ -219,39 +271,51 @@ const Wilaya = () => {
         </DiscoverLeftContainer>
       );
     } else if (currentSection === "Destination") {
-      return (
-        <DestinationLeftContainer>
-          <DestinationH1 as={motion.h1} layoutId={"h1"}>
-            {CurrentDiscoverOption}
-          </DestinationH1>
-          <ScrollContainer
-            hideScrollbars="false"
-            className="ScrollContainer"
-            horizontal="false"
-          >
-            {Destinations.map((destination) => {
-              return (
-                <DestinationLi as={motion.li}>
-                  <DestinationImg
-                    src={require(`${destination.DestinationImg}`).default}
-                  />
-                  <DestinationLiTextContainer>
-                    <DestinationNameContainer>
-                      <Position />
-                      <DestinationName>
-                        {destination.DestinationName}
-                      </DestinationName>
-                    </DestinationNameContainer>
-                    <DestinationDescription>
-                      {destination.DestinationDescription}
-                    </DestinationDescription>
-                  </DestinationLiTextContainer>
-                </DestinationLi>
-              );
-            })}
-          </ScrollContainer>
-        </DestinationLeftContainer>
-      );
+      if (locations) {
+        return (
+          <DestinationLeftContainer>
+            <DestinationH1 as={motion.h1} layoutId={"h1"}>
+              {CurrentDiscoverOption}
+            </DestinationH1>
+
+            <ScrollContainer
+              hideScrollbars="false"
+              className="ScrollContainer"
+              horizontal="false"
+            >
+              {locations.map((destination) => {
+                return (
+                  <DestinationLi
+                    as={motion.li}
+                    onClick={() => {
+                      goToLocation(destination);
+                    }}
+                  >
+                    <DestinationImgDiv>
+                      <DestinationImg src={destination.cover_pic} />
+                    </DestinationImgDiv>
+                    <DestinationTextContainer>
+                      <DestinationNameContainer>
+                        <Position />
+                        <DestinationName>{destination.name}</DestinationName>
+                      </DestinationNameContainer>
+                      <DestinationDescription>
+                        {destination.description}
+                      </DestinationDescription>
+                    </DestinationTextContainer>
+                    <ThreePointContainer>
+                      <AiOutlineEllipsis size="36" />
+                      <sideBarDestinationLi>
+                        <AiOutlineHeart />
+                      </sideBarDestinationLi>
+                    </ThreePointContainer>
+                  </DestinationLi>
+                );
+              })}
+            </ScrollContainer>
+          </DestinationLeftContainer>
+        );
+      } else return <DisplayLoader />;
     } else return null;
   };
   const ChangeRight = () => {
@@ -260,7 +324,7 @@ const Wilaya = () => {
         <InfoRightContainer>
           <SvgInfoImg
             as={motion.img}
-            src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
+            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
           />
         </InfoRightContainer>
       );
@@ -271,7 +335,7 @@ const Wilaya = () => {
             as={motion.img}
             layoutId={"SvgImg"}
             animate={{ scale: 0.9 }}
-            src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
+            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
           />
         </DiscoverRightContainer>
       );
@@ -282,7 +346,7 @@ const Wilaya = () => {
             as={motion.img}
             layoutId={"SvgImg"}
             animate={{ scale: 1.1 }}
-            src={require(`./Svg/${wilayaname}/${wilayaname}.svg`).default}
+            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
           />
         </DestinationRightContainer>
       );
@@ -291,7 +355,7 @@ const Wilaya = () => {
   console.log(wilayaname);
   return (
     <WilayaPageContainer
-      bg={`./Images/BgImages/${wilayaname}.jpg`}
+      bg={wilaya.pic_cover}
       as={motion.div}
       initial="hidden"
       animate="visible"

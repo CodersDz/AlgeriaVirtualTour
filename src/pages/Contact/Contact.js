@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import RightContainer from "../../components/RightContainer/RightContainer";
-import Footer from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
 import {
   ContactPageContainer,
@@ -16,6 +15,7 @@ import {
   ContactInput,
   ContactTextArea,
   ContactBtn,
+  RightWrapper,
 } from "./ContactElements";
 import Navbar from "../../components/Navbar/Navbar";
 const Contact = () => {
@@ -68,7 +68,7 @@ const Contact = () => {
             </Formik>
           </AboutContentLeftWrapper>
         </AboutContentLeft>
-        <RightContainer />
+        <RightContainer contact="true" />
       </AboutContentContainer>
     </ContactPageContainer>
   );

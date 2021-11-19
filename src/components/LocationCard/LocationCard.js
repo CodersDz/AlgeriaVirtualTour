@@ -11,10 +11,10 @@ import {
 const LocationCard = ({ location }) => {
   return (
     <LocationCardContainer>
-      <CardImg src={require(`${location.LocationImg}`).default} />
+      <CardImg src={location.cover_pic} />
       <CardText>
-        <LocationName>{location.LocationName}</LocationName>
-        <LocationP>{location.LocationDescription}</LocationP>
+        <LocationName>{location.name}</LocationName>
+        <LocationP>{location.description}</LocationP>
       </CardText>
       <CardBtnContainer>
         <LeftCardBtnContainer>

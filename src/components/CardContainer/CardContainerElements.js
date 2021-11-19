@@ -7,7 +7,7 @@ export const CardContainerWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  height: 500px;
+  height: 80%;
   width: 100%;
 `;
 export const Card = styled.div`
@@ -20,10 +20,10 @@ export const Card = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 17%;
-  height: 300px;
+  width: 18%;
+  height: 43%;
   border-radius: 10%;
-  margin: 20px 20px 20px 0;
+  margin: 10px 10px 10px 0;
 `;
 export const CardContent = styled.div`
   display: flex;
@@ -43,4 +43,6 @@ export const CardContentImg = styled.img`
 `;
 export const CardContentTitle = styled.h4`
   color: white;
+  font-size: 18px;
+  font-weight: 500;
 `;

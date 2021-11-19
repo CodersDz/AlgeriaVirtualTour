@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 
 export const HomeContainer = styled.div`
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)),
     url(${props.currentBg})`};
   height: 100vh;
   background-position: center;
@@ -18,16 +18,11 @@ export const HomeContainer = styled.div`
 export const HomeContent = styled.div`
   height: calc(100vh - 150px);
   width: 100%;
+  display: flex;
 `;
 
-export const CarouselContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-`;
 export const InfoCarousel = styled.div`
-  width: 55%;
+  width: 60%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -39,6 +34,7 @@ export const InfoCarousel = styled.div`
 `;
 export const InfoCarouselExpanded = styled(InfoCarousel)`
   z-index: 1;
+  max-height: 100%;
 `;
 export const InfoContainer = styled.div`
   width: 100%;
@@ -48,25 +44,46 @@ export const InfoContainer = styled.div`
 `;
 export const InfoContent = styled.div`
   position: absolute;
+  width: 100%;
   left: 0;
   bottom: 0;
 `;
+export const MapContainer = styled.div`
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+  height: 100%;
+  width: 60%;
+`;
 export const InfoH2 = styled.h2`
-  font-size: 8rem;
+  font-size: 140px;
   font-weight: 600;
   text-transform: uppercase;
   text-align: start;
   text-shadow: 1px 1px 3px #000;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 export const InfoP = styled.p`
-  font-size: 1.3rem;
+  font-size: 25px;
   font-weight: 400;
   text-align: start;
   text-transform: none;
-  padding: 20px 0;
+  margin: 20px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: ${(props) =>
+    props.readMore === false ? "2" : "initial"};
+  line-clamp: ${(props) => (props.readMore === false ? "2" : "initial")};
+  transition: all 3s cubic-bezier(0, 1, 0, 1);
 `;
 export const ImgCarousel = styled.div`
-  width: 45%;
+  width: 40%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -86,12 +103,11 @@ export const ThumbnailImages = styled.div`
 export const ThumbnailImage = styled.div`
   cursor: pointer;
   min-width: 42%;
-  position: static;
   max-height: 100%;
   margin: 0 30px 0 0;
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -113,6 +129,7 @@ export const ThumbnailImageTextH5 = styled.h5`
   position: absolute;
   bottom: 0;
   font-weight: 600;
+  font-size: 42px;
 `;
 export const ThumbnailImageExpanded = styled.div`
   position: absolute;
@@ -123,7 +140,7 @@ export const ThumbnailImageExpanded = styled.div`
   z-index: -1;
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -132,18 +149,16 @@ export const ThumbnailImageExpanded = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3em;
   text-transform: uppercase;
   padding: 100px;
 `;
+export const SvgWilaya = styled.div``;
 
 export const DecouvrirePlus = styled(Link)`
-  min-width: 40%;
+  min-width: 42%;
   max-height: 100%;
   margin: 0 30px 0 0;
   font-size: 2rem;
-
-  position: static;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,7 +170,7 @@ export const DecouvrirePlus = styled(Link)`
 export const BtnContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 100%;
 `;
 export const ReadMoreBtn = styled.button`
   display: flex;
@@ -165,9 +180,9 @@ export const ReadMoreBtn = styled.button`
   color: #fff;
   border: none;
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 20px;
   border-radius: 30px;
-  width: 50%;
+  width: 40%;
   height: 40px;
   padding: 25px;
   cursor: pointer;
@@ -180,9 +195,9 @@ export const DiscoverMoreBtn = styled(Link)`
   color: #fff;
   border: none;
   font-weight: 400;
-  font-size: 1.3rem;
+  font-size: 20px;
   border-radius: 30px;
-  width: 50%;
+  width: 40%;
   height: 40px;
   padding: 25px;
   cursor: pointer;

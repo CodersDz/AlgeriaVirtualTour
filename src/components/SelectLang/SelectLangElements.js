@@ -23,7 +23,7 @@ export const DropDownContainer = styled("div")`
 export const DropDownList = styled("ul")`
   padding: 0;
   margin: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.9);
   border: 2px solid transparent;
   border-radius: 10%;
   box-sizing: border-box;
@@ -37,6 +37,10 @@ export const ListItem = styled("li")`
   justify-content: flex-start;
   align-items: center;
   padding: 10px;
+`;
+export const LangSpan = styled.span`
+  font-size: 18px;
+  font-weight: 600;
 `;
 
 export const FlagImg = styled.img`

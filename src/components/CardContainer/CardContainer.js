@@ -20,7 +20,7 @@ import Park from "../../assets/Images/SearchImages/Park.jpg";
 import Musée from "../../assets/Images/SearchImages/Museum.jpg";
 import Restaurant from "../../assets/Images/SearchImages/Restaurant.jpg";
 
-const CardContainer = () => {
+const CardContainer = ({ locations }) => {
   let history = useHistory();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const Cards = [
@@ -84,7 +84,10 @@ const CardContainer = () => {
             as={motion.div}
             whileHover={{ scale: 1.1 }}
             onClick={() => {
-              history.push(card.CardUrl);
+              history.push({
+                pathname: card.CardUrl,
+                state: { locations: locations },
+              });
             }}
             bg={card.CardImg}
           >

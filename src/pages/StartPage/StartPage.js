@@ -38,7 +38,7 @@ const StartPage = () => {
     axios
       .get("http://www.algeriavirtualtour.com/api/wilaya")
       .then((response) => {
-        setWilayas(JSON.stringify(response.data.data));
+        setWilayas(response.data.data);
       })
       .catch((err) => {
         console.log(err);
