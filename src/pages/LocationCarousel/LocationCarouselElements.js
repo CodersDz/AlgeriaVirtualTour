@@ -84,7 +84,7 @@ export const ReadMoreBtn = styled.button`
   padding: 25px;
   cursor: pointer;
 `;
-export const Visit360Btn = styled(Link)`
+export const Visit360Btn = styled.a`
   min-width: 42%;
   max-height: 100%;
   margin: 0 30px 0 0;

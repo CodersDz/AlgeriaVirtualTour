@@ -1,5 +1,6 @@
 //-----------------React and hooks imports---------------
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useLocation, useHistory } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
@@ -26,8 +27,15 @@ import {
   RightNavLink,
   RightNavText,
   ArrowSvg,
+  RightNavAgenda,
+  VisibleRightNavAgenda,
+  HiddenUl,
+  HiddenLi,
 } from "./NavbarElements";
-
+const HiddenLiVariants = {
+  initial: { y: -100 },
+  animate: { y: 0, transition: { duration: 1 } },
+};
 const Navbar = ({ setAnimated }) => {
   let history = useHistory();
   const location = useLocation();
@@ -61,10 +69,41 @@ const Navbar = ({ setAnimated }) => {
           <TopUl>
             <RightNavLink to="/Home">Profile</RightNavLink>
             <RightNavLink to="/Home">Article enregisté</RightNavLink>
-            <RightNavLink to="/Home">
-              <span>Agenda</span>
-              <ArrowSvg />
-            </RightNavLink>
+            <RightNavAgenda>
+              <VisibleRightNavAgenda>
+                <span>Agenda</span>
+                <ArrowSvg />
+              </VisibleRightNavAgenda>
+              <HiddenUl>
+                <HiddenLi
+                  as={motion.li}
+                  variants={HiddenLiVariants}
+                  initial="initial"
+                  animate="animate"
+                  to="/Home"
+                >
+                  événements culturels
+                </HiddenLi>
+                <HiddenLi
+                  as={motion.li}
+                  variants={HiddenLiVariants}
+                  initial="initial"
+                  animate="animate"
+                  to="/Home"
+                >
+                  Agenda touristique
+                </HiddenLi>
+                <HiddenLi
+                  as={motion.li}
+                  variants={HiddenLiVariants}
+                  initial="initial"
+                  animate="animate"
+                  to="/Home"
+                >
+                  Visite guidée
+                </HiddenLi>
+              </HiddenUl>
+            </RightNavAgenda>
           </TopUl>
           <BottomUl>
             <RightNavLink to="/About">About Us</RightNavLink>

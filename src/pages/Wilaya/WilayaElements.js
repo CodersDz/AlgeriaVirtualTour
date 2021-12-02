@@ -10,6 +10,8 @@ export const WilayaPageContainer = styled.div`
   background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
+  transition: all 1s ease-in-out;
+  transition-delay: 1s;
 `;
 //-----------------------Info Components----------------------------
 export const RightWilayaNav = styled.ul`

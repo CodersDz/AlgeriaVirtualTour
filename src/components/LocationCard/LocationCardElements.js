@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const LocationCardContainer = styled.div`
+export const LocationCardContainer = styled(Link)`
   cursor: pointer;
   display: flex;
   flex-direction: column;

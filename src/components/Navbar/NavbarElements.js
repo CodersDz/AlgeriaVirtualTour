@@ -1,8 +1,19 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
 //-----------------Elements imports---------------
 import { Container } from "../../GlobalStyles";
+
+const showLi = keyframes`
+  0% {
+    transform:translateY(-100%);
+    opacity:0;
+}
+  100% {
+    transform:translateY(0);
+    opacity:1;
+    }
+`;
 
 export const NavContainer = styled.nav`
   color: #fff;
@@ -65,7 +76,7 @@ export const NavItemSearch = styled.li`
 export const NavImg = styled.img``;
 
 export const RightNavContainer = styled.div`
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(6px);
   position: fixed;
   transform: ${({ open }) => (open ? "translateX(0)" : "translateX(-100%)")};
@@ -82,7 +93,6 @@ export const RightNavContainer = styled.div`
   }
 `;
 export const RightNavDiv = styled.div`
-  list-style: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,7 +117,23 @@ export const BottomUl = styled.ul`
   height: 25%;
   width: 100%;
 `;
-export const ArrowSvg = styled(Arrow)``;
+export const RightNavAgenda = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+`;
+export const VisibleRightNavAgenda = styled.div`
+  padding: 10px;
+  font-weight: 400;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 export const RightNavLink = styled(Link)`
   padding: 10px;
   font-weight: 400;
@@ -116,9 +142,11 @@ export const RightNavLink = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  &:hover ${ArrowSvg} {
-    transform: rotate(180deg);
-    transition: all 0.3s ease-out;
+`;
+export const ArrowSvg = styled(Arrow)`
+  transition: all 0.3s ease-out;
+  ${RightNavAgenda}:hover & {
+    transform: rotate(-180deg);
   }
 `;
 export const SearchLink = styled(RightNavLink)``;
@@ -127,4 +155,21 @@ export const RightNavText = styled.div`
   color: #fff;
   font-size: 15px;
   font-weight: 400;
+`;
+
+export const HiddenUl = styled.ul`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 100%;
+`;
+export const HiddenLi = styled(RightNavLink)`
+  display: none;
+  animation: ${showLi} 0.5s ease-in-out;
+
+  ${RightNavAgenda}:hover & {
+    display: block;
+  }
 `;

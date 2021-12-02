@@ -65,17 +65,7 @@ const Wilaya = (props) => {
   const { wilayaname } = useParams();
   const [locations, setLocations] = useState([]);
   const [wilaya, setWilaya] = useState({});
-  useEffect(() => {
-    axios
-      .get("http://www.algeriavirtualtour.com/api/location")
-      .then((response) => {
-        console.log(response.data.data);
-        setLocations(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+
   useEffect(() => {
     if (props.location.state) {
       setWilaya(props.location.state.wilaya);
@@ -91,6 +81,17 @@ const Wilaya = (props) => {
         });
     }
   }, []);
+  useEffect(() => {
+    axios
+      .get(`http://www.algeriavirtualtour.com/api/location?wilaya=23`)
+      .then((response) => {
+        console.log(response.data.data);
+        setLocations(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [wilaya]);
   const [readMore, setReadMore] = useState(false);
   const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
@@ -303,12 +304,6 @@ const Wilaya = (props) => {
                         {destination.description}
                       </DestinationDescription>
                     </DestinationTextContainer>
-                    <ThreePointContainer>
-                      <AiOutlineEllipsis size="36" />
-                      <sideBarDestinationLi>
-                        <AiOutlineHeart />
-                      </sideBarDestinationLi>
-                    </ThreePointContainer>
                   </DestinationLi>
                 );
               })}

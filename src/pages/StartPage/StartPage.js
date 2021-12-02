@@ -10,10 +10,14 @@ import {
   StartPageLink,
   StartPageImg,
   StartPageContent,
+  EmptyDiv,
+  AlgeriaMap,
+  SpanDetail,
 } from "./StartPageElements";
 
 //-----------------Logo import---------------
-import StartPageLogo from "../../assets/Images/StartPageLogo.png";
+import StartPageLogo from "../../assets/svg/StartPageLogo.svg";
+import MapStartPage from "../../assets/Images/MapStartPage.png";
 
 //-----------------Variants animation---------------
 const containerVariants = {
@@ -24,6 +28,7 @@ const containerVariants = {
 const StartPage = () => {
   const [wilayas, setWilayas] = useLocalStorage("wilayas", []);
   const [banners, setBanners] = useLocalStorage("banners", {});
+  const [showDetail, setShowDetail] = useState(false);
   useEffect(() => {
     axios
       .get("http://www.algeriavirtualtour.com/api/banners/0")
@@ -55,8 +60,26 @@ const StartPage = () => {
     >
       <StartPageContent>
         <StartPageImg src={StartPageLogo} />
-        <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
+        <EmptyDiv>
+          {showDetail && (
+            <SpanDetail
+              as={motion.span}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 1.5 } }}
+            >
+              Le site est en cours de construction...
+            </SpanDetail>
+          )}
+        </EmptyDiv>
+        <StartPageLink
+          onClick={() => {
+            setShowDetail(true);
+          }}
+        >
+          {t("StartPage.Begin")}
+        </StartPageLink>
       </StartPageContent>
+      <AlgeriaMap src={MapStartPage}></AlgeriaMap>
     </StartPageContainer>
   );
 };

@@ -1,42 +1,54 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const DropDownHeader = styled("div")`
-  color: #3faffa;
+const showLi = keyframes`
+  0% {
+    transform:translateY(-100%);
+    opacity:0;
+}
+  100% {
+    transform:translateY(0);
+    opacity:1;
+    }
+`;
+export const DropDownContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+`;
+
+export const DropDownHeader = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #fff;
   border-radius: 50%;
 `;
 
-export const DropDownListContainer = styled("div")`
+export const DropDownList = styled.ul`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
   position: absolute;
-  display: none;
-  width: 150px;
-`;
-export const DropDownContainer = styled("div")`
-  margin: 0 auto;
-  &:hover ${DropDownListContainer} {
-    display: block;
-    transform: translateX(-100px);
-  }
-`;
-export const DropDownList = styled("ul")`
-  padding: 0;
-  margin: 0;
-  background: rgba(0, 0, 0, 0.9);
-  border: 2px solid transparent;
-  border-radius: 10%;
-  box-sizing: border-box;
-  color: #3faffa;
-  font-size: 1.3rem;
-  font-weight: 500;
+  top: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  transform: translateX(-25%);
+  width: 200px;
 `;
 
-export const ListItem = styled("li")`
+export const ListItem = styled.li`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
   padding: 10px;
+  width: 100%;
+  display: none;
+  animation: ${showLi} 0.3s forwards ease-out;
+  ${DropDownContainer}:hover & {
+    display: flex;
+  }
 `;
 export const LangSpan = styled.span`
   font-size: 18px;
@@ -52,5 +64,4 @@ export const DropDownImg = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  margin-right: 5px;
 `;

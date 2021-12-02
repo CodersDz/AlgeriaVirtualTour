@@ -39,6 +39,9 @@ const LocationCarousel = (props) => {
     } else {
     }
   }, []);
+  console.log(
+    `http://www.algeriavirtualtour.com/uploads/tours/Bastion/index.htm`
+  );
   const [index, setIndex] = useState(0);
   const goLeft = () => {
     if (Photos.length !== 1) {
@@ -91,7 +94,11 @@ const LocationCarousel = (props) => {
                     </motion.span>
                   )}
                 </ReadMoreBtn>
-                <Visit360Btn>Visite En 360°</Visit360Btn>
+                <Visit360Btn
+                  href={`http://www.algeriavirtualtour.com/uploads/tours/Bastion/index.htm`}
+                >
+                  Visite En 360°
+                </Visit360Btn>
               </BtnContainer>
             </ContentContainer>
           </LeftWrapper>

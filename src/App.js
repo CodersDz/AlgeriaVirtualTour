@@ -19,15 +19,6 @@ function App() {
     <div className="App">
       <Switch location={location} key={location.pathname}>
         <Route exact path="/" component={StartPage} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/Login" component={LogIn} />
-        <Route exact path="/Search/:categorie" component={SearchCatégorie} />
-        <Route exact path="/Search" component={SearchPage} />
-        <Route exact path="/About" component={About} />
-        <Route exact path="/Contact" component={Contact} />
-        <Route exact path="/Map" component={Map} />
-        <Route exact path="/wilaya/:wilayaname" component={Wilaya} />
-        <Route exact path="/location/:location" component={LocationCarousel} />
       </Switch>
     </div>
   );
