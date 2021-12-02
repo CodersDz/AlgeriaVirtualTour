@@ -26,29 +26,7 @@ const containerVariants = {
   exit: { opacity: 0, transition: { duration: 1, ease: "easeInOut" } },
 };
 const StartPage = () => {
-  const [wilayas, setWilayas] = useLocalStorage("wilayas", []);
-  const [banners, setBanners] = useLocalStorage("banners", {});
   const [showDetail, setShowDetail] = useState(false);
-  useEffect(() => {
-    axios
-      .get("http://www.algeriavirtualtour.com/api/banners/0")
-      .then((response) => {
-        setBanners(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-  useEffect(() => {
-    axios
-      .get("http://www.algeriavirtualtour.com/api/wilaya")
-      .then((response) => {
-        setWilayas(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
     <StartPageContainer
