@@ -8,7 +8,6 @@ export const SearchPageContainer = styled.div`
       rgba(0, 0, 0, 0.5)
     ),
     url(${SearchBg});
-  height: 100vh;
   width: 100vw;
   background-position: center;
   background-size: cover;
@@ -21,8 +20,10 @@ export const SearchContentContainer = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: space-around;
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 110px);
+  margin-top: 110px;
 `;
 export const SearchContentWrapper = styled.div`
   display: flex;

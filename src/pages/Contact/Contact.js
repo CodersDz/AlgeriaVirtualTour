@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import RightContainer from "../../components/RightContainer/RightContainer";
+import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
 import { motion } from "framer-motion";
 import {
   ContactPageContainer,
@@ -15,9 +15,10 @@ import {
   ContactInput,
   ContactTextArea,
   ContactBtn,
-  RightWrapper,
+  RightContainer,
 } from "./ContactElements";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 const Contact = () => {
   return (
     <ContactPageContainer
@@ -68,8 +69,11 @@ const Contact = () => {
             </Formik>
           </AboutContentLeftWrapper>
         </AboutContentLeft>
-        <RightContainer contact="true" />
+        <RightContainer>
+          <DevicesContainer />
+        </RightContainer>
       </AboutContentContainer>
+      <Footer />
     </ContactPageContainer>
   );
 };

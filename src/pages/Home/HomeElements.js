@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 export const HomeContainer = styled.div`
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)),
+  ) => `linear-gradient(to right, rgba(75, 203, 2, 0.8), rgba(75, 203, 2, 0.8)),
     url(${props.currentBg})`};
-  height: 100vh;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -16,22 +15,49 @@ export const HomeContainer = styled.div`
 `;
 
 export const HomeContent = styled.div`
-  height: calc(100vh - 150px);
+  height: calc(100vh - 110px);
+  margin-top: 110px;
   width: 100%;
   display: flex;
+  position: relative;
 `;
 
 export const InfoCarousel = styled.div`
   width: 60%;
   height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  z-index: -1;
-  padding: 0 70px 25px 70px;
+  z-index: 2;
+  padding: 70px 70px 0 100px;
 `;
+export const InfoCarouselContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+`;
+export const InfoCarouselTitle = styled.h1`
+  width: 45%;
+  height: 100%;
+  font-size: 73px;
+  font-weight: 700;
+  text-align: start;
+  color: #fff;
+  text-transform: uppercase;
+`;
+export const InfoCarouselImg = styled.img`
+  width: 55%;
+  max-height: 100%;
+  position: relative;
+  bottom: -4px;
+  right: 0;
+  align-self: end;
+`;
+
 export const InfoCarouselExpanded = styled(InfoCarousel)`
   z-index: 1;
   max-height: 100%;
@@ -54,7 +80,7 @@ export const MapContainer = styled.div`
   top: 0;
   right: 0;
   opacity: 0.5;
-  height: 100%;
+  max-height: 100%;
   width: 60%;
 `;
 export const InfoH2 = styled.h2`

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 export const PageContainer = styled.div`
   width: 100vw;
-  height: 100vh;
   background: ${(
     props
   ) => `linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.4)),
@@ -16,7 +15,8 @@ export const PageContainer = styled.div`
 `;
 export const PageContent = styled.div`
   width: 100%;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 110px);
+  margin-top: 110px;
   display: flex;
   flex-direction: row;
 `;
@@ -84,7 +84,7 @@ export const ReadMoreBtn = styled.button`
   padding: 25px;
   cursor: pointer;
 `;
-export const Visit360Btn = styled(Link)`
+export const Visit360Btn = styled.a`
   min-width: 42%;
   max-height: 100%;
   margin: 0 30px 0 0;

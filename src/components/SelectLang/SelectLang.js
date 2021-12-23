@@ -9,7 +9,6 @@ import fr_flag from "../../assets/Images/fr_flag.png";
 import {
   DropDownContainer,
   DropDownHeader,
-  DropDownListContainer,
   DropDownList,
   ListItem,
   FlagImg,
@@ -43,31 +42,24 @@ const SelectLang = () => {
     } else return en_flag;
   };
   return (
-    <div>
-      <DropDownContainer>
-        <DropDownHeader onMouseOver={toggling}>
-          {<FlagImg src={selectFlag(selectedOption)} />}
-        </DropDownHeader>
+    <DropDownContainer>
+      <DropDownHeader onMouseOver={toggling}>
+        {<FlagImg src={selectFlag(selectedOption)} />}
+      </DropDownHeader>
 
-        <DropDownListContainer>
-          <DropDownList>
-            {options
-              .filter((option) => {
-                if (option.ref !== selectedOption) return option;
-              })
-              .map((option) => (
-                <ListItem
-                  onClick={onOptionClicked(option.ref)}
-                  key={Math.random()}
-                >
-                  <DropDownImg src={selectFlag(option.ref)} />
-                  <LangSpan>{option.name}</LangSpan>
-                </ListItem>
-              ))}
-          </DropDownList>
-        </DropDownListContainer>
-      </DropDownContainer>
-    </div>
+      <DropDownList>
+        {options
+          .filter((option) => {
+            if (option.ref !== selectedOption) return option;
+          })
+          .map((option) => (
+            <ListItem onClick={onOptionClicked(option.ref)} key={Math.random()}>
+              <DropDownImg src={selectFlag(option.ref)} />
+              <LangSpan>{option.name}</LangSpan>
+            </ListItem>
+          ))}
+      </DropDownList>
+    </DropDownContainer>
   );
 };
 

@@ -1,102 +1,41 @@
-import React from "react";
-import { Formik } from "formik";
-//-----------------Icons imports---------------
-import { ReactComponent as FacebookIcone } from "../../assets/svg/FacebookIcone.svg";
-import { ReactComponent as TwitterIcone } from "../../assets/svg/TwitterIcone.svg";
-//-----------------Elements imports---------------
-import {
-  PageContainer,
-  LoginContainer,
-  LoginContainerContent,
-  LoginH1,
-  SocialMediaContainer,
-  SocialMedia,
-  LoginP,
-  LoginHr,
-  HrP,
-  HrContainer,
-  LoginForm,
-  LoginInput,
-  LoginBtn,
-} from "./LogInElements";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { PageContainer, LogInSignUpContainer } from "./LogInElements";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 const LogIn = () => {
+  const [login, setLogin] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const handleSubmit = () => {};
+  const ChangeSignInSignUp = () => {
+    if (login) {
+      return (
+        <Login
+          login={login}
+          setLogin={setLogin}
+          toggle={toggle}
+          setToggle={setToggle}
+        />
+      );
+    } else
+      return (
+        <SignUp
+          login={login}
+          setLogin={setLogin}
+          toggle={toggle}
+          setToggle={setToggle}
+        />
+      );
+  };
   return (
     <PageContainer>
-      <LoginContainer>
-        <LoginContainerContent>
-          <LoginH1>Se Connecter</LoginH1>
-          <SocialMediaContainer>
-            <SocialMedia>
-              <FacebookIcone />
-              <LoginP>Continuer avec facebook</LoginP>
-            </SocialMedia>
-            <SocialMedia>
-              <TwitterIcone />
-              <LoginP>Continuer avec twitter</LoginP>
-            </SocialMedia>
-          </SocialMediaContainer>
-          <HrContainer>
-            <LoginHr />
-            <HrP>Ou</HrP>
-            <LoginHr />
-          </HrContainer>
-          <Formik
-            initialValues={{ email: "", password: "" }}
-            validate={(values) => {
-              const errors = {};
-              if (!values.email) {
-                errors.email = "Required";
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = "Invalid email address";
-              }
-              return errors;
-            }}
-            onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-              /* and other goodies */
-            }) => (
-              <LoginForm onSubmit={handleSubmit}>
-                <LoginInput
-                  type="email"
-                  name="email"
-                  value={values.email}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Email..."
-                ></LoginInput>
-                <LoginInput
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  placeholder="Mot de passe..."
-                ></LoginInput>
-                <LoginBtn type="submit" disabled={isSubmitting}>
-                  Se connecter
-                </LoginBtn>
-              </LoginForm>
-            )}
-          </Formik>
-        </LoginContainerContent>
-      </LoginContainer>
+      <LogInSignUpContainer login={login}>
+        <AnimatePresence>
+          <AnimateSharedLayout>
+            <ChangeSignInSignUp />
+          </AnimateSharedLayout>
+        </AnimatePresence>
+      </LogInSignUpContainer>
     </PageContainer>
   );
 };

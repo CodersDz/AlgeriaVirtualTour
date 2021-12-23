@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="346.914" height="64.983" viewBox="0 0 346.914 64.983">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.009" y1="-0.077" x2="0.948" y2="1.027" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#e6e6e6"/>
+    </linearGradient>
+  </defs>
+  <g id="Groupe_3" data-name="Groupe 3" transform="translate(-180 -547)">
+    <g id="Groupe_1" data-name="Groupe 1" transform="translate(180 547)">
+      <path id="Tracé_1" data-name="Tracé 1" d="M244.983,569.156A22.156,22.156,0,0,0,222.827,547H202.156A22.156,22.156,0,0,0,180,569.156v20.671a22.156,22.156,0,0,0,22.156,22.156h20.671a22.156,22.156,0,0,0,22.156-22.156Zm-17.933-4.061c1.217,1.167,1.135,3.5.005,6.484-1.621-.289-3.353-.529-5.173-.71.635-1.841.646-3.249-.1-3.966-.934-.9-2.893-.564-5.391.711C221.242,564.525,225.3,563.413,227.05,565.095Zm-8.975,20.08-.182.2-.135.15q-.685.754-1.405,1.507-1.472,1.534-2.961,2.915c-7.966,7.4-15.867,11.227-18.515,8.687-1.574-1.509-.975-4.968,1.251-9.261q.446-.861.979-1.763a16.088,16.088,0,0,0-.731,1.8c-.586,1.77-.577,3.123.151,3.821,1.371,1.315,4.953-.014,9.2-3.095a51.575,51.575,0,0,0,5.183-4.346q.2-.188.4-.381l.1-.095q.786-.763,1.57-1.579a55.212,55.212,0,0,0,6.037-7.423A48.291,48.291,0,0,1,224,577.454,61.117,61.117,0,0,1,218.075,585.175Zm13.743-2.825a32.542,32.542,0,0,1-6.089,1.791c3.042-.894,4.891-2.086,4.906-3.415,0-.041,0-.081,0-.122-.108-1.474-2.473-2.827-6.214-3.812a43.707,43.707,0,0,0-5.068-.987,68.491,68.491,0,0,0-8.538-.615c-1.165-.014-2.308,0-3.418.038l-.381.014-.568.025c-8.89.424-15.553,2.459-15.583,4.986,0,.028,0,.056,0,.084a3.547,3.547,0,0,1-1.648-2.7,2.281,2.281,0,0,1,.091-.609c1.018-3.544,10.479-6.283,22.434-6.541l.172,0,.442.012a77.651,77.651,0,0,1,9.366.812c1.811.274,3.5.608,5.045.993,5.757,1.437,9.427,3.581,9.4,5.934C236.145,579.781,234.545,581.194,231.818,582.35Z" transform="translate(-180 -547)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="Groupe_2" data-name="Groupe 2" transform="translate(263.914 562.7)">
+      <text id="ALGERIA_VIRTUAL_TOUR" data-name="ALGERIA VIRTUAL TOUR" transform="translate(0 20)" fill="#fff" font-size="21" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">ALGERIA</tspan><tspan y="0" xml:space="preserve" font-family="Montserrat-Medium, Montserrat" font-weight="500"> VIRTUAL TOUR</tspan></text>
+      <text id="By_VIRTUAL_ART_PRODUCTION" data-name="By VIRTUAL ART PRODUCTION" transform="translate(128.123 33.363)" fill="#fff" font-size="7" font-family="Montserrat-LightItalic, Montserrat" font-weight="300" font-style="italic"><tspan x="0" y="0">By </tspan><tspan y="0" font-family="Montserrat-SemiBoldItalic, Montserrat" font-weight="600">VIRTUAL ART PRODUCTION</tspan></text>
+    </g>
+  </g>
+</svg>

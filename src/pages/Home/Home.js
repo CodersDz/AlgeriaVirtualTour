@@ -5,6 +5,8 @@ import {
   HomeContainer,
   HomeContent,
   InfoCarousel,
+  InfoCarouselTitle,
+  InfoCarouselImg,
   ImgCarousel,
   HomePub,
   ThumbnailImages,
@@ -28,9 +30,12 @@ import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
+import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "./HomeBg.jpg";
+import FemmeVr from "./FemmeVr.png";
 
 const BtnVariants = {
   initial: { opacity: 0 },
@@ -156,10 +161,16 @@ const Home = () => {
       >
         <Navbar setAnimated={setAnimated} />
         <HomeContent>
+          <SidePopUpBar />
           <MapContainer>
             <DzMap />
           </MapContainer>
-          <InfoCarousel />
+          <InfoCarousel>
+            <InfoCarouselTitle>
+              La 1ere platforme de Tourisme Virtuelle en Algérie
+            </InfoCarouselTitle>
+            <InfoCarouselImg src={FemmeVr} />
+          </InfoCarousel>
           <ImgCarousel>
             <HomePub src={banners.banner_home1} />
             <ThumbnailImages>
@@ -171,6 +182,7 @@ const Home = () => {
             <HomePub src={banners.banner_home2} />
           </ImgCarousel>
         </HomeContent>
+        <Footer />
       </HomeContainer>
     </AnimateSharedLayout>
   );

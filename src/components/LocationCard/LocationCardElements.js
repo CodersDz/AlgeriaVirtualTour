@@ -1,14 +1,15 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const LocationCardContainer = styled.div`
+export const LocationCardContainer = styled(Link)`
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: #eaeaea;
-  min-width: 20%;
-  max-width: 20%;
+  min-width: 25%;
+  max-width: 25%;
   max-height: 100%;
   margin-right: 5vw;
   border: 1px solid transparent;

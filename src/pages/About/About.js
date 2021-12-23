@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import RightContainer from "../../components/RightContainer/RightContainer";
+import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
 import {
   ContactPageContainer,
   AboutContentContainer,
@@ -8,6 +8,7 @@ import {
   AboutContentLeftWrapper,
   AboutH1,
   AboutP,
+  RightContainer,
 } from "./AboutElements";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -34,7 +35,8 @@ const About = () => {
             </AboutP>
           </AboutContentLeftWrapper>
         </AboutContentLeft>
-        <RightContainer contact="false" />
+        <RightContainer></RightContainer>
+        <DevicesContainer />
       </AboutContentContainer>
       <Footer />
     </ContactPageContainer>

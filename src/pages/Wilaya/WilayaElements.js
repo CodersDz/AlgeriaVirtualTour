@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const WilayaPageContainer = styled.div`
-  height: 100vh;
   width: 100vw;
   background: ${(props) =>
     `linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url(${props.bg})`};
@@ -10,6 +9,8 @@ export const WilayaPageContainer = styled.div`
   background-repeat: no-repeat;
   overflow: hidden;
   position: relative;
+  transition: all 1s ease-in-out;
+  transition-delay: 1s;
 `;
 //-----------------------Info Components----------------------------
 export const RightWilayaNav = styled.ul`
@@ -49,11 +50,13 @@ export const RightNavHr = styled.div`
 //-----------------------Info Components----------------------------
 //-----------------------Global container Components----------------------------
 export const WilayaPageContentContainer = styled.div`
-  height: calc(100vh - 150px);
+  height: calc(100vh - 110px);
+  margin-top: 110px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 export const LeftContainer = styled.div`
   height: 100%;

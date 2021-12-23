@@ -8,10 +8,13 @@ import {
   TopContentContainer,
   CatégorieImg,
   CatégorieNom,
-  SearchCatégoriePageContent,
+  SearchCatégorieContent,
+  ContentWrapper,
+  PubContainer,
 } from "./SearchCatégorieElements";
 import CatégorieSection from "../../components/CatégorieSection/CatégorieSection";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const Catégories = [
   { catégorieName: "Art&Culture", idCatégorie: 8 },
@@ -49,24 +52,28 @@ const SearchCatégorie = (props) => {
 
   return (
     <SearchCatégoriePageContainer>
+      <Navbar />
       <TopContainer bg={categorie}>
-        <Navbar />
         <TopContentContainer>
           <CatégorieImg src={require(`./Images/${categorie}.png`).default} />
           <CatégorieNom>{categorie}</CatégorieNom>
         </TopContentContainer>
       </TopContainer>
-      <SearchCatégoriePageContent>
-        <CatégorieSection
-          locations={locations}
-          sectionName={"Les Plus Visités"}
-        />
-        <CatégorieSection
-          locations={locations}
-          sectionName={"Récents Ajoutés"}
-        />
-        <CatégorieSection locations={locations} sectionName={"Générale"} />
-      </SearchCatégoriePageContent>
+      <SearchCatégorieContent>
+        <ContentWrapper>
+          <CatégorieSection
+            locations={locations}
+            sectionName={"Les Plus Visités"}
+          />
+          <CatégorieSection
+            locations={locations}
+            sectionName={"Récents Ajoutés"}
+          />
+          <CatégorieSection locations={locations} sectionName={"Générale"} />
+        </ContentWrapper>
+        <PubContainer>hello</PubContainer>
+      </SearchCatégorieContent>
+      <Footer />
     </SearchCatégoriePageContainer>
   );
 };

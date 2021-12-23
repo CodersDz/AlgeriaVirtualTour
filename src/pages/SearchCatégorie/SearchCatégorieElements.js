@@ -3,11 +3,20 @@ import styled from "styled-components";
 export const SearchCatégoriePageContainer = styled.div`
   width: 100vw;
 `;
+export const ContentWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 export const TopContainer = styled.div`
+  margin-top: 110px;
   width: 100%;
   height: 40vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   background: ${(props) =>
     `linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)),url(${
       require(`../../assets/Images/SearchImages/${props.bg}.jpg`).default
@@ -16,13 +25,14 @@ export const TopContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
 `;
-export const SearchCatégoriePageContent = styled.div`
+export const SearchCatégorieContent = styled.div`
   width: 100%;
-  position: static;
-
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  align-items: center;
+`;
+export const PubContainer = styled.div`
+  width: 20%;
 `;
 
 export const TopContentContainer = styled.div`

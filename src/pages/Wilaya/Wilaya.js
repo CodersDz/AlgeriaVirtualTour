@@ -46,6 +46,7 @@ import {
 import { ReadMoreBtn } from "../../GlobalStyles";
 import { AiOutlineEllipsis, AiOutlineHeart } from "react-icons/ai";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import "./WilayaStyles.css";
@@ -65,17 +66,7 @@ const Wilaya = (props) => {
   const { wilayaname } = useParams();
   const [locations, setLocations] = useState([]);
   const [wilaya, setWilaya] = useState({});
-  useEffect(() => {
-    axios
-      .get("http://www.algeriavirtualtour.com/api/location")
-      .then((response) => {
-        console.log(response.data.data);
-        setLocations(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+
   useEffect(() => {
     if (props.location.state) {
       setWilaya(props.location.state.wilaya);
@@ -91,6 +82,17 @@ const Wilaya = (props) => {
         });
     }
   }, []);
+  useEffect(() => {
+    axios
+      .get(`http://www.algeriavirtualtour.com/api/location?wilaya=23`)
+      .then((response) => {
+        console.log(response.data.data);
+        setLocations(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [wilaya]);
   const [readMore, setReadMore] = useState(false);
   const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
@@ -303,12 +305,6 @@ const Wilaya = (props) => {
                         {destination.description}
                       </DestinationDescription>
                     </DestinationTextContainer>
-                    <ThreePointContainer>
-                      <AiOutlineEllipsis size="36" />
-                      <sideBarDestinationLi>
-                        <AiOutlineHeart />
-                      </sideBarDestinationLi>
-                    </ThreePointContainer>
                   </DestinationLi>
                 );
               })}
@@ -371,43 +367,45 @@ const Wilaya = (props) => {
           <RightContainer>
             <ChangeRight />
             <Pub src={banners.banner_location} />
+            <RightWilayaNav>
+              <RightNavLi
+                onClick={() => {
+                  setCurrentSection("Destination");
+                }}
+              >
+                Déstination
+                {currentSection === "Destination" ? (
+                  <RightNavHr as={motion.div} />
+                ) : null}
+              </RightNavLi>
+              <RightNavLi
+                onClick={() => {
+                  setCurrentSection("Info");
+                  setCurrentDiscoverOption(wilayaname);
+                }}
+              >
+                Plus D'info
+                {currentSection === "Info" ? (
+                  <RightNavHr as={motion.div} />
+                ) : null}
+              </RightNavLi>
+              <RightNavLi
+                onClick={() => {
+                  setCurrentSection("Discover");
+                  setCurrentDiscoverOption(wilayaname);
+                }}
+              >
+                Découvrir
+                {currentSection === "Discover" ? (
+                  <RightNavHr as={motion.div} />
+                ) : null}
+              </RightNavLi>
+            </RightWilayaNav>
           </RightContainer>
         </WilayaPageContentContainer>
       </AnimateSharedLayout>
-      <RightWilayaNav>
-        <RightNavLi
-          onClick={() => {
-            setCurrentSection("Destination");
-          }}
-        >
-          Déstination
-          {currentSection === "Destination" ? (
-            <RightNavHr as={motion.div} layoutId={"hr"} />
-          ) : null}
-        </RightNavLi>
-        <RightNavLi
-          onClick={() => {
-            setCurrentSection("Info");
-            setCurrentDiscoverOption(wilayaname);
-          }}
-        >
-          Plus D'info
-          {currentSection === "Info" ? (
-            <RightNavHr as={motion.div} layoutId={"hr"} />
-          ) : null}
-        </RightNavLi>
-        <RightNavLi
-          onClick={() => {
-            setCurrentSection("Discover");
-            setCurrentDiscoverOption(wilayaname);
-          }}
-        >
-          Découvrir
-          {currentSection === "Discover" ? (
-            <RightNavHr as={motion.div} layoutId={"hr"} />
-          ) : null}
-        </RightNavLi>
-      </RightWilayaNav>
+
+      <Footer />
     </WilayaPageContainer>
   );
 };

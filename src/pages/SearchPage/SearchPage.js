@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
 import {
   SearchPageContainer,
@@ -53,6 +54,7 @@ const SearchPage = () => {
           <CardContainer locations={locations} />
         </SearchContentWrapper>
       </SearchContentContainer>
+      <Footer />
     </SearchPageContainer>
   );
 };

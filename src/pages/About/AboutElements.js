@@ -10,6 +10,7 @@ export const ContactPageContainer = styled.div`
 `;
 export const AboutContentContainer = styled.div`
   height: calc(80vh - 150px);
+  margin-top: 110px;
   width: 100%;
   padding: 0 100px;
   display: flex;
@@ -40,4 +41,8 @@ export const AboutP = styled.p`
   text-align: start;
   font-weight: 400;
   width: 100%;
+`;
+export const RightContainer = styled.div`
+  position: relative;
+  width: 50%;
 `;

@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
-export const MapPageContainer = styled.div`
-  height: 100vh;
+export const PageContainer = styled.div`
   width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 `;
+export const MapContainer = styled.div`
+  height: calc(100vh - 110px);
+  margin-top: 110px;
+  width: 100%;
+`;
+
 export const LocationContainer = styled.div``;
 export const LocationHiddenContainer = styled.div`
   width: 100px;

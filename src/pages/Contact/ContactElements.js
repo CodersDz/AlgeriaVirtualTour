@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ContactPageContainer = styled.div`
   background: rgba(4, 104, 0);
   width: 100vw;
-  height: 100vh;
   position: relative;
   z-index: 3;
   overflow: hidden;
@@ -11,6 +10,7 @@ export const ContactPageContainer = styled.div`
 `;
 export const AboutContentContainer = styled.div`
   height: calc(100vh - 150px);
+  margin-top: 110px;
   width: 100%;
   padding: 0 100px 100px 100px;
   display: flex;
@@ -116,4 +116,8 @@ export const ContactBtn = styled.button`
   padding: 25px;
   cursor: pointer;
   box-sizing: border-box;
+`;
+export const RightContainer = styled.div`
+  position: relative;
+  width: 50%;
 `;
