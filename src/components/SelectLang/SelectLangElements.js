@@ -1,67 +1,67 @@
-import styled, { keyframes } from "styled-components";
-
-const showLi = keyframes`
-  0% {
-    transform:translateY(-100%);
-    opacity:0;
-}
-  100% {
-    transform:translateY(0);
-    opacity:1;
-    }
-`;
-export const DropDownContainer = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-`;
-
-export const DropDownHeader = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-`;
-
-export const DropDownList = styled.ul`
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
+import styled from "styled-components";
+import device from "../../assets/Variables/responsive";
+export const LangContainer = styled.div`
+  width: 180px;
+  height: 180px;
+  padding: 20px;
   position: absolute;
-  top: 100%;
-  border-radius: 20px;
-  overflow: hidden;
-  transform: translateX(-25%);
-  width: 200px;
-`;
-
-export const ListItem = styled.li`
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  padding: 10px;
-  width: 100%;
-  display: none;
-  animation: ${showLi} 0.3s forwards ease-out;
-  ${DropDownContainer}:hover & {
-    display: flex;
+  right: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 0 0 20px 20px;
+  display: ${({ langOpen }) => (langOpen ? "block" : "none")};
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    top: 64px;
+  }
+  @media only screen and ${device.desktop} {
+    top: 94px;
   }
 `;
-export const LangSpan = styled.span`
-  font-size: 18px;
-  font-weight: 600;
-`;
 
-export const FlagImg = styled.img`
+export const LangWrapper = styled.div`
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
 `;
-export const DropDownImg = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+export const LangTitle = styled.h4`
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const LangUl = styled.ul`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+`;
+export const LangLi = styled.li`
+  width: 100%;
+  height: 25%;
+`;
+export const RadioLabel = styled.label`
+  width: 100%;
+  height: 100%;
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: #fff;
+  color: grey;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const RadioInput = styled.input`
+  cursor: pointer;
+  color: green;
 `;

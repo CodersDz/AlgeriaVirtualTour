@@ -4,6 +4,7 @@ import {
   FooterElements,
   FooterWrapper,
   FooterElement,
+  FooterElementLink,
   FooterElementTitle,
   FooterP,
   FooterElementIcone,
@@ -21,13 +22,14 @@ import { ReactComponent as InfoIcone } from "../../assets/svg/InfoIcone.svg";
 import { ReactComponent as StoreIcone } from "../../assets/svg/StoreIcone.svg";
 import { ReactComponent as FacebookIcone } from "../../assets/svg/FacebookIcone.svg";
 import { ReactComponent as TwitterIcone } from "../../assets/svg/TwitterIcone.svg";
+import { ReactComponent as LinkedInIcone } from "../../assets/svg/LinkedInIcone.svg";
 
 const Footer = () => {
   return (
     <FooterContainer>
       <FooterWrapper>
         <FooterElements>
-          <NavLogo style={{ alignSelf: "flex-start" }} />
+          <NavLogo style={{ maxWidth: "100% " }} />
           <FooterP>
             L'utilisation de ce site Internet implique l'acceptation des
             Conditions générales et du règlement sur le Respect de la vie
@@ -35,62 +37,66 @@ const Footer = () => {
           </FooterP>
         </FooterElements>
         <FooterElements>
-          <FooterElement>
+          <FooterElementLink to="/Store">
             <FooterElementIcone>
               <StoreIcone />
             </FooterElementIcone>
-
             <FooterElementTitle>
               Store de Algeria Virtuel Tour
             </FooterElementTitle>
-          </FooterElement>
-          <FooterElement>
+          </FooterElementLink>
+          <FooterElementLink to="/Pub">
             <FooterElementIcone>
               <PubIcone />
             </FooterElementIcone>
-
             <FooterElementTitle>
               Pubilicité sur Algeria Virtuel Tour
             </FooterElementTitle>
-          </FooterElement>
-          <FooterElement>
+          </FooterElementLink>
+          <FooterElementLink to="/LegalNotice">
             <FooterElementIcone>
               <InfoIcone />
             </FooterElementIcone>
-
-            <FooterElementTitle>Motions légales</FooterElementTitle>
-          </FooterElement>
+            <FooterElementTitle>Montions légales</FooterElementTitle>
+          </FooterElementLink>
         </FooterElements>
         <FooterElements>
-          <FooterElement>
+          <FooterElementLink to="/Contact">
             <FooterElementIcone>
               <ContactIcone />
             </FooterElementIcone>
-
             <FooterElementTitle>Contactez nous</FooterElementTitle>
-          </FooterElement>
-          <FooterElement>
+          </FooterElementLink>
+          <FooterElementLink to="/">
             <FooterElementIcone>
               <SiteIcone />
             </FooterElementIcone>
-
             <FooterElementTitle>www.virtuelart.com</FooterElementTitle>
-          </FooterElement>
+          </FooterElementLink>
           <FooterElement>
-            <FooterElementIcone>
+            <FooterElementIcone
+              href="https://www.facebook.com/Algeria.Travel.Guide"
+              target="_blank"
+            >
               <FacebookIcone />
             </FooterElementIcone>
-
-            <FooterElementIcone>
+            <FooterElementIcone
+              href="https://www.instagram.com/algeria_virtual_tour"
+              target="_blank"
+            >
               <InstagramIcone />
             </FooterElementIcone>
-
-            <FooterElementIcone>
+            <FooterElementIcone
+              href="https://youtube.com/channel/UCpu5hxyNQq0bl8A0-b-zpJw"
+              target="_blank"
+            >
               <YoutubeIcone />
             </FooterElementIcone>
-
-            <FooterElementIcone>
-              <TwitterIcone />
+            <FooterElementIcone
+              href="https://www.linkedin.com/in/algeria-virtualtour"
+              target="_blank"
+            >
+              <LinkedInIcone />
             </FooterElementIcone>
           </FooterElement>
         </FooterElements>
@@ -100,9 +106,7 @@ const Footer = () => {
               <PhoneIcone />
             </FooterElementIcone>
 
-            <FooterElementTitle>
-              +213 550 129 119 | +213 0774 816 951
-            </FooterElementTitle>
+            <FooterElementTitle>+213 550 129 119</FooterElementTitle>
           </FooterElement>
           <FooterElement>
             <FooterElementIcone>

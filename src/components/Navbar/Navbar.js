@@ -12,7 +12,7 @@ import { ReactComponent as AgendaIcone } from "../../assets/svg/AgendaIcone.svg"
 import { ReactComponent as TravelIcone } from "../../assets/svg/TravelIcone.svg";
 import { ReactComponent as ProfileIcone } from "../../assets/svg/ProfileIcone.svg";
 import { ReactComponent as LanguageIcone } from "../../assets/svg/LanguageIcone.svg";
-
+import useWindowSize from "../../hooks/useWindowSize";
 //-----------------Components imports---------------
 import SelectLang from "../SelectLang/SelectLang";
 //-----------------Elements imports---------------
@@ -29,9 +29,12 @@ import {
   VisibleRightNavAgenda,
   HiddenUl,
   HiddenLi,
+  NavLang,
+  NavLangSpan,
 } from "./NavbarElements";
 //MainNav
 import { NavContainer, NavWrapper } from "./NavbarElements";
+import NavbarMobile from "./NavbarMobile/NavbarMobile";
 //LeftContainer
 import {
   LeftContainer,
@@ -58,8 +61,10 @@ const HiddenLiVariants = {
 const Navbar = ({ setAnimated }) => {
   let history = useHistory();
   const location = useLocation();
+  const isDesktop = useWindowSize();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
   const resetCaroussel = () => {
     if (location.pathname === "/home" || location.pathname === "/Home") {
       setAnimated([]);
@@ -67,15 +72,12 @@ const Navbar = ({ setAnimated }) => {
       history.push("/home");
     }
   };
-  const closeBar = () => {
-    setOpen(true);
-  };
   const componentDidMount = () => {
     document.getElementById("rightNav").focus();
   };
 
   return (
-    <NavContainer>
+    <NavContainer isDesktop={isDesktop}>
       <RightNavContainer
         id="rightNav"
         tabIndex="10"
@@ -86,11 +88,21 @@ const Navbar = ({ setAnimated }) => {
       >
         <RightNavDiv>
           <TopUl>
-            <RightNavLink to="/Home">Profile</RightNavLink>
-            <RightNavLink to="/Home">Article enregisté</RightNavLink>
+            <RightNavLink
+              to="/Home"
+              onClick={(event) => event.preventDefault()}
+            >
+              {t("NavBar.Profile")}
+            </RightNavLink>
+            <RightNavLink
+              to="/Home"
+              onClick={(event) => event.preventDefault()}
+            >
+              {t("NavBar.Saved_items")}
+            </RightNavLink>
             <RightNavAgenda>
               <VisibleRightNavAgenda>
-                <span>Agenda</span>
+                <span>{t("NavBar.Agenda")}</span>
                 <ArrowSvg />
               </VisibleRightNavAgenda>
               <HiddenUl>
@@ -125,67 +137,84 @@ const Navbar = ({ setAnimated }) => {
             </RightNavAgenda>
           </TopUl>
           <BottomUl>
-            <RightNavLink to="/About">About Us</RightNavLink>
-            <RightNavLink to="/Contact">Contact Us</RightNavLink>
-            <RightNavLink to="/LegalNotice">Mentions légale</RightNavLink>
+            <RightNavLink to="/About">{t("NavBar.About_us")}</RightNavLink>
+            <RightNavLink to="/Contact">{t("NavBar.Contact_us")}</RightNavLink>
+            <RightNavLink to="/LegalNotice">
+              {t("NavBar.Legal_Notice")}
+            </RightNavLink>
             <RightNavText>
-              Tous les droits sont réservés <br />
-              Virtuel Art Prod <br />
-              2021
+              {t("NavBar.All_rights_reserved")} <br />
+              Virtual Art Production <br />
+              2022
             </RightNavText>
           </BottomUl>
         </RightNavDiv>
       </RightNavContainer>
-      <NavWrapper>
-        <LeftContainer>
-          <HumbergerItem>
-            <HumbergerIcon
-              size="36"
+      {isDesktop ? (
+        <NavWrapper>
+          <LeftContainer>
+            <HumbergerItem>
+              <HumbergerIcon
+                size="36"
+                onClick={() => {
+                  setOpen(true);
+                  componentDidMount();
+                }}
+              />
+            </HumbergerItem>
+            <LogoItem onClick={resetCaroussel}>
+              <Home />
+              <NavSeparator />
+              <Logo />
+            </LogoItem>
+          </LeftContainer>
+          <SearchContainer>
+            <SearchBtn to="/Search">
+              <SearchIcone size="24" color="#fff" />
+              <SearchSpan>{t("NavBar.Research")}</SearchSpan>
+            </SearchBtn>
+          </SearchContainer>
+          <RightContainer>
+            <NavItem>
+              <NavLink to="/" onClick={(event) => event.preventDefault()}>
+                <AgendaIcone style={{ maxWidth: "100%", maxHeight: "80%" }} />
+                <NavLinkSpan>{t("NavBar.Agenda")}</NavLinkSpan>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/" onClick={(event) => event.preventDefault()}>
+                <TravelIcone
+                  style={{
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    marginTop: "-8px",
+                  }}
+                />
+                <NavLinkSpan>{t("NavBar.Travel")}</NavLinkSpan>
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/Login">
+                <ProfileIcone style={{ maxWidth: "100%", maxHeight: "80%" }} />
+                <NavLinkSpan>{t("NavBar.Profile")}</NavLinkSpan>
+              </NavLink>
+            </NavItem>
+            <NavItem
               onClick={() => {
-                setOpen(true);
-                componentDidMount();
+                setLangOpen(!langOpen);
               }}
-            />
-          </HumbergerItem>
-          <LogoItem onClick={resetCaroussel}>
-            <Home />
-            <NavSeparator />
-            <Logo />
-          </LogoItem>
-        </LeftContainer>
-        <SearchContainer>
-          <SearchBtn to="/Search">
-            <SearchIcone size="24" color="#fff" />
-            <SearchSpan>Recherchez</SearchSpan>
-          </SearchBtn>
-        </SearchContainer>
-        <RightContainer>
-          <NavItem>
-            <NavLink to="/">
-              <AgendaIcone />
-              <NavLinkSpan>Agenda</NavLinkSpan>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/Login">
-              <TravelIcone />
-              <NavLinkSpan>Voyage</NavLinkSpan>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/Login">
-              <ProfileIcone />
-              <NavLinkSpan>Profile</NavLinkSpan>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink to="/Login">
-              <LanguageIcone />
-              <NavLinkSpan>Langue</NavLinkSpan>
-            </NavLink>
-          </NavItem>
-        </RightContainer>
-      </NavWrapper>
+            >
+              <NavLang>
+                <LanguageIcone style={{ maxWidth: "100%", maxHeight: "80%" }} />
+                <NavLangSpan>{t("NavBar.Language")}</NavLangSpan>
+              </NavLang>
+            </NavItem>
+            <SelectLang langOpen={langOpen} />
+          </RightContainer>
+        </NavWrapper>
+      ) : (
+        <NavbarMobile setOpen={setOpen} />
+      )}
     </NavContainer>
   );
 };

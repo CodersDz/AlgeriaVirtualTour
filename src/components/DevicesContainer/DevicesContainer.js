@@ -13,37 +13,43 @@ import {
   StoreIcones,
   StoreIcone,
 } from "./DevicesContainerElements";
-
+import useTranslation from "../../hooks/useTranslation/useTranslation";
 import AppStore from "./AppStore.png";
 import PlayStore from "./PlayStore.png";
+import Moniteur from "./Moniteur.png";
+import PcPortable from "./PcPortable.png";
+import Tablette from "./Tablette.png";
+import Téléphone from "./Téléphone.png";
 
 const DevicesContainer = () => {
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
     <Container>
       <Wrapper>
         <Imgs>
           <MoniteurImg
             as={motion.img}
-            whileHover={{ y: "-30px" }}
-            whileHover={{ y: "-30px" }}
             whileHover={{ y: "-40px" }}
+            src={Moniteur}
           />
-          <PcPortableImg as={motion.img} whileHover={{ x: "10px" }} />
+          <PcPortableImg
+            as={motion.img}
+            whileHover={{ x: "-10px" }}
+            src={PcPortable}
+          />
           <TabeletteImg
             as={motion.img}
-            initial={{ x: "150px" }}
-            animate={{ x: "150px" }}
-            whileHover={{ x: "140px" }}
+            whileHover={{ x: "-10px" }}
+            src={Tablette}
           />
           <TéléphoneImg
             as={motion.img}
-            initial={{ x: "75px" }}
-            animate={{ x: "75px" }}
-            whileHover={{ x: "65px", scale: 1.1 }}
+            whileHover={{ x: "-10px", scale: 1.1 }}
+            src={Téléphone}
           />
         </Imgs>
         <StoreContainer>
-          <StoreP>Télécharger l'application AVT</StoreP>
+          <StoreP>{t("DevicesContainer.Download")}</StoreP>
           <StoreIcones>
             <StoreIcone
               as={motion.img}

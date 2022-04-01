@@ -1,18 +1,73 @@
 {
   "StartPage": { "Begin": "Begin" },
-  "Nav": { "Login": "Login", "Register": "Register", "Agenda": "Agenda" },
+  "NavBar": {
+    "Agenda": "Agenda",
+    "Travel": "Travel",
+    "Profile": "Profile",
+    "Language": "Language",
+    "Research": "Research",
+    "Saved_items": "Saved items",
+    "About_us": "About Us",
+    "Contact_us": "Contact Us",
+    "Legal_Notice": "Legal Notice",
+    "All_rights_reserved": "All rights reserved"
+  },
   "SearchPage": {
     "Card": {
-      "Art_Culture": "Art & Culture",
+      "Art&Culture": "Art & Culture",
       "Hôtel": "Hôtel",
-      "Loisirs": "Loisirs",
+      "Park&Loisirs": "Hobbies & Park",
       "Monument": "Monument",
       "Museum": "Museum",
-      "Park": "Park",
-      "Restaurant": "Restaurant",
+      "Directories": "Directories",
+      "Restaurant": "Restaurant & cafe",
       "Service": "Service",
       "Mosque": "Mosque",
       "Shopping": "Shopping"
-    }
+    },
+    "Research": "Research",
+    "H1": "Choose your destination",
+    "P": "Search hundreds of places across Algeria and find your ideal destination.",
+    "Wilaya": "Wilaya"
+  },
+  "SearchCatégorie": {
+    "The_Most_Visted": "The most visited",
+    "Recent_Added": "Recent Added",
+    "General": "General"
+  },
+  "HomePage": {
+    "Title": "The 1st virtual tourism platform in Algeria",
+    "DiscoverMore": "Discover More",
+    "SeeMore": "See more"
+  },
+  "About_us_page": {
+    "Title": "About Us",
+    "P": "AVT is a site and a virtual tourism application in Algeria founded on December 15, 2020 by VIRTUEL ART PRODUCTION, where you find more than 140 places in 360 ° and 250 photos and videos, and a special agenda that contains tourist events, artistic and cultural services provided by travel agencies and organizations and associations."
+  },
+  "Contact_us_page": {
+    "Title": "Contact Us",
+    "Last_Name": "Last name",
+    "First_Name": "First name",
+    "Email": "Email",
+    "Phone_Number": "Phone number",
+    "Your_Message": "Your message",
+    "Send": "Send"
+  },
+  "Legal_notice_page": { "Title": "Legal Notice", "P": "" },
+  "DevicesContainer": { "Download": " Download the AVT app" },
+  "General": {
+    "ReadMore": "Read More",
+    "ReadLess": "Read Less",
+    "NoLocationFound": "No location was found"
+  },
+  "MapPage": { "Destination": "Destination", "Perimeter": "Perimeter" },
+  "WilayaPage": {
+    "Destination": "Destination",
+    "MoreInfo": "Informations",
+    "Discover": "Discover"
+  },
+  "CarousselPage": { "Visit_360": "Visit in 360°" },
+  "AboutUsPage": {
+    "text": "The first online platform for digital tourism in Algeria, which is a website and application available on the Apple Store and Google Store The platform provides 360 virtual visits that enable visitors, whether Algerians or foreigners, to discover the charm and beauty of Algeria, as well as the tangible and immaterial heritage that it abounds in in order to motivate them to visit and discover the tourist areas The platform is known as the Algerian internal and desert tourism and includes virtual visits to 58 states and this to the various tourism sectors in Algeria from archaeological and historical sites, hotels, restaurants, public places, beaches, mosques, parks, as well as cultural areas and commercial centers. The platform also includes cultural and tourist events divided according to classification and according to the states. The site is a cultural and tourism agenda that allows visitors to know everything related to tourism and culture in Algeria The platform is a digital space for the dissemination of advertisements and commercial offers in the field of tourism and culture, as it includes all dealers and actors in the field of tourism from official and unofficial organizations, as well as tourism agencies, hotels, restaurants and artisans from all over Algeria."
   }
 }

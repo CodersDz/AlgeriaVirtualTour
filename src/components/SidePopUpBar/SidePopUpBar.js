@@ -7,6 +7,7 @@ import {
   HiddenContainer1,
   VisibleContainer2,
   HiddenContainer2,
+  AIcone,
 } from "./SidePopUpBarElements";
 import { ReactComponent as BlueGlobeIcone } from "./Svg/BlueGlobeIcone.svg";
 import { ReactComponent as CalendarIcone } from "./Svg/CalendarIcone.svg";
@@ -28,10 +29,30 @@ const SidePopUpBar = () => {
           <BlueGlobeIcone />
         </VisibleContainer2>
         <HiddenContainer2>
-          <YoutubeIcone />
-          <InstagramIcone />
-          <FacebookIcone />
-          <TwitterIcone />
+          <AIcone
+            href="https://youtube.com/channel/UCpu5hxyNQq0bl8A0-b-zpJw"
+            target="_blank"
+          >
+            <YoutubeIcone style={{ transform: "scale(0.7)" }} />
+          </AIcone>
+          <AIcone
+            href="https://www.instagram.com/algeria_virtual_tour"
+            target="_blank"
+          >
+            <InstagramIcone style={{ transform: "scale(0.7)" }} />
+          </AIcone>
+          <AIcone
+            href="https://www.facebook.com/Algeria.Travel.Guide"
+            target="_blank"
+          >
+            <FacebookIcone style={{ transform: "scale(0.7)" }} />
+          </AIcone>
+          <AIcone
+            href="https://www.linkedin.com/in/algeria-virtualtour"
+            target="_blank"
+          >
+            <TwitterIcone style={{ transform: "scale(0.7)" }} />
+          </AIcone>
         </HiddenContainer2>
       </BlueGlobeContainer>
     </SidePopUpBarContainer>

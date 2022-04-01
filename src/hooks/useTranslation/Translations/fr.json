@@ -1,22 +1,73 @@
 {
   "StartPage": { "Begin": "Commencer" },
-  "Nav": {
-    "Login": "S'authentifier",
-    "Register": "S'inscrire",
-    "Agenda": "Agenda"
+  "NavBar": {
+    "Agenda": "Agenda",
+    "Travel": "Voyage",
+    "Profile": "Profile",
+    "Language": "Langue",
+    "Research": "Recherchez",
+    "Saved_items": "Articles enregisté",
+    "About_us": "À propos de nous",
+    "Contact_us": "Nous contacter",
+    "Legal_Notice": "Mentions Légale",
+    "All_rights_reserved": "Tous les droits sont réservés"
   },
   "SearchPage": {
     "Card": {
-      "Art_Culture": "Art & Culture",
+      "Art&Culture": "Art & Culture",
       "Hôtel": "Hôtel",
-      "Loisirs": "Loisirs",
+      "Park&Loisirs": "Parc & Loisirs",
       "Monument": "Monument",
       "Museum": "Musée",
-      "Park": "Parc",
-      "Restaurant": "Restaurant",
       "Service": "Service",
+      "Restaurant": "Restaurant & café",
+      "Directories": "Annuaires",
       "Mosque": "Mosquée",
       "Shopping": "Shopping"
-    }
+    },
+    "Research": "Recherche",
+    "H1": "Choisissez votre destination",
+    "P": "Recherchez des centaines de lieux à travers l’Algérie et trouvez votre destination idéal.",
+    "Wilaya": "Wilaya"
+  },
+  "SearchCatégorie": {
+    "The_Most_Visted": "Les Plus Visités",
+    "Recent_Added": "Récents Ajoutés",
+    "General": "Générale"
+  },
+  "HomePage": {
+    "Title": "La 1ére Plateforme de tourisme virtuelle en algérie",
+    "DiscoverMore": "Découvrir plus",
+    "SeeMore": "Voir plus"
+  },
+  "About_us_page": {
+    "Title": "À propos",
+    "P": "AVT c'est un site et une applications de tourisme virtuelle en Algérie fondé le 15 Décembre 2020 par VIRTUEL ART PRODUCTION, où vous trouvez plus de 140 lieux en 360° et 250 photos et vidéos, et une agenda spécial qui contienne des éventements touristiques, artistiques et culturelles fournis par des agences de voyages et des organisations et associations."
+  },
+  "Contact_us_page": {
+    "Title": "Nous contacter",
+    "Last_Name": "Nom",
+    "First_Name": "Prénom",
+    "Email": "Email",
+    "Phone_Number": "Téléphone",
+    "Your_Message": "Votre message",
+    "Send": "Envoyer"
+  },
+  "Legal_notice_page": { "Title": "Mentions Légale", "P": "" },
+  "DevicesContainer": { "Download": "Télécharger l'application AVT" },
+  "General": {
+    "ReadMore": "Lire la suite",
+    "ReadLess": "Moins",
+    "NoLocationFound": "Aucune location trouvé"
+  },
+  "MapPage": { "Destination": "Destination", "Perimeter": "Périmètre" },
+  "WilayaPage": {
+    "Destination": "Destination",
+    "MoreInfo": "Informations",
+    "Discover": "Découvrir"
+  },
+  "CarousselPage": { "Visit_360": "Visite en 360°" },
+  "AboutUsPage": {
+    "text": "La première plateforme en ligne de tourisme numérique en Algérie, qui est un site internet et une application disponible sur Apple Store et Google Store La plateforme propose des ​​visites virtuelles 360 qui permettent aux visiteurs, qu'ils soient Algériens ou étrangers, de découvrir le charme et la beauté de l'Algérie, ainsi que le patrimoine matériel et immatériel dont elle regorge afin de les motiver à visiter et découvrir les zones touristiques. La plateforme est connue sous le nom de tourisme intérieur et désertique algérien, et il comprend des visites virtuelles dans 58 willayas et cela dans les différents secteurs touristiques en Algérie à partir de sites archéologiques et historiques, d'hôtels, de restaurants, de lieux publics, de plages, de mosquées, de parcs, ainsi qu'en tant qu'espaces culturels et centres commerciaux La plateforme comprend également des événements culturels et touristiques répartis selon la classification et selon les états. La plateforme est un agenda culturel et touristique qui permet aux visiteurs de connaître tout ce qui touche au tourisme et à la culture en Algérie La plateforme est un espace numérique de diffusion d'annonces et d'offres commerciales dans le domaine du tourisme et de la culture, car il regroupe tous les commerçants et acteurs du domaine du tourisme auprès des organismes officiels et non officiels, ainsi que les agences de tourisme, les hôtels, les restaurants et artisans de toute l'Algérie."
   }
 }

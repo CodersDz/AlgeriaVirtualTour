@@ -1,65 +1,82 @@
 //-----------------React and hooks imports---------------
 import React, { useState } from "react";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
+import { motion } from "framer-motion";
 //-----------------Images imports---------------
-import ar_flag from "../../assets/Images/ar_flag.png";
-import en_flag from "../../assets/Images/en_flag.png";
-import fr_flag from "../../assets/Images/fr_flag.png";
 //-----------------Elements imports---------------
 import {
-  DropDownContainer,
-  DropDownHeader,
-  DropDownList,
-  ListItem,
-  FlagImg,
-  DropDownImg,
-  LangSpan,
+  LangContainer,
+  LangWrapper,
+  LangTitle,
+  LangUl,
+  LangLi,
+  RadioLabel,
+  RadioInput,
 } from "./SelectLangElements";
-const options = [
-  { ref: "fr", name: "Français", flag: { fr_flag } },
-  { ref: "ar", name: "العربية", flag: { ar_flag } },
-  { ref: "en", name: "English", flag: { en_flag } },
-];
-const SelectLang = () => {
+const SelectLang = ({ langOpen }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
 
-  const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(language);
-
-  const toggling = () => setIsOpen(!isOpen);
 
   const onOptionClicked = (value) => () => {
     setSelectedOption(value);
     setLanguage(value);
-    setIsOpen(false);
     window.location.reload();
   };
-  const selectFlag = (ref) => {
-    if (ref === "fr") {
-      return fr_flag;
-    } else if (ref === "ar") {
-      return ar_flag;
-    } else return en_flag;
+  const verifyChecked = (ref) => {
+    if (language === ref) {
+      return true;
+    } else return false;
   };
   return (
-    <DropDownContainer>
-      <DropDownHeader onMouseOver={toggling}>
-        {<FlagImg src={selectFlag(selectedOption)} />}
-      </DropDownHeader>
-
-      <DropDownList>
-        {options
-          .filter((option) => {
-            if (option.ref !== selectedOption) return option;
-          })
-          .map((option) => (
-            <ListItem onClick={onOptionClicked(option.ref)} key={Math.random()}>
-              <DropDownImg src={selectFlag(option.ref)} />
-              <LangSpan>{option.name}</LangSpan>
-            </ListItem>
-          ))}
-      </DropDownList>
-    </DropDownContainer>
+    <LangContainer
+      langOpen={langOpen}
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1.5 } }}
+    >
+      <LangWrapper>
+        <LangTitle>{t("NavBar.Language")}</LangTitle>
+        <LangUl>
+          <LangLi>
+            <RadioLabel for="ar" onClick={onOptionClicked("ar")}>
+              Arabe
+              <RadioInput
+                type="radio"
+                id="ar"
+                name="lang"
+                value="ar"
+                defaultChecked={verifyChecked("ar")}
+              ></RadioInput>
+            </RadioLabel>
+          </LangLi>
+          <LangLi>
+            <RadioLabel for="en" onClick={onOptionClicked("en")}>
+              Anglais
+              <RadioInput
+                type="radio"
+                id="en"
+                name="lang"
+                value="en"
+                defaultChecked={verifyChecked("en")}
+              ></RadioInput>
+            </RadioLabel>
+          </LangLi>
+          <LangLi>
+            <RadioLabel for="fr" onClick={onOptionClicked("fr")}>
+              Français
+              <RadioInput
+                type="radio"
+                id="fr"
+                name="lang"
+                value="fr"
+                defaultChecked={verifyChecked("fr")}
+              ></RadioInput>
+            </RadioLabel>
+          </LangLi>
+        </LangUl>
+      </LangWrapper>
+    </LangContainer>
   );
 };
 

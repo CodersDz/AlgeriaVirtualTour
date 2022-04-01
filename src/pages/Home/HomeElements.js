@@ -1,7 +1,8 @@
 import styled, { css, keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-
-export const HomeContainer = styled.div`
+import device from "../../assets/Variables/responsive";
+const lang = localStorage.getItem("language");
+export const HomeContent = styled.div`
   background: ${(
     props
   ) => `linear-gradient(to right, rgba(75, 203, 2, 0.8), rgba(75, 203, 2, 0.8)),
@@ -9,17 +10,11 @@ export const HomeContainer = styled.div`
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-`;
-
-export const HomeContent = styled.div`
-  height: calc(100vh - 110px);
-  margin-top: 110px;
+  height: 100%;
   width: 100%;
   display: flex;
   position: relative;
+  overflow: hidden;
 `;
 
 export const InfoCarousel = styled.div`
@@ -30,7 +25,17 @@ export const InfoCarousel = styled.div`
   align-items: center;
   position: relative;
   z-index: 2;
-  padding: 70px 70px 0 100px;
+
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    padding: 30px 20px 0 65px;
+  }
+  @media only screen and ${device.desktop} {
+    padding: 70px 30px 0 100px;
+  }
 `;
 export const InfoCarouselContainer = styled.div`
   width: 100%;
@@ -43,11 +48,19 @@ export const InfoCarouselContainer = styled.div`
 export const InfoCarouselTitle = styled.h1`
   width: 45%;
   height: 100%;
-  font-size: 73px;
   font-weight: 700;
-  text-align: start;
   color: #fff;
   text-transform: uppercase;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 53px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 60px;
+  }
 `;
 export const InfoCarouselImg = styled.img`
   width: 55%;
@@ -67,12 +80,10 @@ export const InfoContainer = styled.div`
   height: 100%;
   color: white;
   position: relative;
-`;
-export const InfoContent = styled.div`
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: column;
 `;
 export const MapContainer = styled.div`
   position: absolute;
@@ -84,29 +95,66 @@ export const MapContainer = styled.div`
   width: 60%;
 `;
 export const InfoH2 = styled.h2`
-  font-size: 140px;
   font-weight: 600;
   text-transform: uppercase;
-  text-align: start;
   text-shadow: 1px 1px 3px #000;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  word-break: break-all;
+  width: 100%;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 60px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 100px;
+  }
 `;
 export const InfoP = styled.p`
-  font-size: 25px;
+  max-height: calc(70% - 40px);
   font-weight: 400;
-  text-align: start;
+  width: 100%;
   text-transform: none;
   margin: 20px 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: ${(props) =>
-    props.readMore === false ? "2" : "initial"};
-  line-clamp: ${(props) => (props.readMore === false ? "2" : "initial")};
+  -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
+  line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
+  overflow: ${(props) => (props.readMore === false ? "hidden" : "auto")};
   transition: all 3s cubic-bezier(0, 1, 0, 1);
+  -ms-overflow-style: none; /* IE and Edge */
+  ::-webkit-scrollbar {
+    width: 10px;
+    display: ${(props) => (props.readMore === false ? "none" : "block")};
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 20px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 25px;
+  }
 `;
 export const ImgCarousel = styled.div`
   width: 40%;
@@ -115,11 +163,14 @@ export const ImgCarousel = styled.div`
   flex-direction: column;
   z-index: 2;
 `;
-export const HomePub = styled.img`
+export const HomePubContainer = styled.div`
   max-height: 20%;
   min-height: 20%;
   width: 100%;
-  position: relative;
+`;
+export const HomePub = styled.img`
+  height: 100%;
+  width: 100%;
 `;
 export const ThumbnailImages = styled.div`
   display: flex;
@@ -133,7 +184,7 @@ export const ThumbnailImage = styled.div`
   margin: 0 30px 0 0;
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -142,9 +193,17 @@ export const ThumbnailImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3em;
   text-transform: uppercase;
-  padding: 40px;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    padding: 25px;
+  }
+  @media only screen and ${device.desktop} {
+    padding: 30px;
+  }
 `;
 export const ThumbnailImageText = styled.div`
   position: relative;
@@ -154,8 +213,19 @@ export const ThumbnailImageText = styled.div`
 export const ThumbnailImageTextH5 = styled.h5`
   position: absolute;
   bottom: 0;
+  width: 100%;
   font-weight: 600;
-  font-size: 42px;
+  word-break: break-word;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 30px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 44px;
+  }
 `;
 export const ThumbnailImageExpanded = styled.div`
   position: absolute;
@@ -166,7 +236,7 @@ export const ThumbnailImageExpanded = styled.div`
   z-index: -1;
   background: ${(
     props
-  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+  ) => `linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url(${props.bg})`};
   background-position: center;
   background-size: cover;
@@ -176,12 +246,23 @@ export const ThumbnailImageExpanded = styled.div`
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
-  padding: 100px;
+
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    padding: 25px;
+  }
+  @media only screen and ${device.desktop} {
+    padding: 100px;
+    padding-top: 20px;
+  }
 `;
 export const SvgWilaya = styled.div``;
 
-export const DecouvrirePlus = styled(Link)`
-  min-width: 42%;
+export const DIscoverMore = styled(Link)`
+  min-width: 40%;
   max-height: 100%;
   margin: 0 30px 0 0;
   font-size: 2rem;
@@ -196,7 +277,10 @@ export const DecouvrirePlus = styled(Link)`
 export const BtnContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: ${lang === '"ar"' ? "end" : "start"};
+  flex-direction: ${lang === '"ar"' ? "row-reverse" : "row"};
   width: 100%;
+  height: 40px;
 `;
 export const ReadMoreBtn = styled.button`
   display: flex;
@@ -208,13 +292,26 @@ export const ReadMoreBtn = styled.button`
   font-weight: 400;
   font-size: 20px;
   border-radius: 30px;
-  width: 40%;
-  height: 40px;
+  width: 35%;
+  height: 100%;
   padding: 25px;
   cursor: pointer;
+  margin: ${lang === '"ar"' ? "0 0 0 20px" : "0 20px 0 0"};
+`;
+export const ReadMoreSpan = styled.span`
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 17px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 20px;
+  }
 `;
 export const DiscoverMoreBtn = styled(Link)`
-  background-color: transparent;
+  background-color: #4bcb02;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,8 +320,19 @@ export const DiscoverMoreBtn = styled(Link)`
   font-weight: 400;
   font-size: 20px;
   border-radius: 30px;
-  width: 40%;
-  height: 40px;
+  width: 35%;
+  height: 100%;
   padding: 25px;
   cursor: pointer;
+  text-transform: none;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 17px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 20px;
+  }
 `;

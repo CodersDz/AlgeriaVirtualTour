@@ -2,7 +2,16 @@ import styled from "styled-components";
 
 export const ContentRight = styled.div`
   height: 100%;
-  width: 50%;
+  width: 100%;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    width: 50%;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const ContentRightWrapper = styled.div`
   width: 100%;
@@ -17,7 +26,7 @@ export const ContentRightImgs = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 70%;
+  height: 10%;
 `;
 export const MoniteurImg = styled.img`
   position: absolute;

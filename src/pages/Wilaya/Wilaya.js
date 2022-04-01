@@ -1,41 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router";
-import ScrollContainer from "react-indiana-drag-scroll";
-import ContentLoader from "react-content-loader";
+import axios from "axios";
 import {
-  WilayaPageContainer,
-  WilayaPageContentContainer,
+  PageContent,
   LeftContainer,
   RightContainer,
-  InfoLeftContainer,
-  InfoLeftContainerContent,
-  InfoH1,
-  InfoP,
   InfoRightContainer,
   SvgInfoImg,
   RightWilayaNav,
   RightNavLi,
-  DiscoverLeftContainer,
-  DiscoverLeftContainerContent,
   DiscoverRightContainer,
-  DiscoverH1,
-  DiscoverCatégoriesContainer,
-  DiscoverCatégoriesLi,
-  DestinationLeftContainer,
   DestinationRightContainer,
-  DestinationH1,
-  DestinationNameContainer,
-  DestinationLi,
-  DestinationImgDiv,
-  DestinationImg,
-  DestinationTextContainer,
-  DestinationName,
-  DestinationDescription,
   SvgDestinationImg,
   RightNavHr,
   Pub,
-  ThreePointContainer,
-  sideBarDestinationLi,
 } from "./WilayaElements";
 import {
   ImgLoader,
@@ -43,284 +21,127 @@ import {
   NameLoader,
   DescriptionLoader,
 } from "./WilayaElements";
-import { ReadMoreBtn } from "../../GlobalStyles";
-import { AiOutlineEllipsis, AiOutlineHeart } from "react-icons/ai";
+import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
+import useWindowSize from "../../hooks/useWindowSize";
 import "./WilayaStyles.css";
-import { ReactComponent as Position } from "./Svg/Position.svg";
+
 import { useLocalStorage } from "../../hooks/useStorage";
-import axios from "axios";
+import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
+
+import getLocationInformation from "../../assets/utilities/getLocationInformation";
+import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
+
+//Component imports
+import DestinationComponent from "./Components/DestinationComponent/DestinationComponent";
+import DiscoverComponent from "./Components/DiscoverComponent/DiscoverComponent";
+import InfoComponent from "./Components/InfoComponent/InfoComponent";
+
+//Mobile
+import WilayaMobile from "./WilayaMobile/WilayaMobile";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-const BtnVariants = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.5 } },
-};
 const Wilaya = (props) => {
-  const { wilayaname } = useParams();
+  const { wilayaId } = useParams();
   const [locations, setLocations] = useState([]);
   const [wilaya, setWilaya] = useState({});
-
+  const isDesktop = useWindowSize();
   useEffect(() => {
     if (props.location.state) {
-      setWilaya(props.location.state.wilaya);
+      let wilayaInformation = props.location.state.wilaya;
+      getWilayaInformation(wilayaInformation, setWilaya, false);
+      getLocation(wilayaId);
     } else {
       axios
-        .get(`http://www.algeriavirtualtour.com/api/wilaya?name=${wilayaname}`)
+        .get(`http://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
         .then((response) => {
-          console.log(response.data.data);
-          setWilaya(response.data.data[0]);
+          let wilayaInformation = response.data.data;
+          getWilayaInformation(wilayaInformation, setWilaya, false);
+          getLocation(wilayaId);
         })
         .catch((err) => {
           console.log(err);
         });
     }
   }, []);
-  useEffect(() => {
+  const getLocation = (id) => {
+    console.log(id);
     axios
-      .get(`http://www.algeriavirtualtour.com/api/location?wilaya=23`)
+      .get(`http://www.algeriavirtualtour.com/api/location?wilaya=${id}`)
       .then((response) => {
-        console.log(response.data.data);
-        setLocations(response.data.data);
+        getLocationInformation(response.data.data, setLocations, true);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [wilaya]);
+  };
+  const filterLocation = (id) => {
+    let newLocations = locations.filter((location) => {
+      if (id === null) {
+        return location;
+      } else if (location.id_type_location === id) {
+        return location;
+      } else return null;
+    });
+    setFilteredLocation(newLocations);
+  };
+  const [filteredLocation, setFilteredLocation] = useState(locations);
+
   const [readMore, setReadMore] = useState(false);
+
   const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-  const Catégories = [
-    {
-      CatégorieName: t("SearchPage.Card.Art_Culture"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Hôtel"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Loisirs"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Monument"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Mosque"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Shopping"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Service"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Park"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Museum"),
-    },
-    {
-      CatégorieName: t("SearchPage.Card.Restaurant"),
-    },
-  ];
 
-  const loaderArray = [1, 2, 3, 4];
   const [currentSection, setCurrentSection] = useState("Info");
-  const [CurrentDiscoverOption, setCurrentDiscoverOption] =
-    useState(wilayaname);
-  const history = useHistory();
-  const goToLocation = (destination) => {
-    history.push({
-      pathname: `/location/${destination.name}`,
-      state: { destination: destination },
-    });
-  };
-  const DisplayLoader = () => {
-    return (
-      <ScrollContainer
-        hideScrollbars="false"
-        className="ScrollContainer"
-        horizontal="false"
-      >
-        {loaderArray.map(() => {
-          return (
-            <DestinationLi>
-              <ImgLoader>
-                <ContentLoader
-                  speed={2}
-                  backgroundColor="grey"
-                  foregroundColor="#fff"
-                  style={{ width: "100%", height: "100%" }}
-                >
-                  <rect x="0" y="0" rx="0" ry="0" width="1000" height="1000" />
-                </ContentLoader>
-              </ImgLoader>
-              <DestinationTextContainer>
-                <NameLoader>
-                  <ContentLoader
-                    speed={2}
-                    backgroundColor="grey"
-                    foregroundColor="#fff"
-                    style={{ width: "100%", height: "100%" }}
-                  >
-                    <rect
-                      x="0"
-                      y="0"
-                      rx="0"
-                      ry="0"
-                      width="1000"
-                      height="1000"
-                    />
-                  </ContentLoader>
-                </NameLoader>
-                <DescriptionLoader>
-                  <ContentLoader
-                    speed={2}
-                    backgroundColor="grey"
-                    foregroundColor="#fff"
-                    style={{ width: "100%", height: "100%" }}
-                  >
-                    <rect
-                      x="0"
-                      y="0"
-                      rx="0"
-                      ry="0"
-                      width="1000"
-                      height="1000"
-                    />
-                  </ContentLoader>
-                </DescriptionLoader>
-              </DestinationTextContainer>
-            </DestinationLi>
-          );
-        })}
-      </ScrollContainer>
-    );
-  };
+
+  const [currentDiscoverOption, setCurrentDiscoverOption] = useState({
+    name: wilaya.translatedName,
+    id: null,
+  });
 
   const ChangeLeft = () => {
     if (currentSection === "Info") {
       return (
-        <InfoLeftContainer>
-          <InfoLeftContainerContent>
-            <InfoH1 as={motion.h1} layoutId={"h1"}>
-              {wilaya.name}
-            </InfoH1>
-            <InfoP as={motion.p} readMore={readMore}>
-              {wilaya.description}
-            </InfoP>
-            )
-            <ReadMoreBtn
-              onClick={() => {
-                setReadMore(!readMore);
-              }}
-            >
-              {!readMore && (
-                <motion.span
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  Lire La suite
-                </motion.span>
-              )}
-              {readMore && (
-                <motion.span
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  Moins
-                </motion.span>
-              )}
-            </ReadMoreBtn>
-          </InfoLeftContainerContent>
-        </InfoLeftContainer>
+        <InfoComponent
+          wilaya={wilaya}
+          setReadMore={setReadMore}
+          readMore={readMore}
+        />
       );
     } else if (currentSection === "Discover") {
       return (
-        <DiscoverLeftContainer>
-          <DiscoverLeftContainerContent>
-            <DiscoverH1 as={motion.h1} layoutId={"h1"}>
-              {wilayaname}
-            </DiscoverH1>
-            <DiscoverCatégoriesContainer
-              as={motion.div}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 1.5 } }}
-            >
-              {Catégories.map((categorie) => {
-                return (
-                  <DiscoverCatégoriesLi
-                    as={motion.li}
-                    whileHover={{ scale: 1.05 }}
-                    onClick={() => {
-                      setCurrentDiscoverOption(categorie.CatégorieName);
-                      setCurrentSection("Destination");
-                    }}
-                  >
-                    {categorie.CatégorieName}
-                  </DiscoverCatégoriesLi>
-                );
-              })}
-            </DiscoverCatégoriesContainer>
-          </DiscoverLeftContainerContent>
-        </DiscoverLeftContainer>
+        <DiscoverComponent
+          wilaya={wilaya}
+          filterLocation={filterLocation}
+          setCurrentDiscoverOption={setCurrentDiscoverOption}
+          setCurrentSection={setCurrentSection}
+        />
       );
     } else if (currentSection === "Destination") {
-      if (locations) {
-        return (
-          <DestinationLeftContainer>
-            <DestinationH1 as={motion.h1} layoutId={"h1"}>
-              {CurrentDiscoverOption}
-            </DestinationH1>
-
-            <ScrollContainer
-              hideScrollbars="false"
-              className="ScrollContainer"
-              horizontal="false"
-            >
-              {locations.map((destination) => {
-                return (
-                  <DestinationLi
-                    as={motion.li}
-                    onClick={() => {
-                      goToLocation(destination);
-                    }}
-                  >
-                    <DestinationImgDiv>
-                      <DestinationImg src={destination.cover_pic} />
-                    </DestinationImgDiv>
-                    <DestinationTextContainer>
-                      <DestinationNameContainer>
-                        <Position />
-                        <DestinationName>{destination.name}</DestinationName>
-                      </DestinationNameContainer>
-                      <DestinationDescription>
-                        {destination.description}
-                      </DestinationDescription>
-                    </DestinationTextContainer>
-                  </DestinationLi>
-                );
-              })}
-            </ScrollContainer>
-          </DestinationLeftContainer>
-        );
-      } else return <DisplayLoader />;
-    } else return null;
+      return (
+        <DestinationComponent
+          filteredLocation={filteredLocation}
+          currentDiscoverOption={currentDiscoverOption}
+        />
+      );
+    }
   };
+
   const ChangeRight = () => {
     if (currentSection === "Info") {
       return (
         <InfoRightContainer>
           <SvgInfoImg
             as={motion.img}
-            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
+            layoutId={"SvgImg"}
+            animate={{ scale: 1.1 }}
+            src={wilaya.pic_map}
           />
         </InfoRightContainer>
       );
@@ -330,83 +151,108 @@ const Wilaya = (props) => {
           <SvgInfoImg
             as={motion.img}
             layoutId={"SvgImg"}
-            animate={{ scale: 0.9 }}
-            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
+            animate={{ scale: 0.8 }}
+            src={wilaya.pic_map}
           />
         </DiscoverRightContainer>
       );
     } else if (currentSection === "Destination") {
       return (
         <DestinationRightContainer>
-          <SvgDestinationImg
+          <SvgInfoImg
             as={motion.img}
             layoutId={"SvgImg"}
-            animate={{ scale: 1.1 }}
-            src={require(`./Svg/Ghardaïa/Ghardaïa.svg`).default}
+            animate={{ scale: 1.2 }}
+            src={wilaya.pic_map}
           />
         </DestinationRightContainer>
       );
     } else return null;
   };
-  console.log(wilayaname);
   return (
-    <WilayaPageContainer
-      bg={wilaya.pic_cover}
-      as={motion.div}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      transition={{ duration: 0.5 }}
-    >
-      <Navbar />
-      <AnimateSharedLayout>
-        <WilayaPageContentContainer>
-          <LeftContainer currentSection={currentSection}>
-            <ChangeLeft />
-          </LeftContainer>
-          <RightContainer>
-            <ChangeRight />
-            <Pub src={banners.banner_location} />
-            <RightWilayaNav>
-              <RightNavLi
-                onClick={() => {
-                  setCurrentSection("Destination");
-                }}
-              >
-                Déstination
-                {currentSection === "Destination" ? (
-                  <RightNavHr as={motion.div} />
-                ) : null}
-              </RightNavLi>
-              <RightNavLi
-                onClick={() => {
-                  setCurrentSection("Info");
-                  setCurrentDiscoverOption(wilayaname);
-                }}
-              >
-                Plus D'info
-                {currentSection === "Info" ? (
-                  <RightNavHr as={motion.div} />
-                ) : null}
-              </RightNavLi>
-              <RightNavLi
-                onClick={() => {
-                  setCurrentSection("Discover");
-                  setCurrentDiscoverOption(wilayaname);
-                }}
-              >
-                Découvrir
-                {currentSection === "Discover" ? (
-                  <RightNavHr as={motion.div} />
-                ) : null}
-              </RightNavLi>
-            </RightWilayaNav>
-          </RightContainer>
-        </WilayaPageContentContainer>
-      </AnimateSharedLayout>
-
-      <Footer />
-    </WilayaPageContainer>
+    <AnimateSharedLayout>
+      <PageContainerGlobal
+        as={motion.div}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
+        <Navbar />
+        <PageContentGlobal fixed={isDesktop}>
+          {isDesktop ? (
+            <PageContent bg={wilaya.pic_cover}>
+              <SidePopUpBar />
+              <LeftContainer currentSection={currentSection}>
+                <ChangeLeft />
+              </LeftContainer>
+              <RightContainer>
+                <ChangeRight />
+                {/* <Pub src={banners.banner_location} /> */}
+                <RightWilayaNav>
+                  <RightNavLi
+                    onClick={() => {
+                      if (currentSection !== "Destination") {
+                        setCurrentDiscoverOption({
+                          name: wilaya.translatedName,
+                          id: null,
+                        });
+                        filterLocation(null);
+                        setCurrentSection("Destination");
+                      }
+                    }}
+                  >
+                    {t("WilayaPage.Destination")}
+                    {currentSection === "Destination" ? (
+                      <RightNavHr as={motion.div} />
+                    ) : null}
+                  </RightNavLi>
+                  <RightNavLi
+                    onClick={() => {
+                      setCurrentSection("Info");
+                      setCurrentDiscoverOption({
+                        name: wilaya.translatedName,
+                        id: null,
+                      });
+                      filterLocation(null);
+                    }}
+                  >
+                    {t("WilayaPage.MoreInfo")}
+                    {currentSection === "Info" ? (
+                      <RightNavHr as={motion.div} />
+                    ) : null}
+                  </RightNavLi>
+                  <RightNavLi
+                    onClick={() => {
+                      setCurrentSection("Discover");
+                      setCurrentDiscoverOption({
+                        name: wilaya.translatedName,
+                        id: null,
+                      });
+                      filterLocation(null);
+                    }}
+                  >
+                    {t("WilayaPage.Discover")}
+                    {currentSection === "Discover" ? (
+                      <RightNavHr as={motion.div} />
+                    ) : null}
+                  </RightNavLi>
+                </RightWilayaNav>
+              </RightContainer>
+            </PageContent>
+          ) : (
+            <WilayaMobile
+              wilaya={wilaya}
+              locations={locations}
+              currentSection={currentSection}
+              setCurrentSection={setCurrentSection}
+              setCurrentDiscoverOption={setCurrentDiscoverOption}
+              filterLocation={filterLocation}
+            />
+          )}
+        </PageContentGlobal>
+        <Footer />
+      </PageContainerGlobal>
+    </AnimateSharedLayout>
   );
 };
 

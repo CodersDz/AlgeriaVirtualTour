@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-
+import device from "../../assets/Variables/responsive";
 const displaySocialMedia = keyframes`
   0% {position:absolute;
   }
@@ -7,13 +7,22 @@ const displaySocialMedia = keyframes`
 `;
 
 export const SidePopUpBarContainer = styled.div`
-  display: flex;
+  display: none;
   justify-content: space-between;
   flex-direction: column;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 40%;
   z-index: 3;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    display: flex;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const VisibleContainer1 = styled.div`
   transition: transform 0.5s ease-in-out;
@@ -28,7 +37,7 @@ export const CalendarContainer = styled.div`
   border-radius: 0px 30px 30px 0;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 10px;
+  padding: 10px 20px;
 
   &:hover ${VisibleContainer1} {
     transform: translateX(-300%);
@@ -39,6 +48,16 @@ export const CalendarContainer = styled.div`
 
 export const VisibleContainer2 = styled.div`
   transition: transform 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  margin-top: 10px;
+  border-radius: 0px 30px 30px 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0 5px;
 `;
 export const HiddenContainer2 = styled.div`
   display: flex;
@@ -46,30 +65,33 @@ export const HiddenContainer2 = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  left: 0;
+  margin-top: 10px;
+  border-radius: 0px 30px 30px 0;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 0 5px;
   & > * {
     position: absolute;
     transform: translateX(-300%);
   }
 `;
 export const BlueGlobeContainer = styled.div`
-  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0px 30px 30px 0;
-  background-color: #fff;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding: 0 5px;
   position: relative;
-  transition: transform 0.5s ease-in-out;
 
-  &:hover ${VisibleContainer2} {
+  &:hover ${VisibleContainer2}>* {
     transform: translateX(-300%);
+    transition: transform 0.5s ease-in-out;
   }
   &:hover {
     ${HiddenContainer2}>* {
       animation: ${displaySocialMedia} 0.5s forwards;
     }
+    ${HiddenContainer2} {
+      transform: translate(-100%, -35%);
+    }
   }
 `;
+export const AIcone = styled.a``;

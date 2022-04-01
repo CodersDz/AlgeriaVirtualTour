@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16.295" height="16.304" viewBox="0 0 16.295 16.304">
+  <g id="Groupe_10934" data-name="Groupe 10934" transform="translate(-319.244 -302)">
+    <g id="Groupe_10933" data-name="Groupe 10933">
+      <g id="Groupe_10932" data-name="Groupe 10932">
+        <g id="arrow-fullscreen" transform="translate(319.244 302)">
+          <path id="Tracé_10072" data-name="Tracé 10072" d="M28.675.176H24.688a.711.711,0,0,0-.709.711l1.637,1.644L23.639,4.508a1.014,1.014,0,1,0,1.434,1.433l1.973-1.974L28.675,5.6a.71.71,0,0,0,.708-.711v-4A.71.71,0,0,0,28.675.176Z" transform="translate(-13.088 -0.176)" fill="#fff" fill-rule="evenodd"/>
+          <path id="Tracé_10073" data-name="Tracé 10073" d="M28.584,21.859l-1.669,1.662L24.9,21.508a1.014,1.014,0,1,0-1.435,1.433l2.012,2.01-1.609,1.6a.709.709,0,0,0,.711.708h4a.709.709,0,0,0,.711-.708V22.568a.707.707,0,0,0-.71-.709Z" transform="translate(-13.001 -10.969)" fill="#fff" fill-rule="evenodd"/>
+          <path id="Tracé_10074" data-name="Tracé 10074" d="M6.081,2.534,7.714.905A.711.711,0,0,0,7,.2H3A.709.709,0,0,0,2.29.905V4.892A.71.71,0,0,0,3,5.6L4.646,3.965l2.03,2.029A1.013,1.013,0,0,0,8.11,4.562Z" transform="translate(-2.287 -0.187)" fill="#fff" fill-rule="evenodd"/>
+          <path id="Tracé_10075" data-name="Tracé 10075" d="M7.308,20.111,4.637,22.782,2.993,21.131a.711.711,0,0,0-.709.711v4a.711.711,0,0,0,.709.711H6.981a.711.711,0,0,0,.708-.711L6.07,24.217l2.673-2.673a1.014,1.014,0,1,0-1.434-1.433Z" transform="translate(-2.284 -10.252)" fill="#fff" fill-rule="evenodd"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

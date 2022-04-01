@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import axios from "axios";
 import {
-  HomeContainer,
   HomeContent,
   InfoCarousel,
   InfoCarouselTitle,
   InfoCarouselImg,
   ImgCarousel,
+  HomePubContainer,
   HomePub,
   ThumbnailImages,
   ThumbnailImage,
@@ -15,27 +15,31 @@ import {
   ThumbnailImageTextH5,
   ThumbnailImageExpanded,
   InfoCarouselExpanded,
-  DecouvrirePlus,
+  DIscoverMore,
   InfoContainer,
-  InfoContent,
   InfoH2,
   InfoP,
   BtnContainer,
   DiscoverMoreBtn,
   MapContainer,
+  ReadMoreBtn,
+  ReadMoreSpan,
 } from "./HomeElements";
-
-import { ReadMoreBtn } from "../../GlobalStyles";
+import useWindowSize from "../../hooks/useWindowSize";
+import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
 import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
+import MobileHome from "./MobileHome/MobileHome";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "./HomeBg.jpg";
 import FemmeVr from "./FemmeVr.png";
+import useTranslation from "../../hooks/useTranslation/useTranslation";
+import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
 const BtnVariants = {
   initial: { opacity: 0 },
@@ -49,34 +53,33 @@ const containerVariants = {
 
 const Home = () => {
   const [readMore, setReadMore] = useState(false);
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const isDesktop = useWindowSize();
   const [animated, setAnimated] = useState([]);
-  const [wilayas, setWilayas] = useLocalStorage("wilayas", []);
+  const [wilayas, setWilayas] = useState([]);
+  const [translatedWilaya, setTranslatedWilaya] = useState({});
+  const [translatedLocation, setTranslatedLocation] = useState({});
   const [banners, setBanners] = useLocalStorage("banners", {});
+
   useEffect(() => {
-    console.log(wilayas);
-    if (wilayas.length === 0) {
-      axios
-        .get("http://www.algeriavirtualtour.com/api/wilaya")
-        .then((response) => {
-          console.log(response.data.data);
-          setWilayas(response.data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+    axios
+      .get("http://www.algeriavirtualtour.com/api/wilaya/first")
+      .then((response) => {
+        getWilayaInformation(response.data.data, setWilayas, true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   useEffect(() => {
-    if (Object.entries(banners).length === 0)
-      axios
-        .get("http://www.algeriavirtualtour.com/api/banners/0")
-        .then((response) => {
-          console.log("updateWilayas");
-          setBanners(response.data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    axios
+      .get("http://www.algeriavirtualtour.com/api/banners/0")
+      .then((response) => {
+        setBanners(response.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
   const GrowImage = ({ item }) => {
     if (!animated.includes(item.position)) {
@@ -88,12 +91,15 @@ const Home = () => {
           onClick={() => {
             if (item.position === 1) {
               setAnimated((prev) => [...prev, item.position]);
-            } else if (item.position === animated.length + 1)
+              setReadMore(false);
+            } else if (item.position === animated.length + 1) {
               setAnimated((prev) => [...prev, item.position]);
+              setReadMore(false);
+            }
           }}
         >
           <ThumbnailImageText>
-            <ThumbnailImageTextH5>{item.name}</ThumbnailImageTextH5>
+            <ThumbnailImageTextH5>{item.translatedName}</ThumbnailImageTextH5>
           </ThumbnailImageText>
         </ThumbnailImage>
       );
@@ -106,41 +112,43 @@ const Home = () => {
         >
           <InfoCarouselExpanded>
             <InfoContainer>
-              <InfoContent>
-                <InfoH2>{item.name}</InfoH2>
-                <InfoP readMore={readMore}>{item.description}</InfoP>
-
-                <BtnContainer>
-                  <ReadMoreBtn
-                    onClick={() => {
-                      setReadMore(!readMore);
-                    }}
-                  >
-                    {!readMore && (
-                      <motion.span variants={BtnVariants} animate="animate">
-                        Lire la suite
-                      </motion.span>
-                    )}
-                    {readMore && (
-                      <motion.span
-                        variants={BtnVariants}
-                        initial="initial"
-                        animate="animate"
-                      >
-                        Moins
-                      </motion.span>
-                    )}
-                  </ReadMoreBtn>
-                  <DiscoverMoreBtn
-                    to={{
-                      pathname: `/wilaya/${item.name}`,
-                      state: { wilayaName: item.name, wilaya: item },
-                    }}
-                  >
-                    Découvrir Plus
-                  </DiscoverMoreBtn>
-                </BtnContainer>
-              </InfoContent>
+              <InfoH2>{item.translatedName}</InfoH2>
+              <InfoP readMore={readMore}>{item.translatedDescription}</InfoP>
+              <BtnContainer>
+                <ReadMoreBtn
+                  onClick={() => {
+                    setReadMore(!readMore);
+                  }}
+                >
+                  {!readMore && (
+                    <ReadMoreSpan
+                      as={motion.span}
+                      variants={BtnVariants}
+                      animate="animate"
+                    >
+                      {t("General.ReadMore")}
+                    </ReadMoreSpan>
+                  )}
+                  {readMore && (
+                    <ReadMoreSpan
+                      as={motion.span}
+                      variants={BtnVariants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {t("General.ReadLess")}
+                    </ReadMoreSpan>
+                  )}
+                </ReadMoreBtn>
+                <DiscoverMoreBtn
+                  to={{
+                    pathname: `/wilaya/${item.id_wilaya}`,
+                    state: { wilaya: item },
+                  }}
+                >
+                  {t("HomePage.DiscoverMore")}
+                </DiscoverMoreBtn>
+              </BtnContainer>
             </InfoContainer>
           </InfoCarouselExpanded>
 
@@ -150,40 +158,50 @@ const Home = () => {
   };
   return (
     <AnimateSharedLayout>
-      <HomeContainer
+      <PageContainerGlobal
         key="home"
         as={motion.div}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         transition={{ duration: 0.5 }}
-        currentBg={HomeBg}
       >
         <Navbar setAnimated={setAnimated} />
-        <HomeContent>
-          <SidePopUpBar />
-          <MapContainer>
-            <DzMap />
-          </MapContainer>
-          <InfoCarousel>
-            <InfoCarouselTitle>
-              La 1ere platforme de Tourisme Virtuelle en Algérie
-            </InfoCarouselTitle>
-            <InfoCarouselImg src={FemmeVr} />
-          </InfoCarousel>
-          <ImgCarousel>
-            <HomePub src={banners.banner_home1} />
-            <ThumbnailImages>
-              {wilayas.map((item) => {
-                return <GrowImage item={item} key={item.position} />;
-              })}
-              <DecouvrirePlus to="/Search">Découvrir plus...</DecouvrirePlus>
-            </ThumbnailImages>
-            <HomePub src={banners.banner_home2} />
-          </ImgCarousel>
-        </HomeContent>
+        <PageContentGlobal fixed={true}>
+          {isDesktop ? (
+            <HomeContent currentBg={HomeBg}>
+              <SidePopUpBar />
+              <MapContainer>
+                <DzMap />
+              </MapContainer>
+              <InfoCarousel>
+                <InfoCarouselTitle>{t("HomePage.Title")}</InfoCarouselTitle>
+                <InfoCarouselImg src={FemmeVr} />
+              </InfoCarousel>
+              <ImgCarousel>
+                <HomePubContainer>
+                  {/* <HomePub src={banners.banner_home1} /> */}
+                </HomePubContainer>
+
+                <ThumbnailImages>
+                  {wilayas.map((item) => {
+                    return <GrowImage item={item} key={item.position} />;
+                  })}
+                  <DIscoverMore to="/Search">
+                    {t("HomePage.DiscoverMore")}...
+                  </DIscoverMore>
+                </ThumbnailImages>
+                <HomePubContainer>
+                  {/* <HomePub src={banners.banner_home2} /> */}
+                </HomePubContainer>
+              </ImgCarousel>
+            </HomeContent>
+          ) : (
+            <MobileHome wilayas={wilayas} />
+          )}
+        </PageContentGlobal>
         <Footer />
-      </HomeContainer>
+      </PageContainerGlobal>
     </AnimateSharedLayout>
   );
 };

@@ -49,13 +49,7 @@ const StartPage = () => {
             </SpanDetail>
           )}
         </EmptyDiv>
-        <StartPageLink
-          onClick={() => {
-            setShowDetail(true);
-          }}
-        >
-          {t("StartPage.Begin")}
-        </StartPageLink>
+        <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
       </StartPageContent>
       <AlgeriaMap src={MapStartPage}></AlgeriaMap>
     </StartPageContainer>

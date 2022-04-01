@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Switch, Route, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
 //-----------------Components/pages imports---------------
 import Home from "./pages/Home/Home";
 import StartPage from "./pages/StartPage/StartPage";
@@ -14,7 +13,6 @@ import SearchCatégorie from "./pages/SearchCatégorie/SearchCatégorie";
 import Wilaya from "./pages/Wilaya/Wilaya";
 import Map from "./pages/Map/Map";
 import LocationCarousel from "./pages/LocationCarousel/LocationCarousel";
-import MobileBottomNav from "./components/MobileBottomNav/MobileBottomNav";
 function App() {
   const location = useLocation();
   return (
@@ -29,10 +27,13 @@ function App() {
         <Route exact path="/Contact" component={Contact} />
         <Route exact path="/LegalNotice" component={LegalNotice} />
         <Route exact path="/Map" component={Map} />
-        <Route exact path="/wilaya/:wilayaname" component={Wilaya} />
-        <Route exact path="/location/:location" component={LocationCarousel} />
+        <Route exact path="/wilaya/:wilayaId" component={Wilaya} />
+        <Route
+          exact
+          path="/location/:locationId"
+          component={LocationCarousel}
+        />
       </Switch>
-      <MobileBottomNav />
     </div>
   );
 }

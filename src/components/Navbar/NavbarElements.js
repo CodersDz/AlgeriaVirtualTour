@@ -2,11 +2,12 @@ import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as Arrow } from "../../assets/svg/arrow.svg";
 //-----------------Elements imports---------------
-import { Container } from "../../GlobalStyles";
+
 import { ReactComponent as NavLogo } from "../../assets/svg/NavLogo.svg";
 import { ReactComponent as HomeIcone } from "../../assets/svg/HomeIcone.svg";
 //Responsive stuff
 import device from "../../assets/Variables/responsive";
+const lang = localStorage.getItem("language");
 //KeyFrames
 const showLi = keyframes`
   0% {
@@ -29,8 +30,9 @@ export const RightNavContainer = styled.div`
   left: 0;
   height: 100vh;
   width: 450px;
+  max-width: 100vw;
   padding: 3.5rem;
-  z-index: 4;
+  z-index: 7;
   transition: transform 0.3s ease-in-out;
   Link {
     padding: 18px 10px;
@@ -49,18 +51,16 @@ export const RightNavDiv = styled.div`
 export const TopUl = styled.ul`
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   justify-content: center;
-  height: 75%;
+  height: 65%;
   width: 100%;
   border-bottom: solid 1px #b3b3b3;
 `;
 export const BottomUl = styled.ul`
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-flow: column nowrap;
-  height: 25%;
+  height: 35%;
   width: 100%;
 `;
 export const RightNavAgenda = styled.div`
@@ -70,6 +70,7 @@ export const RightNavAgenda = styled.div`
   flex-direction: column;
   justify-content: space-between;
   position: relative;
+  display: none;
 `;
 export const RightNavText = styled.div`
   padding: 20px 0 0 0;
@@ -88,9 +89,6 @@ export const HiddenUl = styled.ul`
 `;
 
 export const VisibleRightNavAgenda = styled.div`
-  padding: 10px;
-  font-weight: 400;
-  font-size: 20px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -99,11 +97,19 @@ export const VisibleRightNavAgenda = styled.div`
 export const RightNavLink = styled(Link)`
   padding: 10px;
   font-weight: 400;
-  font-size: 20px;
-  width: 100%;
+  font-size: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 20px;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const HiddenLi = styled(RightNavLink)`
   display: none;
@@ -119,29 +125,49 @@ export const ArrowSvg = styled(Arrow)`
     transform: rotate(-180deg);
   }
 `;
-export const SearchLink = styled(RightNavLink)``;
 //MainNav
 export const NavContainer = styled.nav`
+  padding: ${(props) => (props.isDesktop ? "1rem" : "0px")};
   color: #fff;
-  height: 110px;
   width: 100vw;
   font-size: 18px;
   font-weight: 400;
-  padding: 1rem;
   position: fixed;
   top: 1px;
   margin-top: -1px;
-  z-index: 3;
-  background-color: #00c22a;
+  z-index: 7;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+  }
+  @media only screen and ${device.laptop} {
+    background-color: #00c22a;
+    height: 80px;
+  }
+  @media only screen and ${device.desktop} {
+    height: 110px;
+  }
 `;
-export const NavWrapper = styled(Container)`
+export const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${Container};
+  width: 100%;
+  height: 100%;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    padding: 0 0 0 25px;
+  }
+  @media only screen and ${device.desktop} {
+    padding: 0 50px 0 50px;
+  }
 `;
 //LeftContainer
 export const LeftContainer = styled.ul`
@@ -150,16 +176,23 @@ export const LeftContainer = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 35%;
   @media only screen and ${device.mobile} {
   }
+  @media only screen and ${device.tablet} {
+  }
   @media only screen and ${device.laptop} {
-    width: 30%;
+  }
+  @media only screen and ${device.desktop} {
   }
 `;
-export const Logo = styled(NavLogo)``;
+export const Logo = styled(NavLogo)`
+  max-width: 70%;
+  max-height: 100%;
+`;
 export const NavSeparator = styled.div`
   width: 2px;
-  height: 100%;
+  height: 70%;
   background-color: #fff;
   display: none;
   @media only screen and ${device.mobile} {
@@ -174,6 +207,7 @@ export const NavSeparator = styled.div`
 `;
 export const Home = styled(HomeIcone)`
   display: none;
+  max-height: 100%;
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.laptop} {
@@ -197,28 +231,30 @@ export const LogoItem = styled.li`
 `;
 //SearchContainer
 export const SearchContainer = styled.div`
-  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   height: 100%;
-  width: 50%;
   display: none;
+  width: 50%;
   @media only screen and ${device.mobile} {
   }
+  @media only screen and ${device.tablet} {
+  }
   @media only screen and ${device.laptop} {
-    display: inline;
+    display: flex;
+  }
+  @media only screen and ${device.desktop} {
   }
 `;
 export const SearchBtn = styled(Link)`
   position: relative;
   display: flex;
   align-items: center;
+  flex-direction: ${lang === '"ar"' ? "row-reverse" : "row"};
   background: rgba(0, 0, 0, 0.3);
   border-radius: 10rem;
   padding: 0px 20px;
-  width: 12rem;
-  height: 80%;
   width: 30%;
   position: absolute;
   right: 0;
@@ -227,20 +263,40 @@ export const SearchBtn = styled(Link)`
   &:hover {
     width: 90%;
   }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    height: 100%;
+  }
+  @media only screen and ${device.desktop} {
+    height: 80%;
+  }
 `;
 export const SearchSpan = styled.span`
-  font-size: 15px;
   font-weight: 400;
-  margin-left: 10px;
+  margin-left: ${lang === '"ar"' ? "0" : "10px"};
+  margin-right: ${lang === '"ar"' ? "10px" : "0"};
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    font-size: 12px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 15px;
+  }
 `;
 //RightContainer
 export const RightContainer = styled.ul`
-  display: flex;
   width: 20%;
   height: 100%;
   align-items: center;
   justify-content: space-between;
   display: none;
+  position: relative;
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.laptop} {
@@ -249,8 +305,8 @@ export const RightContainer = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  margin: 0 10px;
   width: 25%;
+  height: 100%;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -259,7 +315,36 @@ export const NavItem = styled.li`
 
 export const NavLink = styled(Link)`
   cursor: pointer;
-  padding: 15px;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom center;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+    border-radius: 20px;
+  }
+  &:hover {
+    &::after {
+      transform: scaleY(1);
+    }
+  }
+`;
+
+export const NavLang = styled.div`
+  cursor: pointer;
+  padding: 10px;
   position: relative;
   display: flex;
   align-items: center;
@@ -286,12 +371,12 @@ export const NavLink = styled(Link)`
   }
 `;
 export const NavLinkSpan = styled.span`
-  opacity: 0;
   font-size: 10px;
   font-weight: 400;
   color: #fff;
-
-  ${NavLink}:hover & {
-    opacity: 1;
-  }
+`;
+export const NavLangSpan = styled.span`
+  font-size: 10px;
+  font-weight: 400;
+  color: #fff;
 `;

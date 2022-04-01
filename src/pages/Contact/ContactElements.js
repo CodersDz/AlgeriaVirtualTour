@@ -1,27 +1,45 @@
 import styled from "styled-components";
-
-export const ContactPageContainer = styled.div`
+import device from "../../assets/Variables/responsive";
+const lang = localStorage.getItem("language");
+export const ContentContainer = styled.div`
   background: rgba(4, 104, 0);
-  width: 100vw;
-  position: relative;
-  z-index: 3;
-  overflow: hidden;
-  color: #fff;
-`;
-export const AboutContentContainer = styled.div`
-  height: calc(100vh - 150px);
-  margin-top: 110px;
+  height: 100%;
   width: 100%;
-  padding: 0 100px 100px 100px;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    flex-direction: row;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
-export const AboutContentLeft = styled.div`
+export const LeftContainer = styled.div`
   height: 100%;
-  width: 50%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.laptop} {
+    width: 50%;
+    padding: 25px;
+    padding-left: 40px;
+  }
+  @media only screen and ${device.desktop} {
+    padding: 75px;
+  }
 `;
-export const AboutContentLeftWrapper = styled.div`
+export const LeftWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -31,12 +49,31 @@ export const AboutContentLeftWrapper = styled.div`
   justify-content: space-between;
   padding: 50px 50px 30px 50px;
   border-radius: 20px;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+    padding: 30px;
+  }
+  @media only screen and ${device.laptop} {
+    padding: 50px 50px 30px 50px;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const AboutH1 = styled.h1`
-  align-self: flex-start;
+  width: 100%;
   font-weight: 700;
-  font-size: 48px;
+  font-size: 40px;
   height: 10%;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+    font-size: 30px;
+  }
+  @media only screen and ${device.laptop} {
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const ContactForm = styled.form`
   display: flex;
@@ -57,19 +94,34 @@ export const InputsContainer = styled.div`
 `;
 export const InputContainer = styled.div`
   display: flex;
-  width: 48%;
   height: 50%;
+  width: 100%;
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+    margin: 15px 0;
+    height: 70px;
+  }
+  @media only screen and ${device.laptop} {
+    width: 48%;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const InputSpan = styled.span`
   font-weight: 400;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${lang === '"ar"' ? "end" : "start"};
   height: 30%;
   font-size: 13px;
+  @media only screen and ${device.maxTablet} {
+    margin-bottom: 10px;
+  }
 `;
 export const ContactInput = styled.input`
   height: 45%;
@@ -100,6 +152,9 @@ export const ContactTextArea = styled.textarea`
     font-weight: 400;
     font-size: 15px;
   }
+  @media only screen and ${device.maxTablet} {
+    min-height: 200px;
+  }
 `;
 export const ContactBtn = styled.button`
   display: flex;
@@ -112,12 +167,24 @@ export const ContactBtn = styled.button`
   font-size: 16px;
   border-radius: 10px;
   width: 40%;
-  height: 8%;
+  height: 50px;
   padding: 25px;
   cursor: pointer;
   box-sizing: border-box;
 `;
 export const RightContainer = styled.div`
-  position: relative;
-  width: 50%;
+  height: 100%;
+  width: 100%;
+
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.maxTablet} {
+    height: 700px;
+    max-width: 500px;
+  }
+  @media only screen and ${device.laptop} {
+    width: 50%;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;

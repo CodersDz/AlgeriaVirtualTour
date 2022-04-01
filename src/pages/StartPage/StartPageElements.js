@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import device from "../../assets/Variables/responsive";
 export const StartPageContainer = styled.div`
   background: linear-gradient(to top, #147538, #72b43e);
   width: 100vw;
@@ -27,12 +28,19 @@ export const StartPageContent = styled.div`
 `;
 export const StartPageImg = styled.img`
   height: 40%;
-  width: 50%;
-  @media (max-width: 768px) {
-    width: 90%;
+  width: 90%;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    height: 40%;
+    width: 50%;
+  }
+  @media only screen and ${device.desktop} {
   }
 `;
-export const StartPageLink = styled.button`
+export const StartPageLink = styled(Link)`
   background-color: #4bcb02;
   padding: 10px 20px;
   border-radius: 20px;
@@ -50,7 +58,15 @@ export const EmptyDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 768px) {
+  display: none;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    display: block;
+  }
+  @media only screen and ${device.desktop} {
   }
 `;
 export const AlgeriaMap = styled.img`
@@ -59,6 +75,16 @@ export const AlgeriaMap = styled.img`
   z-index: 2;
   bottom: 0;
   right: 0;
+  display: none;
+  @media only screen and ${device.mobile} {
+  }
+  @media only screen and ${device.tablet} {
+  }
+  @media only screen and ${device.laptop} {
+    display: block;
+  }
+  @media only screen and ${device.desktop} {
+  }
 `;
 export const SpanDetail = styled.span`
   font-size: 100%;
