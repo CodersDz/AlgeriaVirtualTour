@@ -25,6 +25,7 @@ import {
   MapContainer,
   MapWrapper,
   GoToMapBtn,
+  MapWrapper2,
 } from "./LocationCarousselMobileElements";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -51,12 +52,15 @@ const LocationCarousselMobile = ({
   const [location, setLocation] = useState({ images: [] });
   console.log(destination);
   const [images, setImages] = useState([]);
+  const [lat, setLat] = useState(3);
+  const [lng, setLng] = useState(36);
   const [largeImages, setLargeImages] = useState(false);
   const [wilaya, setWilaya] = useState({});
   useEffect(() => {
     setLocation(destination);
-    if (destination !== {}) setImages(destination.images);
-    console.log(destination);
+    if (destination.images) setImages(destination.images);
+    if (destination.latitude) setLat(parseFloat(destination.latitude));
+    if (destination.longitude) setLng(parseFloat(destination.longitude));
   }, [destination]);
   useEffect(() => {
     axios
@@ -139,19 +143,32 @@ const LocationCarousselMobile = ({
           </GaleryImagesContainer>
           <MapContainer>
             <MapWrapper>
-              <GoToMapBtn>Open in maps</GoToMapBtn>
-              <GoogleMapReact
-                bootstrapURLKeys={{
-                  key: "AIzaSyA4Q7LOeewLHfzIEbF8gU7nisjVlef8f40",
+              <MapWrapper2>
+                <GoogleMapReact
+                  bootstrapURLKeys={{
+                    key: "AIzaSyA4Q7LOeewLHfzIEbF8gU7nisjVlef8f40",
+                  }}
+                  defaultCenter={{
+                    lat: lat,
+                    lng: lng,
+                  }}
+                  center={{
+                    lat: lat,
+                    lng: lng,
+                  }}
+                  defaultZoom={12}
+                  zoom={12}
+                  options={options}
+                ></GoogleMapReact>
+              </MapWrapper2>
+              <GoToMapBtn
+                to={{
+                  pathname: `/map`,
+                  state: { lat: location.latitude, lng: location.longitude },
                 }}
-                defaultCenter={{
-                  lat: 23,
-                  lng: 6,
-                }}
-                defaultZoom={12}
-                zoom={12}
-                options={options}
-              ></GoogleMapReact>
+              >
+                Open in maps
+              </GoToMapBtn>
             </MapWrapper>
           </MapContainer>
         </ContentContainer>

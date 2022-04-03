@@ -7,7 +7,12 @@ import {
 import { ReactComponent as MapIconeMobile } from "./MapIconeMobile.svg";
 import { ReactComponent as ArrowMobile } from "./ArrowMobile.svg";
 import SelectWilayaPopUp from "../SelectWilayaPopUp/SelectWilayaPopUp";
-const MobileSearchBar = () => {
+const MobileSearchBar = ({
+  wilayas,
+  selectedOption,
+  setSelectedOption,
+  goToWilaya,
+}) => {
   const [show, setShow] = useState(false);
   const hidePopUp = () => {
     setShow(false);
@@ -24,7 +29,15 @@ const MobileSearchBar = () => {
       <MapIconeContainer to="/Map">
         <MapIconeMobile />
       </MapIconeContainer>
-      {show && <SelectWilayaPopUp hidePopUp={hidePopUp} />}
+      {show && (
+        <SelectWilayaPopUp
+          hidePopUp={hidePopUp}
+          wilayas={wilayas}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+          goToWilaya={goToWilaya}
+        />
+      )}
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Container,
   ZoomContainer,
@@ -12,8 +12,29 @@ import {
   Bar,
   LocationsContainer,
 } from "./MobileBottomContainerElements";
+import ScrollContainer from "react-indiana-drag-scroll";
+//LocationCard
+import {
+  LocationCard,
+  LocationImageContainer,
+  LocationImage,
+  LocationInformationsContainer,
+  LocationTitle,
+  LocationP,
+  BtnContainer,
+} from "./MobileBottomContainerElements";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
-const MobileBottomContainer = ({ zoom, mapRef }) => {
+import { useHistory } from "react-router-dom";
+const MobileBottomContainer = ({
+  zoom,
+  mapRef,
+  locations,
+  setZoom,
+  setLat,
+  setLng,
+}) => {
+  const ref = useRef();
+  const history = useHistory();
   const [showHidden, setShowHidden] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
@@ -47,7 +68,47 @@ const MobileBottomContainer = ({ zoom, mapRef }) => {
         >
           <Bar />
         </BarContainer>
-        <LocationsContainer showHidden={showHidden}></LocationsContainer>
+        <LocationsContainer showHidden={showHidden}>
+          <ScrollContainer
+            innerRef={ref}
+            className="ScrollContainer"
+            vertical="false"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              overflowX: "visible",
+            }}
+          >
+            {locations.map((location, index) => {
+              return (
+                <LocationCard
+                  key={index}
+                  onClick={() => {
+                    setZoom(17);
+                    setLat(parseFloat(location.latitude));
+                    setLng(parseFloat(location.longitude));
+                    setShowHidden(false);
+                  }}
+                  onDoubleClick={() => {
+                    history.push({
+                      pathname: `/location/${location.id_location}`,
+                      state: { destination: location },
+                    });
+                  }}
+                >
+                  <LocationImageContainer>
+                    <LocationImage src={location.cover_pic} />
+                  </LocationImageContainer>
+                  <LocationInformationsContainer>
+                    <LocationTitle>{location.translatedName}</LocationTitle>
+                    <LocationP>{location.translatedDescription}</LocationP>
+                  </LocationInformationsContainer>
+                  <BtnContainer></BtnContainer>
+                </LocationCard>
+              );
+            })}
+          </ScrollContainer>
+        </LocationsContainer>
       </HiddenContainer>
     </Container>
   );

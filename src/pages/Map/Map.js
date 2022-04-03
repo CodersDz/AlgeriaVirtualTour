@@ -43,15 +43,19 @@ import getLocationInformation from "../../assets/utilities/getLocationInformatio
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import useWindowSize from "../../hooks/useWindowSize";
 import MobileBottomContainer from "./Components/MobileBottomContainer/MobileBottomContainer";
-const Map = () => {
+const Map = (props) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [currentLocation, setCurrentLocation] = useState(null);
   const [locations, setLocations] = useState([]);
   const mapRef = useRef();
   const [bounds, setBounds] = useState(null);
-  const [zoom, setZoom] = useState(7);
-  const [lat, setLat] = useState(36.7597373);
-  const [lng, setLng] = useState(2.5762507);
+  const [zoom, setZoom] = useState(props.location.state ? 17 : 7);
+  const [lat, setLat] = useState(
+    props.location.state ? parseFloat(props.location.state.lat) : 36.7597373
+  );
+  const [lng, setLng] = useState(
+    props.location.state ? parseFloat(props.location.state.lng) : 2.5762507
+  );
   const [showWilayas, setShowWilayas] = useState(false);
   const [locationsToDisplay, setLocationsToDisplay] = useState([]);
   const [selectedOption, setSelectedOption] = useState({
@@ -63,7 +67,6 @@ const Map = () => {
     maxZoom: 18,
   };
   const [wilayas, setWilayas] = useState([]);
-  const [center, setCenter] = useState({ lat: 36, lng: 3 });
   const isDesktop = useWindowSize();
   useEffect(() => {
     axios
@@ -85,19 +88,6 @@ const Map = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords.latitude);
-        setLat(position.coords.latitude);
-        console.log(position.coords.longitude);
-        setLng(position.coords.longitude);
-        setZoom(9);
-      });
-    } else {
-      console.log("geolocation is not supported");
-    }
   }, []);
   const points = locationsToDisplay.map((location) => ({
     type: "Feature",
@@ -151,17 +141,17 @@ const Map = () => {
         <MapContainer>
           <GoogleMapReact
             bootstrapURLKeys={{
-              key: "AIzaSyA4Q7LOeewLHfzIEbF8gU7nisjVlef8f40",
+              key: "AIzaSyDxm1rdBgHGJqVVbXlc0RoMJ4mEgcShhjc",
             }}
             options={options}
             defaultCenter={{ lat: lat, lng: lng }}
             center={{ lat: lat, lng: lng }}
             defaultZoom={zoom}
+            zoom={zoom}
             yesIWantToUseGoogleMapApiInternals
             onGoogleApiLoaded={({ map }) => {
               mapRef.current = map;
             }}
-            zoom={zoom}
             onChange={({ zoom, bounds }) => {
               setZoom(zoom);
               setBounds([
@@ -278,8 +268,8 @@ const Map = () => {
                         <DestinationLIHidden
                           onClick={() => {
                             wilayaFilter(wilaya);
-                            setLat(parseInt(wilaya.latitude));
-                            setLng(parseInt(wilaya.longitude));
+                            setLat(parseFloat(wilaya.latitude));
+                            setLng(parseFloat(wilaya.longitude));
                             setZoom(10);
                           }}
                         >
@@ -307,7 +297,14 @@ const Map = () => {
               </RightMenu>
             </MapMenu>
           ) : (
-            <MobileBottomContainer zoom={zoom} mapRef={mapRef} />
+            <MobileBottomContainer
+              zoom={zoom}
+              mapRef={mapRef}
+              locations={locations}
+              setZoom={setZoom}
+              setLng={setLng}
+              setLat={setLat}
+            />
           )}
         </MapContainer>
       </PageContentGlobal>

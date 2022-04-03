@@ -43,6 +43,7 @@ const SearchPage = () => {
   const [selectedOption, setSelectedOption] = useState({
     translatedName: t("SearchPage.Wilaya"),
     name: null,
+    id_wilaya: null,
   });
   const isDesktop = useWindowSize();
   const [wilayas, setWilayas] = useState([]);
@@ -81,8 +82,8 @@ const SearchPage = () => {
       });
   }, []);
   const goToWilaya = () => {
-    if (selectedOption.name !== null) {
-      history.push(`/wilaya/${selectedOption.name}`);
+    if (selectedOption.id_wilaya !== null) {
+      history.push(`/wilaya/${selectedOption.id_wilaya}`);
     } else console.log("Please select a wilaya first !");
   };
   return (
@@ -154,7 +155,12 @@ const SearchPage = () => {
                 </MapIconeContainer>
               </BtnContainer>
             ) : (
-              <MobileSearchBar></MobileSearchBar>
+              <MobileSearchBar
+                wilayas={wilayas}
+                selectedOption={selectedOption}
+                setSelectedOption={setSelectedOption}
+                goToWilaya={goToWilaya}
+              ></MobileSearchBar>
             )}
             <CardContainer locations={locations} />
           </SearchContentWrapper>

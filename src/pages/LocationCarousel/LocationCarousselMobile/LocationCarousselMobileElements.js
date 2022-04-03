@@ -118,18 +118,22 @@ export const MapWrapper = styled.div`
   margin-top: 30px;
   width: 80%;
   height: 40vh;
+  position: relative;
+`;
+export const MapWrapper2 = styled.div`
+  width: 100%;
+  height: 100%;
   border: solid 2px #707070;
   border-radius: 25px;
   overflow: hidden;
-  position: relative;
 `;
-export const GoToMapBtn = styled.button`
+export const GoToMapBtn = styled(Link)`
   border: none;
   background-color: #4bcb02;
   width: 100%;
   text-transform: uppercase;
   color: #fff;
-  height: 30px;
+  height: 35px;
   position: absolute;
   z-index: 2;
   bottom: 0;
@@ -137,4 +141,8 @@ export const GoToMapBtn = styled.button`
   font-size: 15px;
   font-weight: 500;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;

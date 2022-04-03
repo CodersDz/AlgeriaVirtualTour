@@ -9,7 +9,7 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   transform: ${(props) =>
-    props.showHidden ? "translateY(0)" : "translateY(25vh)"};
+    props.showHidden ? "translateY(0)" : "translateY(35vh)"};
   transition: transform 0.2s ease-in-out;
 `;
 export const ZoomContainer = styled.div`
@@ -59,7 +59,7 @@ export const RangeInput = styled.input`
 `;
 export const HiddenContainer = styled.div`
   width: 100%;
-  height: calc(25vh + 25px);
+  height: calc(35vh + 25px);
   display: flex;
   align-items: center;
   justify-content: start;
@@ -71,7 +71,7 @@ export const BarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 `;
 export const Bar = styled.div`
   width: 30%;
@@ -80,9 +80,63 @@ export const Bar = styled.div`
   border-radius: 20px;
 `;
 export const LocationsContainer = styled.div`
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   width: 100%;
-  height: 25vh;
-  /* opacity: ${(props) => (props.showHidden ? 1 : 0)};
-  transition: opacity 0.2s ease-in-out; */
+  height: 35vh;
+  display: flex;
+  padding: 10px;
+  padding-right: 0;
+`;
+export const LocationCard = styled.div`
+  background-color: #eaeaea;
+  min-width: 200px;
+  height: 100%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+`;
+export const LocationImageContainer = styled.div`
+  height: 50%;
+  min-height: 50%;
+  width: 100%;
+`;
+export const LocationImage = styled.img`
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+`;
+export const LocationInformationsContainer = styled.div`
+  height: 50%;
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const LocationTitle = styled.h4`
+  font-size: 15px;
+  font-weight: 700;
+  color: #399c00;
+  width: 100%;
+  text-transform: uppercase;
+`;
+export const LocationP = styled.p`
+  font-size: 10px;
+  font-weight: 500;
+  color: #a1a1a1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+`;
+export const BtnContainer = styled.div`
+  height: 10%;
+  width: 100%;
 `;

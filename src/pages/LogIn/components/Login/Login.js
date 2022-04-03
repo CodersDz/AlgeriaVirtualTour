@@ -27,6 +27,7 @@ import {
   ChangeLogInUpSpan,
   ChangeLogInUpButton,
 } from "./LoginElements";
+import axios from "axios";
 const Login = ({ login, setLogin, toggle, setToggle }) => {
   return (
     <LoginContainerContent
@@ -70,6 +71,17 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
+              axios
+                .post(
+                  "http://www.algeriavirtualtour.com/api/users/login",
+                  values
+                )
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }, 400);
           }}
         >

@@ -23,6 +23,7 @@ import {
   ChangeLogInUpSpan,
   ChangeLogInUpButton,
 } from "./SignUpElements";
+import axios from "axios";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
   return (
     <SignUpContainerContent
@@ -36,7 +37,14 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
 
       <FromikContainer>
         <Formik
-          initialValues={{ email: "", password: "" }}
+          initialValues={{
+            name: "",
+            lastname: "",
+            email: "",
+            phone_number: "",
+            password: "",
+            confirmPassword: "",
+          }}
           validate={(values) => {
             const errors = {};
             if (!values.email) {
@@ -46,12 +54,29 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
             ) {
               errors.email = "Invalid email address";
             }
+            if (values.password !== values.password) {
+              errors.password = "le mot de passe doit être le même ";
+            }
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
             setTimeout(() => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
+              axios
+                .post("http://www.algeriavirtualtour.com/api/users/signup", {
+                  email: values.email,
+                  password: values.password,
+                  phone_number: values.phone_number,
+                  name: values.name,
+                  lastname: values.lastname,
+                })
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             }, 400);
           }}
         >
@@ -71,15 +96,15 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   <NameNickNameInput
                     type="text"
                     name="name"
-                    value={values.email}
+                    value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Nom..."
                   ></NameNickNameInput>
                   <NameNickNameInput
                     type="text"
-                    name="nickname"
-                    value={values.email}
+                    name="lastname"
+                    value={values.lastname}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     placeholder="Prénom..."
@@ -94,6 +119,14 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   placeholder="Email..."
                 ></SignUpInput>
                 <SignUpInput
+                  type="tel"
+                  name="phone_number"
+                  value={values.phone_number}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  placeholder="Numéro de téléphone..."
+                ></SignUpInput>
+                <SignUpInput
                   type="password"
                   name="password"
                   value={values.password}
@@ -104,8 +137,8 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
 
                 <SignUpInput
                   type="password"
-                  name="password"
-                  value={values.password}
+                  name="confirmPassword"
+                  value={values.confirmPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="Confirmer le mot de passe..."

@@ -66,7 +66,7 @@ const Contact = () => {
                   console.log(errors);
                   return errors;
                 }}
-                onSubmit={(values, { setSubmitting }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                   axios
                     .post(
                       "http://www.algeriavirtualtour.com/api/messages",
@@ -77,6 +77,7 @@ const Contact = () => {
                       setInfoPopUp("Message envoyé avec succès");
                       setTypePopUp(1);
                       setShowPopUp(true);
+                      resetForm();
                       setTimeout(() => {
                         setShowPopUp(false);
                       }, 3000);

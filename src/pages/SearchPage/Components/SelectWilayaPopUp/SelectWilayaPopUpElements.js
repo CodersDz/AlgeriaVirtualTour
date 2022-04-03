@@ -18,10 +18,24 @@ export const Container = styled.div`
   max-height: 80%;
   background: #707070;
   border-radius: 30px;
+  padding: 20px;
+`;
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+`;
+export const WilayaTextContainer = styled.div`
+  width: 100%;
+  height: 10%;
+`;
+export const WilayaText = styled.h3`
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
 `;
 export const BtnContainer = styled.div`
   height: 35px;
@@ -31,6 +45,7 @@ export const BtnContainer = styled.div`
 export const SearchBtn = styled.button`
   height: 100%;
   font-size: 12px;
+  font-weight: 600;
   width: 30%;
   max-width: 100px;
   background-color: #4bcb02;

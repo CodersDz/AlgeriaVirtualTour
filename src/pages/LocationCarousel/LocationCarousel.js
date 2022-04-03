@@ -42,7 +42,7 @@ const LocationCarousel = (props) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [readMore, setReadMore] = useState(false);
   const [currentBg, setCurrentBg] = useState("");
-  const [destination, setDestination] = useState({ images: [] });
+  const [destination, setDestination] = useState({});
   const [images, setImages] = useState([]);
   const [currentCatégorie, setCurrentCatégorie] = useState({});
 
