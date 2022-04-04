@@ -67,7 +67,7 @@ const SearchCatégorie = () => {
   useEffect(() => {
     axios
       .get(
-        `http://www.algeriavirtualtour.com/api/location?type_location=${catégorieInformations.idCatégorie}`
+        `https://www.algeriavirtualtour.com/api/location?type_location=${catégorieInformations.idCatégorie}`
       )
       .then((response) => {
         let info = response.data.data;
@@ -85,7 +85,7 @@ const SearchCatégorie = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/banners/0")
+      .get("https://www.algeriavirtualtour.com/api/banners/0")
       .then((response) => {
         setBanners(response.data.data);
       })
@@ -95,7 +95,7 @@ const SearchCatégorie = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/wilaya")
+      .get("https://www.algeriavirtualtour.com/api/wilaya")
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })

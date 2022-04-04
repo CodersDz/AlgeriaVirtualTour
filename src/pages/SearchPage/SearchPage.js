@@ -52,7 +52,7 @@ const SearchPage = () => {
   const history = useHistory();
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/location")
+      .get("https://www.algeriavirtualtour.com/api/location")
       .then((response) => {
         setLocations(response.data.data);
         getLocationInformation(response.data.data, setLocations, true);
@@ -63,7 +63,7 @@ const SearchPage = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/wilaya")
+      .get("https://www.algeriavirtualtour.com/api/wilaya")
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -73,7 +73,7 @@ const SearchPage = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/banners/0")
+      .get("https://www.algeriavirtualtour.com/api/banners/0")
       .then((response) => {
         setBanners(response.data.data);
       })

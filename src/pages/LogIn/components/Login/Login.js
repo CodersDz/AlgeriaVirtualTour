@@ -73,7 +73,7 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
               setSubmitting(false);
               axios
                 .post(
-                  "http://www.algeriavirtualtour.com/api/users/login",
+                  "https://www.algeriavirtualtour.com/api/users/login",
                   values
                 )
                 .then((response) => {

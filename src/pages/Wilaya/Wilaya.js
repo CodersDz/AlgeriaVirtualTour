@@ -59,7 +59,7 @@ const Wilaya = (props) => {
       getLocation(wilayaId);
     } else {
       axios
-        .get(`http://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
+        .get(`https://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
         .then((response) => {
           let wilayaInformation = response.data.data;
           getWilayaInformation(wilayaInformation, setWilaya, false);
@@ -73,7 +73,7 @@ const Wilaya = (props) => {
   const getLocation = (id) => {
     console.log(id);
     axios
-      .get(`http://www.algeriavirtualtour.com/api/location?wilaya=${id}`)
+      .get(`https://www.algeriavirtualtour.com/api/location?wilaya=${id}`)
       .then((response) => {
         getLocationInformation(response.data.data, setLocations, true);
       })

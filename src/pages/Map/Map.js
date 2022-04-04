@@ -70,7 +70,7 @@ const Map = (props) => {
   const isDesktop = useWindowSize();
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/wilaya")
+      .get("https://www.algeriavirtualtour.com/api/wilaya")
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -80,7 +80,7 @@ const Map = (props) => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/location")
+      .get("httpss://www.algeriavirtualtour.com/api/location")
       .then((response) => {
         getLocationInformation(response.data.data, setLocationsToDisplay, true);
         getLocationInformation(response.data.data, setLocations, true);

@@ -64,7 +64,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
               axios
-                .post("http://www.algeriavirtualtour.com/api/users/signup", {
+                .post("https://www.algeriavirtualtour.com/api/users/signup", {
                   email: values.email,
                   password: values.password,
                   phone_number: values.phone_number,

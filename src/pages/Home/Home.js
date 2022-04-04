@@ -63,7 +63,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/wilaya/first")
+      .get("https://www.algeriavirtualtour.com/api/wilaya/first")
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -73,7 +73,7 @@ const Home = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("http://www.algeriavirtualtour.com/api/banners/0")
+      .get("https://www.algeriavirtualtour.com/api/banners/0")
       .then((response) => {
         setBanners(response.data.data);
       })

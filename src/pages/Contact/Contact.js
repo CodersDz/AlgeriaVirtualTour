@@ -69,7 +69,7 @@ const Contact = () => {
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   axios
                     .post(
-                      "http://www.algeriavirtualtour.com/api/messages",
+                      "https://www.algeriavirtualtour.com/api/messages",
                       values
                     )
                     .then((response) => {

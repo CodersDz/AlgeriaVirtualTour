@@ -49,7 +49,7 @@ const LocationCarousel = (props) => {
   useEffect(() => {
     axios
       .get(
-        `http://www.algeriavirtualtour.com/api/location/${locationId.locationId}`
+        `https://www.algeriavirtualtour.com/api/location/${locationId.locationId}`
       )
       .then((response) => {
         let locationInformation = response.data.data;
@@ -75,10 +75,10 @@ const LocationCarousel = (props) => {
   };
   const increment = (id) => {
     console.log(
-      `http://www.algeriavirtualtour.com/api/location/${id}/increment`
+      `https://www.algeriavirtualtour.com/api/location/${id}/increment`
     );
     axios
-      .put(`http://www.algeriavirtualtour.com/api/location/${id}/increment`)
+      .put(`https://www.algeriavirtualtour.com/api/location/${id}/increment`)
       .then((response) => {
         console.log(response);
       })
@@ -152,7 +152,7 @@ const LocationCarousel = (props) => {
                       )}
                     </ReadMoreBtn>
                     <Visit360Btn
-                      href={`http://www.algeriavirtualtour.com/api/uploads/tours/${destination.visit_360}/index.htm`}
+                      href={`https://www.algeriavirtualtour.com/api/uploads/tours/${destination.visit_360}/index.htm`}
                     >
                       {t("CarousselPage.Visit_360")}
                     </Visit360Btn>

@@ -64,7 +64,7 @@ const LocationCarousselMobile = ({
   }, [destination]);
   useEffect(() => {
     axios
-      .get(`http://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
+      .get(`https://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
       .then((response) => {
         let wilayaInformation = response.data.data;
         getWilayaInformation(wilayaInformation, setWilaya, false);
@@ -82,7 +82,7 @@ const LocationCarousselMobile = ({
       <Wrapper>
         <ImagesContainer>
           <View360Btn
-            href={`http://www.algeriavirtualtour.com/api/uploads/tours/${location.visit_360}/index.htm`}
+            href={`https://www.algeriavirtualtour.com/api/uploads/tours/${location.visit_360}/index.htm`}
           >
             <VrIcone />
           </View360Btn>
