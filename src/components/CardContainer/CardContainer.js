@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
@@ -11,7 +11,7 @@ import {
 } from "./CardContainerElements";
 import Catégories from "../../assets/utilities/Catégories";
 const CardContainer = ({ locations }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
     <CardContainerWrapper>
@@ -27,8 +27,7 @@ const CardContainer = ({ locations }) => {
             as={motion.div}
             whileHover={{ scale: 1.1 }}
             onClick={() => {
-              history.push({
-                pathname: card.catégorieSearchUrl,
+              navigate(card.catégorieSearchUrl, {
                 state: { locations: filtredLocations },
               });
             }}

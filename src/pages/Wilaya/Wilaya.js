@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router";
+import { useParams, useLocation } from "react-router-dom";
 import axios from "axios";
+import { generalAPILink } from "../../assets/Variables/Links";
 import {
   PageContent,
   LeftContainer,
@@ -47,19 +48,22 @@ const containerVariants = {
   visible: { opacity: 1 },
 };
 
-const Wilaya = (props) => {
+const Wilaya = () => {
+  const location = useLocation();
+  console.log(location);
   const { wilayaId } = useParams();
   const [locations, setLocations] = useState([]);
   const [wilaya, setWilaya] = useState({});
   const isDesktop = useWindowSize();
   useEffect(() => {
-    if (props.location.state) {
-      let wilayaInformation = props.location.state.wilaya;
+    if (location.state) {
+      let wilayaInformation = location.state.wilaya;
       getWilayaInformation(wilayaInformation, setWilaya, false);
       getLocation(wilayaId);
+      console.log("hello");
     } else {
       axios
-        .get(`https://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
+        .get(`${generalAPILink}/wilaya/${wilayaId}`)
         .then((response) => {
           let wilayaInformation = response.data.data;
           getWilayaInformation(wilayaInformation, setWilaya, false);
@@ -73,7 +77,7 @@ const Wilaya = (props) => {
   const getLocation = (id) => {
     console.log(id);
     axios
-      .get(`https://www.algeriavirtualtour.com/api/location?wilaya=${id}`)
+      .get(`${generalAPILink}/location?wilaya=${id}`)
       .then((response) => {
         getLocationInformation(response.data.data, setLocations, true);
       })

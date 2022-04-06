@@ -23,6 +23,7 @@ import useTranslation from "../../hooks/useTranslation/useTranslation";
 import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
 import useWindowSize from "../../hooks/useWindowSize";
 import PopUp from "./Components/PopUp/PopUp";
+import { generalAPILink } from "../../assets/Variables/Links";
 const Contact = () => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [showPopUp, setShowPopUp] = useState(false);
@@ -68,10 +69,7 @@ const Contact = () => {
                 }}
                 onSubmit={(values, { setSubmitting, resetForm }) => {
                   axios
-                    .post(
-                      "https://www.algeriavirtualtour.com/api/messages",
-                      values
-                    )
+                    .post(`${generalAPILink}/messages`, values)
                     .then((response) => {
                       console.log(response);
                       setInfoPopUp("Message envoyé avec succès");

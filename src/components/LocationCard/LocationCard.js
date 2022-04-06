@@ -12,10 +12,8 @@ import {
 const LocationCard = ({ location }) => {
   return (
     <LocationCardContainer
-      to={{
-        pathname: `/location/${location.id_location}`,
-        state: { destination: location },
-      }}
+      to={`/location/${location.id_location}`}
+      state={{ destination: location }}
     >
       <CardImg src={location.cover_pic} />
       <CardText>

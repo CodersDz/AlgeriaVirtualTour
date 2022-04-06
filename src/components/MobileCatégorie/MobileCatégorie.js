@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   LeftContainer,
@@ -13,7 +13,7 @@ import { ReactComponent as GoBackIcone } from "./GoBackIcone.svg";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 const MobileCatégorie = ({ catégorieInformations, wilayaId }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-  const history = useHistory();
+  const navigate = useNavigate();
   // catégorieName: "Mosque",
   //   catégorieTranslatedName: t("SearchPage.Card.Mosque"),
   //   bgImageCatégorie: Bg_Mosque,
@@ -26,9 +26,9 @@ const MobileCatégorie = ({ catégorieInformations, wilayaId }) => {
         .toLocaleLowerCase()
         .includes("/search".toLocaleLowerCase())
     ) {
-      history.push("/search");
+      navigate("/search");
     } else {
-      if (wilayaId) history.push(`/wilaya/${wilayaId}`);
+      if (wilayaId) navigate(`/wilaya/${wilayaId}`);
     }
   };
   return (

@@ -26,6 +26,7 @@ import {
 
 const NavbarMobile = ({ setOpen }) => {
   const location = useLocation();
+  console.log(location);
   const currentPage = location.pathname.replace("/", "");
   console.log(currentPage);
   useEffect(() => {
@@ -84,7 +85,7 @@ const NavbarMobile = ({ setOpen }) => {
             }`,
           }}
         >
-          <BottomLink>
+          <BottomLink to="/home">
             <AgendaIcone
               style={{
                 fill: `${currentPage === "agenda" ? "#fff" : "#2F8100"}`,
@@ -99,7 +100,7 @@ const NavbarMobile = ({ setOpen }) => {
             }`,
           }}
         >
-          <BottomLink>
+          <BottomLink to="/home">
             <TravelIcone
               fill="#000"
               style={{

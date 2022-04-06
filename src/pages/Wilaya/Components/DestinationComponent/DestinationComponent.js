@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   DestinationLeftContainer,
   DestinationRightContainer,
@@ -20,11 +20,10 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 const DestinationComponent = ({ filteredLocation, currentDiscoverOption }) => {
   console.log(currentDiscoverOption);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const goToLocation = (destination) => {
-    history.push({
-      pathname: `/location/${destination.id_location}`,
+    navigate(`/location/${destination.id_location}`, {
       state: { destination: destination },
     });
   };

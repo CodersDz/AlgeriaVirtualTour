@@ -43,6 +43,7 @@ import getLocationInformation from "../../assets/utilities/getLocationInformatio
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import useWindowSize from "../../hooks/useWindowSize";
 import MobileBottomContainer from "./Components/MobileBottomContainer/MobileBottomContainer";
+import { generalAPILink } from "../../assets/Variables/Links";
 const Map = (props) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [currentLocation, setCurrentLocation] = useState(null);
@@ -70,7 +71,7 @@ const Map = (props) => {
   const isDesktop = useWindowSize();
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/wilaya")
+      .get(`${generalAPILink}/wilaya`)
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -80,7 +81,7 @@ const Map = (props) => {
   }, []);
   useEffect(() => {
     axios
-      .get("httpss://www.algeriavirtualtour.com/api/location")
+      .get(`${generalAPILink}/location`)
       .then((response) => {
         getLocationInformation(response.data.data, setLocationsToDisplay, true);
         getLocationInformation(response.data.data, setLocations, true);

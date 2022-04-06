@@ -15,7 +15,7 @@ const MobileSearchBar = ({
 }) => {
   const [show, setShow] = useState(false);
   const hidePopUp = () => {
-    setShow(false);
+    setShow(true);
   };
   const showPopUp = () => {
     setShow(true);

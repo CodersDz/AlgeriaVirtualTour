@@ -1,7 +1,7 @@
 //-----------------React and hooks imports---------------
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
 import { ReactComponent as NavLogo } from "../../assets/svg/NavLogo.svg";
@@ -59,7 +59,7 @@ const HiddenLiVariants = {
   animate: { y: 0, transition: { duration: 1 } },
 };
 const Navbar = ({ setAnimated }) => {
-  let history = useHistory();
+  let navigate = useNavigate();
   const location = useLocation();
   const isDesktop = useWindowSize();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
@@ -69,7 +69,7 @@ const Navbar = ({ setAnimated }) => {
     if (location.pathname === "/home" || location.pathname === "/Home") {
       setAnimated([]);
     } else {
-      history.push("/home");
+      navigate("/home");
     }
   };
   const componentDidMount = () => {

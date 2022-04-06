@@ -3,7 +3,7 @@ import axios from "axios";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
   SearchContentContainer,
@@ -32,6 +32,7 @@ import useWindowSize from "../../hooks/useWindowSize";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import MobileSearchBar from "./Components/MobileSearchBar/MobileSearchBar";
+import { generalAPILink } from "../../assets/Variables/Links";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
@@ -49,10 +50,10 @@ const SearchPage = () => {
   const [wilayas, setWilayas] = useState([]);
   const [banners, setBanners] = useLocalStorage("banners", {});
   const [showWilayas, setShowWilayas] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/location")
+      .get(`${generalAPILink}/location`)
       .then((response) => {
         setLocations(response.data.data);
         getLocationInformation(response.data.data, setLocations, true);
@@ -63,7 +64,7 @@ const SearchPage = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/wilaya")
+      .get(`${generalAPILink}/wilaya`)
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -73,7 +74,7 @@ const SearchPage = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/banners/0")
+      .get(`${generalAPILink}/banners/0`)
       .then((response) => {
         setBanners(response.data.data);
       })
@@ -81,9 +82,9 @@ const SearchPage = () => {
         console.log(err);
       });
   }, []);
-  const goToWilaya = () => {
-    if (selectedOption.id_wilaya !== null) {
-      history.push(`/wilaya/${selectedOption.id_wilaya}`);
+  const goToWilaya = (id_wilaya) => {
+    if (id_wilaya !== null) {
+      navigate(`/wilaya/${id_wilaya}`);
     } else console.log("Please select a wilaya first !");
   };
   return (
@@ -147,7 +148,11 @@ const SearchPage = () => {
                     })}
                   </SelectWilayaUlHidden>
                 </SelectWilayaContainer>
-                <SearchBtn onClick={goToWilaya}>
+                <SearchBtn
+                  onClick={() => {
+                    goToWilaya(selectedOption.id_wilaya);
+                  }}
+                >
                   {t("SearchPage.Research")}
                 </SearchBtn>
                 <MapIconeContainer to="/Map">

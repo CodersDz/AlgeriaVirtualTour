@@ -28,6 +28,7 @@ import {
   MapWrapper2,
 } from "./LocationCarousselMobileElements";
 import Slider from "react-slick";
+import { generalAPILink } from "../../../assets/Variables/Links";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.css";
@@ -64,7 +65,7 @@ const LocationCarousselMobile = ({
   }, [destination]);
   useEffect(() => {
     axios
-      .get(`https://www.algeriavirtualtour.com/api/wilaya/${wilayaId}`)
+      .get(`${generalAPILink}/wilaya/${wilayaId}`)
       .then((response) => {
         let wilayaInformation = response.data.data;
         getWilayaInformation(wilayaInformation, setWilaya, false);
@@ -81,9 +82,7 @@ const LocationCarousselMobile = ({
       />
       <Wrapper>
         <ImagesContainer>
-          <View360Btn
-            href={`https://www.algeriavirtualtour.com/api/uploads/tours/${location.visit_360}/index.htm`}
-          >
+          <View360Btn href={location.visit_360}>
             <VrIcone />
           </View360Btn>
           <Slider dots={true} className="sliderStyling">

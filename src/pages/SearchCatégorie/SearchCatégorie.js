@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import { Redirect, useParams } from "react-router";
+import { Navigate, useParams } from "react-router-dom";
 import { useLocalStorage } from "../../hooks/useStorage";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
@@ -39,6 +39,7 @@ import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import useWindowSize from "../../hooks/useWindowSize";
 import SearchCatégorieMobile from "./SearchCatégorieMobile/SearchCatégorieMobile";
 import Catégories from "../../assets/utilities/Catégories";
+import { generalAPILink } from "../../assets/Variables/Links";
 const SearchCatégorie = () => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
 
@@ -67,7 +68,7 @@ const SearchCatégorie = () => {
   useEffect(() => {
     axios
       .get(
-        `https://www.algeriavirtualtour.com/api/location?type_location=${catégorieInformations.idCatégorie}`
+        `${generalAPILink}/location?type_location=${catégorieInformations.idCatégorie}`
       )
       .then((response) => {
         let info = response.data.data;
@@ -85,7 +86,7 @@ const SearchCatégorie = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/banners/0")
+      .get(`${generalAPILink}/banners/0`)
       .then((response) => {
         setBanners(response.data.data);
       })
@@ -95,7 +96,7 @@ const SearchCatégorie = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/wilaya")
+      .get(`${generalAPILink}/wilaya`)
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -104,7 +105,7 @@ const SearchCatégorie = () => {
       });
   }, []);
   if (!Catégories.some((catégorie) => catégorie.catégorieName === categorie)) {
-    return <Redirect to="/Search" />;
+    return <Navigate to="/Search" replace />;
   }
   return (
     <PageContainerGlobal>

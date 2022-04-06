@@ -29,7 +29,7 @@ import { useParams } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowSize";
 import Catégories from "../../assets/utilities/Catégories";
 import LocationCarousselMobile from "./LocationCarousselMobile/LocationCarousselMobile";
-
+import { generalAPILink } from "../../assets/Variables/Links";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -48,9 +48,7 @@ const LocationCarousel = (props) => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://www.algeriavirtualtour.com/api/location/${locationId.locationId}`
-      )
+      .get(`${generalAPILink}/location/${locationId.locationId}`)
       .then((response) => {
         let locationInformation = response.data.data;
         getLocationInformation(locationInformation, setDestination, false);
@@ -74,11 +72,9 @@ const LocationCarousel = (props) => {
     setCurrentCatégorie(catégorie);
   };
   const increment = (id) => {
-    console.log(
-      `https://www.algeriavirtualtour.com/api/location/${id}/increment`
-    );
+    console.log(`${generalAPILink}/location/${id}/increment`);
     axios
-      .put(`https://www.algeriavirtualtour.com/api/location/${id}/increment`)
+      .put(`${generalAPILink}/location/${id}/increment`)
       .then((response) => {
         console.log(response);
       })
@@ -151,9 +147,7 @@ const LocationCarousel = (props) => {
                         </motion.span>
                       )}
                     </ReadMoreBtn>
-                    <Visit360Btn
-                      href={`https://www.algeriavirtualtour.com/api/uploads/tours/${destination.visit_360}/index.htm`}
-                    >
+                    <Visit360Btn href={destination.visit_360}>
                       {t("CarousselPage.Visit_360")}
                     </Visit360Btn>
                   </BtnContainer>

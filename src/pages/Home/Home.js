@@ -41,6 +41,7 @@ import FemmeVr from "./FemmeVr.png";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
+import { generalAPILink } from "../../assets/Variables/Links";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -63,7 +64,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/wilaya/first")
+      .get(`${generalAPILink}/wilaya/first`)
       .then((response) => {
         getWilayaInformation(response.data.data, setWilayas, true);
       })
@@ -73,7 +74,7 @@ const Home = () => {
   }, []);
   useEffect(() => {
     axios
-      .get("https://www.algeriavirtualtour.com/api/banners/0")
+      .get(`${generalAPILink}/banners/0`)
       .then((response) => {
         setBanners(response.data.data);
       })

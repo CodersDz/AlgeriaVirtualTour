@@ -28,6 +28,8 @@ import {
   ChangeLogInUpButton,
 } from "./LoginElements";
 import axios from "axios";
+import { generalAPILink } from "../../../../assets/Variables/Links";
+
 const Login = ({ login, setLogin, toggle, setToggle }) => {
   return (
     <LoginContainerContent
@@ -72,10 +74,7 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
               axios
-                .post(
-                  "https://www.algeriavirtualtour.com/api/users/login",
-                  values
-                )
+                .post(`${generalAPILink}/users/login`, values)
                 .then((response) => {
                   console.log(response);
                 })

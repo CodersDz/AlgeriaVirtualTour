@@ -1,5 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { ReactComponent as ArrowSvg } from "../../../../assets/svg/arrow.svg";
+const MenuAnimation = keyframes`
+from {
+  height:0px;
+}
 
+to {
+  height:150px;
+}
+`;
 export const BackDrop = styled.div`
   width: 100vw;
   height: 100vh;
@@ -53,4 +62,76 @@ export const SearchBtn = styled.button`
   cursor: pointer;
   border-radius: 20px;
   color: #fff;
+`;
+export const SelectWilayaContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  border-radius: 30px;
+  padding: 10px 30px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow-y: visible;
+`;
+export const SelectWilayaVisible = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+export const WilayaSelectedH3 = styled.h3`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+`;
+export const Arrow = styled(ArrowSvg)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-out;
+  ${SelectWilayaContainer}:hover & {
+    transform: rotate(-540deg);
+  }
+`;
+export const SelectWilayaUlHidden = styled.ul`
+  display: ${(props) => (props.showWilayas === false ? "none" : "flex")};
+  background: rgba(255, 255, 255, 0);
+  width: 100%;
+  max-height: 300px;
+  animation: ${MenuAnimation} 0.3s forwards;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  z-index: 2;
+  text-align: justify;
+  overflow: auto;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+export const SelectWilayaLIHidden = styled.li`
+  min-height: 33%;
+  cursor: pointer;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: 400;
+  padding: 0 30px;
+  border-radius: 30px;
 `;

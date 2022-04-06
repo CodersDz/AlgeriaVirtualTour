@@ -24,7 +24,7 @@ import {
   BtnContainer,
 } from "./MobileBottomContainerElements";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const MobileBottomContainer = ({
   zoom,
   mapRef,
@@ -34,7 +34,7 @@ const MobileBottomContainer = ({
   setLng,
 }) => {
   const ref = useRef();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [showHidden, setShowHidden] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
@@ -90,8 +90,7 @@ const MobileBottomContainer = ({
                     setShowHidden(false);
                   }}
                   onDoubleClick={() => {
-                    history.push({
-                      pathname: `/location/${location.id_location}`,
+                    navigate(`/location/${location.id_location}`, {
                       state: { destination: location },
                     });
                   }}

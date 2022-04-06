@@ -23,6 +23,7 @@ import {
   ChangeLogInUpSpan,
   ChangeLogInUpButton,
 } from "./SignUpElements";
+import { generalAPILink } from "../../../../assets/Variables/Links";
 import axios from "axios";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
   return (
@@ -64,7 +65,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
               alert(JSON.stringify(values, null, 2));
               setSubmitting(false);
               axios
-                .post("https://www.algeriavirtualtour.com/api/users/signup", {
+                .post(`${generalAPILink}/users/signup`, {
                   email: values.email,
                   password: values.password,
                   phone_number: values.phone_number,

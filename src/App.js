@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 //-----------------Components/pages imports---------------
 import Home from "./pages/Home/Home";
 import StartPage from "./pages/StartPage/StartPage";
@@ -19,23 +19,19 @@ function App() {
   return (
     <div className="App">
       <ScrollToTop>
-        <Switch location={location} key={location.pathname}>
-          <Route exact path="/" component={StartPage} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/Login" component={LogIn} />
-          <Route exact path="/Search/:categorie" component={SearchCatégorie} />
-          <Route exact path="/Search" component={SearchPage} />
-          <Route exact path="/About" component={About} />
-          <Route exact path="/Contact" component={Contact} />
-          <Route exact path="/LegalNotice" component={LegalNotice} />
-          <Route exact path="/Map" component={Map} />
-          <Route exact path="/wilaya/:wilayaId" component={Wilaya} />
-          <Route
-            exact
-            path="/location/:locationId"
-            component={LocationCarousel}
-          />
-        </Switch>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/Login" element={<LogIn />} />
+          <Route path="/Search/:categorie" element={<SearchCatégorie />} />
+          <Route path="/Search" element={<SearchPage />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/LegalNotice" element={<LegalNotice />} />
+          <Route path="/Map" element={<Map />} />
+          <Route path="/wilaya/:wilayaId" element={<Wilaya />} />
+          <Route path="/location/:locationId" element={<LocationCarousel />} />
+        </Routes>
       </ScrollToTop>
     </div>
   );

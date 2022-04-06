@@ -6,7 +6,6 @@ import SignUp from "./components/SignUp/SignUp";
 const LogIn = () => {
   const [login, setLogin] = useState(true);
   const [toggle, setToggle] = useState(false);
-  const handleSubmit = () => {};
   const ChangeSignInSignUp = () => {
     if (login) {
       return (
