@@ -113,66 +113,62 @@ const LocationCarousel = (props) => {
     }
   };
   return (
-    <PageContainerGlobal>
-      <Navbar />
-      <PageContentGlobal fixed={isDesktop}>
-        <SidePopUpBar />
-        {isDesktop ? (
-          <PageContent currentBg={currentBg}>
-            <LeftContainer>
-              <LeftWrapper>
-                <ContentContainer>
-                  <LocationName>{destination.translatedName}</LocationName>
-                  <LocationP readMore={readMore}>
-                    {destination.translatedDescription}
-                  </LocationP>
-                  <BtnContainer>
-                    <ReadMoreBtn
-                      onClick={() => {
-                        setReadMore(!readMore);
-                      }}
-                    >
-                      {!readMore && (
-                        <motion.span variants={BtnVariants} animate="animate">
-                          {t("General.ReadMore")}
-                        </motion.span>
-                      )}
-                      {readMore && (
-                        <motion.span
-                          variants={BtnVariants}
-                          initial="initial"
-                          animate="animate"
-                        >
-                          {t("General.ReadLess")}
-                        </motion.span>
-                      )}
-                    </ReadMoreBtn>
-                    <Visit360Btn href={destination.visit_360}>
-                      {t("CarousselPage.Visit_360")}
-                    </Visit360Btn>
-                  </BtnContainer>
-                </ContentContainer>
-              </LeftWrapper>
-            </LeftContainer>
-            <RightContainer>
-              <RightWrapper>
-                <ArrowsContainer>
-                  <LeftArrow onClick={goLeft} style={{ cursor: "pointer" }} />
-                  <RightArrow onClick={goRight} style={{ cursor: "pointer" }} />
-                </ArrowsContainer>
-              </RightWrapper>
-            </RightContainer>
-          </PageContent>
-        ) : (
-          <LocationCarousselMobile
-            catégorieInformations={currentCatégorie}
-            wilayaId={destination.id_wilaya}
-            destination={destination}
-          />
-        )}
-      </PageContentGlobal>
-      <Footer />
-    </PageContainerGlobal>
+    <PageContentGlobal fixed={isDesktop}>
+      <SidePopUpBar />
+      {isDesktop ? (
+        <PageContent currentBg={currentBg}>
+          <LeftContainer>
+            <LeftWrapper>
+              <ContentContainer>
+                <LocationName>{destination.translatedName}</LocationName>
+                <LocationP readMore={readMore}>
+                  {destination.translatedDescription}
+                </LocationP>
+                <BtnContainer>
+                  <ReadMoreBtn
+                    onClick={() => {
+                      setReadMore(!readMore);
+                    }}
+                  >
+                    {!readMore && (
+                      <motion.span variants={BtnVariants} animate="animate">
+                        {t("General.ReadMore")}
+                      </motion.span>
+                    )}
+                    {readMore && (
+                      <motion.span
+                        variants={BtnVariants}
+                        initial="initial"
+                        animate="animate"
+                      >
+                        {t("General.ReadLess")}
+                      </motion.span>
+                    )}
+                  </ReadMoreBtn>
+                  <Visit360Btn href={destination.visit_360}>
+                    {t("CarousselPage.Visit_360")}
+                  </Visit360Btn>
+                </BtnContainer>
+              </ContentContainer>
+            </LeftWrapper>
+          </LeftContainer>
+          <RightContainer>
+            <RightWrapper>
+              <ArrowsContainer>
+                <LeftArrow onClick={goLeft} style={{ cursor: "pointer" }} />
+                <RightArrow onClick={goRight} style={{ cursor: "pointer" }} />
+              </ArrowsContainer>
+            </RightWrapper>
+          </RightContainer>
+        </PageContent>
+      ) : (
+        <LocationCarousselMobile
+          catégorieInformations={currentCatégorie}
+          wilayaId={destination.id_wilaya}
+          destination={destination}
+        />
+      )}
+    </PageContentGlobal>
   );
 };
 

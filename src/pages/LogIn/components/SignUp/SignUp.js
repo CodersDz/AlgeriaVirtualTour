@@ -25,7 +25,15 @@ import {
 } from "./SignUpElements";
 import { generalAPILink } from "../../../../assets/Variables/Links";
 import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
+import useInfoPopUp from "../../../../hooks/useInfoPopUp";
+import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
+    useInfoPopUp();
+  const navigate = useNavigate();
+  const location = useLocation();
   return (
     <SignUpContainerContent
       key={"SignUpContainer"}
@@ -34,7 +42,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0 }}
     >
-      <SignUpH1>S'inscrire</SignUpH1>
+      <SignUpH1>{t("AuthentificationPage.Signup")}</SignUpH1>
 
       <FromikContainer>
         <Formik
@@ -74,9 +82,26 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                 })
                 .then((response) => {
                   console.log(response);
+                  setShowInfoPopUp(false);
+                  setType(1);
+                  setText("Inscription avec succès");
+                  setShowInfoPopUpAndHide();
+                  navigate("/Authentification/EmailConfirmation", {
+                    state: {
+                      from: location,
+                      confirmation: true,
+                      email: response?.data?.data?.email,
+                    },
+                  });
                 })
                 .catch((err) => {
                   console.log(err);
+                  setShowInfoPopUp(false);
+                  setType(2);
+                  setText(
+                    "Erreur ! veuillez vérifier les informations entrés ou réessayer plus tard"
+                  );
+                  setShowInfoPopUpAndHide();
                 });
             }, 400);
           }}
@@ -100,7 +125,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="Nom..."
+                    placeholder={t("AuthentificationPage.Name")}
                   ></NameNickNameInput>
                   <NameNickNameInput
                     type="text"
@@ -108,7 +133,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                     value={values.lastname}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder="Prénom..."
+                    placeholder={t("AuthentificationPage.LastName")}
                   ></NameNickNameInput>
                 </NameNickNameContainer>
                 <SignUpInput
@@ -117,7 +142,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Email..."
+                  placeholder={t("AuthentificationPage.Email")}
                 ></SignUpInput>
                 <SignUpInput
                   type="tel"
@@ -125,7 +150,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.phone_number}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Numéro de téléphone..."
+                  placeholder={t("AuthentificationPage.Tel")}
                 ></SignUpInput>
                 <SignUpInput
                   type="password"
@@ -133,7 +158,7 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Mot de passe..."
+                  placeholder={t("AuthentificationPage.Password")}
                 ></SignUpInput>
 
                 <SignUpInput
@@ -142,11 +167,11 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.confirmPassword}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Confirmer le mot de passe..."
+                  placeholder={t("AuthentificationPage.ConfirmPassword")}
                 ></SignUpInput>
               </InputsContainer>
               <SignUpBtn type="submit" disabled={isSubmitting}>
-                S'inscrire
+                {t("AuthentificationPage.Signup")}
               </SignUpBtn>
             </SignUpForm>
           )}
@@ -154,29 +179,31 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
       </FromikContainer>
       <HrContainer as={motion.div} layoutId={"hr"}>
         <LoginHr />
-        <HrP>Ou</HrP>
+        <HrP>{t("AuthentificationPage.Or")}</HrP>
         <LoginHr />
       </HrContainer>
       <SocialMediaContainer as={motion.div} layoutId={"socialMedia"}>
         <SocialMedia>
           <FacebookIcone />
-          <SignUpP>Continuer avec facebook</SignUpP>
+          <SignUpP>{t("AuthentificationPage.ContinueWFacebook")}</SignUpP>
         </SocialMedia>
         <SocialMedia>
           <TwitterIcone />
-          <SignUpP>Continuer avec twitter</SignUpP>
+          <SignUpP>{t("AuthentificationPage.ContinueWTwitter")}</SignUpP>
         </SocialMedia>
       </SocialMediaContainer>
 
       <ChangeLogInUpContainer>
-        <ChangeLogInUpSpan>Vous avez déjà un compte?</ChangeLogInUpSpan>
+        <ChangeLogInUpSpan>
+          {t("AuthentificationPage.UHaveAccount")}
+        </ChangeLogInUpSpan>
         <ChangeLogInUpButton
           onClick={() => {
             setLogin(!login);
             setToggle(!toggle);
           }}
         >
-          Se connecter
+          {t("AuthentificationPage.Login")}
         </ChangeLogInUpButton>
       </ChangeLogInUpContainer>
     </SignUpContainerContent>

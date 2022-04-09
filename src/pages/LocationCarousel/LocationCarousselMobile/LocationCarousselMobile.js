@@ -26,7 +26,9 @@ import {
   MapWrapper,
   GoToMapBtn,
   MapWrapper2,
+  LocationContainer,
 } from "./LocationCarousselMobileElements";
+import { MdLocationOn } from "react-icons/md";
 import Slider from "react-slick";
 import { generalAPILink } from "../../../assets/Variables/Links";
 import "slick-carousel/slick/slick.css";
@@ -35,6 +37,8 @@ import "./style.css";
 import { ReactComponent as VrIcone } from "../VrIcone.svg";
 import { ReactComponent as FullScreenIcone } from "../FullScreenIcone.svg";
 import getWilayaInformation from "../../../assets/utilities/getWilayaInformation";
+import { ReactComponent as PointerMobile } from "../../../assets/svg/PointerMobile.svg";
+import useTranslation from "../../../hooks/useTranslation/useTranslation";
 const LocationCarousselMobile = ({
   catégorieInformations,
   wilayaId,
@@ -49,6 +53,7 @@ const LocationCarousselMobile = ({
     fullscreenControl: false,
     keyboardShortcuts: false,
   };
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const ref = useRef();
   const [location, setLocation] = useState({ images: [] });
   console.log(destination);
@@ -113,14 +118,12 @@ const LocationCarousselMobile = ({
           </LocationNameContainer>
           <Hr />
           <AboutContainer>
-            <AboutTitle>About</AboutTitle>
+            <AboutTitle>{t("CarousselPage.About")}</AboutTitle>
             <AboutP>{location.translatedDescription}</AboutP>
           </AboutContainer>
           <Hr />
           <GaleryContainer>
-            <GaleryTitle>
-              {catégorieInformations.catégorieName}'s Galery
-            </GaleryTitle>
+            <GaleryTitle>{t(`CarousselPage.Gallery`)}</GaleryTitle>
           </GaleryContainer>
           <GaleryImagesContainer>
             <ScrollContainer
@@ -158,15 +161,27 @@ const LocationCarousselMobile = ({
                   defaultZoom={12}
                   zoom={12}
                   options={options}
-                ></GoogleMapReact>
+                >
+                  <LocationContainer
+                    key={`location-${location.id_location}`}
+                    lat={location.latitude}
+                    lng={location.longitude}
+                  >
+                    <MdLocationOn
+                      size="56"
+                      color="#4BCB02"
+                      style={{
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    />
+                  </LocationContainer>
+                </GoogleMapReact>
               </MapWrapper2>
               <GoToMapBtn
-                to={{
-                  pathname: `/map`,
-                  state: { lat: location.latitude, lng: location.longitude },
-                }}
+                to={`/map`}
+                state={{ lat: location.latitude, lng: location.longitude }}
               >
-                Open in maps
+                {t(`CarousselPage.OpenMap`)}
               </GoToMapBtn>
             </MapWrapper>
           </MapContainer>

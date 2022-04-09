@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { ReactComponent as ArrowSvg } from "../../../../assets/svg/arrow.svg";
 const MenuAnimation = keyframes`
 from {
   height:0px;
@@ -10,8 +9,9 @@ to {
 }
 `;
 export const BackDrop = styled.div`
+  margin-top: 110px;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 110px);
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
   position: fixed;
   top: 0;
@@ -23,8 +23,8 @@ export const BackDrop = styled.div`
 `;
 export const Container = styled.div`
   width: 80%;
-  min-height: 20%;
-  max-height: 80%;
+  height: 20%;
+  height: 80%;
   background: #707070;
   border-radius: 30px;
   padding: 20px;
@@ -34,7 +34,7 @@ export const Wrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
 `;
 export const WilayaTextContainer = styled.div`
@@ -65,12 +65,12 @@ export const SearchBtn = styled.button`
 `;
 export const SelectWilayaContainer = styled.div`
   width: 100%;
+  height: 80%;
   display: flex;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  flex-direction: column;
   color: #fff;
-  border-radius: 30px;
-  padding: 10px 30px;
+  padding: 10px 10px;
   border: none;
   cursor: pointer;
   position: relative;
@@ -78,10 +78,14 @@ export const SelectWilayaContainer = styled.div`
 `;
 export const SelectWilayaVisible = styled.div`
   width: 100%;
-  height: 100%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: ${(props) =>
+    props.showWilayas === false ? "30px" : "30px 30px 0 0 "};
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 30px;
 `;
 export const WilayaSelectedH3 = styled.h3`
   display: flex;
@@ -91,35 +95,36 @@ export const WilayaSelectedH3 = styled.h3`
   font-size: 20px;
   font-weight: 400;
 `;
-export const Arrow = styled(ArrowSvg)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease-out;
-  ${SelectWilayaContainer}:hover & {
-    transform: rotate(-540deg);
-  }
-`;
 export const SelectWilayaUlHidden = styled.ul`
   display: ${(props) => (props.showWilayas === false ? "none" : "flex")};
   background: rgba(255, 255, 255, 0);
   width: 100%;
-  max-height: 300px;
+  height: 80%;
   animation: ${MenuAnimation} 0.3s forwards;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 30px;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  top: 60px;
-  z-index: 2;
   text-align: justify;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
-
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
   }
 `;
 export const SelectWilayaLIHidden = styled.li`
@@ -134,4 +139,13 @@ export const SelectWilayaLIHidden = styled.li`
   font-weight: 400;
   padding: 0 30px;
   border-radius: 30px;
+`;
+export const CloseButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  align-self: end;
+  font-size: 20px;
+  height: 5%;
 `;

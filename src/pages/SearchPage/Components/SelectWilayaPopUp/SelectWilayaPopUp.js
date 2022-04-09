@@ -8,6 +8,7 @@ import {
   WilayaText,
   BtnContainer,
   SearchBtn,
+  CloseButton,
 } from "./SelectWilayaPopUpElements";
 import {
   SelectWilayaContainer,
@@ -15,8 +16,8 @@ import {
   WilayaSelectedH3,
   SelectWilayaUlHidden,
   SelectWilayaLIHidden,
-  Arrow,
 } from "./SelectWilayaPopUpElements";
+import { ReactComponent as ArrowSvg } from "../../../../assets/svg/arrow.svg";
 
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 const SelectWilayaPopUp = ({
@@ -29,22 +30,24 @@ const SelectWilayaPopUp = ({
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [showWilayas, setShowWilayas] = useState(false);
   return (
-    <BackDrop onClick={hidePopUp}>
+    <BackDrop>
       <Container>
         <Wrapper>
-          <WilayaTextContainer>
-            <WilayaText>{t("SearchPage.Wilaya")}</WilayaText>
-          </WilayaTextContainer>
+          <CloseButton onClick={hidePopUp}>x</CloseButton>
+
           <SelectWilayaContainer
             onClick={() => {
               setShowWilayas(!showWilayas);
             }}
           >
-            <SelectWilayaVisible>
+            <WilayaTextContainer>
+              <WilayaText>{t("SearchPage.Wilaya")}</WilayaText>
+            </WilayaTextContainer>
+            <SelectWilayaVisible showWilayas={showWilayas}>
               <WilayaSelectedH3>
                 {selectedOption.translatedName}
               </WilayaSelectedH3>
-              <Arrow />
+              <ArrowSvg />
             </SelectWilayaVisible>
 
             {showWilayas && (

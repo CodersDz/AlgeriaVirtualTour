@@ -117,7 +117,7 @@ const NavbarMobile = ({ setOpen }) => {
             }`,
           }}
         >
-          <BottomLink to="/login">
+          <BottomLink to="/Profile">
             <ProfileIcone
               style={{
                 fill: `${currentPage === "profile" ? "#fff" : "#2F8100"}`,

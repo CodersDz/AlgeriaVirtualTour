@@ -3,6 +3,9 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { PageContainer, LogInSignUpContainer } from "./LogInElements";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import { Route, Routes } from "react-router-dom";
+import EmailConfirmation from "./components/EmailConfirmation/EmailConfirmation";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
 const LogIn = () => {
   const [login, setLogin] = useState(true);
   const [toggle, setToggle] = useState(false);
@@ -31,7 +34,14 @@ const LogIn = () => {
       <LogInSignUpContainer login={login}>
         <AnimatePresence>
           <AnimateSharedLayout>
-            <ChangeSignInSignUp />
+            <Routes>
+              <Route path="Login" element={<ChangeSignInSignUp />} />
+              <Route
+                path="EmailConfirmation"
+                element={<EmailConfirmation />}
+              ></Route>
+              <Route path="resetPassword" element={<ResetPassword />}></Route>
+            </Routes>
           </AnimateSharedLayout>
         </AnimatePresence>
       </LogInSignUpContainer>

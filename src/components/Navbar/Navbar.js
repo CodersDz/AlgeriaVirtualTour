@@ -194,7 +194,7 @@ const Navbar = ({ setAnimated }) => {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/Login">
+              <NavLink to="/Profile">
                 <ProfileIcone style={{ maxWidth: "100%", maxHeight: "80%" }} />
                 <NavLinkSpan>{t("NavBar.Profile")}</NavLinkSpan>
               </NavLink>

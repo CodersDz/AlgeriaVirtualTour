@@ -34,7 +34,7 @@ export const InfoP = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
   transition: all 2s ease-in-out;
-  font-size: 20px;
+  font-size: 15px;
   text-align: justify;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */

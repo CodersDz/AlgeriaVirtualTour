@@ -146,3 +146,4 @@ export const GoToMapBtn = styled(Link)`
   justify-content: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 `;
+export const LocationContainer = styled.div``;

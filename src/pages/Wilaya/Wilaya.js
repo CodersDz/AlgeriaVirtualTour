@@ -175,87 +175,84 @@ const Wilaya = () => {
   };
   return (
     <AnimateSharedLayout>
-      <PageContainerGlobal
+      <PageContentGlobal
+        fixed={isDesktop}
         as={motion.div}
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <Navbar />
-        <PageContentGlobal fixed={isDesktop}>
-          {isDesktop ? (
-            <PageContent bg={wilaya.pic_cover}>
-              <SidePopUpBar />
-              <LeftContainer currentSection={currentSection}>
-                <ChangeLeft />
-              </LeftContainer>
-              <RightContainer>
-                <ChangeRight />
-                {/* <Pub src={banners.banner_location} /> */}
-                <RightWilayaNav>
-                  <RightNavLi
-                    onClick={() => {
-                      if (currentSection !== "Destination") {
-                        setCurrentDiscoverOption({
-                          name: wilaya.translatedName,
-                          id: null,
-                        });
-                        filterLocation(null);
-                        setCurrentSection("Destination");
-                      }
-                    }}
-                  >
-                    {t("WilayaPage.Destination")}
-                    {currentSection === "Destination" ? (
-                      <RightNavHr as={motion.div} />
-                    ) : null}
-                  </RightNavLi>
-                  <RightNavLi
-                    onClick={() => {
-                      setCurrentSection("Info");
+        {isDesktop ? (
+          <PageContent bg={wilaya.pic_cover}>
+            <SidePopUpBar />
+            <LeftContainer currentSection={currentSection}>
+              <ChangeLeft />
+            </LeftContainer>
+            <RightContainer>
+              <ChangeRight />
+              {/* <Pub src={banners.banner_location} /> */}
+              <RightWilayaNav>
+                <RightNavLi
+                  onClick={() => {
+                    if (currentSection !== "Destination") {
                       setCurrentDiscoverOption({
                         name: wilaya.translatedName,
                         id: null,
                       });
                       filterLocation(null);
-                    }}
-                  >
-                    {t("WilayaPage.MoreInfo")}
-                    {currentSection === "Info" ? (
-                      <RightNavHr as={motion.div} />
-                    ) : null}
-                  </RightNavLi>
-                  <RightNavLi
-                    onClick={() => {
-                      setCurrentSection("Discover");
-                      setCurrentDiscoverOption({
-                        name: wilaya.translatedName,
-                        id: null,
-                      });
-                      filterLocation(null);
-                    }}
-                  >
-                    {t("WilayaPage.Discover")}
-                    {currentSection === "Discover" ? (
-                      <RightNavHr as={motion.div} />
-                    ) : null}
-                  </RightNavLi>
-                </RightWilayaNav>
-              </RightContainer>
-            </PageContent>
-          ) : (
-            <WilayaMobile
-              wilaya={wilaya}
-              locations={locations}
-              currentSection={currentSection}
-              setCurrentSection={setCurrentSection}
-              setCurrentDiscoverOption={setCurrentDiscoverOption}
-              filterLocation={filterLocation}
-            />
-          )}
-        </PageContentGlobal>
-        <Footer />
-      </PageContainerGlobal>
+                      setCurrentSection("Destination");
+                    }
+                  }}
+                >
+                  {t("WilayaPage.Destination")}
+                  {currentSection === "Destination" ? (
+                    <RightNavHr as={motion.div} />
+                  ) : null}
+                </RightNavLi>
+                <RightNavLi
+                  onClick={() => {
+                    setCurrentSection("Info");
+                    setCurrentDiscoverOption({
+                      name: wilaya.translatedName,
+                      id: null,
+                    });
+                    filterLocation(null);
+                  }}
+                >
+                  {t("WilayaPage.MoreInfo")}
+                  {currentSection === "Info" ? (
+                    <RightNavHr as={motion.div} />
+                  ) : null}
+                </RightNavLi>
+                <RightNavLi
+                  onClick={() => {
+                    setCurrentSection("Discover");
+                    setCurrentDiscoverOption({
+                      name: wilaya.translatedName,
+                      id: null,
+                    });
+                    filterLocation(null);
+                  }}
+                >
+                  {t("WilayaPage.Discover")}
+                  {currentSection === "Discover" ? (
+                    <RightNavHr as={motion.div} />
+                  ) : null}
+                </RightNavLi>
+              </RightWilayaNav>
+            </RightContainer>
+          </PageContent>
+        ) : (
+          <WilayaMobile
+            wilaya={wilaya}
+            locations={locations}
+            currentSection={currentSection}
+            setCurrentSection={setCurrentSection}
+            setCurrentDiscoverOption={setCurrentDiscoverOption}
+            filterLocation={filterLocation}
+          />
+        )}
+      </PageContentGlobal>
     </AnimateSharedLayout>
   );
 };

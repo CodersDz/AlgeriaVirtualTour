@@ -13,7 +13,7 @@ to {
 }
 `;
 
-export const MapContainer = styled.div`
+export const PageContent = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
@@ -107,10 +107,26 @@ export const DestinationUlHidden = styled.ul`
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.15));
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  margin-right: 30px;
   border-radius: 10px 10px 0 0;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
+  }
 `;
 export const DestinationLIHidden = styled.li`
   min-height: 25%;

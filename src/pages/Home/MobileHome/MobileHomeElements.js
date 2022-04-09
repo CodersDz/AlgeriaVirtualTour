@@ -224,7 +224,7 @@ export const PExpanded = styled.p`
     props.readMore === false ? "4" : "initial"};
   line-clamp: ${(props) => (props.readMore === false ? "4" : "initial")};
   transition: all 2s ease-in-out;
-  font-size: 20px;
+  font-size: 15px;
   text-align: justify;
   overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */

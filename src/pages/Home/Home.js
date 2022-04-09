@@ -26,7 +26,7 @@ import {
   ReadMoreSpan,
 } from "./HomeElements";
 import useWindowSize from "../../hooks/useWindowSize";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
@@ -159,7 +159,8 @@ const Home = () => {
   };
   return (
     <AnimateSharedLayout>
-      <PageContainerGlobal
+      <PageContentGlobal
+        fixed={true}
         key="home"
         as={motion.div}
         variants={containerVariants}
@@ -167,42 +168,38 @@ const Home = () => {
         animate="visible"
         transition={{ duration: 0.5 }}
       >
-        <Navbar setAnimated={setAnimated} />
-        <PageContentGlobal fixed={true}>
-          {isDesktop ? (
-            <HomeContent currentBg={HomeBg}>
-              <SidePopUpBar />
-              <MapContainer>
-                <DzMap />
-              </MapContainer>
-              <InfoCarousel>
-                <InfoCarouselTitle>{t("HomePage.Title")}</InfoCarouselTitle>
-                <InfoCarouselImg src={FemmeVr} />
-              </InfoCarousel>
-              <ImgCarousel>
-                <HomePubContainer>
-                  {/* <HomePub src={banners.banner_home1} /> */}
-                </HomePubContainer>
+        {isDesktop ? (
+          <HomeContent currentBg={HomeBg}>
+            <SidePopUpBar />
+            <MapContainer>
+              <DzMap />
+            </MapContainer>
+            <InfoCarousel>
+              <InfoCarouselTitle>{t("HomePage.Title")}</InfoCarouselTitle>
+              <InfoCarouselImg src={FemmeVr} />
+            </InfoCarousel>
+            <ImgCarousel>
+              <HomePubContainer>
+                {/* <HomePub src={banners.banner_home1} /> */}
+              </HomePubContainer>
 
-                <ThumbnailImages>
-                  {wilayas.map((item) => {
-                    return <GrowImage item={item} key={item.position} />;
-                  })}
-                  <DIscoverMore to="/Search">
-                    {t("HomePage.DiscoverMore")}...
-                  </DIscoverMore>
-                </ThumbnailImages>
-                <HomePubContainer>
-                  {/* <HomePub src={banners.banner_home2} /> */}
-                </HomePubContainer>
-              </ImgCarousel>
-            </HomeContent>
-          ) : (
-            <MobileHome wilayas={wilayas} />
-          )}
-        </PageContentGlobal>
-        <Footer />
-      </PageContainerGlobal>
+              <ThumbnailImages>
+                {wilayas.map((item) => {
+                  return <GrowImage item={item} key={item.position} />;
+                })}
+                <DIscoverMore to="/Search">
+                  {t("HomePage.DiscoverMore")}...
+                </DIscoverMore>
+              </ThumbnailImages>
+              <HomePubContainer>
+                {/* <HomePub src={banners.banner_home2} /> */}
+              </HomePubContainer>
+            </ImgCarousel>
+          </HomeContent>
+        ) : (
+          <MobileHome wilayas={wilayas} />
+        )}
+      </PageContentGlobal>
     </AnimateSharedLayout>
   );
 };

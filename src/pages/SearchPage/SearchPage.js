@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
-  SearchContentContainer,
+  PageContent,
   SearchContentWrapper,
   SearchH1,
   SearchP,
@@ -24,7 +24,7 @@ import {
   SelectWilayaLIHidden,
 } from "./SearchPageElements";
 import CardContainer from "../../components/CardContainer/CardContainer";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import { useLocalStorage } from "../../hooks/useStorage";
 import { ReactComponent as MapIcone } from "./MapIcone.svg";
@@ -88,94 +88,88 @@ const SearchPage = () => {
     } else console.log("Please select a wilaya first !");
   };
   return (
-    <PageContainerGlobal
-      key="SearchPage"
-      as={motion.div}
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      transition={{ duration: 0.5 }}
-    >
-      <Navbar />
-      <PageContentGlobal fixed={isDesktop}>
-        <SearchContentContainer>
-          <SidePopUpBar />
-          <BannerContainer />
-          <SearchContentWrapper>
-            {isDesktop ? (
-              <TextContainer>
-                <SearchH1>{t("SearchPage.H1")}</SearchH1>
-                <SearchP>{t("SearchPage.P")}</SearchP>
-              </TextContainer>
-            ) : (
-              <TextContainer>
-                <SearchH1>{t("WilayaPage.Discover")}</SearchH1>
-              </TextContainer>
-            )}
+    <PageContentGlobal fixed={isDesktop}>
+      <PageContent
+        key="SearchPage"
+        as={motion.div}
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        transition={{ duration: 0.5 }}
+      >
+        <SidePopUpBar />
+        <BannerContainer />
+        <SearchContentWrapper>
+          {isDesktop ? (
+            <TextContainer>
+              <SearchH1>{t("SearchPage.H1")}</SearchH1>
+              <SearchP>{t("SearchPage.P")}</SearchP>
+            </TextContainer>
+          ) : (
+            <TextContainer>
+              <SearchH1>{t("WilayaPage.Discover")}</SearchH1>
+            </TextContainer>
+          )}
 
-            {isDesktop ? (
-              <BtnContainer>
-                <SelectWilayaContainer
-                  onMouseLeave={() => {
-                    setShowWilayas(false);
+          {isDesktop ? (
+            <BtnContainer>
+              <SelectWilayaContainer
+                onMouseLeave={() => {
+                  setShowWilayas(false);
+                }}
+              >
+                <SelectWilayaVisible
+                  showWilayas={showWilayas}
+                  onMouseEnter={() => {
+                    setShowWilayas(true);
                   }}
                 >
-                  <SelectWilayaVisible
-                    onMouseEnter={() => {
-                      setShowWilayas(true);
-                    }}
-                  >
-                    <WilayaSelectedH3>
-                      {selectedOption.translatedName}
-                    </WilayaSelectedH3>
-                    <Arrow />
-                  </SelectWilayaVisible>
-                  <SelectWilayaUlHidden
-                    as={motion.div}
-                    showWilayas={showWilayas}
-                  >
-                    {wilayas.map((wilaya) => {
-                      return (
-                        <SelectWilayaLIHidden
-                          onClick={() => {
-                            setSelectedOption(wilaya);
-                            setShowWilayas(false);
-                          }}
-                        >
-                          {wilaya.translatedName}
-                        </SelectWilayaLIHidden>
-                      );
-                    })}
-                  </SelectWilayaUlHidden>
-                </SelectWilayaContainer>
-                <SearchBtn
-                  onClick={() => {
-                    goToWilaya(selectedOption.id_wilaya);
-                  }}
-                >
-                  {t("SearchPage.Research")}
-                </SearchBtn>
-                <MapIconeContainer to="/Map">
-                  <MapIcone />
-                </MapIconeContainer>
-              </BtnContainer>
-            ) : (
-              <MobileSearchBar
-                wilayas={wilayas}
-                selectedOption={selectedOption}
-                setSelectedOption={setSelectedOption}
-                goToWilaya={goToWilaya}
-              ></MobileSearchBar>
-            )}
-            <CardContainer locations={locations} />
-          </SearchContentWrapper>
-          <BannerContainer>
-            {/* <BannerImg src={banners.banner_recherche} /> */}
-          </BannerContainer>
-        </SearchContentContainer>
-      </PageContentGlobal>
-      <Footer />
-    </PageContainerGlobal>
+                  <WilayaSelectedH3>
+                    {selectedOption.translatedName}
+                  </WilayaSelectedH3>
+                  <Arrow />
+                </SelectWilayaVisible>
+                <SelectWilayaUlHidden as={motion.div} showWilayas={showWilayas}>
+                  {wilayas.map((wilaya) => {
+                    return (
+                      <SelectWilayaLIHidden
+                        onClick={() => {
+                          setSelectedOption(wilaya);
+                          setShowWilayas(false);
+                        }}
+                      >
+                        {wilaya.translatedName}
+                      </SelectWilayaLIHidden>
+                    );
+                  })}
+                </SelectWilayaUlHidden>
+              </SelectWilayaContainer>
+              <SearchBtn
+                onClick={() => {
+                  goToWilaya(selectedOption.id_wilaya);
+                }}
+              >
+                {t("SearchPage.Research")}
+              </SearchBtn>
+              <MapIconeContainer to="/Map">
+                <MapIcone />
+              </MapIconeContainer>
+            </BtnContainer>
+          ) : (
+            <MobileSearchBar
+              wilayas={wilayas}
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+              goToWilaya={goToWilaya}
+            ></MobileSearchBar>
+          )}
+          <CardContainer locations={locations} />
+        </SearchContentWrapper>
+        <BannerContainer>
+          {/* <BannerImg src={banners.banner_recherche} /> */}
+        </BannerContainer>
+      </PageContent>
+    </PageContentGlobal>
   );
 };
 

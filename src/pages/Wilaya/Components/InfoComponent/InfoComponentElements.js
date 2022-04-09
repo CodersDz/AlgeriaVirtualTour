@@ -46,21 +46,23 @@ export const InfoP = styled.p`
     display: ${(props) => (props.readMore === false ? "none" : "block")};
   }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
   }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: grey;
+  &::-webkit-scrollbar-track {
     border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
   }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #fff;
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
   }
   @media only screen and ${device.mobile} {
   }

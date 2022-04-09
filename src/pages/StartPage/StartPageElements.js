@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import device from "../../assets/Variables/responsive";
 export const StartPageContainer = styled.div`
   background: linear-gradient(to top, #147538, #72b43e);
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

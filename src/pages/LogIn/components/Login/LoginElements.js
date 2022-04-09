@@ -15,7 +15,6 @@ export const LoginH1 = styled.h1`
   font-size: 25px;
   letter-spacing: -1px;
   color: #fff;
-  align-self: flex-start;
   display: flex;
   align-items: center;
 `;

@@ -12,7 +12,7 @@ to {
   height:150px;
 }
 `;
-export const SearchContentContainer = styled.div`
+export const PageContent = styled.div`
   background: linear-gradient(
       to top,
       rgba(0, 0, 0, 0.5),
@@ -153,21 +153,24 @@ export const SelectWilayaContainer = styled.div`
   width: 70%;
   display: flex;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.5);
+
   color: #fff;
-  border-radius: 30px;
-  padding: 10px 30px;
+
   border: none;
   cursor: pointer;
   position: relative;
   overflow-y: visible;
 `;
 export const SelectWilayaVisible = styled.div`
+  padding: 10px 30px;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: ${(props) =>
+    props.showWilayas === false ? "30px" : "30px 30px 0 0"};
+  background: rgba(255, 255, 255, 0.5);
 `;
 export const WilayaSelectedH3 = styled.h3`
   display: flex;
@@ -193,7 +196,7 @@ export const SelectWilayaUlHidden = styled.ul`
   max-height: 300px;
   animation: ${MenuAnimation} 0.3s forwards;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 30px;
+  border-radius: 0 0 10px 10px;
   align-items: center;
   flex-direction: column;
   position: absolute;
@@ -205,7 +208,22 @@ export const SelectWilayaUlHidden = styled.ul`
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
   }
 `;
 export const SelectWilayaLIHidden = styled.li`

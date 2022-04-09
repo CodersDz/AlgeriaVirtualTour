@@ -203,21 +203,24 @@ export const SelectWilayaContainer = styled.div`
   width: 20%;
   display: flex;
   justify-content: center;
-  background: #f6f6f6;
+
   color: #fff;
-  border-radius: 30px;
-  padding: 10px 30px;
+
   border: none;
   cursor: pointer;
   position: relative;
   overflow-y: visible;
 `;
 export const SelectWilayaVisible = styled.div`
+  background: #f6f6f6;
+  padding: 10px 30px;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-radius: ${(props) =>
+    props.showWilayas === false ? "30px" : "30px 30px 0 0"};
 `;
 export const WilayaSelectedH3 = styled.h3`
   display: flex;
@@ -253,9 +256,24 @@ export const SelectWilayaUlHidden = styled.ul`
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
   background: #f6f6f6;
-  border-radius: 30px;
+  border-radius: 0 0 10px 10px;
   &::-webkit-scrollbar {
-    display: none;
+    width: 6px;
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+  }
+  &::-webkit-scrollbar-thumb:active {
+    background: rgba(0, 0, 0, 0.9);
   }
 `;
 export const SelectWilayaLIHidden = styled.li`

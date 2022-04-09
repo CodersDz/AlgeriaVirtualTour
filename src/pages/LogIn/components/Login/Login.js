@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 import { Formik } from "formik";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReactComponent as FacebookIcone } from "../../../../assets/svg/FacebookIcone.svg";
@@ -29,8 +31,22 @@ import {
 } from "./LoginElements";
 import axios from "axios";
 import { generalAPILink } from "../../../../assets/Variables/Links";
+import { useNavigate } from "react-router-dom";
+import useInfoPopUp from "../../../../hooks/useInfoPopUp";
+import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 
 const Login = ({ login, setLogin, toggle, setToggle }) => {
+  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
+    useInfoPopUp();
+  const [checked, setChecked] = useState(false);
+  const { setAuthFunction } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/home";
+  const handleChecked = (e) => {
+    setChecked(e.target.checked);
+  };
   return (
     <LoginContainerContent
       as={motion.div}
@@ -38,20 +54,20 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0 }}
     >
-      <LoginH1>Se Connecter</LoginH1>
+      <LoginH1>{t("AuthentificationPage.Login")}</LoginH1>
       <SocialMediaContainer as={motion.div} layoutId={"socialMedia"}>
         <SocialMedia>
           <FacebookIcone />
-          <LoginP>Continuer avec facebook</LoginP>
+          <LoginP>{t("AuthentificationPage.ContinueWFacebook")}</LoginP>
         </SocialMedia>
         <SocialMedia>
           <TwitterIcone />
-          <LoginP>Continuer avec twitter</LoginP>
+          <LoginP>{t("AuthentificationPage.ContinueWTwitter")}</LoginP>
         </SocialMedia>
       </SocialMediaContainer>
       <HrContainer as={motion.div} layoutId={"hr"}>
         <LoginHr />
-        <HrP>Ou</HrP>
+        <HrP>{t("AuthentificationPage.Or")}</HrP>
         <LoginHr />
       </HrContainer>
       <FromikContainer>
@@ -77,9 +93,23 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
                 .post(`${generalAPILink}/users/login`, values)
                 .then((response) => {
                   console.log(response);
+                  const accesToken = response.data?.token;
+                  console.log(response.data?.token);
+                  setAuthFunction(accesToken, checked);
+                  setShowInfoPopUp(false);
+                  setType(1);
+                  setText("Connection avec succès");
+                  setShowInfoPopUpAndHide();
+                  navigate(from, { replace: true });
                 })
                 .catch((err) => {
                   console.log(err);
+                  setShowInfoPopUp(false);
+                  setType(2);
+                  setText(
+                    "Erreur ! veuillez vérifier les informations entrés ou réessayer plus tard"
+                  );
+                  setShowInfoPopUpAndHide();
                 });
             }, 400);
           }}
@@ -102,7 +132,7 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Email..."
+                  placeholder={t("AuthentificationPage.Email")}
                 ></LoginInput>
                 <LoginInput
                   type="password"
@@ -110,7 +140,7 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  placeholder="Mot de passe..."
+                  placeholder={t("AuthentificationPage.Password")}
                 ></LoginInput>
               </InputsContainer>
 
@@ -119,31 +149,36 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
                   <KeepLogInput
                     id="keepLoggedIn"
                     type="checkbox"
+                    onChange={handleChecked}
                   ></KeepLogInput>
                   <KeepLogLabel for="keepLoggedIn">
-                    Rester connecter
+                    {t("AuthentificationPage.StayConnected")}
                   </KeepLogLabel>
                 </KeepLogContainer>
                 <ForgottenPwContainer>
-                  <ForgottenPwLink to="/">Mot de passe oublié?</ForgottenPwLink>
+                  <ForgottenPwLink to="/Authentification/resetPassword">
+                    {t("AuthentificationPage.ForgetPassword")}
+                  </ForgottenPwLink>
                 </ForgottenPwContainer>
               </UnderInputsContainer>
               <LoginBtn type="submit" disabled={isSubmitting}>
-                Se connecter
+                {t("AuthentificationPage.Login")}
               </LoginBtn>
             </LoginForm>
           )}
         </Formik>
       </FromikContainer>
       <ChangeLogInUpContainer>
-        <ChangeLogInUpSpan>Vous avez pas de compte?</ChangeLogInUpSpan>
+        <ChangeLogInUpSpan>
+          {t("AuthentificationPage.UdontHaveAccount")}
+        </ChangeLogInUpSpan>
         <ChangeLogInUpButton
           onClick={() => {
             setLogin(!login);
             setToggle(!toggle);
           }}
         >
-          Créer un compte
+          {t("AuthentificationPage.CreateAccount")}
         </ChangeLogInUpButton>
       </ChangeLogInUpContainer>
     </LoginContainerContent>

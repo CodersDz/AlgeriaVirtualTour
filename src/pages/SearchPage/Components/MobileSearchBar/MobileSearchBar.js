@@ -15,7 +15,7 @@ const MobileSearchBar = ({
 }) => {
   const [show, setShow] = useState(false);
   const hidePopUp = () => {
-    setShow(true);
+    setShow(false);
   };
   const showPopUp = () => {
     setShow(true);
@@ -23,7 +23,7 @@ const MobileSearchBar = ({
   return (
     <Container>
       <SelectWilayaContainer onClick={showPopUp}>
-        Alger
+        {selectedOption.translatedName}
         <ArrowMobile />
       </SelectWilayaContainer>
       <MapIconeContainer to="/Map">

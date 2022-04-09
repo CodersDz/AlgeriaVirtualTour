@@ -18,31 +18,28 @@ import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
 const About = () => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   return (
-    <PageContainerGlobal
+    <PageContentGlobal
+      fixed={false}
       as={motion.div}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, transition: { duration: 0.5 } }}
     >
-      <Navbar />
-      <PageContentGlobal fixed={false}>
-        <ContentContainer>
-          <LeftContainer>
-            <LeftWrapper>
-              <AboutH1>{t("About_us_page.Title")}</AboutH1>
-              <AboutP>
-                <span style={{ fontWeight: 700 }}>ALGERIA VIRTUAL TOUR</span>
-                <br />
-                {t("AboutUsPage.text")}
-              </AboutP>
-            </LeftWrapper>
-          </LeftContainer>
-          <RightContainer>
-            <DevicesContainer />
-          </RightContainer>
-        </ContentContainer>
-      </PageContentGlobal>
-      <Footer />
-    </PageContainerGlobal>
+      <ContentContainer>
+        <LeftContainer>
+          <LeftWrapper>
+            <AboutH1>{t("About_us_page.Title")}</AboutH1>
+            <AboutP>
+              <span style={{ fontWeight: 700 }}>ALGERIA VIRTUAL TOUR</span>
+              <br />
+              {t("AboutUsPage.text")}
+            </AboutP>
+          </LeftWrapper>
+        </LeftContainer>
+        <RightContainer>
+          <DevicesContainer />
+        </RightContainer>
+      </ContentContainer>
+    </PageContentGlobal>
   );
 };
 

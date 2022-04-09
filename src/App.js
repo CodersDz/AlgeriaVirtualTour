@@ -14,26 +14,44 @@ import Wilaya from "./pages/Wilaya/Wilaya";
 import Map from "./pages/Map/Map";
 import LocationCarousel from "./pages/LocationCarousel/LocationCarousel";
 import ScrollToTop from "./assets/utilities/ScrollToTop";
+import Profile from "./pages/Profile/Profile";
+import RequireAuth from "./CustomRoutes/RequireAuth";
+import useInfoPopUp from "./hooks/useInfoPopUp";
+import InfoPopUp from "./components/InfoPopUp/InfoPopUp";
+import PagesWithNavbar_Footer from "./CustomRoutes/PagesWithNavbar_Footer";
+import { PageContainerGlobal } from "./GlobalStyles";
 function App() {
   const location = useLocation();
+  const { showInfoPopUp, type, text } = useInfoPopUp();
   return (
-    <div className="App">
+    <PageContainerGlobal>
       <ScrollToTop>
         <Routes location={location} key={location.pathname}>
+          {/* Public Routes*/}
           <Route path="/" element={<StartPage />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/Login" element={<LogIn />} />
-          <Route path="/Search/:categorie" element={<SearchCatégorie />} />
-          <Route path="/Search" element={<SearchPage />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/LegalNotice" element={<LegalNotice />} />
-          <Route path="/Map" element={<Map />} />
-          <Route path="/wilaya/:wilayaId" element={<Wilaya />} />
-          <Route path="/location/:locationId" element={<LocationCarousel />} />
+          <Route element={<PagesWithNavbar_Footer />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/Search/:categorie" element={<SearchCatégorie />} />
+            <Route path="/Search" element={<SearchPage />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/Contact" element={<Contact />} />
+            <Route path="/LegalNotice" element={<LegalNotice />} />
+            <Route path="/Map" element={<Map />} />
+            <Route path="/wilaya/:wilayaId" element={<Wilaya />} />
+            <Route
+              path="/location/:locationId"
+              element={<LocationCarousel />}
+            />
+          </Route>
+          <Route path="/Authentification/*" element={<LogIn />} />
+          {/* Privates Routes*/}
+          <Route element={<RequireAuth />}>
+            <Route path="/Profile" element={<Profile />} />
+          </Route>
         </Routes>
+        {showInfoPopUp && <InfoPopUp type={type} text={text} />}
       </ScrollToTop>
-    </div>
+    </PageContainerGlobal>
   );
 }
 

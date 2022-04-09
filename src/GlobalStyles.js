@@ -4,6 +4,9 @@ const lang = localStorage.getItem("language");
 
 export const PageContainerGlobal = styled.div`
   width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"} !important;
   & span {
     font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
@@ -32,19 +35,17 @@ export const PageContainerGlobal = styled.div`
   }
 `;
 export const PageContentGlobal = styled.div`
-  width: 100%;
-
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
+
+  margin-top: 110px;
+  height: ${(props) => (props.fixed ? "calc(100vh - 110px)" : "auto")};
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.tablet} {
-  }
-  @media only screen and ${device.maxTablet} {
-    margin-top: 110px;
-    height: ${(props) => (props.fixed ? "calc(100vh - 110px)" : "auto")};
   }
   @media only screen and ${device.laptop} {
     height: ${(props) => (props.fixed ? "calc(100vh - 80px)" : "auto")};

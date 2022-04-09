@@ -108,130 +108,124 @@ const SearchCatégorie = () => {
     return <Navigate to="/Search" replace />;
   }
   return (
-    <PageContainerGlobal>
-      <Navbar />
-      <SidePopUpBar />
-      <PageContentGlobal fixed={!isDesktop}>
-        {isDesktop ? (
-          <ContentContainer>
-            <TopContainer bg={catActuelle.bgImageCatégorie}>
-              <TopContentContainer>
-                <CatégorieImg src={catActuelle.mapImageCatégorie} />
-                <CatégorieNom>
-                  {t(`SearchPage.Card.${catActuelle.catégorieName}`)}
-                </CatégorieNom>
-              </TopContentContainer>
-            </TopContainer>
-            <BottomContainer>
-              <LeftContainer>
-                <LeftWrapper>
-                  <SearchMenu>
-                    <SelectWilayaContainer
-                      onMouseLeave={() => {
-                        setShowWilayas(false);
+    <PageContentGlobal fixed={!isDesktop}>
+      {isDesktop ? (
+        <ContentContainer>
+          <TopContainer bg={catActuelle.bgImageCatégorie}>
+            <TopContentContainer>
+              <CatégorieImg src={catActuelle.mapImageCatégorie} />
+              <CatégorieNom>
+                {t(`SearchPage.Card.${catActuelle.catégorieName}`)}
+              </CatégorieNom>
+            </TopContentContainer>
+          </TopContainer>
+          <BottomContainer>
+            <LeftContainer>
+              <LeftWrapper>
+                <SearchMenu>
+                  <SelectWilayaContainer
+                    onMouseLeave={() => {
+                      setShowWilayas(false);
+                    }}
+                  >
+                    <SelectWilayaVisible
+                      showWilayas={showWilayas}
+                      onMouseEnter={() => {
+                        setShowWilayas(true);
                       }}
                     >
-                      <SelectWilayaVisible
-                        onMouseEnter={() => {
-                          setShowWilayas(true);
-                        }}
-                      >
-                        <WilayaSelectedH3>
-                          {selectedOption.name}
-                        </WilayaSelectedH3>
-                        <Arrow />
-                      </SelectWilayaVisible>
-                      <SelectWilayaUlHidden
-                        as={motion.div}
-                        showWilayas={showWilayas}
-                      >
-                        <SelectWilayaLIHidden
-                          onClick={() => {
-                            setSelectedOption({
-                              name: "Wilaya",
-                              id: null,
-                            });
-                            setShowWilayas(false);
-                          }}
-                        >
-                          --------
-                        </SelectWilayaLIHidden>
-                        {wilayas.map((wilaya) => {
-                          return (
-                            <SelectWilayaLIHidden
-                              onClick={() => {
-                                setSelectedOption({
-                                  name: wilaya.translatedName,
-                                  id: wilaya.id_wilaya,
-                                });
-                                setShowWilayas(false);
-                              }}
-                            >
-                              {wilaya.translatedName}
-                            </SelectWilayaLIHidden>
-                          );
-                        })}
-                      </SelectWilayaUlHidden>
-                    </SelectWilayaContainer>
-                    <SearchBar>
-                      <SearchForm
+                      <WilayaSelectedH3>{selectedOption.name}</WilayaSelectedH3>
+                      <Arrow />
+                    </SelectWilayaVisible>
+                    <SelectWilayaUlHidden
+                      as={motion.div}
+                      showWilayas={showWilayas}
+                    >
+                      <SelectWilayaLIHidden
                         onClick={() => {
-                          // When form clicked, set state of baropened to true and focus the input
-                          inputFocus.current.focus();
+                          setSelectedOption({
+                            name: "Wilaya",
+                            id: null,
+                          });
+                          setShowWilayas(false);
                         }}
-                        ref={formRef}
                       >
-                        <SearchIconeContainer>
-                          <SearchIcone />
-                        </SearchIconeContainer>
-                        <SearchInput
-                          onChange={(e) => {
-                            setInput(e.target.value);
-                          }}
-                          ref={inputFocus}
-                          value={input}
-                          placeholder={t("SearchPage.Research")}
-                        />
-                      </SearchForm>
-                    </SearchBar>
-                  </SearchMenu>
-                  <CatégorieSection
-                    locations={mostVisitedLocations}
-                    id={selectedOption.id}
-                    input={input}
-                    sectionName={t("SearchCatégorie.The_Most_Visted")}
-                  />
-                  <CatégorieSection
-                    locations={locations}
-                    id={selectedOption.id}
-                    input={input}
-                    sectionName={t("SearchCatégorie.Recent_Added")}
-                  />
-                  <CatégorieSection
-                    locations={locations.reverse()}
-                    id={selectedOption.id}
-                    input={input}
-                    sectionName={t("SearchCatégorie.General")}
-                    style={{ marginBottom: "20px" }}
-                  />
-                </LeftWrapper>
-              </LeftContainer>
+                        --------
+                      </SelectWilayaLIHidden>
+                      {wilayas.map((wilaya) => {
+                        return (
+                          <SelectWilayaLIHidden
+                            onClick={() => {
+                              setSelectedOption({
+                                name: wilaya.translatedName,
+                                id: wilaya.id_wilaya,
+                              });
+                              setShowWilayas(false);
+                            }}
+                          >
+                            {wilaya.translatedName}
+                          </SelectWilayaLIHidden>
+                        );
+                      })}
+                    </SelectWilayaUlHidden>
+                  </SelectWilayaContainer>
+                  <SearchBar>
+                    <SearchForm
+                      onClick={() => {
+                        // When form clicked, set state of baropened to true and focus the input
+                        inputFocus.current.focus();
+                      }}
+                      ref={formRef}
+                    >
+                      <SearchIconeContainer>
+                        <SearchIcone />
+                      </SearchIconeContainer>
+                      <SearchInput
+                        onChange={(e) => {
+                          setInput(e.target.value);
+                        }}
+                        ref={inputFocus}
+                        value={input}
+                        placeholder={t("SearchPage.Research")}
+                      />
+                    </SearchForm>
+                  </SearchBar>
+                </SearchMenu>
+                <CatégorieSection
+                  locations={mostVisitedLocations}
+                  id={selectedOption.id}
+                  input={input}
+                  sectionName={t("SearchCatégorie.The_Most_Visted")}
+                />
+                <CatégorieSection
+                  locations={locations}
+                  id={selectedOption.id}
+                  input={input}
+                  sectionName={t("SearchCatégorie.Recent_Added")}
+                />
+                <CatégorieSection
+                  locations={locations.reverse()}
+                  id={selectedOption.id}
+                  input={input}
+                  sectionName={t("SearchCatégorie.General")}
+                  style={{ marginBottom: "20px" }}
+                />
+              </LeftWrapper>
+            </LeftContainer>
 
-              <PubContainer>
-                {/* <PubImg src={banners.banner_recherche} /> */}
-              </PubContainer>
-            </BottomContainer>
-          </ContentContainer>
-        ) : (
-          <SearchCatégorieMobile
-            catégorieInformations={catégorieInformations}
-            locations={locations}
-            mostVisitedLocations={mostVisitedLocations}
-          />
-        )}
-      </PageContentGlobal>
-      <Footer />
-    </PageContainerGlobal>
+            <PubContainer>
+              {/* <PubImg src={banners.banner_recherche} /> */}
+            </PubContainer>
+          </BottomContainer>
+        </ContentContainer>
+      ) : (
+        <SearchCatégorieMobile
+          catégorieInformations={catégorieInformations}
+          locations={locations}
+          mostVisitedLocations={mostVisitedLocations}
+        />
+      )}
+    </PageContentGlobal>
   );
 };
 
