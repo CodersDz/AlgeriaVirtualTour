@@ -6,6 +6,7 @@ import SignUp from "./components/SignUp/SignUp";
 import { Route, Routes } from "react-router-dom";
 import EmailConfirmation from "./components/EmailConfirmation/EmailConfirmation";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
+import useWindowSize from "../../hooks/useWindowSize";
 const LogIn = () => {
   const [login, setLogin] = useState(true);
   const [toggle, setToggle] = useState(false);

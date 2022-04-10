@@ -8,7 +8,6 @@ export const PageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   width: 100vw;
-  min-height: 800px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -19,11 +18,13 @@ export const PageContainer = styled.div`
   padding: 20px;
   background: linear-gradient(rgba(3, 40, 0, 0.95), rgba(3, 40, 0, 0.95)),
     url(${LogInBg1});
+  @media only screen and ${device.maxTablet} {
+    min-height: 800px;
+  }
 `;
 export const LogInSignUpContainer = styled.div`
   width: 500px;
   max-width: 100%;
-  min-height: 85%;
   height: ${({ login }) => (login ? "85%" : "100%")};
   border-radius: 30px;
   display: flex;
