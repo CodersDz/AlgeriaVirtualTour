@@ -2,7 +2,7 @@ import React from "react";
 import { Formik } from "formik";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReactComponent as FacebookIcone } from "../../../../assets/svg/FacebookIcone.svg";
-import { ReactComponent as TwitterIcone } from "../../../../assets/svg/TwitterIcone.svg";
+import { ReactComponent as GoogleIcone } from "../../../../assets/svg/GoogleIcone.svg";
 import {
   SignUpContainerContent,
   SignUpH1,
@@ -28,6 +28,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import useInfoPopUp from "../../../../hooks/useInfoPopUp";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
+import { AiOutlineGoogle } from "react-icons/ai";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
@@ -188,8 +189,8 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
           <SignUpP>{t("AuthentificationPage.ContinueWFacebook")}</SignUpP>
         </SocialMedia>
         <SocialMedia>
-          <TwitterIcone />
-          <SignUpP>{t("AuthentificationPage.ContinueWTwitter")}</SignUpP>
+          <AiOutlineGoogle size="32" />
+          <SignUpP>{t("AuthentificationPage.ContinueWGoogle")}</SignUpP>
         </SocialMedia>
       </SocialMediaContainer>
 

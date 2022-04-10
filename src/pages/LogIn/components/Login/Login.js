@@ -4,7 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import { Formik } from "formik";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReactComponent as FacebookIcone } from "../../../../assets/svg/FacebookIcone.svg";
-import { ReactComponent as TwitterIcone } from "../../../../assets/svg/TwitterIcone.svg";
+import { AiOutlineGoogle } from "react-icons/ai";
 import {
   LoginContainerContent,
   LoginH1,
@@ -61,8 +61,8 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
           <LoginP>{t("AuthentificationPage.ContinueWFacebook")}</LoginP>
         </SocialMedia>
         <SocialMedia>
-          <TwitterIcone />
-          <LoginP>{t("AuthentificationPage.ContinueWTwitter")}</LoginP>
+          <AiOutlineGoogle size="32" />
+          <LoginP>{t("AuthentificationPage.ContinueWGoogle")}</LoginP>
         </SocialMedia>
       </SocialMediaContainer>
       <HrContainer as={motion.div} layoutId={"hr"}>
