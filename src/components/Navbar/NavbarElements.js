@@ -47,6 +47,16 @@ export const RightNavDiv = styled.div`
   height: 100%;
   width: 100%;
 `;
+export const RightNavBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
 
 export const TopUl = styled.ul`
   display: flex;
@@ -55,6 +65,7 @@ export const TopUl = styled.ul`
   height: 65%;
   width: 100%;
   border-bottom: solid 1px #b3b3b3;
+  position: relative;
 `;
 export const BottomUl = styled.ul`
   display: flex;

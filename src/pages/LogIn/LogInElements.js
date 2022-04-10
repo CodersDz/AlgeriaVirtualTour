@@ -8,6 +8,7 @@ export const PageContainer = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   width: 100vw;
+  min-height: 800px;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -22,6 +23,7 @@ export const PageContainer = styled.div`
 export const LogInSignUpContainer = styled.div`
   width: 500px;
   max-width: 100%;
+  min-height: 85%;
   height: ${({ login }) => (login ? "85%" : "100%")};
   border-radius: 30px;
   display: flex;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const lang = localStorage.getItem("language");
 export const LoginContainerContent = styled.div`
   display: flex;
   justify-content: space-between;
@@ -37,6 +38,8 @@ export const LoginP = styled.p`
   font-size: 12px;
   margin-left: 10px;
   font-weight: 400;
+  text-align: center !important;
+  text-align-last: center !important;
 `;
 export const HrContainer = styled.div`
   height: 10%;

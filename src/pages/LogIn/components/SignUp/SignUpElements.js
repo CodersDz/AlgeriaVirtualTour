@@ -36,6 +36,9 @@ export const SignUpP = styled.p`
   font-size: 12px;
   margin-left: 10px;
   font-weight: 400;
+  width: fit-content;
+  text-align: center !important;
+  text-align-last: center !important;
 `;
 export const HrContainer = styled.div`
   height: 10%;

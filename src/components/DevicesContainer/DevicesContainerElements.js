@@ -120,6 +120,7 @@ export const StoreP = styled.p`
   justify-content: center;
   height: 40%;
   text-align: center !important;
+  text-align-last: center !important;
 `;
 export const StoreIcones = styled.div`
   width: 100%;

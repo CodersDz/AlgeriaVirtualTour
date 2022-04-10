@@ -31,6 +31,7 @@ import {
   HiddenLi,
   NavLang,
   NavLangSpan,
+  RightNavBtn,
 } from "./NavbarElements";
 //MainNav
 import { NavContainer, NavWrapper } from "./NavbarElements";
@@ -88,6 +89,15 @@ const Navbar = ({ setAnimated }) => {
       >
         <RightNavDiv>
           <TopUl>
+            {!isDesktop && (
+              <RightNavBtn
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                x
+              </RightNavBtn>
+            )}
             <RightNavLink
               to="/Home"
               onClick={(event) => event.preventDefault()}

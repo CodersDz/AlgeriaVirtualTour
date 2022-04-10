@@ -72,7 +72,6 @@ export const SelectWilayaContainer = styled.div`
   color: #fff;
   padding: 10px 10px;
   border: none;
-  cursor: pointer;
   position: relative;
   overflow-y: visible;
 `;
