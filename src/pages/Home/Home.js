@@ -42,6 +42,7 @@ import useTranslation from "../../hooks/useTranslation/useTranslation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
 import { generalAPILink } from "../../assets/Variables/Links";
+import useAnimated from "../../hooks/useAnimated";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -56,7 +57,7 @@ const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const isDesktop = useWindowSize();
-  const [animated, setAnimated] = useState([]);
+  const {animated,setAnimated}=useAnimated();
   const [wilayas, setWilayas] = useState([]);
   const [translatedWilaya, setTranslatedWilaya] = useState({});
   const [translatedLocation, setTranslatedLocation] = useState({});

@@ -55,22 +55,25 @@ import {
   SearchSpan,
   NavLinkSpan,
 } from "./NavbarElements";
+import useAnimated from "../../hooks/useAnimated";
 const HiddenLiVariants = {
   initial: { y: -100 },
   animate: { y: 0, transition: { duration: 1 } },
 };
-const Navbar = ({ setAnimated }) => {
+const Navbar = () => {
   let navigate = useNavigate();
   const location = useLocation();
   const isDesktop = useWindowSize();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const {animated,setAnimated}=useAnimated();
   const resetCaroussel = () => {
     if (location.pathname === "/home" || location.pathname === "/Home") {
       setAnimated([]);
     } else {
       navigate("/home");
+      setAnimated([]);
     }
   };
   const componentDidMount = () => {

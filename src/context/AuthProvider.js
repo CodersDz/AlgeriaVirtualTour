@@ -11,7 +11,6 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("accesToken", accesToken);
     }
   };
-  console.log(children);
   return (
     <AuthContext.Provider value={{ auth, setAuthFunction }}>
       {children}
