@@ -90,7 +90,7 @@ const LocationCarousselMobile = ({
           <View360Btn href={location.visit_360}>
             <VrIcone />
           </View360Btn>
-          <Slider dots={true} className="sliderStyling">
+          <Slider adaptiveHeight={true} dots={true} className="sliderStyling">
             {images.map((image) => {
               return (
                 <SliderImage

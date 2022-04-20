@@ -10,7 +10,6 @@ export const Container = styled.div`
 `;
 export const Wrapper = styled.div`
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -19,11 +18,11 @@ export const Wrapper = styled.div`
 `;
 export const ImagesContainer = styled.div`
   width: 100%;
+
   position: relative;
 `;
 export const SliderImage = styled.img`
   width: 100%;
-  height: 50vh;
   transition: height 0.3s ease-in-out;
   border-radius: 25px 25px 10px 10px;
 `;
