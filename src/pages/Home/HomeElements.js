@@ -151,6 +151,7 @@ export const InfoP = styled.p`
   }
   @media only screen and ${device.laptop} {
     font-size: 20px;
+    cursor: pointer;
   }
   @media only screen and ${device.desktop} {
     font-size: 25px;

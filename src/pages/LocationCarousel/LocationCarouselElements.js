@@ -83,10 +83,10 @@ export const LocationP = styled.p`
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
-    font-size: 17px;
+    font-size: 20px;
   }
   @media only screen and ${device.desktop} {
-    font-size: 55px;
+    font-size: 25px;
   }
 `;
 

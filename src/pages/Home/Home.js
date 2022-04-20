@@ -115,33 +115,11 @@ const Home = () => {
           <InfoCarouselExpanded>
             <InfoContainer>
               <InfoH2>{item.translatedName}</InfoH2>
-              <InfoP readMore={readMore}>{item.translatedDescription}</InfoP>
-              <BtnContainer>
-                <ReadMoreBtn
-                  onClick={() => {
+              <InfoP readMore={readMore} onClick={() => {
                     setReadMore(!readMore);
-                  }}
-                >
-                  {!readMore && (
-                    <ReadMoreSpan
-                      as={motion.span}
-                      variants={BtnVariants}
-                      animate="animate"
-                    >
-                      {t("General.ReadMore")}
-                    </ReadMoreSpan>
-                  )}
-                  {readMore && (
-                    <ReadMoreSpan
-                      as={motion.span}
-                      variants={BtnVariants}
-                      initial="initial"
-                      animate="animate"
-                    >
-                      {t("General.ReadLess")}
-                    </ReadMoreSpan>
-                  )}
-                </ReadMoreBtn>
+                  }}>{item.translatedDescription}</InfoP>
+              <BtnContainer>
+                
                 <DiscoverMoreBtn
                   to={{
                     pathname: `/wilaya/${item.id_wilaya}`,

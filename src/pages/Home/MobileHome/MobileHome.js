@@ -80,26 +80,19 @@ const MobileHome = ({ wilayas }) => {
             <ExpandedTopRightContainer></ExpandedTopRightContainer>
           </ExpandedTop>
           <ExpandedBottom readMore={readMore}>
-            <TextExpandedContainer>
+            <TextExpandedContainer onClick={()=>{setReadMore(!readMore)}}>
               {readMore && <TitleExpanded>{item.translatedName}</TitleExpanded>}
               <PExpanded readMore={readMore}>
                 {item.translatedDescription}
               </PExpanded>
-            </TextExpandedContainer>
-          </ExpandedBottom>
-          <ExpandedBtnContainer>
-            <ReadMoreBtn
-              onClick={() => {
-                setReadMore(!readMore);
-              }}
-            >
               {!readMore && (
                 <ReadMoreSpan
                   as={motion.span}
                   variants={BtnVariants}
+                  initial="initial"
                   animate="animate"
                 >
-                  {t("General.ReadMore")}
+                  {t("General.ReadMore")}...
                 </ReadMoreSpan>
               )}
               {readMore && (
@@ -109,10 +102,13 @@ const MobileHome = ({ wilayas }) => {
                   initial="initial"
                   animate="animate"
                 >
-                  {t("General.ReadLess")}
+                  {t("General.ReadLess")}...
                 </ReadMoreSpan>
               )}
-            </ReadMoreBtn>
+            </TextExpandedContainer>
+          </ExpandedBottom>
+          <ExpandedBtnContainer>
+            
             <DiscoverBtn
               to={{
                 pathname: `/wilaya/${item.id_wilaya}`,

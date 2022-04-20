@@ -48,7 +48,9 @@ export const StartPageLink = styled(Link)`
   font-weight: 600;
   border: none;
   color: #fff;
-  cursor: pointer;
+  @media only screen and ${device.laptop} {
+    cursor: pointer;
+  }
 `;
 export const EmptyDiv = styled.div`
   width: 100%;

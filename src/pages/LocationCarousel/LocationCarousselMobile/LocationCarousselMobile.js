@@ -103,13 +103,13 @@ const LocationCarousselMobile = ({
               );
             })}
           </Slider>
-          <FullScreenBtn
+          {/* <FullScreenBtn
             onClick={() => {
               setLargeImages(!largeImages);
             }}
           >
             <FullScreenIcone />
-          </FullScreenBtn>
+          </FullScreenBtn> */}
         </ImagesContainer>
         <ContentContainer>
           <LocationNameContainer>

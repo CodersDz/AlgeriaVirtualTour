@@ -34,7 +34,7 @@ export const MoniteurImg = styled.img`
   width: 100%;
   height: 100%;
   max-width: 400px;
-  max-height: 350px;
+  max-height: 250px;
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.laptop} {
@@ -50,7 +50,7 @@ export const PcPortableImg = styled.img`
   position: absolute;
   right: 0;
   bottom: 0;
-  max-width: 50%;
+  max-width: 70%;
   max-height: 60%;
   @media only screen and ${device.mobile} {
   }
@@ -58,6 +58,7 @@ export const PcPortableImg = styled.img`
   }
   @media only screen and ${device.laptop} {
     max-width: 50%;
+    max-height: 60%;
   }
   @media only screen and ${device.desktop} {
   }
@@ -65,8 +66,8 @@ export const PcPortableImg = styled.img`
 export const TéléphoneImg = styled.img`
   position: absolute;
   bottom: 0;
-  max-width: 20%;
-  max-height: 40%;
+  max-width: 15%;
+  max-height: 20%;
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.mobile} {
@@ -75,6 +76,8 @@ export const TéléphoneImg = styled.img`
     left: 1%;
   }
   @media only screen and ${device.laptop} {
+    max-width: 20%;
+   max-height: 40%;
     left: 1%;
   }
   @media only screen and ${device.desktop} {
@@ -84,15 +87,13 @@ export const TéléphoneImg = styled.img`
 export const TabeletteImg = styled.img`
   position: absolute;
   bottom: -5px;
-  max-width: 40%;
-  max-height: 50%;
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.maxTablet} {
-    left: 10%;
-  }
+  max-width: 30%;
+  max-height: 30%;
+  left: 10%;
   @media only screen and ${device.laptop} {
     left: 10%;
+    max-width: 40%;
+    max-height: 50%;
   }
   @media only screen and ${device.desktop} {
     left: 18%;

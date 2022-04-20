@@ -210,9 +210,9 @@ export const TextExpandedContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   justify-content: end;
   flex-direction: column;
+  align-items:start ;
 `;
 
 export const PExpanded = styled.p`
@@ -242,25 +242,21 @@ export const ExpandedBtnContainer = styled.div`
   justify-content: space-around;
   flex-direction: ${lang === '"ar"' ? "row-reverse" : "row"};
 `;
-export const ReadMoreBtn = styled.button`
-  width: 30%;
-  border: none;
-  background-color: #4bcb02;
-  border-radius: 30px;
-  color: #fff;
-  padding: 5px;
-  cursor: pointer;
-`;
+
 export const ReadMoreSpan = styled.span`
-  width: 30%;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 800;
+  text-transform:none ;
 `;
 export const DiscoverBtn = styled(Link)`
-  width: 30%;
+  border: none;
+  color: #fff;
+  padding: 5px;
+  background-color: #4bcb02;
+  border-radius: 30px;
   width: 30%;
   font-size: 14px;
   font-weight: 600;
-  text-transform: none;
   cursor: pointer;
+  text-transform:none;
 `;

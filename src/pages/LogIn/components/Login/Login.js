@@ -86,9 +86,6 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
               axios
                 .post(`${generalAPILink}/users/login`, values)
                 .then((response) => {
@@ -111,7 +108,6 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
                   );
                   setShowInfoPopUpAndHide();
                 });
-            }, 400);
           }}
         >
           {({

@@ -70,9 +70,6 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
               axios
                 .post(`${generalAPILink}/users/signup`, {
                   email: values.email,
@@ -93,7 +90,6 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
                       confirmation: true,
                       email: response?.data?.data?.email,
                     },
-                  });
                 })
                 .catch((err) => {
                   console.log(err);

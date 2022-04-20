@@ -23,7 +23,7 @@ export const ImagesContainer = styled.div`
 `;
 export const SliderImage = styled.img`
   width: 100%;
-  height: ${(props) => (props.largeImages ? "50vh" : "30vh")};
+  height: 50vh;
   transition: height 0.3s ease-in-out;
   border-radius: 25px 25px 10px 10px;
 `;
@@ -104,7 +104,8 @@ export const GaleryImagesContainer = styled.div`
   margin-top: 20px;
 `;
 export const GaleryImage = styled.img`
-  width: 125px;
+  min-width: 125px;
+  max-width: 125px;
   height: 125px;
   margin-right: 20px;
 `;
