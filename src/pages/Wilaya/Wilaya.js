@@ -97,8 +97,6 @@ const Wilaya = () => {
   };
   const [filteredLocation, setFilteredLocation] = useState(locations);
 
-  const [readMore, setReadMore] = useState(false);
-
   const [banners, setBanners] = useLocalStorage("banners", {});
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
 
@@ -111,13 +109,7 @@ const Wilaya = () => {
 
   const ChangeLeft = () => {
     if (currentSection === "Info") {
-      return (
-        <InfoComponent
-          wilaya={wilaya}
-          setReadMore={setReadMore}
-          readMore={readMore}
-        />
-      );
+      return <InfoComponent wilaya={wilaya} />;
     } else if (currentSection === "Discover") {
       return (
         <DiscoverComponent

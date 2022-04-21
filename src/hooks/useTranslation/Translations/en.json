@@ -56,8 +56,8 @@
   "Legal_notice_page": { "Title": "Legal Notice", "P": "" },
   "DevicesContainer": { "Download": " Download the AVT app" },
   "General": {
-    "ReadMore": "Read More",
-    "ReadLess": "Read Less",
+    "ReadMore": "Read More...",
+    "ReadLess": "Read Less...",
     "NoLocationFound": "No location was found"
   },
   "MapPage": { "Destination": "Destination", "Perimeter": "Perimeter" },

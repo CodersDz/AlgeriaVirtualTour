@@ -4,7 +4,7 @@ const lang = localStorage.getItem("language");
 export const InfoLeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: end;
   width: 100%;
   height: 100%;
@@ -34,35 +34,34 @@ export const InfoP = styled.p`
   font-weight: 400;
   color: #fff;
   transition: all 0.5s;
-  margin: 20px 0;
+  margin-top: 20px;
   display: -webkit-box;
   -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
   line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
   overflow: ${(props) => (props.readMore === false ? "hidden" : "auto")};
   -webkit-box-orient: vertical;
-  transition: all 2s ease-in-out;
+  transition: all 3s cubic-bezier(0, 1, 0, 1);
+  -ms-overflow-style: none; /* IE and Edge */
   ::-webkit-scrollbar {
     width: 10px;
     display: ${(props) => (props.readMore === false ? "none" : "block")};
   }
 
-  &::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  &::-webkit-scrollbar-track {
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
   }
-  &::-webkit-scrollbar-thumb {
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.2);
   }
-  &::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4);
-  }
-  &::-webkit-scrollbar-thumb:active {
-    background: rgba(0, 0, 0, 0.9);
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff;
   }
   @media only screen and ${device.mobile} {
   }
@@ -83,30 +82,16 @@ export const BtnContainer = styled.div`
   height: 40px;
 `;
 
-export const ReadMoreBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #4bcb02;
+export const ReadMoreSpan = styled.span`
   color: #fff;
-  border: none;
-  font-weight: 400;
+  font-weight: 800;
   font-size: 20px;
-  border-radius: 30px;
-  width: 40%;
-  height: 100%;
-  padding: 25px;
   cursor: pointer;
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.tablet} {
-  }
+  align-self: end;
   @media only screen and ${device.laptop} {
     font-size: 17px;
-    width: 40%;
   }
   @media only screen and ${device.desktop} {
     font-size: 20px;
-    width: 30%;
   }
 `;

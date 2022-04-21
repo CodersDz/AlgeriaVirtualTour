@@ -5,11 +5,10 @@ import {
   Wrapper,
   InfoP,
   TextContainer,
-  BtnContainer,
-  ReadMoreBtn,
   ReadMoreSpan,
 } from "./InfoMobileComponentElements";
 import useTranslation from "../../../../../hooks/useTranslation/useTranslation";
+import { ReadMoreSpanMobile } from "../../../../../GlobalStyles";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.5 } },
@@ -24,35 +23,33 @@ function InfoMobileComponent({ wilaya }) {
           <InfoP as={motion.p} readMore={readMore}>
             {wilaya.translatedDescription}
           </InfoP>
+          {!readMore && (
+            <ReadMoreSpanMobile
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+              as={motion.span}
+              variants={BtnVariants}
+              initial="initial"
+              animate="animate"
+            >
+              {t("General.ReadMore")}
+            </ReadMoreSpanMobile>
+          )}
+          {readMore && (
+            <ReadMoreSpanMobile
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+              as={motion.span}
+              variants={BtnVariants}
+              initial="initial"
+              animate="animate"
+            >
+              {t("General.ReadLess")}
+            </ReadMoreSpanMobile>
+          )}
         </TextContainer>
-        <BtnContainer>
-          <ReadMoreBtn
-            onClick={() => {
-              setReadMore(!readMore);
-            }}
-          >
-            {!readMore && (
-              <ReadMoreSpan
-                as={motion.span}
-                variants={BtnVariants}
-                initial="initial"
-                animate="animate"
-              >
-                {t("General.ReadMore")}
-              </ReadMoreSpan>
-            )}
-            {readMore && (
-              <ReadMoreSpan
-                as={motion.span}
-                variants={BtnVariants}
-                initial="initial"
-                animate="animate"
-              >
-                {t("General.ReadLess")}
-              </ReadMoreSpan>
-            )}
-          </ReadMoreBtn>
-        </BtnContainer>
       </Wrapper>
     </Container>
   );

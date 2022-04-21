@@ -25,12 +25,11 @@ import {
   DiscoverMoreContainer,
   DiscoverMoreLink,
   ExpandedBtnContainer,
-  ReadMoreBtn,
-  ReadMoreSpan,
   DiscoverBtn,
 } from "./MobileHomeElements";
 import useTranslation from "../../../hooks/useTranslation/useTranslation";
 import FemmeVr from "../FemmeVr.png";
+import { ReadMoreSpanMobile } from "../../../GlobalStyles";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -80,35 +79,38 @@ const MobileHome = ({ wilayas }) => {
             <ExpandedTopRightContainer></ExpandedTopRightContainer>
           </ExpandedTop>
           <ExpandedBottom readMore={readMore}>
-            <TextExpandedContainer onClick={()=>{setReadMore(!readMore)}}>
+            <TextExpandedContainer
+              onClick={() => {
+                setReadMore(!readMore);
+              }}
+            >
               {readMore && <TitleExpanded>{item.translatedName}</TitleExpanded>}
               <PExpanded readMore={readMore}>
                 {item.translatedDescription}
               </PExpanded>
               {!readMore && (
-                <ReadMoreSpan
+                <ReadMoreSpanMobile
                   as={motion.span}
                   variants={BtnVariants}
                   initial="initial"
                   animate="animate"
                 >
-                  {t("General.ReadMore")}...
-                </ReadMoreSpan>
+                  {t("General.ReadMore")}
+                </ReadMoreSpanMobile>
               )}
               {readMore && (
-                <ReadMoreSpan
+                <ReadMoreSpanMobile
                   as={motion.span}
                   variants={BtnVariants}
                   initial="initial"
                   animate="animate"
                 >
-                  {t("General.ReadLess")}...
-                </ReadMoreSpan>
+                  {t("General.ReadLess")}
+                </ReadMoreSpanMobile>
               )}
             </TextExpandedContainer>
           </ExpandedBottom>
           <ExpandedBtnContainer>
-            
             <DiscoverBtn
               to={{
                 pathname: `/wilaya/${item.id_wilaya}`,

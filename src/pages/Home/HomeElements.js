@@ -81,10 +81,11 @@ export const InfoContainer = styled.div`
   color: white;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: end;
   flex-direction: column;
 `;
+
 export const MapContainer = styled.div`
   position: absolute;
   z-index: 0;
@@ -116,7 +117,6 @@ export const InfoP = styled.p`
   font-weight: 400;
   width: 100%;
   text-transform: none;
-  margin: 20px 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
@@ -151,7 +151,6 @@ export const InfoP = styled.p`
   }
   @media only screen and ${device.laptop} {
     font-size: 20px;
-    cursor: pointer;
   }
   @media only screen and ${device.desktop} {
     font-size: 25px;
@@ -282,34 +281,6 @@ export const BtnContainer = styled.div`
   flex-direction: ${lang === '"ar"' ? "row-reverse" : "row"};
   width: 100%;
   height: 40px;
-`;
-export const ReadMoreBtn = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #4bcb02;
-  color: #fff;
-  border: none;
-  font-weight: 400;
-  font-size: 20px;
-  border-radius: 30px;
-  width: 35%;
-  height: 100%;
-  padding: 25px;
-  cursor: pointer;
-  margin: ${lang === '"ar"' ? "0 0 0 20px" : "0 20px 0 0"};
-`;
-export const ReadMoreSpan = styled.span`
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.tablet} {
-  }
-  @media only screen and ${device.laptop} {
-    font-size: 17px;
-  }
-  @media only screen and ${device.desktop} {
-    font-size: 20px;
-  }
 `;
 export const DiscoverMoreBtn = styled(Link)`
   background-color: #4bcb02;

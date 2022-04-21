@@ -56,8 +56,8 @@
   "Legal_notice_page": { "Title": "إشعار قانوني", "P": "" },
   "DevicesContainer": { "Download": "AVT قم بتنزيل تطبيق" },
   "General": {
-    "ReadMore": "اقرأ المزيد",
-    "ReadLess": "أقرأ أقل",
+    "ReadMore": "...اقرأ المزيد",
+    "ReadLess": "...أقرأ أقل",
     "NoLocationFound": "لم يتم العثور على أي موقع"
   },
   "MapPage": { "Destination": "الأماكن", "Perimeter": "مسافة" },

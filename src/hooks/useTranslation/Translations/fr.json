@@ -56,8 +56,8 @@
   "Legal_notice_page": { "Title": "Mentions Légale", "P": "" },
   "DevicesContainer": { "Download": "Télécharger l'application AVT" },
   "General": {
-    "ReadMore": "Lire la suite",
-    "ReadLess": "Moins",
+    "ReadMore": "Lire plus...",
+    "ReadLess": "lire moins...",
     "NoLocationFound": "Aucune location trouvé"
   },
   "MapPage": { "Destination": "Destination", "Perimeter": "Périmètre" },

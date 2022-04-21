@@ -212,7 +212,6 @@ export const TextExpandedContainer = styled.div`
   display: flex;
   justify-content: end;
   flex-direction: column;
-  align-items:start ;
 `;
 
 export const PExpanded = styled.p`
@@ -223,10 +222,10 @@ export const PExpanded = styled.p`
   -webkit-line-clamp: ${(props) =>
     props.readMore === false ? "4" : "initial"};
   line-clamp: ${(props) => (props.readMore === false ? "4" : "initial")};
+  overflow: ${(props) => (props.readMore === false ? "hidden" : "auto")};
   transition: all 2s ease-in-out;
   font-size: 15px;
   text-align: justify;
-  overflow: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
 
@@ -243,11 +242,6 @@ export const ExpandedBtnContainer = styled.div`
   flex-direction: ${lang === '"ar"' ? "row-reverse" : "row"};
 `;
 
-export const ReadMoreSpan = styled.span`
-  font-size: 14px;
-  font-weight: 800;
-  text-transform:none ;
-`;
 export const DiscoverBtn = styled(Link)`
   border: none;
   color: #fff;
@@ -258,5 +252,5 @@ export const DiscoverBtn = styled(Link)`
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  text-transform:none;
+  text-transform: none;
 `;

@@ -56,3 +56,26 @@ export const PageContentGlobal = styled.div`
     margin-top: 110px;
   }
 `;
+export const ReadMoreSpan = styled.div`
+  color: #fff;
+  font-weight: 800;
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-transform: none;
+  align-self: ${lang === '"ar"' ? "end" : "start"};
+  @media only screen and ${device.laptop} {
+    font-size: 17px;
+  }
+  @media only screen and ${device.desktop} {
+    font-size: 20px;
+  }
+`;
+export const ReadMoreSpanMobile = styled.span`
+  width: 100%;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: none;
+  align-self: ${lang === '"ar"' ? "end" : "start"};
+  text-align: ${lang === '"ar"' ? "end" : "start"};
+`;

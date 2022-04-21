@@ -36,11 +36,15 @@ export const LeftWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  display: flex;
+  justify-content: ${lang === '"ar"' ? "end" : "start"};
 `;
 export const ContentContainer = styled.div`
   width: 80%;
-  position: absolute;
-  bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   left: ${lang === '"ar"' ? "auto" : "0"};
   right: ${lang === '"ar"' ? "0" : "auto"};
 `;
@@ -66,18 +70,39 @@ export const LocationName = styled.h2`
   }
 `;
 export const LocationP = styled.p`
+  max-height: calc(70% - 40px);
   font-size: 25px;
   font-weight: 400;
   text-align: start;
   text-transform: none;
-  margin: 20px 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: ${(props) =>
-    props.readMore === false ? "2" : "initial"};
-  line-clamp: ${(props) => (props.readMore === false ? "2" : "initial")};
+  -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
+  line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
+  overflow: ${(props) => (props.readMore === false ? "hidden" : "auto")};
   transition: all 3s cubic-bezier(0, 1, 0, 1);
+  -ms-overflow-style: none; /* IE and Edge */
+  ::-webkit-scrollbar {
+    width: 10px;
+    display: ${(props) => (props.readMore === false ? "none" : "block")};
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+  }
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.tablet} {
@@ -133,14 +158,20 @@ export const ReadMoreBtn = styled.button`
   }
 `;
 export const Visit360Btn = styled.a`
-  width: 20%;
-  height: 100%;
-  margin: 0 30px 0 0;
-  font-size: 20px;
-  font-weight: 400;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background-color: #4bcb02;
+  color: #fff;
+  border: none;
+  font-weight: 400;
+  font-size: 20px;
+  border-radius: 30px;
+  width: 20%;
+  height: 40px;
+  padding: 25px;
+  cursor: pointer;
+
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.tablet} {

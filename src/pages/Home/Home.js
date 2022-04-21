@@ -22,11 +22,9 @@ import {
   BtnContainer,
   DiscoverMoreBtn,
   MapContainer,
-  ReadMoreBtn,
-  ReadMoreSpan,
 } from "./HomeElements";
 import useWindowSize from "../../hooks/useWindowSize";
-import { PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal, ReadMoreSpan } from "../../GlobalStyles";
 import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
@@ -57,7 +55,7 @@ const Home = () => {
   const [readMore, setReadMore] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const isDesktop = useWindowSize();
-  const {animated,setAnimated}=useAnimated();
+  const { animated, setAnimated } = useAnimated();
   const [wilayas, setWilayas] = useState([]);
   const [translatedWilaya, setTranslatedWilaya] = useState({});
   const [translatedLocation, setTranslatedLocation] = useState({});
@@ -115,11 +113,34 @@ const Home = () => {
           <InfoCarouselExpanded>
             <InfoContainer>
               <InfoH2>{item.translatedName}</InfoH2>
-              <InfoP readMore={readMore} onClick={() => {
+              <InfoP readMore={readMore}>{item.translatedDescription}</InfoP>
+              {!readMore && (
+                <ReadMoreSpan
+                  onClick={() => {
                     setReadMore(!readMore);
-                  }}>{item.translatedDescription}</InfoP>
+                  }}
+                  as={motion.span}
+                  variants={BtnVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  {t("General.ReadMore")}
+                </ReadMoreSpan>
+              )}
+              {readMore && (
+                <ReadMoreSpan
+                  onClick={() => {
+                    setReadMore(!readMore);
+                  }}
+                  as={motion.span}
+                  variants={BtnVariants}
+                  initial="initial"
+                  animate="animate"
+                >
+                  {t("General.ReadLess")}
+                </ReadMoreSpan>
+              )}
               <BtnContainer>
-                
                 <DiscoverMoreBtn
                   to={{
                     pathname: `/wilaya/${item.id_wilaya}`,

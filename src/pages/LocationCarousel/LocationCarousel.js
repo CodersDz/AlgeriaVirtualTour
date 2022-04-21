@@ -22,7 +22,11 @@ import Footer from "../../components/Footer/Footer";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import {
+  PageContainerGlobal,
+  PageContentGlobal,
+  ReadMoreSpan,
+} from "../../GlobalStyles";
 import { ReactComponent as LeftArrow } from "./LeftArrow.svg";
 import { ReactComponent as RightArrow } from "./RightArrow.svg";
 import { useParams } from "react-router-dom";
@@ -124,27 +128,33 @@ const LocationCarousel = (props) => {
                 <LocationP readMore={readMore}>
                   {destination.translatedDescription}
                 </LocationP>
-                <BtnContainer>
-                  <ReadMoreBtn
+                {!readMore && (
+                  <ReadMoreSpan
+                    as={motion.span}
+                    variants={BtnVariants}
+                    initial="initial"
+                    animate="animate"
                     onClick={() => {
                       setReadMore(!readMore);
                     }}
                   >
-                    {!readMore && (
-                      <motion.span variants={BtnVariants} animate="animate">
-                        {t("General.ReadMore")}
-                      </motion.span>
-                    )}
-                    {readMore && (
-                      <motion.span
-                        variants={BtnVariants}
-                        initial="initial"
-                        animate="animate"
-                      >
-                        {t("General.ReadLess")}
-                      </motion.span>
-                    )}
-                  </ReadMoreBtn>
+                    {t("General.ReadMore")}
+                  </ReadMoreSpan>
+                )}
+                {readMore && (
+                  <ReadMoreSpan
+                    as={motion.span}
+                    onClick={() => {
+                      setReadMore(!readMore);
+                    }}
+                    variants={BtnVariants}
+                    initial="initial"
+                    animate="animate"
+                  >
+                    {t("General.ReadLess")}
+                  </ReadMoreSpan>
+                )}
+                <BtnContainer>
                   <Visit360Btn href={destination.visit_360}>
                     {t("CarousselPage.Visit_360")}
                   </Visit360Btn>
