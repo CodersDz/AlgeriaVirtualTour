@@ -14,6 +14,12 @@ export const PageContainerGlobal = styled.div`
   & input {
     font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
   }
+  & button {
+    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+  }
+  & a {
+    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+  }
   & p {
     text-align: justify;
     text-align-last: ${lang === '"ar"' ? "end" : "start"};
