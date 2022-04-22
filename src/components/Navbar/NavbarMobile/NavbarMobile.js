@@ -23,7 +23,7 @@ import {
   TravelIcone,
   ProfileIcone,
 } from "./NavbarMobileElements";
-
+import { ReactComponent as LanguageIcone } from "../../../assets/svg/LanguageIcone.svg";
 const NavbarMobile = ({ setOpen }) => {
   const location = useLocation();
   console.log(location);
@@ -57,8 +57,8 @@ const NavbarMobile = ({ setOpen }) => {
           </TopContainerLink>
         </SearchContainer>
         <NotificationsContainer>
-          <NotificationsBtn>
-            <NotificationsIcone />
+          <NotificationsBtn to="/language">
+            <LanguageIcone />
           </NotificationsBtn>
         </NotificationsContainer>
       </TopContainer>

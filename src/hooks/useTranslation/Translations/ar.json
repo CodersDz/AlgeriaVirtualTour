@@ -98,5 +98,6 @@
     "EmailSentTitle": "تم إرسال البريد الإلكتروني",
     "EmailSentP": "لقد أرسلنا لك بريدًا إلكترونيًا ، يرجى مراجعة صندوق البريد الخاص بك"
   },
-  "PopUpMessages": {}
+  "PopUpMessages": {},
+  "ChooseLanguage": { "Title": "اختر لغتك", "Confirm": "تأكيد" }
 }

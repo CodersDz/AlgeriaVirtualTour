@@ -12,15 +12,25 @@ import {
   LangLi,
   RadioLabel,
   RadioInput,
+  ConfirmBtn,
 } from "./SelectLangElements";
+import useWindowSize from "../../hooks/useWindowSize";
+import { useNavigate } from "react-router-dom";
 const SelectLang = ({ langOpen }) => {
+  const navigate = useNavigate();
+  const isDekstop = useWindowSize();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-
-  const [selectedOption, setSelectedOption] = useState(language);
+  const [selectedLang, setSelectedLang] = useState(language);
 
   const onOptionClicked = (value) => () => {
-    setSelectedOption(value);
-    setLanguage(value);
+    setSelectedLang(value);
+    if (isDekstop) {
+      setLanguage(value);
+      window.location.reload();
+    }
+  };
+  const confirmLangMobile = () => {
+    setLanguage(selectedLang);
     window.location.reload();
   };
   const verifyChecked = (ref) => {
@@ -36,7 +46,9 @@ const SelectLang = ({ langOpen }) => {
       animate={{ opacity: 1, transition: { duration: 1.5 } }}
     >
       <LangWrapper>
-        <LangTitle>{t("NavBar.Language")}</LangTitle>
+        <LangTitle>
+          {isDekstop ? t("NavBar.Language") : t("ChooseLanguage.Title")}
+        </LangTitle>
         <LangUl>
           <LangLi>
             <RadioLabel for="ar" onClick={onOptionClicked("ar")}>
@@ -75,6 +87,15 @@ const SelectLang = ({ langOpen }) => {
             </RadioLabel>
           </LangLi>
         </LangUl>
+        {!isDekstop && (
+          <ConfirmBtn
+            onClick={() => {
+              confirmLangMobile();
+            }}
+          >
+            {t("ChooseLanguage.Confirm")}
+          </ConfirmBtn>
+        )}
       </LangWrapper>
     </LangContainer>
   );

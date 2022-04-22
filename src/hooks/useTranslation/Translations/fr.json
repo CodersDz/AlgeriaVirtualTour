@@ -98,5 +98,9 @@
     "EmailSentTitle": "Email envoyé!",
     "EmailSentP": "Nous vous avons envoyé un e-mail, Veuillez vérifier votre boîte mails"
   },
-  "PopUpMessages": {}
+  "PopUpMessages": {},
+  "ChooseLanguage": {
+    "Title": "Choisissez votre langue",
+    "Confirm": "Confirmer"
+  }
 }

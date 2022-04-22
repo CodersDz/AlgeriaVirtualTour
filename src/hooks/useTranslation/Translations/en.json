@@ -98,5 +98,6 @@
     "EmailSentTitle": "Email sent !",
     "EmailSentP": "we have sent you an email, Please check your mailbox"
   },
-  "PopUpMessages": {}
+  "PopUpMessages": {},
+  "ChooseLanguage": { "Title": "Choose your language", "Confirm": "Confirm" }
 }

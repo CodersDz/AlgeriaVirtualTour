@@ -20,6 +20,7 @@ import useInfoPopUp from "./hooks/useInfoPopUp";
 import InfoPopUp from "./components/InfoPopUp/InfoPopUp";
 import PagesWithNavbar_Footer from "./CustomRoutes/PagesWithNavbar_Footer";
 import { PageContainerGlobal } from "./GlobalStyles";
+import ChooseLanguage from "./pages/ChooseLanguage/ChooseLanguage";
 function App() {
   const location = useLocation();
   const { showInfoPopUp, type, text } = useInfoPopUp();
@@ -29,6 +30,7 @@ function App() {
         <Routes location={location} key={location.pathname}>
           {/* Public Routes*/}
           <Route path="/" element={<StartPage />} />
+          <Route path="/Language" element={<ChooseLanguage />} />
           <Route element={<PagesWithNavbar_Footer />}>
             <Route path="/home" element={<Home />} />
             <Route path="/Search/:categorie" element={<SearchCatégorie />} />

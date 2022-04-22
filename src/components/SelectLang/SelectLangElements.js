@@ -1,20 +1,25 @@
 import styled from "styled-components";
 import device from "../../assets/Variables/responsive";
 export const LangContainer = styled.div`
-  width: 180px;
-  height: 180px;
+  height: 250px;
   padding: 20px;
-  position: absolute;
+  width: 80%;
+  max-width: 450px;
   right: 0;
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 0 0 20px 20px;
+  border-radius: 30px;
   display: ${({ langOpen }) => (langOpen ? "block" : "none")};
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.laptop} {
+    height: 180px;
+    border-radius: 0 0 20px 20px;
+    position: absolute;
     top: 64px;
+    width: 180px;
+    max-width: 180px;
   }
   @media only screen and ${device.desktop} {
     top: 94px;
@@ -31,18 +36,22 @@ export const LangWrapper = styled.div`
 `;
 export const LangTitle = styled.h4`
   width: 100%;
-  height: 20%;
+  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #fff;
 `;
 export const LangUl = styled.ul`
   width: 100%;
-  height: 80%;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+  @media only screen and ${device.laptop} {
+    height: 80%;
+  }
 `;
 export const LangLi = styled.li`
   width: 100%;
@@ -55,13 +64,37 @@ export const RadioLabel = styled.label`
   border-radius: 30px;
   background-color: #fff;
   color: grey;
-  cursor: pointer;
   font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media only screen and ${device.laptop} {
+    cursor: pointer;
+  }
 `;
 export const RadioInput = styled.input`
-  cursor: pointer;
-  color: green;
+  &:checked::after {
+    width: 14px;
+    height: 14px;
+    border-radius: 15px;
+    top: -3px;
+    left: -3px;
+    position: relative;
+    background-color: #4bcb02;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+  }
+  @media only screen and ${device.laptop} {
+    cursor: pointer;
+  }
+`;
+export const ConfirmBtn = styled.button`
+  height: 15%;
+  width: 40%;
+  background-color: #4bcb02;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
 `;

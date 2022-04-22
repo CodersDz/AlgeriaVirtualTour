@@ -9,7 +9,7 @@ import {
   IconeContainer,
   CatégorieIcone,
 } from "./MobileCatégorieElements";
-import { ReactComponent as GoBackIcone } from "./GoBackIcone.svg";
+import { ReactComponent as GoBackIcone } from "../../assets/svg/GoBackIcone.svg";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 const MobileCatégorie = ({ catégorieInformations, wilayaId }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();

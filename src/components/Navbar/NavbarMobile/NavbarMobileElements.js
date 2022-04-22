@@ -68,11 +68,14 @@ export const SearchIcone = styled(Search)`
 export const NotificationsContainer = styled.div`
   height: 100%;
   width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const NotificationsBtn = styled.div`
-  height: 100%;
-  width: 100%;
+export const NotificationsBtn = styled(Link)`
+  height: 80%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
