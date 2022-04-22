@@ -30,7 +30,6 @@ function App() {
         <Routes location={location} key={location.pathname}>
           {/* Public Routes*/}
           <Route path="/" element={<StartPage />} />
-          <Route path="/Language" element={<ChooseLanguage />} />
           <Route element={<PagesWithNavbar_Footer />}>
             <Route path="/home" element={<Home />} />
             <Route path="/Search/:categorie" element={<SearchCatégorie />} />

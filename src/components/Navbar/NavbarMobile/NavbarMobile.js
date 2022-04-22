@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import {
@@ -24,7 +24,9 @@ import {
   ProfileIcone,
 } from "./NavbarMobileElements";
 import { ReactComponent as LanguageIcone } from "../../../assets/svg/LanguageIcone.svg";
+import ChooseLanguage from "../../../pages/ChooseLanguage/ChooseLanguage";
 const NavbarMobile = ({ setOpen }) => {
+  const [openLanguage, setOpenLanguage] = useState(false);
   const location = useLocation();
   console.log(location);
   const currentPage = location.pathname.replace("/", "");
@@ -57,7 +59,11 @@ const NavbarMobile = ({ setOpen }) => {
           </TopContainerLink>
         </SearchContainer>
         <NotificationsContainer>
-          <NotificationsBtn to="/language">
+          <NotificationsBtn
+            onClick={() => {
+              setOpenLanguage(true);
+            }}
+          >
             <LanguageIcone />
           </NotificationsBtn>
         </NotificationsContainer>
@@ -126,6 +132,7 @@ const NavbarMobile = ({ setOpen }) => {
           </BottomLink>
         </BottomItem>
       </BottomContainer>
+      {openLanguage && <ChooseLanguage setOpenLanguage={setOpenLanguage} />}
     </NavMobileWrapper>
   );
 };

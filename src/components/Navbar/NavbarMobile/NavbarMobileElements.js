@@ -15,6 +15,7 @@ export const NavMobileWrapper = styled.div`
   background-color: #36ab13;
   display: flex;
   flex-direction: column;
+  position: relative;
 `;
 export const TopContainer = styled.div`
   height: 70px;
@@ -73,12 +74,14 @@ export const NotificationsContainer = styled.div`
   justify-content: center;
 `;
 
-export const NotificationsBtn = styled(Link)`
+export const NotificationsBtn = styled.button`
   height: 80%;
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
+  border: none;
 `;
 export const NotificationsIcone = styled(Notifications)`
   max-height: 100%;

@@ -1,20 +1,13 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import SelectLang from "../../components/SelectLang/SelectLang";
-import useWindowSize from "../../hooks/useWindowSize";
 import { PageContainer, GoBack } from "./ChooseLanguageElements";
 import { BiArrowBack } from "react-icons/bi";
-const ChooseLanguage = () => {
-  const isDekstop = useWindowSize();
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (isDekstop) navigate("/home");
-  }, []);
+const ChooseLanguage = ({ setOpenLanguage }) => {
   return (
     <PageContainer>
       <GoBack
         onClick={() => {
-          navigate(-1);
+          setOpenLanguage(false);
         }}
       >
         <BiArrowBack color={"#fff"} size={32} />
