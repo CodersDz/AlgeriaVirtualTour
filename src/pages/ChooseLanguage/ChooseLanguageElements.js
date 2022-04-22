@@ -19,6 +19,6 @@ export const GoBack = styled.button`
   position: absolute;
   background-color: transparent;
   border: none;
-  top: 50px;
-  left: 50px;
+  top: 30px;
+  left: 30px;
 `;

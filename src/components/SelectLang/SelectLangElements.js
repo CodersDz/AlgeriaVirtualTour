@@ -73,13 +73,14 @@ export const RadioLabel = styled.label`
   }
 `;
 export const RadioInput = styled.input`
+  position: relative;
   &:checked::after {
-    width: 14px;
-    height: 14px;
+    width: 15px;
+    height: 15px;
     border-radius: 15px;
-    top: -3px;
-    left: -3px;
-    position: relative;
+    top: -2px;
+    left: -1px;
+    position: absolute;
     background-color: #4bcb02;
     content: "";
     display: inline-block;
