@@ -51,11 +51,7 @@ export const ZoomRightContainer = styled.div`
 `;
 export const RangeInput = styled.input`
   width: 100%;
-  cursor: pointer;
-  background-color: #9a905d;
-  &::-webkit-slider-thumb {
-    background: green;
-  }
+  accent-color: #4bcb02;
 `;
 export const HiddenContainer = styled.div`
   width: 100%;
