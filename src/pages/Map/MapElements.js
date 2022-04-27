@@ -51,10 +51,8 @@ export const RangeLabel = styled.label`
 export const RangeInput = styled.input`
   width: 40%;
   cursor: pointer;
-  background-color: #9a905d;
-  &::-webkit-slider-thumb {
-    background: green;
-  }
+
+  accent-color: #4bcb02;
 `;
 export const DestinationButton = styled.div`
   width: 70%;
