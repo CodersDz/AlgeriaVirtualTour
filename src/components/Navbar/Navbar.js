@@ -55,33 +55,36 @@ import {
   SearchSpan,
   NavLinkSpan,
 } from "./NavbarElements";
-import useAnimated from "../../hooks/useAnimated";
+import { useDispatch } from "react-redux";
+import { resetAnimated } from "../../features/animation/animatedHomeSlice";
 const HiddenLiVariants = {
   initial: { y: -100 },
   animate: { y: 0, transition: { duration: 1 } },
 };
 const Navbar = () => {
+  const dispatch = useDispatch();
   let navigate = useNavigate();
   const location = useLocation();
+  const isMobileMap = location.pathname.toLowerCase() === "/map";
   const isDesktop = useWindowSize();
+  console.log(!isDesktop && isMobileMap);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const {animated,setAnimated}=useAnimated();
+
   const resetCaroussel = () => {
-    if (location.pathname === "/home" || location.pathname === "/Home") {
-      setAnimated([]);
-    } else {
+    console.log(location.pathname.toLowerCase());
+    if (location.pathname.toLowerCase() !== "/home") {
       navigate("/home");
-      setAnimated([]);
     }
+    dispatch(resetAnimated());
   };
   const componentDidMount = () => {
     document.getElementById("rightNav").focus();
   };
 
   return (
-    <NavContainer isDesktop={isDesktop}>
+    <NavContainer isMobileMap={!isDesktop && isMobileMap} isDesktop={isDesktop}>
       <RightNavContainer
         id="rightNav"
         tabIndex="10"
@@ -226,7 +229,7 @@ const Navbar = () => {
           </RightContainer>
         </NavWrapper>
       ) : (
-        <NavbarMobile setOpen={setOpen} />
+        <NavbarMobile setOpen={setOpen} resetCaroussel={resetCaroussel} />
       )}
     </NavContainer>
   );

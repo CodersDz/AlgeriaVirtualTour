@@ -36,7 +36,7 @@
     "General": "Générale"
   },
   "HomePage": {
-    "Title": "La 1ére Plateforme de tourisme virtuelle en algérie",
+    "Title": "La 1<sup>ére</sup> Plateforme de tourisme virtuelle en algérie",
     "DiscoverMore": "Découvrir plus",
     "SeeMore": "Voir plus"
   },
@@ -60,7 +60,11 @@
     "ReadLess": "lire moins...",
     "NoLocationFound": "Aucune location trouvé"
   },
-  "MapPage": { "Destination": "Destination", "Perimeter": "Périmètre" },
+  "MapPage": {
+    "Destination": "Destination",
+    "Perimeter": "Périmètre",
+    "SearchWilayas": "Rechercher des wilayas"
+  },
   "WilayaPage": {
     "Destination": "Destination",
     "MoreInfo": "Informations",

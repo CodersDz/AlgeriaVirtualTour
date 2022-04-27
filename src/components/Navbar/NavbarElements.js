@@ -139,6 +139,7 @@ export const ArrowSvg = styled(Arrow)`
 //MainNav
 export const NavContainer = styled.nav`
   padding: ${(props) => (props.isDesktop ? "1rem" : "0px")};
+  display: ${(props) => (props.isMobileMap ? "none" : "flex")};
   color: #fff;
   width: 100vw;
   font-size: 18px;
@@ -148,7 +149,6 @@ export const NavContainer = styled.nav`
   margin-top: -1px;
   z-index: 7;
   background-color: transparent;
-  display: flex;
   align-items: center;
   justify-content: center;
   @media only screen and ${device.mobile} {

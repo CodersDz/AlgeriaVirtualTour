@@ -25,17 +25,12 @@ import {
 } from "./NavbarMobileElements";
 import { ReactComponent as LanguageIcone } from "../../../assets/svg/LanguageIcone.svg";
 import ChooseLanguage from "../../../pages/ChooseLanguage/ChooseLanguage";
-const NavbarMobile = ({ setOpen }) => {
+const NavbarMobile = ({ setOpen, resetCaroussel }) => {
   const [openLanguage, setOpenLanguage] = useState(false);
   const location = useLocation();
   console.log(location);
-  const currentPage = location.pathname.replace("/", "");
+  const currentPage = location.pathname.replace("/", "").toLowerCase();
   console.log(currentPage);
-  useEffect(() => {
-    switch (location.pathname) {
-      case "/home":
-    }
-  }, []);
   return (
     <NavMobileWrapper>
       <TopContainer>
@@ -48,10 +43,8 @@ const NavbarMobile = ({ setOpen }) => {
             <HumbergerIcone />
           </HumbergerBtn>
         </HumbergerContainer>
-        <LogoContainer>
-          <TopContainerLink to="/home">
-            <NavLogo />
-          </TopContainerLink>
+        <LogoContainer onClick={resetCaroussel}>
+          <NavLogo />
         </LogoContainer>
         <SearchContainer>
           <TopContainerLink to="/search">

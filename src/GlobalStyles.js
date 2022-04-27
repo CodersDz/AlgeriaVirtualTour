@@ -24,6 +24,9 @@ export const PageContainerGlobal = styled.div`
     text-align: justify;
     text-align-last: ${lang === '"ar"' ? "end" : "start"};
   }
+  & sup {
+    font-size: 0.5em;
+  }
   & h1,
   h2,
   h3,
@@ -46,9 +49,9 @@ export const PageContentGlobal = styled.div`
   align-items: center;
   justify-content: center;
   color: #fff;
-
-  margin-top: 110px;
+  margin-top: ${(props) => (props.isMobileMap ? "0px" : "110px")};
   height: ${(props) => (props.fixed ? "calc(100vh - 110px)" : "auto")};
+  height: ${(props) => (props.isMobileMap ? "100vh" : "initial")};
   @media only screen and ${device.mobile} {
   }
   @media only screen and ${device.tablet} {

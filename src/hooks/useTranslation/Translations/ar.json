@@ -60,7 +60,11 @@
     "ReadLess": "...أقرأ أقل",
     "NoLocationFound": "لم يتم العثور على أي موقع"
   },
-  "MapPage": { "Destination": "الأماكن", "Perimeter": "مسافة" },
+  "MapPage": {
+    "Destination": "الأماكن",
+    "Perimeter": "مسافة",
+    "SearchWilayas": "البحث عن الولايات"
+  },
   "WilayaPage": {
     "Destination": "الأماكن",
     "MoreInfo": "معلومات",

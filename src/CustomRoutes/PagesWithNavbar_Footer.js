@@ -1,14 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
-import { AnimatedProvider } from "../context/AnimatedProvider";
+import useWindowSize from "../hooks/useWindowSize";
 const PagesWithNavbar_Footer = () => {
+  const isDesktop = useWindowSize();
   return (
-    <AnimatedProvider>
+    <>
       <Navbar />
       <Outlet />
-      <Footer />
-    </AnimatedProvider>
+      {isDesktop && <Footer />}
+    </>
   );
 };
 

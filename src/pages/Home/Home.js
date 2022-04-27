@@ -23,6 +23,8 @@ import {
   DiscoverMoreBtn,
   MapContainer,
 } from "./HomeElements";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import useWindowSize from "../../hooks/useWindowSize";
 import { PageContentGlobal, ReadMoreSpan } from "../../GlobalStyles";
 import { useLocalStorage } from "../../hooks/useStorage";
@@ -32,6 +34,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import MobileHome from "./MobileHome/MobileHome";
+import { setAnimated } from "../../features/animation/animatedHomeSlice";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import HomeBg from "./HomeBg.jpg";
@@ -40,7 +43,6 @@ import useTranslation from "../../hooks/useTranslation/useTranslation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
 import { generalAPILink } from "../../assets/Variables/Links";
-import useAnimated from "../../hooks/useAnimated";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
@@ -52,10 +54,11 @@ const containerVariants = {
 };
 
 const Home = () => {
+  const dispatch = useDispatch();
   const [readMore, setReadMore] = useState(false);
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const isDesktop = useWindowSize();
-  const { animated, setAnimated } = useAnimated();
+  const animated = useSelector((state) => state.animatedHome.value);
   const [wilayas, setWilayas] = useState([]);
   const [translatedWilaya, setTranslatedWilaya] = useState({});
   const [translatedLocation, setTranslatedLocation] = useState({});
@@ -71,16 +74,16 @@ const Home = () => {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .get(`${generalAPILink}/banners/0`)
-      .then((response) => {
-        setBanners(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${generalAPILink}/banners/0`)
+  //     .then((response) => {
+  //       setBanners(response.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   const GrowImage = ({ item }) => {
     if (!animated.includes(item.position)) {
       return (
@@ -90,10 +93,10 @@ const Home = () => {
           bg={item.pic_cover}
           onClick={() => {
             if (item.position === 1) {
-              setAnimated((prev) => [...prev, item.position]);
+              dispatch(setAnimated(item.position));
               setReadMore(false);
             } else if (item.position === animated.length + 1) {
-              setAnimated((prev) => [...prev, item.position]);
+              dispatch(setAnimated(item.position));
               setReadMore(false);
             }
           }}
@@ -175,7 +178,9 @@ const Home = () => {
               <DzMap />
             </MapContainer>
             <InfoCarousel>
-              <InfoCarouselTitle>{t("HomePage.Title")}</InfoCarouselTitle>
+              <InfoCarouselTitle
+                dangerouslySetInnerHTML={{ __html: t("HomePage.Title") }}
+              ></InfoCarouselTitle>
               <InfoCarouselImg src={FemmeVr} />
             </InfoCarousel>
             <ImgCarousel>

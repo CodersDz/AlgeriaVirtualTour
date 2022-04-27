@@ -45,6 +45,9 @@ export const HumbergerIcone = styled(Humberger)``;
 export const LogoContainer = styled.div`
   height: 100%;
   width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 export const NavLogo = styled(Logo)`
   max-width: 80%;

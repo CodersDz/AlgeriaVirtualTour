@@ -51,6 +51,7 @@ export const MainTitleContainer = styled.p`
 export const MainTitle = styled.h2`
   font-size: 32px;
   font-weight: 700;
+  text-transform: uppercase;
 `;
 export const TopRightContainer = styled.div`
   height: 100%;

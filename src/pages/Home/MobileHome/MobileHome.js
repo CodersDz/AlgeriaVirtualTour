@@ -30,13 +30,16 @@ import {
 import useTranslation from "../../../hooks/useTranslation/useTranslation";
 import FemmeVr from "../FemmeVr.png";
 import { ReadMoreSpanMobile } from "../../../GlobalStyles";
+import { useDispatch, useSelector } from "react-redux";
+import { setAnimated } from "../../../features/animation/animatedHomeSlice";
 const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 1 } },
 };
 const MobileHome = ({ wilayas }) => {
+  const dispatch = useDispatch();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-  const [animated, setAnimated] = useState([]);
+  const animated = useSelector((state) => state.animatedHome.value);
   const [readMore, setReadMore] = useState(false);
   useEffect(() => {
     console.log(animated);
@@ -51,9 +54,9 @@ const MobileHome = ({ wilayas }) => {
           readMore={readMore}
           onClick={() => {
             if (item.position === 1) {
-              setAnimated((prev) => [...prev, item.position]);
+              dispatch(setAnimated(item.position));
             } else if (item.position === animated.length + 1)
-              setAnimated((prev) => [...prev, item.position]);
+              dispatch(setAnimated(item.position));
           }}
         >
           <ThumbnailImageText>
@@ -129,7 +132,9 @@ const MobileHome = ({ wilayas }) => {
         <MainTopContainer>
           <TopLeftContainer>
             <MainTitleContainer>
-              <MainTitle>{t("HomePage.Title")}</MainTitle>
+              <MainTitle
+                dangerouslySetInnerHTML={{ __html: t("HomePage.Title") }}
+              ></MainTitle>
             </MainTitleContainer>
           </TopLeftContainer>
           <TopRightContainer>

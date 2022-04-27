@@ -11,25 +11,11 @@ import {
 } from "./MobileCatégorieElements";
 import { ReactComponent as GoBackIcone } from "../../assets/svg/GoBackIcone.svg";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
-const MobileCatégorie = ({ catégorieInformations, wilayaId }) => {
+const MobileCatégorie = ({ catégorieInformations }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const navigate = useNavigate();
-  // catégorieName: "Mosque",
-  //   catégorieTranslatedName: t("SearchPage.Card.Mosque"),
-  //   bgImageCatégorie: Bg_Mosque,
-  //   mapImageCatégorie: Mosque,
-  //   idCatégorie: 1,
-  //icone
   const goBack = () => {
-    if (
-      window.location.pathname
-        .toLocaleLowerCase()
-        .includes("/search".toLocaleLowerCase())
-    ) {
-      navigate("/search");
-    } else {
-      if (wilayaId) navigate(`/wilaya/${wilayaId}`);
-    }
+    navigate(-1);
   };
   return (
     <Container>

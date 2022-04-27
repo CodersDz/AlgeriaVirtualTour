@@ -32,13 +32,18 @@ import {
 import axios from "axios";
 import { generalAPILink } from "../../../../assets/Variables/Links";
 import { useNavigate } from "react-router-dom";
-import useInfoPopUp from "../../../../hooks/useInfoPopUp";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
-
+import { useDispatch } from "react-redux";
+import {
+  setHide,
+  setShow,
+  setType,
+  setText,
+} from "../../../../features/infoPopUp/infoPopUpSlice";
 const Login = ({ login, setLogin, toggle, setToggle }) => {
+  const dispatch = useDispatch();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-  const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
-    useInfoPopUp();
+
   const [checked, setChecked] = useState(false);
   const { setAuthFunction } = useAuth();
   const navigate = useNavigate();
@@ -86,28 +91,36 @@ const Login = ({ login, setLogin, toggle, setToggle }) => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-              axios
-                .post(`${generalAPILink}/users/login`, values)
-                .then((response) => {
-                  console.log(response);
-                  const accesToken = response.data?.token;
-                  console.log(response.data?.token);
-                  setAuthFunction(accesToken, checked);
-                  setShowInfoPopUp(false);
-                  setType(1);
-                  setText("Connection avec succès");
-                  setShowInfoPopUpAndHide();
-                  navigate(from, { replace: true });
-                })
-                .catch((err) => {
-                  console.log(err);
-                  setShowInfoPopUp(false);
-                  setType(2);
+            axios
+              .post(`${generalAPILink}/users/login`, values)
+              .then((response) => {
+                console.log(response);
+                const accesToken = response.data?.token;
+                console.log(response.data?.token);
+                setAuthFunction(accesToken, checked);
+                dispatch(setHide());
+                dispatch(setType(1));
+                dispatch(setText("Connection avec succès"));
+                dispatch(setShow());
+                setTimeout(() => {
+                  dispatch(setHide());
+                }, [3000]);
+                navigate(from, { replace: true });
+              })
+              .catch((err) => {
+                dispatch(setHide());
+                dispatch(setType(2));
+                dispatch(
                   setText(
                     "Erreur ! veuillez vérifier les informations entrés ou réessayer plus tard"
-                  );
-                  setShowInfoPopUpAndHide();
-                });
+                  )
+                );
+                dispatch(setShow());
+                setTimeout(() => {
+                  dispatch(setHide());
+                }, [3000]);
+              });
+            setSubmitting(false);
           }}
         >
           {({

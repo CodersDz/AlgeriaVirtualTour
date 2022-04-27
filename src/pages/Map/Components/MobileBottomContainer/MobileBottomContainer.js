@@ -28,7 +28,7 @@ import { useNavigate } from "react-router-dom";
 const MobileBottomContainer = ({
   zoom,
   mapRef,
-  locations,
+  locationsToDisplay,
   setZoom,
   setLat,
   setLng,
@@ -79,7 +79,7 @@ const MobileBottomContainer = ({
               overflowX: "visible",
             }}
           >
-            {locations.map((location, index) => {
+            {locationsToDisplay.map((location, index) => {
               return (
                 <LocationCard
                   key={index}

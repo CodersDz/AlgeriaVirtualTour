@@ -81,10 +81,7 @@ const LocationCarousselMobile = ({
   }, [destination]);
   return (
     <Container>
-      <MobileCatégorie
-        catégorieInformations={catégorieInformations}
-        wilayaId={wilayaId}
-      />
+      <MobileCatégorie catégorieInformations={catégorieInformations} />
       <Wrapper>
         <ImagesContainer>
           <View360Btn href={location.visit_360}>

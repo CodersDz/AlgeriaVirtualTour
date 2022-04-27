@@ -28,12 +28,14 @@ import {
   RangeLabel,
   RangeInput,
 } from "./MapElements";
+import MobileTopContainer from "./Components/MobileTopContainer/MobileTopContainer";
 import InternetIcon from "../../assets/svg/Internet.svg";
 
 import HeartIcon from "../../assets/svg/Heart.svg";
 import SaveIcon from "../../assets/svg/Save.svg";
 import { motion } from "framer-motion";
 import { ReactComponent as MapMenuIcone } from "./MapMenuIcone.svg";
+import { ReactComponent as PointerMobile } from "../../assets/svg/PointerMobile.svg";
 import { MdLocationOn } from "react-icons/md";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
@@ -116,6 +118,9 @@ const Map = (props) => {
   });
   const wilayaFilter = (wilaya) => {
     if (wilaya !== null) {
+      setLat(parseFloat(wilaya.latitude));
+      setLng(parseFloat(wilaya.longitude));
+      setZoom(10);
       let filtredLocations = locations.filter((location) => {
         if (location.id_wilaya === wilaya.id_wilaya) {
           return location;
@@ -137,8 +142,11 @@ const Map = (props) => {
     }
   };
   return (
-    <PageContentGlobal fixed={true}>
+    <PageContentGlobal fixed={true} isMobileMap={!isDesktop}>
       <PageContent>
+        {!isDesktop && (
+          <MobileTopContainer wilayas={wilayas} wilayaFilter={wilayaFilter} />
+        )}
         <GoogleMapReact
           bootstrapURLKeys={{
             key: "AIzaSyBxr1HboDoiuuX8XAZOLXi_aVWxW3CcGd4",
@@ -208,11 +216,12 @@ const Map = (props) => {
                 }}
               >
                 <MdLocationOn
-                  size="72"
-                  color="#006A79"
+                  size={isDesktop ? "72" : "56"}
+                  color="#4BCB02"
                   style={{ transform: "translate(-50%, -50%)" }}
                 />
-                {currentLocation === loca.id_location && (
+
+                {isDesktop && currentLocation === loca.id_location && (
                   <LocationCard>
                     <CardImg src={loca.cover_pic} />
                     <CardText>
@@ -265,9 +274,6 @@ const Map = (props) => {
                       <DestinationLIHidden
                         onClick={() => {
                           wilayaFilter(wilaya);
-                          setLat(parseFloat(wilaya.latitude));
-                          setLng(parseFloat(wilaya.longitude));
-                          setZoom(10);
                         }}
                       >
                         {wilaya.translatedName}
@@ -297,7 +303,7 @@ const Map = (props) => {
           <MobileBottomContainer
             zoom={zoom}
             mapRef={mapRef}
-            locations={locations}
+            locationsToDisplay={locationsToDisplay}
             setZoom={setZoom}
             setLng={setLng}
             setLat={setLat}

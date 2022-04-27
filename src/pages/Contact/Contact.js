@@ -20,13 +20,18 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 import useWindowSize from "../../hooks/useWindowSize";
 import { generalAPILink } from "../../assets/Variables/Links";
-import useInfoPopUp from "../../hooks/useInfoPopUp";
+import { useDispatch } from "react-redux";
+import {
+  setHide,
+  setShow,
+  setType,
+  setText,
+} from "../../features/infoPopUp/infoPopUpSlice";
 const Contact = () => {
-  const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
-    useInfoPopUp();
+  const dispatch = useDispatch();
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
   const isDesktop = useWindowSize();
   return (
@@ -65,19 +70,26 @@ const Contact = () => {
                   .post(`${generalAPILink}/messages`, values)
                   .then((response) => {
                     console.log(response);
-                    setShowInfoPopUp(false);
-                    setType(1);
-                    setText("Message envoyé avec succès");
-                    setShowInfoPopUpAndHide();
+                    dispatch(setHide());
+                    dispatch(setType(1));
+                    dispatch(setText("Message envoyé avec succès"));
+                    dispatch(setShow());
+                    setTimeout(() => {
+                      dispatch(setHide());
+                    }, [3000]);
                     resetForm();
                   })
                   .catch((err) => {
                     console.log(err);
-                    setShowInfoPopUp(false);
-                    setType(2);
-                    setText("Erreur veuillez réessayer ultérieurement !");
-                    setShowInfoPopUpAndHide();
-                    resetForm();
+                    dispatch(setHide());
+                    dispatch(setType(2));
+                    dispatch(
+                      setText("Erreur veuillez réessayer ultérieurement !")
+                    );
+                    dispatch(setShow());
+                    setTimeout(() => {
+                      dispatch(setHide());
+                    }, [3000]);
                   });
                 setSubmitting(false);
               }}

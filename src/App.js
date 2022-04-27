@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 //-----------------Components/pages imports---------------
 import Home from "./pages/Home/Home";
 import StartPage from "./pages/StartPage/StartPage";
@@ -16,14 +16,18 @@ import LocationCarousel from "./pages/LocationCarousel/LocationCarousel";
 import ScrollToTop from "./assets/utilities/ScrollToTop";
 import Profile from "./pages/Profile/Profile";
 import RequireAuth from "./CustomRoutes/RequireAuth";
-import useInfoPopUp from "./hooks/useInfoPopUp";
 import InfoPopUp from "./components/InfoPopUp/InfoPopUp";
 import PagesWithNavbar_Footer from "./CustomRoutes/PagesWithNavbar_Footer";
 import { PageContainerGlobal } from "./GlobalStyles";
 import ChooseLanguage from "./pages/ChooseLanguage/ChooseLanguage";
+import { useSelector } from "react-redux";
 function App() {
   const location = useLocation();
-  const { showInfoPopUp, type, text } = useInfoPopUp();
+  const showInfoPopUp = useSelector((state) => state.infoPopUp.value.show);
+  const type = useSelector((state) => state.infoPopUp.value.type);
+  const text = useSelector((state) => state.infoPopUp.value.text);
+  const navigate = useNavigate();
+
   return (
     <PageContainerGlobal>
       <ScrollToTop>
@@ -44,6 +48,7 @@ function App() {
               element={<LocationCarousel />}
             />
           </Route>
+
           <Route path="/Authentification/*" element={<LogIn />} />
           {/* Privates Routes*/}
           <Route element={<RequireAuth />}>

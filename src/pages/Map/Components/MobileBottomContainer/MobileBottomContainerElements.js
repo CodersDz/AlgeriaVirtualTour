@@ -64,6 +64,7 @@ export const HiddenContainer = styled.div`
   align-items: center;
   justify-content: start;
   flex-direction: column;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 `;
 export const BarContainer = styled.div`
   width: 100%;
@@ -71,7 +72,6 @@ export const BarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
 `;
 export const Bar = styled.div`
   width: 30%;
@@ -80,7 +80,6 @@ export const Bar = styled.div`
   border-radius: 20px;
 `;
 export const LocationsContainer = styled.div`
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
   width: 100%;
   height: 35vh;
   display: flex;
@@ -90,6 +89,7 @@ export const LocationsContainer = styled.div`
 export const LocationCard = styled.div`
   background-color: #eaeaea;
   min-width: 200px;
+  max-width: 200px;
   height: 100%;
   margin-right: 10px;
   display: flex;

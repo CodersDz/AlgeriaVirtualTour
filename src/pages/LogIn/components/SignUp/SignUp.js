@@ -26,13 +26,18 @@ import {
 import { generalAPILink } from "../../../../assets/Variables/Links";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-import useInfoPopUp from "../../../../hooks/useInfoPopUp";
 import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 import { AiOutlineGoogle } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import {
+  setHide,
+  setShow,
+  setType,
+  setText,
+} from "../../../../features/infoPopUp/infoPopUpSlice";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
   const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
-  const { setShowInfoPopUp, setType, setText, setShowInfoPopUpAndHide } =
-    useInfoPopUp();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   return (
@@ -70,37 +75,46 @@ const SignUp = ({ login, setLogin, toggle, setToggle }) => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-              axios
-                .post(`${generalAPILink}/users/signup`, {
-                  email: values.email,
-                  password: values.password,
-                  phone_number: values.phone_number,
-                  name: values.name,
-                  lastname: values.lastname,
-                })
-                .then((response) => {
-                  console.log(response);
-                  setShowInfoPopUp(false);
-                  setType(1);
-                  setText("Inscription avec succès");
-                  setShowInfoPopUpAndHide();
-                  navigate("/Authentification/EmailConfirmation", {
-                    state: {
-                      from: location,
-                      confirmation: true,
-                      email: response?.data?.data?.email,
-                    },
-                })
-                .catch((err) => {
-                  console.log(err);
-                  setShowInfoPopUp(false);
-                  setType(2);
+            axios
+              .post(`${generalAPILink}/users/signup`, {
+                email: values.email,
+                password: values.password,
+                phone_number: values.phone_number,
+                name: values.name,
+                lastname: values.lastname,
+              })
+              .then((response) => {
+                console.log(response);
+                dispatch(setHide());
+                dispatch(setType(1));
+                dispatch(setText("Inscription avec succès"));
+                dispatch(setShow());
+                setTimeout(() => {
+                  dispatch(setHide());
+                }, [3000]);
+                navigate("/Authentification/EmailConfirmation", {
+                  state: {
+                    from: location,
+                    confirmation: true,
+                    email: response?.data?.data?.email,
+                  },
+                });
+              })
+              .catch((err) => {
+                console.log(err);
+                dispatch(setHide());
+                dispatch(setType(2));
+                dispatch(
                   setText(
                     "Erreur ! veuillez vérifier les informations entrés ou réessayer plus tard"
-                  );
-                  setShowInfoPopUpAndHide();
-                });
-            }, 400);
+                  )
+                );
+                dispatch(setShow());
+                setTimeout(() => {
+                  dispatch(setHide());
+                }, [3000]);
+              });
+            setSubmitting(false);
           }}
         >
           {({

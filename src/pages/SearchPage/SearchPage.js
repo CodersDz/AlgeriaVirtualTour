@@ -72,16 +72,16 @@ const SearchPage = () => {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .get(`${generalAPILink}/banners/0`)
-      .then((response) => {
-        setBanners(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${generalAPILink}/banners/0`)
+  //     .then((response) => {
+  //       setBanners(response.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   const goToWilaya = (id_wilaya) => {
     if (id_wilaya !== null) {
       navigate(`/wilaya/${id_wilaya}`);

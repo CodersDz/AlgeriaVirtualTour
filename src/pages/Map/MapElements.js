@@ -18,6 +18,7 @@ export const PageContent = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
 `;
 export const MapMenu = styled.div`
   height: 70px;
@@ -139,15 +140,15 @@ export const DestinationLIHidden = styled.li`
   justify-content: center;
 `;
 export const ClusterContainer = styled.div`
-  background-color: #006a79;
+  background-color: rgba(75, 203, 2, 0.6);
   padding: 10px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px;
   color: #fff;
   transform: translate(-50%, -50%);
+  font-size: 20px;
 `;
 export const LocationContainer = styled(Link)``;
 export const LocationCard = styled.div`

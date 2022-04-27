@@ -13,7 +13,6 @@ export const LeftContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 `;
 export const RightContainer = styled.div`
   width: 80%;

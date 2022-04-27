@@ -5,22 +5,12 @@ export const FooterContainer = styled.footer`
   width: 100%;
   height: 20vh;
   text-align: justify;
-  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: #00c22a;
   position: relative;
   z-index: 1;
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.tablet} {
-  }
-  @media only screen and ${device.laptop} {
-    display: flex;
-  }
-  @media only screen and ${device.desktop} {
-  }
   & p {
     text-align-last: start;
   }
