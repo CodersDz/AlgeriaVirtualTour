@@ -79,6 +79,8 @@ export const LocationsContainer = styled.div`
   width: 100%;
   height: 35vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px;
   padding-right: 0;
 `;
@@ -135,4 +137,8 @@ export const LocationP = styled.p`
 export const BtnContainer = styled.div`
   height: 10%;
   width: 100%;
+`;
+export const NoLocationMessage = styled.span`
+  font-size: 15px;
+  color: #fff;
 `;
