@@ -1,9 +1,7 @@
 //-----------------React and hooks imports---------------
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import { motion } from "framer-motion";
-import axios from "axios";
-import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 import {
   StartPageContainer,
@@ -12,7 +10,6 @@ import {
   StartPageContent,
   EmptyDiv,
   AlgeriaMap,
-  SpanDetail,
 } from "./StartPageElements";
 
 //-----------------Logo import---------------
@@ -26,8 +23,7 @@ const containerVariants = {
   exit: { opacity: 0, transition: { duration: 1, ease: "easeInOut" } },
 };
 const StartPage = () => {
-  const [showDetail, setShowDetail] = useState(false);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <StartPageContainer
       as={motion.div}
@@ -38,17 +34,7 @@ const StartPage = () => {
     >
       <StartPageContent>
         <StartPageImg src={StartPageLogo} />
-        <EmptyDiv>
-          {showDetail && (
-            <SpanDetail
-              as={motion.span}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 1.5 } }}
-            >
-              Le site est en cours de construction...
-            </SpanDetail>
-          )}
-        </EmptyDiv>
+        <EmptyDiv></EmptyDiv>
         <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
       </StartPageContent>
       <AlgeriaMap src={MapStartPage}></AlgeriaMap>

@@ -1,11 +1,9 @@
 //-----------------React and hooks imports---------------
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 //-----------------Icons imports---------------
-import { ReactComponent as NavLogo } from "../../assets/svg/NavLogo.svg";
-import { ReactComponent as HomeIcone } from "../../assets/svg/HomeIcone.svg";
 import { ReactComponent as HumbergerIcon } from "../../assets/svg/HumbergerIcon.svg";
 import { ReactComponent as SearchIcone } from "../../assets/svg/SearchIcone.svg";
 import { ReactComponent as AgendaIcone } from "../../assets/svg/AgendaIcone.svg";
@@ -68,7 +66,7 @@ const Navbar = () => {
   const isMobileMap = location.pathname.toLowerCase() === "/map";
   const isDesktop = useWindowSize();
   console.log(!isDesktop && isMobileMap);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
 

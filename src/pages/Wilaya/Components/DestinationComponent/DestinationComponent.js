@@ -21,7 +21,7 @@ import useTranslation from "../../../../hooks/useTranslation/useTranslation";
 const DestinationComponent = ({ filteredLocation, currentDiscoverOption }) => {
   console.log(currentDiscoverOption);
   const navigate = useNavigate();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const goToLocation = (destination) => {
     navigate(`/location/${destination.id_location}`, {
       state: { destination: destination },

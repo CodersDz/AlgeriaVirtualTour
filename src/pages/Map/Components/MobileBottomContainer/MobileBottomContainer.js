@@ -38,7 +38,7 @@ const MobileBottomContainer = ({
   const navigate = useNavigate();
   console.log(locationsToDisplay);
   const [showHidden, setShowHidden] = useState(false);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <Container showHidden={showHidden}>
       <ZoomContainer>

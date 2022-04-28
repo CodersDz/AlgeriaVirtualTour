@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Container,
   Wrapper,
   InfoP,
   TextContainer,
-  ReadMoreSpan,
 } from "./InfoMobileComponentElements";
 import useTranslation from "../../../../../hooks/useTranslation/useTranslation";
 import { ReadMoreSpanMobile } from "../../../../../GlobalStyles";
@@ -14,7 +13,7 @@ const BtnVariants = {
   animate: { opacity: 1, transition: { duration: 0.5 } },
 };
 function InfoMobileComponent({ wilaya }) {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [readMore, setReadMore] = useState(false);
   return (
     <Container>

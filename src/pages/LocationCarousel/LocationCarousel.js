@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
-  PageContainer,
   PageContent,
   LeftContainer,
   LeftWrapper,
@@ -11,22 +10,14 @@ import {
   LocationName,
   LocationP,
   BtnContainer,
-  ReadMoreBtn,
   Visit360Btn,
   RightContainer,
   RightWrapper,
   ArrowsContainer,
 } from "./LocationCarouselElements";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
-import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
-import {
-  PageContainerGlobal,
-  PageContentGlobal,
-  ReadMoreSpan,
-} from "../../GlobalStyles";
+import { PageContentGlobal, ReadMoreSpan } from "../../GlobalStyles";
 import { ReactComponent as LeftArrow } from "./LeftArrow.svg";
 import { ReactComponent as RightArrow } from "./RightArrow.svg";
 import { useParams } from "react-router-dom";
@@ -43,7 +34,7 @@ const LocationCarousel = (props) => {
   const isDesktop = useWindowSize();
   const locationId = useParams();
   console.log(locationId.locationId);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [readMore, setReadMore] = useState(false);
   const [currentBg, setCurrentBg] = useState("");
   const [destination, setDestination] = useState({});

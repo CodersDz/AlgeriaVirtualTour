@@ -10,7 +10,6 @@ import {
   ContentContainer,
   SliderImage,
   View360Btn,
-  FullScreenBtn,
   LocationNameContainer,
   LocationName,
   LocationEmplacement,
@@ -35,9 +34,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./style.css";
 import { ReactComponent as VrIcone } from "../VrIcone.svg";
-import { ReactComponent as FullScreenIcone } from "../FullScreenIcone.svg";
 import getWilayaInformation from "../../../assets/utilities/getWilayaInformation";
-import { ReactComponent as PointerMobile } from "../../../assets/svg/PointerMobile.svg";
 import useTranslation from "../../../hooks/useTranslation/useTranslation";
 const LocationCarousselMobile = ({
   catégorieInformations,
@@ -53,7 +50,7 @@ const LocationCarousselMobile = ({
     fullscreenControl: false,
     keyboardShortcuts: false,
   };
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const ref = useRef();
   const [location, setLocation] = useState({ images: [] });
   console.log(destination);

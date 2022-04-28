@@ -8,7 +8,7 @@ const BtnVariants = {
   animate: { opacity: 1, transition: { duration: 1 } },
 };
 const InfoComponent = ({ wilaya }) => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [readMore, setReadMore] = useState(false);
   return (
     <InfoLeftContainer>

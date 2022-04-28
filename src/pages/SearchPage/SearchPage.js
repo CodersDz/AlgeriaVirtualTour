@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
@@ -26,20 +24,19 @@ import {
 import CardContainer from "../../components/CardContainer/CardContainer";
 import { PageContentGlobal } from "../../GlobalStyles";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
-import { useLocalStorage } from "../../hooks/useStorage";
 import { ReactComponent as MapIcone } from "./MapIcone.svg";
 import useWindowSize from "../../hooks/useWindowSize";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import MobileSearchBar from "./Components/MobileSearchBar/MobileSearchBar";
 import { generalAPILink } from "../../assets/Variables/Links";
-const containerVariants = {
+const Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  visible: { opacity: 1, transition: { duration: 0.5 } },
 };
 
 const SearchPage = () => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [locations, setLocations] = useState([]);
   const [selectedOption, setSelectedOption] = useState({
     translatedName: t("SearchPage.Wilaya"),
@@ -48,7 +45,6 @@ const SearchPage = () => {
   });
   const isDesktop = useWindowSize();
   const [wilayas, setWilayas] = useState([]);
-  const [banners, setBanners] = useLocalStorage("banners", {});
   const [showWilayas, setShowWilayas] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
@@ -94,8 +90,7 @@ const SearchPage = () => {
         as={motion.div}
         initial="hidden"
         animate="visible"
-        variants={containerVariants}
-        transition={{ duration: 0.5 }}
+        variants={Variants}
       >
         <SidePopUpBar />
         <BannerContainer />

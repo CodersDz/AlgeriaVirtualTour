@@ -38,7 +38,7 @@ const BtnVariants = {
 };
 const MobileHome = ({ wilayas }) => {
   const dispatch = useDispatch();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const animated = useSelector((state) => state.animatedHome.value);
   const [readMore, setReadMore] = useState(false);
   useEffect(() => {

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import device from "../../assets/Variables/responsive";
 //-----------------------Info Components----------------------------
-const lang = localStorage.getItem("language");
 export const RightWilayaNav = styled.ul`
   display: flex;
   align-items: center;

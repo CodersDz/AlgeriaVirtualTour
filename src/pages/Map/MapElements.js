@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
 import device from "../../assets/Variables/responsive";
 import { ReactComponent as ArrowSvg } from "../../assets/svg/arrow.svg";

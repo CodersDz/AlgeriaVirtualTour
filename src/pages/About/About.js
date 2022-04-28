@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
-  PageContainer,
   ContentContainer,
   LeftContainer,
   LeftWrapper,
@@ -11,12 +10,10 @@ import {
   AboutP,
   RightContainer,
 } from "./AboutElements";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+
+import { PageContentGlobal } from "../../GlobalStyles";
 const About = () => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <PageContentGlobal
       fixed={false}

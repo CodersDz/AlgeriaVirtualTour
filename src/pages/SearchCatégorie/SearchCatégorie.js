@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { Navigate, useParams } from "react-router-dom";
-import { useLocalStorage } from "../../hooks/useStorage";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
   TopContainer,
@@ -28,11 +27,8 @@ import {
   SearchIconeContainer,
 } from "./SearchCatégorieElements";
 import CatégorieSection from "../../components/CatégorieSection/CatégorieSection";
-import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import { ReactComponent as SearchIcone } from "./Svg/SearchIcone.svg";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
@@ -41,7 +37,7 @@ import SearchCatégorieMobile from "./SearchCatégorieMobile/SearchCatégorieMob
 import Catégories from "../../assets/utilities/Catégories";
 import { generalAPILink } from "../../assets/Variables/Links";
 const SearchCatégorie = () => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
 
   const { categorie } = useParams();
   let catActuelle = Catégories.find((cat) => {
@@ -51,12 +47,9 @@ const SearchCatégorie = () => {
   });
   const [wilayas, setWilayas] = useState([]);
   const [showWilayas, setShowWilayas] = useState(false);
-  const [catégorieInformations, setCatégorieInformations] =
-    useState(catActuelle);
 
   const [locations, setLocations] = useState([]);
   const [mostVisitedLocations, setMostVisitedLocations] = useState([]);
-  const [banners, setBanners] = useLocalStorage("banners", {});
   const [selectedOption, setSelectedOption] = useState({
     name: t("SearchPage.Wilaya"),
     id: null,
@@ -68,7 +61,7 @@ const SearchCatégorie = () => {
   useEffect(() => {
     axios
       .get(
-        `${generalAPILink}/location?type_location=${catégorieInformations.idCatégorie}`
+        `${generalAPILink}/location?type_location=${catActuelle.idCatégorie}`
       )
       .then((response) => {
         let info = response.data.data;
@@ -84,16 +77,16 @@ const SearchCatégorie = () => {
         console.log(err);
       });
   }, []);
-  useEffect(() => {
-    axios
-      .get(`${generalAPILink}/banners/0`)
-      .then((response) => {
-        setBanners(response.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(`${generalAPILink}/banners/0`)
+  //     .then((response) => {
+  //       setBanners(response.data.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
   useEffect(() => {
     axios
       .get(`${generalAPILink}/wilaya`)
@@ -220,7 +213,7 @@ const SearchCatégorie = () => {
         </ContentContainer>
       ) : (
         <SearchCatégorieMobile
-          catégorieInformations={catégorieInformations}
+          catégorieInformations={catActuelle}
           locations={locations}
           mostVisitedLocations={mostVisitedLocations}
         />

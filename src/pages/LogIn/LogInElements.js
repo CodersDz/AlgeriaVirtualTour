@@ -1,7 +1,6 @@
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 
 import LogInBg1 from "../../assets/Images/LogInBg.jpg";
-import LogInBg2 from "../../assets/Images/LogIn2.jpg";
 import device from "../../assets/Variables/responsive";
 
 export const PageContainer = styled.div`

@@ -1,8 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactComponent as FacebookIcone } from "../../../../assets/svg/FacebookIcone.svg";
-import { ReactComponent as GoogleIcone } from "../../../../assets/svg/GoogleIcone.svg";
 import {
   SignUpContainerContent,
   SignUpH1,
@@ -36,7 +35,7 @@ import {
   setText,
 } from "../../../../features/infoPopUp/infoPopUpSlice";
 const SignUp = ({ login, setLogin, toggle, setToggle }) => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();

@@ -12,25 +12,15 @@ import {
   RightNavLi,
   DiscoverRightContainer,
   DestinationRightContainer,
-  SvgDestinationImg,
   RightNavHr,
   Pub,
 } from "./WilayaElements";
-import {
-  ImgLoader,
-  TextContainerLoader,
-  NameLoader,
-  DescriptionLoader,
-} from "./WilayaElements";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
+import { PageContentGlobal } from "../../GlobalStyles";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import useWindowSize from "../../hooks/useWindowSize";
 import "./WilayaStyles.css";
 
-import { useLocalStorage } from "../../hooks/useStorage";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
@@ -97,8 +87,7 @@ const Wilaya = () => {
   };
   const [filteredLocation, setFilteredLocation] = useState(locations);
 
-  const [banners, setBanners] = useLocalStorage("banners", {});
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
 
   const [currentSection, setCurrentSection] = useState("Info");
 

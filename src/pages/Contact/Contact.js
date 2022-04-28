@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Formik } from "formik";
 import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
 import { motion } from "framer-motion";
@@ -16,8 +16,6 @@ import {
   ContactBtn,
   RightContainer,
 } from "./ContactElements";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import { PageContentGlobal } from "../../GlobalStyles";
@@ -32,7 +30,7 @@ import {
 } from "../../features/infoPopUp/infoPopUpSlice";
 const Contact = () => {
   const dispatch = useDispatch();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const isDesktop = useWindowSize();
   return (
     <PageContentGlobal

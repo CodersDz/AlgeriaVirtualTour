@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import { Formik } from "formik";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ReactComponent as FacebookIcone } from "../../../../assets/svg/FacebookIcone.svg";
 import { AiOutlineGoogle } from "react-icons/ai";
 import {
@@ -42,7 +42,7 @@ import {
 } from "../../../../features/infoPopUp/infoPopUpSlice";
 const Login = ({ login, setLogin, toggle, setToggle }) => {
   const dispatch = useDispatch();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
 
   const [checked, setChecked] = useState(false);
   const { setAuthFunction } = useAuth();

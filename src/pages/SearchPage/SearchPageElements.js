@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
+import styled, { keyframes } from "styled-components";
 import SearchBg from "./SearchBg.jpg";
 import { Link } from "react-router-dom";
 import device from "../../assets/Variables/responsive";

@@ -27,7 +27,7 @@ const SelectWilayaPopUp = ({
   setSelectedOption,
   goToWilaya,
 }) => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [showWilayas, setShowWilayas] = useState(false);
   return (
     <BackDrop>

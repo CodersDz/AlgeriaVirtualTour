@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  PageContainer,
   PageContent,
   LeftContainer,
   LeftWrapper,
@@ -9,14 +8,11 @@ import {
   Paragraph,
   RightContainer,
 } from "./LegalNoticeElements";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
-import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 const LegalNotice = () => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <PageContentGlobal
       fixed={false}

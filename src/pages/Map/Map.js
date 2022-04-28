@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import GoogleMapReact from "google-map-react";
 import useSupercluster from "use-supercluster";
 import axios from "axios";
-import { useLocalStorage } from "../../hooks/useStorage";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
   PageContent,
@@ -13,9 +12,9 @@ import {
   CardText,
   LocationName,
   LocationP,
-  CardBtnContainer,
-  LeftCardBtnContainer,
-  RightCardBtnContainer,
+  // CardBtnContainer,
+  // LeftCardBtnContainer,
+  // RightCardBtnContainer,
   MapMenu,
   LeftMenu,
   RightMenu,
@@ -29,26 +28,23 @@ import {
   RangeInput,
 } from "./MapElements";
 import MobileTopContainer from "./Components/MobileTopContainer/MobileTopContainer";
-import InternetIcon from "../../assets/svg/Internet.svg";
+// import InternetIcon from "../../assets/svg/Internet.svg";
 
-import HeartIcon from "../../assets/svg/Heart.svg";
-import SaveIcon from "../../assets/svg/Save.svg";
+// import HeartIcon from "../../assets/svg/Heart.svg";
+// import SaveIcon from "../../assets/svg/Save.svg";
 import { motion } from "framer-motion";
 import { ReactComponent as MapMenuIcone } from "./MapMenuIcone.svg";
-import { ReactComponent as PointerMobile } from "../../assets/svg/PointerMobile.svg";
 import { MdLocationOn } from "react-icons/md";
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
-import { PageContainerGlobal, PageContentGlobal } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import useWindowSize from "../../hooks/useWindowSize";
 import MobileBottomContainer from "./Components/MobileBottomContainer/MobileBottomContainer";
 import { generalAPILink } from "../../assets/Variables/Links";
 import { useLocation } from "react-router-dom";
-const Map = (props) => {
+const Map = () => {
   const location = useLocation();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [currentLocation, setCurrentLocation] = useState(null);
   const [locations, setLocations] = useState([]);
   const mapRef = useRef();

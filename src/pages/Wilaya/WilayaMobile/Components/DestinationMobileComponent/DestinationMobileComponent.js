@@ -7,7 +7,7 @@ import LocationCard from "../../../../../components/LocationCard/LocationCard";
 import useTranslation from "../../../../../hooks/useTranslation/useTranslation";
 const DestinationMobileComponent = ({ locations }) => {
   console.log(locations);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const ref = useRef();
   const [localesLocations, setLocalesLocations] = useState([]);
   useEffect(() => {

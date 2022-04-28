@@ -16,7 +16,7 @@ const SearchCatégorieMobile = ({
   locations,
   mostVisitedLocations,
 }) => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const [currentSection, setCurrentSection] = useState("General");
   const [generalLocations, setGeneralLocations] = useState([]);
   const [recenetAddedLocations, setRecenetAddedLocations] = useState([]);

@@ -12,7 +12,7 @@ import {
   Button,
 } from "./ResetPasswordElements";
 const ResetPassword = () => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [email, setEmail] = useState();

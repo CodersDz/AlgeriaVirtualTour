@@ -1,12 +1,15 @@
-import styled, { css, keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 import device from "../../assets/Variables/responsive";
+import HomeBg from "./HomeBg.jpg";
 const lang = localStorage.getItem("language");
 export const HomeContent = styled.div`
-  background: ${(
-    props
-  ) => `linear-gradient(to right, rgba(75, 203, 2, 0.8), rgba(75, 203, 2, 0.8)),
-    url(${props.currentBg})`};
+  background: linear-gradient(
+      to right,
+      rgba(75, 203, 2, 0.8),
+      rgba(75, 203, 2, 0.8)
+    ),
+    url(${HomeBg});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

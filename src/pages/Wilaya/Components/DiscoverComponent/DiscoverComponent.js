@@ -17,7 +17,7 @@ const DiscoverComponent = ({
   setCurrentDiscoverOption,
   setCurrentSection,
 }) => {
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const Catégories = [
     {
       CatégorieName: t("SearchPage.Card.Art&Culture"),

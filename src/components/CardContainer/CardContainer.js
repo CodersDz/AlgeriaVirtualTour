@@ -12,7 +12,7 @@ import {
 import Catégories from "../../assets/utilities/Catégories";
 const CardContainer = ({ locations }) => {
   let navigate = useNavigate();
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <CardContainerWrapper>
       {Catégories.map((card) => {

@@ -27,17 +27,13 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import useWindowSize from "../../hooks/useWindowSize";
 import { PageContentGlobal, ReadMoreSpan } from "../../GlobalStyles";
-import { useLocalStorage } from "../../hooks/useStorage";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
-import Navbar from "../../components/Navbar/Navbar";
-import Footer from "../../components/Footer/Footer";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import MobileHome from "./MobileHome/MobileHome";
 import { setAnimated } from "../../features/animation/animatedHomeSlice";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
-import HomeBg from "./HomeBg.jpg";
 import FemmeVr from "./FemmeVr.png";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
@@ -45,24 +41,17 @@ import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import { generalAPILink } from "../../assets/Variables/Links";
 const BtnVariants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 1 } },
+  animate: { opacity: 1, transition: { duration: 0.5 } },
 };
 //-----------------Variants animation---------------
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
 
 const Home = () => {
   const dispatch = useDispatch();
   const [readMore, setReadMore] = useState(false);
-  const { language, setLanguage, setFallbackLanguage, t } = useTranslation();
+  const { t } = useTranslation();
   const isDesktop = useWindowSize();
   const animated = useSelector((state) => state.animatedHome.value);
   const [wilayas, setWilayas] = useState([]);
-  const [translatedWilaya, setTranslatedWilaya] = useState({});
-  const [translatedLocation, setTranslatedLocation] = useState({});
-  const [banners, setBanners] = useLocalStorage("banners", {});
 
   useEffect(() => {
     axios
@@ -166,13 +155,12 @@ const Home = () => {
         fixed={true}
         key="home"
         as={motion.div}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        transition={{ duration: 0.5 }}
+        variants={BtnVariants}
+        initial="initial"
+        animate="animate"
       >
         {isDesktop ? (
-          <HomeContent currentBg={HomeBg}>
+          <HomeContent>
             <SidePopUpBar />
             <MapContainer>
               <DzMap />

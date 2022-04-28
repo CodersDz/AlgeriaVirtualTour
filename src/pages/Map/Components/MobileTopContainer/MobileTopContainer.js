@@ -71,8 +71,9 @@ const MobileTopContainer = ({ wilayas, wilayaFilter }) => {
                   wilaya.translatedName
                     .toLowerCase()
                     .includes(input.toLowerCase())
-                )
+                ) {
                   return wilaya;
+                } else return null;
               })
               .map((wilaya) => {
                 return (
