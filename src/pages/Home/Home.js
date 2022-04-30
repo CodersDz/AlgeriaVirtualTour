@@ -9,29 +9,14 @@ import {
   ImgCarousel,
   HomePubContainer,
   HomePub,
-  ThumbnailImages,
-  ThumbnailImage,
-  ThumbnailImageText,
-  ThumbnailImageTextH5,
-  ThumbnailImageExpanded,
-  InfoCarouselExpanded,
-  DIscoverMore,
-  InfoContainer,
-  InfoH2,
-  InfoP,
-  BtnContainer,
-  DiscoverMoreBtn,
   MapContainer,
 } from "./HomeElements";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import useWindowSize from "../../hooks/useWindowSize";
-import { PageContentGlobal, ReadMoreSpan } from "../../GlobalStyles";
+import { PageContentGlobal } from "../../GlobalStyles";
 //-----------------Elements imports---------------
 //-----------------Components imports---------------
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
 import MobileHome from "./MobileHome/MobileHome";
-import { setAnimated } from "../../features/animation/animatedHomeSlice";
 //-----------------Images imports---------------
 import { ReactComponent as DzMap } from "../../assets/svg/DzMap.svg";
 import FemmeVr from "./FemmeVr.png";
@@ -39,18 +24,16 @@ import useTranslation from "../../hooks/useTranslation/useTranslation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 
 import { generalAPILink } from "../../assets/Variables/Links";
-const BtnVariants = {
+import CarousselContainerD from "./Components/CarousselContainerD";
+export const BtnVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1, transition: { duration: 0.5 } },
 };
 //-----------------Variants animation---------------
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const [readMore, setReadMore] = useState(false);
-  const { t } = useTranslation();
   const isDesktop = useWindowSize();
-  const animated = useSelector((state) => state.animatedHome.value);
+  const { t } = useTranslation();
   const [wilayas, setWilayas] = useState([]);
 
   useEffect(() => {
@@ -73,82 +56,7 @@ const Home = () => {
   //       console.log(err);
   //     });
   // }, []);
-  const GrowImage = ({ item }) => {
-    if (!animated.includes(item.position)) {
-      return (
-        <ThumbnailImage
-          as={motion.div}
-          layoutId={item.position}
-          bg={item.pic_cover}
-          onClick={() => {
-            if (item.position === 1) {
-              dispatch(setAnimated(item.position));
-              setReadMore(false);
-            } else if (item.position === animated.length + 1) {
-              dispatch(setAnimated(item.position));
-              setReadMore(false);
-            }
-          }}
-        >
-          <ThumbnailImageText>
-            <ThumbnailImageTextH5>{item.translatedName}</ThumbnailImageTextH5>
-          </ThumbnailImageText>
-        </ThumbnailImage>
-      );
-    } else
-      return (
-        <ThumbnailImageExpanded
-          as={motion.div}
-          layoutId={item.position}
-          bg={item.pic_cover}
-        >
-          <InfoCarouselExpanded>
-            <InfoContainer>
-              <InfoH2>{item.translatedName}</InfoH2>
-              <InfoP readMore={readMore}>{item.translatedDescription}</InfoP>
-              {!readMore && (
-                <ReadMoreSpan
-                  onClick={() => {
-                    setReadMore(!readMore);
-                  }}
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  {t("General.ReadMore")}
-                </ReadMoreSpan>
-              )}
-              {readMore && (
-                <ReadMoreSpan
-                  onClick={() => {
-                    setReadMore(!readMore);
-                  }}
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  {t("General.ReadLess")}
-                </ReadMoreSpan>
-              )}
-              <BtnContainer>
-                <DiscoverMoreBtn
-                  to={{
-                    pathname: `/wilaya/${item.id_wilaya}`,
-                    state: { wilaya: item },
-                  }}
-                >
-                  {t("HomePage.DiscoverMore")}
-                </DiscoverMoreBtn>
-              </BtnContainer>
-            </InfoContainer>
-          </InfoCarouselExpanded>
 
-          <ImgCarousel></ImgCarousel>
-        </ThumbnailImageExpanded>
-      );
-  };
   return (
     <AnimateSharedLayout>
       <PageContentGlobal
@@ -175,15 +83,7 @@ const Home = () => {
               <HomePubContainer>
                 {/* <HomePub src={banners.banner_home1} /> */}
               </HomePubContainer>
-
-              <ThumbnailImages>
-                {wilayas.map((item) => {
-                  return <GrowImage item={item} key={item.position} />;
-                })}
-                <DIscoverMore to="/Search">
-                  {t("HomePage.DiscoverMore")}...
-                </DIscoverMore>
-              </ThumbnailImages>
+              <CarousselContainerD wilayas={wilayas} />
               <HomePubContainer>
                 {/* <HomePub src={banners.banner_home2} /> */}
               </HomePubContainer>
