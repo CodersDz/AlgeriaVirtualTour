@@ -4,6 +4,7 @@ import device from "../../assets/Variables/responsive";
 export const FooterContainer = styled.footer`
   width: 100%;
   height: 20vh;
+  display: flex;
   text-align: justify;
   align-items: center;
   justify-content: center;

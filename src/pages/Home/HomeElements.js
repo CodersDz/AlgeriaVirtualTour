@@ -76,16 +76,6 @@ export const InfoCarouselExpanded = styled(InfoCarousel)`
   z-index: 1;
   max-height: 100%;
 `;
-export const InfoContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  color: white;
-  position: relative;
-  display: flex;
-  align-items: start;
-  justify-content: end;
-  flex-direction: column;
-`;
 
 export const MapContainer = styled.div`
   position: absolute;
@@ -96,67 +86,7 @@ export const MapContainer = styled.div`
   max-height: 100%;
   width: 60%;
 `;
-export const InfoH2 = styled.h2`
-  font-weight: 600;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 3px #000;
-  word-break: break-all;
-  width: 100%;
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.tablet} {
-  }
-  @media only screen and ${device.laptop} {
-    font-size: 60px;
-  }
-  @media only screen and ${device.desktop} {
-    font-size: 100px;
-  }
-`;
-export const InfoP = styled.p`
-  max-height: calc(70% - 40px);
-  font-weight: 400;
-  width: 100%;
-  text-transform: none;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
-  line-clamp: ${(props) => (props.readMore === false ? 2 : "initial")};
-  overflow: ${(props) => (props.readMore === false ? "hidden" : "auto")};
-  transition: all 3s cubic-bezier(0, 1, 0, 1);
-  -ms-overflow-style: none; /* IE and Edge */
-  ::-webkit-scrollbar {
-    width: 10px;
-    display: ${(props) => (props.readMore === false ? "none" : "block")};
-  }
 
-  /* Track */
-  ::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px grey;
-    border-radius: 10px;
-  }
-
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: grey;
-    border-radius: 10px;
-  }
-
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #fff;
-  }
-  @media only screen and ${device.mobile} {
-  }
-  @media only screen and ${device.tablet} {
-  }
-  @media only screen and ${device.laptop} {
-    font-size: 20px;
-  }
-  @media only screen and ${device.desktop} {
-    font-size: 25px;
-  }
-`;
 export const ImgCarousel = styled.div`
   width: 40%;
   height: 100%;
