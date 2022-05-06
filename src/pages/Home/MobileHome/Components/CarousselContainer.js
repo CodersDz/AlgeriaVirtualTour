@@ -63,56 +63,62 @@ const CarousselContainer = ({ wilayas }) => {
           layoutId={item.position}
           bg={item.pic_cover}
         >
-          <ExpandedTop readMore={readMore}>
-            <ExpandedTopLeftContainer>
-              <TitleExpandedContainer>
-                <TitleExpanded>{item.translatedName}</TitleExpanded>
-              </TitleExpandedContainer>
-            </ExpandedTopLeftContainer>
-            <ExpandedTopRightContainer></ExpandedTopRightContainer>
-          </ExpandedTop>
-          <ExpandedBottom readMore={readMore}>
-            <TextExpandedContainer
-              onClick={() => {
-                setReadMore(!readMore);
-              }}
-            >
-              {readMore && <TitleExpanded>{item.translatedName}</TitleExpanded>}
-              <PExpanded readMore={readMore}>
-                {item.translatedDescription}
-              </PExpanded>
-              {!readMore && (
-                <ReadMoreSpanMobile
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
+          {item.position > animated.length - 1 && (
+            <>
+              <ExpandedTop readMore={readMore}>
+                <ExpandedTopLeftContainer>
+                  <TitleExpandedContainer>
+                    <TitleExpanded>{item.translatedName}</TitleExpanded>
+                  </TitleExpandedContainer>
+                </ExpandedTopLeftContainer>
+                <ExpandedTopRightContainer></ExpandedTopRightContainer>
+              </ExpandedTop>
+              <ExpandedBottom readMore={readMore}>
+                <TextExpandedContainer
+                  onClick={() => {
+                    setReadMore(!readMore);
+                  }}
                 >
-                  {t("General.ReadMore")}
-                </ReadMoreSpanMobile>
-              )}
-              {readMore && (
-                <ReadMoreSpanMobile
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
+                  {readMore && (
+                    <TitleExpanded>{item.translatedName}</TitleExpanded>
+                  )}
+                  <PExpanded readMore={readMore}>
+                    {item.translatedDescription}
+                  </PExpanded>
+                  {!readMore && (
+                    <ReadMoreSpanMobile
+                      as={motion.span}
+                      variants={BtnVariants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {t("General.ReadMore")}
+                    </ReadMoreSpanMobile>
+                  )}
+                  {readMore && (
+                    <ReadMoreSpanMobile
+                      as={motion.span}
+                      variants={BtnVariants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {t("General.ReadLess")}
+                    </ReadMoreSpanMobile>
+                  )}
+                </TextExpandedContainer>
+              </ExpandedBottom>
+              <ExpandedBtnContainer>
+                <DiscoverBtn
+                  to={{
+                    pathname: `/wilaya/${item.id_wilaya}`,
+                    state: { wilaya: item },
+                  }}
                 >
-                  {t("General.ReadLess")}
-                </ReadMoreSpanMobile>
-              )}
-            </TextExpandedContainer>
-          </ExpandedBottom>
-          <ExpandedBtnContainer>
-            <DiscoverBtn
-              to={{
-                pathname: `/wilaya/${item.id_wilaya}`,
-                state: { wilaya: item },
-              }}
-            >
-              {t("HomePage.SeeMore")}...
-            </DiscoverBtn>
-          </ExpandedBtnContainer>
+                  {t("HomePage.SeeMore")}...
+                </DiscoverBtn>
+              </ExpandedBtnContainer>
+            </>
+          )}
         </ExpandedContainer>
       );
   };

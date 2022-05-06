@@ -48,59 +48,67 @@ const CarousselContainerD = ({ wilayas }) => {
           </ThumbnailImageText>
         </ThumbnailImage>
       );
-    } else
+    }
+    //
+    else {
       return (
         <ThumbnailImageExpanded
           as={motion.div}
           layoutId={item.position}
           bg={item.pic_cover}
         >
-          <InfoCarouselExpanded>
-            <InfoContainer>
-              <InfoH2>{item.translatedName}</InfoH2>
-              <InfoP readMore={readMore}>{item.translatedDescription}</InfoP>
-              {!readMore && (
-                <ReadMoreSpan
-                  onClick={() => {
-                    setReadMore(!readMore);
-                  }}
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  {t("General.ReadMore")}
-                </ReadMoreSpan>
-              )}
-              {readMore && (
-                <ReadMoreSpan
-                  onClick={() => {
-                    setReadMore(!readMore);
-                  }}
-                  as={motion.span}
-                  variants={BtnVariants}
-                  initial="initial"
-                  animate="animate"
-                >
-                  {t("General.ReadLess")}
-                </ReadMoreSpan>
-              )}
-              <BtnContainer>
-                <DiscoverMoreBtn
-                  to={{
-                    pathname: `/wilaya/${item.id_wilaya}`,
-                    state: { wilaya: item },
-                  }}
-                >
-                  {t("HomePage.DiscoverMore")}
-                </DiscoverMoreBtn>
-              </BtnContainer>
-            </InfoContainer>
-          </InfoCarouselExpanded>
-
-          <ImgCarousel></ImgCarousel>
+          {item.position > animated.length - 2 && (
+            <>
+              <InfoCarouselExpanded>
+                <InfoContainer>
+                  <InfoH2>{item.translatedName}</InfoH2>
+                  <InfoP readMore={readMore}>
+                    {item.translatedDescription}
+                  </InfoP>
+                  {!readMore && (
+                    <ReadMoreSpan
+                      onClick={() => {
+                        setReadMore(!readMore);
+                      }}
+                      as={motion.span}
+                      variants={BtnVariants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {t("General.ReadMore")}
+                    </ReadMoreSpan>
+                  )}
+                  {readMore && (
+                    <ReadMoreSpan
+                      onClick={() => {
+                        setReadMore(!readMore);
+                      }}
+                      as={motion.span}
+                      variants={BtnVariants}
+                      initial="initial"
+                      animate="animate"
+                    >
+                      {t("General.ReadLess")}
+                    </ReadMoreSpan>
+                  )}
+                  <BtnContainer>
+                    <DiscoverMoreBtn
+                      to={{
+                        pathname: `/wilaya/${item.id_wilaya}`,
+                        state: { wilaya: item },
+                      }}
+                    >
+                      {t("HomePage.DiscoverMore")}
+                    </DiscoverMoreBtn>
+                  </BtnContainer>
+                </InfoContainer>
+              </InfoCarouselExpanded>
+              <ImgCarousel></ImgCarousel>
+            </>
+          )}
         </ThumbnailImageExpanded>
       );
+    }
   };
   return (
     <ThumbnailImages>
