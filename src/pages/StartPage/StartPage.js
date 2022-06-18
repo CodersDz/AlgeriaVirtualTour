@@ -14,7 +14,9 @@ import {
 
 //-----------------Logo import---------------
 import StartPageLogo from "../../assets/svg/StartPageLogo.svg";
+import StartPageLogoMobile from "../../assets/svg/StartPageLogoMobile.svg";
 import MapStartPage from "../../assets/Images/MapStartPage.png";
+import useWindowSize from "../../hooks/useWindowSize";
 
 //-----------------Variants animation---------------
 const containerVariants = {
@@ -24,6 +26,7 @@ const containerVariants = {
 };
 const StartPage = () => {
   const { t } = useTranslation();
+  const isDesktop = useWindowSize();
   return (
     <StartPageContainer
       as={motion.div}
@@ -33,7 +36,7 @@ const StartPage = () => {
       exit="exit"
     >
       <StartPageContent>
-        <StartPageImg src={StartPageLogo} />
+        <StartPageImg src={StartPageLogoMobile} />
         <EmptyDiv></EmptyDiv>
         <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
       </StartPageContent>
