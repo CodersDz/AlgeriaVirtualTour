@@ -36,7 +36,12 @@ const StartPage = () => {
       exit="exit"
     >
       <StartPageContent>
-        <StartPageImg src={StartPageLogoMobile} />
+        {isDesktop ? (
+          <StartPageImg src={StartPageLogo} />
+        ) : (
+          <StartPageImg src={StartPageLogoMobile} />
+        )}
+
         <EmptyDiv></EmptyDiv>
         <StartPageLink to="/home">{t("StartPage.Begin")}</StartPageLink>
       </StartPageContent>

@@ -5,10 +5,6 @@ export const StartPageContainer = styled.div`
   background: linear-gradient(to top, #147538, #72b43e);
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   overflow: hidden;
   position: absolute;
   z-index: 3;
@@ -29,11 +25,14 @@ export const StartPageContent = styled.div`
 export const StartPageImg = styled.img`
   height: 40%;
   width: 90%;
-  @media only screen and ${device.mobile} {
-  }
+  position: relative;
+  left: 15px;
+
   @media only screen and ${device.tablet} {
   }
   @media only screen and ${device.laptop} {
+    position: static;
+    left: 0;
     height: 40%;
     width: 50%;
   }
