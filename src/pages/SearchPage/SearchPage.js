@@ -8,28 +8,19 @@ import {
   SearchContentWrapper,
   SearchH1,
   SearchP,
-  BtnContainer,
-  MapIconeContainer,
-  SelectWilayaContainer,
-  SearchBtn,
   TextContainer,
   BannerContainer,
   BannerImg,
-  SelectWilayaVisible,
-  WilayaSelectedH3,
-  SelectWilayaUlHidden,
-  Arrow,
-  SelectWilayaLIHidden,
 } from "./SearchPageElements";
 import CardContainer from "../../components/CardContainer/CardContainer";
 import { PageContentGlobal } from "../../GlobalStyles";
 import SidePopUpBar from "../../components/SidePopUpBar/SidePopUpBar";
-import { ReactComponent as MapIcone } from "./MapIcone.svg";
 import useWindowSize from "../../hooks/useWindowSize";
 import getLocationInformation from "../../assets/utilities/getLocationInformation";
 import getWilayaInformation from "../../assets/utilities/getWilayaInformation";
 import MobileSearchBar from "./Components/MobileSearchBar/MobileSearchBar";
 import { generalAPILink } from "../../assets/Variables/Links";
+import DesktopSearchBar from "./Components/DesktopSearchBar/DesktopSearchBar";
 const Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.5 } },
@@ -45,7 +36,6 @@ const SearchPage = () => {
   });
   const isDesktop = useWindowSize();
   const [wilayas, setWilayas] = useState([]);
-  const [showWilayas, setShowWilayas] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -107,49 +97,12 @@ const SearchPage = () => {
           )}
 
           {isDesktop ? (
-            <BtnContainer>
-              <SelectWilayaContainer
-                onMouseLeave={() => {
-                  setShowWilayas(false);
-                }}
-              >
-                <SelectWilayaVisible
-                  showWilayas={showWilayas}
-                  onMouseEnter={() => {
-                    setShowWilayas(true);
-                  }}
-                >
-                  <WilayaSelectedH3>
-                    {selectedOption.translatedName}
-                  </WilayaSelectedH3>
-                  <Arrow />
-                </SelectWilayaVisible>
-                <SelectWilayaUlHidden as={motion.div} showWilayas={showWilayas}>
-                  {wilayas.map((wilaya) => {
-                    return (
-                      <SelectWilayaLIHidden
-                        onClick={() => {
-                          setSelectedOption(wilaya);
-                          setShowWilayas(false);
-                        }}
-                      >
-                        {wilaya.translatedName}
-                      </SelectWilayaLIHidden>
-                    );
-                  })}
-                </SelectWilayaUlHidden>
-              </SelectWilayaContainer>
-              <SearchBtn
-                onClick={() => {
-                  goToWilaya(selectedOption.id_wilaya);
-                }}
-              >
-                {t("SearchPage.Research")}
-              </SearchBtn>
-              <MapIconeContainer to="/Map">
-                <MapIcone />
-              </MapIconeContainer>
-            </BtnContainer>
+            <DesktopSearchBar
+              wilayas={wilayas}
+              selectedOption={selectedOption}
+              setSelectedOption={setSelectedOption}
+              goToWilaya={goToWilaya}
+            />
           ) : (
             <MobileSearchBar
               wilayas={wilayas}
