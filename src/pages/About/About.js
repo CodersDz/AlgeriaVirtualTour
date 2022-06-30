@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
 import useTranslation from "../../hooks/useTranslation/useTranslation";
 import {
@@ -15,12 +14,7 @@ import { PageContentGlobal } from "../../GlobalStyles";
 const About = () => {
   const { t } = useTranslation();
   return (
-    <PageContentGlobal
-      fixed={false}
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
-    >
+    <PageContentGlobal fixed={false}>
       <ContentContainer>
         <LeftContainer>
           <LeftWrapper>

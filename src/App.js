@@ -26,8 +26,6 @@ function App() {
   const showInfoPopUp = useSelector((state) => state.infoPopUp.value.show);
   const type = useSelector((state) => state.infoPopUp.value.type);
   const text = useSelector((state) => state.infoPopUp.value.text);
-  const navigate = useNavigate();
-
   return (
     <PageContainerGlobal>
       <ScrollToTop>

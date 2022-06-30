@@ -33,10 +33,6 @@ import InfoComponent from "./Components/InfoComponent/InfoComponent";
 
 //Mobile
 import WilayaMobile from "./WilayaMobile/WilayaMobile";
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-};
 
 const Wilaya = () => {
   const location = useLocation();
@@ -156,13 +152,7 @@ const Wilaya = () => {
   };
   return (
     <AnimateSharedLayout>
-      <PageContentGlobal
-        fixed={isDesktop}
-        as={motion.div}
-        initial="hidden"
-        animate="visible"
-        variants={containerVariants}
-      >
+      <PageContentGlobal fixed={isDesktop}>
         {isDesktop ? (
           <PageContent bg={wilaya.pic_cover}>
             <SidePopUpBar />

@@ -28,9 +28,9 @@
         </g>
       </g>
     </g>
-    <g id="Groupe_28" data-name="Groupe 28" transform="translate(312.242 482.557)">
-      <text id="ALGERIA_VIRTUAL_TOUR" data-name="ALGERIA VIRTUAL TOUR" transform="translate(0 51)" fill="#fff" font-size="53" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">ALGERIA</tspan><tspan y="0" xml:space="preserve" font-family="Montserrat-Medium, Montserrat" font-weight="500"> VIRTUAL TOUR</tspan></text>
-      <text id="By_VIRTUAL_ART_PRODUCTION" data-name="By VIRTUAL ART PRODUCTION" transform="translate(190.637 83.029)" fill="#fff" font-size="18" font-family="Montserrat-LightItalic, Montserrat" font-weight="300" font-style="italic"><tspan x="0" y="0">By </tspan><tspan y="0" font-family="Montserrat-SemiBoldItalic, Montserrat" font-weight="600">VIRTUAL ART PRODUCTION</tspan></text>
+    <g id="Groupe_28" data-name="Groupe 28" transform="translate(312.242 482.557)" font-family="Montserrat,sans-serif">
+      <text id="ALGERIA_VIRTUAL_TOUR" data-name="ALGERIA VIRTUAL TOUR" transform="translate(0 51)" fill="#fff" font-size="53" font-weight="700"><tspan x="0" y="0">ALGERIA</tspan><tspan y="0" xml:space="preserve"  font-weight="500"> VIRTUAL TOUR</tspan></text>
+      <text id="By_VIRTUAL_ART_PRODUCTION" data-name="By VIRTUAL ART PRODUCTION" transform="translate(190.637 83.029)" fill="#fff" font-size="18" font-weight="300" font-style="italic"><tspan x="0" y="0">By </tspan><tspan y="0"  font-weight="600">VIRTUAL ART PRODUCTION</tspan></text>
     </g>
   </g>
 </svg>

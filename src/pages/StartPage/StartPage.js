@@ -19,22 +19,12 @@ import MapStartPage from "../../assets/Images/MapStartPage.png";
 import useWindowSize from "../../hooks/useWindowSize";
 
 //-----------------Variants animation---------------
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 1.5 } },
-  exit: { opacity: 0, transition: { duration: 1, ease: "easeInOut" } },
-};
+
 const StartPage = () => {
   const { t } = useTranslation();
   const isDesktop = useWindowSize();
   return (
-    <StartPageContainer
-      as={motion.div}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      exit="exit"
-    >
+    <StartPageContainer>
       <StartPageContent>
         {isDesktop ? (
           <StartPageImg src={StartPageLogo} />

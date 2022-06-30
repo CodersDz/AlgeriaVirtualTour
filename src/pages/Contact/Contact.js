@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
 import DevicesContainer from "../../components/DevicesContainer/DevicesContainer";
-import { motion } from "framer-motion";
 import {
   ContentContainer,
   LeftContainer,
@@ -33,12 +32,7 @@ const Contact = () => {
   const { t } = useTranslation();
   const isDesktop = useWindowSize();
   return (
-    <PageContentGlobal
-      fixed={isDesktop}
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
-    >
+    <PageContentGlobal fixed={isDesktop}>
       <ContentContainer>
         <LeftContainer>
           <LeftWrapper>

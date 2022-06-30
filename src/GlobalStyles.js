@@ -7,18 +7,20 @@ export const PageContainerGlobal = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"} !important;
+  font-family: ${lang === '"ar"'
+    ? "MontserratArabic"
+    : "Montserrat"} !important;
   & span {
-    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+    font-family: ${lang === '"ar"' ? "MontserratArabic" : "Montserrat"};
   }
   & input {
-    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+    font-family: ${lang === '"ar"' ? "MontserratArabic" : "Montserrat"};
   }
   & button {
-    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+    font-family: ${lang === '"ar"' ? "MontserratArabic" : "Montserrat"};
   }
   & a {
-    font-family: ${lang === '"ar"' ? "MonserratArabic" : "Montserrat"};
+    font-family: ${lang === '"ar"' ? "MontserratArabic" : "Montserrat"};
   }
   & p {
     text-align: justify;

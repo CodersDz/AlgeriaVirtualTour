@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   PageContent,
   LeftContainer,
@@ -14,12 +13,7 @@ import { PageContentGlobal } from "../../GlobalStyles";
 const LegalNotice = () => {
   const { t } = useTranslation();
   return (
-    <PageContentGlobal
-      fixed={false}
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1, transition: { duration: 0.5 } }}
-    >
+    <PageContentGlobal fixed={false}>
       <PageContent>
         <LeftContainer>
           <LeftWrapper>

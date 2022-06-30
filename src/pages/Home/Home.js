@@ -58,15 +58,8 @@ const Home = () => {
   // }, []);
 
   return (
-    <AnimateSharedLayout>
-      <PageContentGlobal
-        fixed={true}
-        key="home"
-        as={motion.div}
-        variants={BtnVariants}
-        initial="initial"
-        animate="animate"
-      >
+    <PageContentGlobal fixed={true}>
+      <AnimateSharedLayout>
         {isDesktop ? (
           <HomeContent>
             <SidePopUpBar />
@@ -92,8 +85,8 @@ const Home = () => {
         ) : (
           <MobileHome wilayas={wilayas} />
         )}
-      </PageContentGlobal>
-    </AnimateSharedLayout>
+      </AnimateSharedLayout>
+    </PageContentGlobal>
   );
 };
 

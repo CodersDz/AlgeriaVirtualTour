@@ -1,120 +1,120 @@
 /*MonserratArabic*/
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 100;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Thin.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 200;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-ExtraLight.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 300;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Light.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 400;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Regular.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 500;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Medium.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 600;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-SemiBold.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 700;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Bold.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 800;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-ExtraBold.ttf)
       format("truetype");
 }
 @font-face {
-  font-family: "MonserratArabic";
+  font-family: "MontserratArabic";
   font-weight: 900;
-  src: local("MonserratArabic"),
+  src: local("MontserratArabic"),
     url(./assets/fonts/MonserratArabic/ArbFONTS-Montserrat-Arabic-Black.ttf)
       format("truetype");
 }
 /*Monserrat*/
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 100;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Thin.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 200;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-ExtraLight.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 300;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Light.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 400;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Regular.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 500;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Medium.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 600;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-SemiBold.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 700;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Bold.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 800;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-ExtraBold.ttf) format("truetype");
 }
 @font-face {
-  font-family: "Monserrat";
+  font-family: "Montserrat";
   font-weight: 900;
-  src: local("Monserrat"),
+  src: local("Montserrat"),
     url(./assets/fonts/Monserrat/Montserrat-Black.ttf) format("truetype");
 }
 html {

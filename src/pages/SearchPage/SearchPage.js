@@ -75,13 +75,7 @@ const SearchPage = () => {
   };
   return (
     <PageContentGlobal fixed={isDesktop}>
-      <PageContent
-        key="SearchPage"
-        as={motion.div}
-        initial="hidden"
-        animate="visible"
-        variants={Variants}
-      >
+      <PageContent>
         <SidePopUpBar />
         <BannerContainer />
         <SearchContentWrapper>

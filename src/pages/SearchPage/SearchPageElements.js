@@ -1,16 +1,7 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import SearchBg from "./SearchBg.jpg";
 import device from "../../assets/Variables/responsive";
 
-const MenuAnimation = keyframes`
-from {
-  height:0px;
-}
-
-to {
-  height:150px;
-}
-`;
 export const PageContent = styled.div`
   background: linear-gradient(
       to top,
