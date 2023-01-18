@@ -1,2 +1,1 @@
-export const generalAPILink =
-  "https://virtual-art-api-tbiz4.ondigitalocean.app/api";
+export const generalAPILink = "https://sea-turtle-app-q8wgo.ondigitalocean.app/api";
